@@ -182,3 +182,22 @@ def generate_transaction(tx_id: int, start_date: datetime, msa: dict) -> dict:
         "turnover_tier": turnover_tier,
         "injected_issue": injected_issue,
     }
+
+def generate_batch(row_count: int = 500):
+    with open("data/raw/merchant_msa.json", "r") as f:
+        msa = json.load(f)
+
+    start_date = datetime(2026, 8, 15, 9, 0, 0)
+    records = [generate_transaction(i + 1, start_date, msa) for i in range(row_count)]
+
+    df = pd.DataFrame(records)
+    output_path = "data/raw/settlement_batch_01.csv"
+    df.to_csv(output_path, index=False)
+    
+    print(f"[InterDrift] Successfully generated {len(df)} records at: {output_path}")
+    print("\n--- Injected Issues Breakdown ---")
+    print(df["injected_issue"].value_counts())
+
+
+if __name__ == "__main__":
+    generate_batch(500)
