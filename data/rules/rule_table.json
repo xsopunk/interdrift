@@ -1,0 +1,221 @@
+{
+  "version": "1.0.0",
+  "description": "InterDrift Audit Rules: Indian Domestic Payment Rails & Statutory Fee Slabs",
+  "rules": [
+    {
+      "rule_id": "R1",
+      "category": "Bank_UPI",
+      "description": "Standard bank account UPI transactions must incur 0% MDR",
+      "condition": {
+        "sub_instrument": "bank_UPI"
+      },
+      "expected_fee_type": "zero",
+      "expected_fee_value": 0.0,
+      "source_status": "sourced",
+      "source_citation": "Finance Act 2019 / Section 10A PSS Act 2007 (effective 1 Jan 2020)",
+      "confidence_note": "Legally verified. All P2M bank-to-bank UPI transfers carry statutory zero-MDR mandate."
+    },
+    {
+      "rule_id": "R2",
+      "category": "RuPay_Debit",
+      "description": "RuPay domestic debit card transactions must incur 0% MDR",
+      "condition": {
+        "sub_instrument": "RuPay_debit"
+      },
+      "expected_fee_type": "zero",
+      "expected_fee_value": 0.0,
+      "source_status": "sourced",
+      "source_citation": "Section 10A Payment and Settlement Systems Act (Ministry of Finance, 2020)",
+      "confidence_note": "Legally verified. Zero MDR applies unconditionally to all domestic RuPay debit cards."
+    },
+    {
+      "rule_id": "R3",
+      "category": "RuPay_Credit_UPI",
+      "description": "RuPay credit card on UPI transactions up to Rs 2,000 must incur 0% MDR",
+      "condition": {
+        "sub_instrument": "RuPay_credit_UPI",
+        "amount_operator": "<=",
+        "amount_threshold": 2000.0
+      },
+      "expected_fee_type": "zero",
+      "expected_fee_value": 0.0,
+      "source_status": "sourced",
+      "source_citation": "NPCI Circular NPCI/UPI/OC-154/2022-23 (effective 4 Oct 2022)",
+      "confidence_note": "Verified. Small merchant & low-ticket RuPay credit transactions up to Rs 2000 are zero-rated."
+    },
+    {
+      "rule_id": "R4",
+      "category": "RuPay_Credit_UPI",
+      "description": "RuPay credit card on UPI transactions over Rs 2,000 incur tiered interchange (approx 1.5% - 2.0%)",
+      "condition": {
+        "sub_instrument": "RuPay_credit_UPI",
+        "amount_operator": ">",
+        "amount_threshold": 2000.0
+      },
+      "expected_fee_type": "percentage",
+      "expected_fee_value": 1.5,
+      "source_status": "illustrative",
+      "source_citation": "Canara Bank Merchant Circular / NPCI framework (June 2026 update)",
+      "confidence_note": "Interchange slab is verified (>Rs 2000 chargeable), but specific MCC tiering is modeled at 1.5%."
+    },
+    {
+      "rule_id": "R5",
+      "category": "PPI_Wallet_UPI",
+      "description": "PPI wallet on UPI transactions up to Rs 2,000 carry zero interchange",
+      "condition": {
+        "sub_instrument": "PPI_wallet_UPI",
+        "amount_operator": "<=",
+        "amount_threshold": 2000.0
+      },
+      "expected_fee_type": "zero",
+      "expected_fee_value": 0.0,
+      "source_status": "sourced",
+      "source_citation": "NPCI Circular NPCI/2022-23/PPI-Interchange (effective 1 Apr 2023)",
+      "confidence_note": "Verified. Standard wallet-on-UPI below Rs 2000 carries no merchant interchange."
+    },
+    {
+      "rule_id": "R6a",
+      "category": "PPI_Wallet_UPI",
+      "description": "PPI wallet on UPI over Rs 2,000 for Education and Utilities capped at 0.70%",
+      "condition": {
+        "sub_instrument": "PPI_wallet_UPI",
+        "amount_operator": ">",
+        "amount_threshold": 2000.0,
+        "mcc": "8220"
+      },
+      "expected_fee_type": "percentage",
+      "expected_fee_value": 0.70,
+      "source_status": "sourced",
+      "source_citation": "NPCI Circular NPCI/2022-23/PPI-Interchange (effective 1 Apr 2023)",
+      "confidence_note": "Verified. Special MCC concessions define 0.70% for education and utilities."
+    },
+    {
+      "rule_id": "R6b",
+      "category": "PPI_Wallet_UPI",
+      "description": "PPI wallet on UPI over Rs 2,000 for Standard Retail/Supermarkets capped at 0.90%",
+      "condition": {
+        "sub_instrument": "PPI_wallet_UPI",
+        "amount_operator": ">",
+        "amount_threshold": 2000.0,
+        "mcc": "5411"
+      },
+      "expected_fee_type": "percentage",
+      "expected_fee_value": 0.90,
+      "source_status": "sourced",
+      "source_citation": "NPCI Circular NPCI/2022-23/PPI-Interchange (effective 1 Apr 2023)",
+      "confidence_note": "Verified. Supermarket MCC attracts 0.90% interchange under the April 2023 circular."
+    },
+    {
+      "rule_id": "R6c",
+      "category": "PPI_Wallet_UPI",
+      "description": "PPI wallet on UPI over Rs 2,000 for General B2B/Commercial capped at 1.10%",
+      "condition": {
+        "sub_instrument": "PPI_wallet_UPI",
+        "amount_operator": ">",
+        "amount_threshold": 2000.0,
+        "mcc": "5045"
+      },
+      "expected_fee_type": "percentage",
+      "expected_fee_value": 1.10,
+      "source_status": "sourced",
+      "source_citation": "NPCI Circular NPCI/2022-23/PPI-Interchange (effective 1 Apr 2023)",
+      "confidence_note": "Verified. Default maximum interchange ceiling for commercial merchants is 1.10%."
+    },
+    {
+      "rule_id": "R7",
+      "category": "Debit_Non_RuPay",
+      "description": "Visa/Mastercard debit for small merchants (turnover <= Rs 20L) capped at 0.40% or max Rs 200",
+      "condition": {
+        "sub_instrument": "Debit_non_rupay",
+        "turnover_tier": "below_20L"
+      },
+      "expected_fee_type": "capped_percentage",
+      "expected_fee_value": 0.40,
+      "cap_amount": 200.0,
+      "source_status": "sourced",
+      "source_citation": "RBI Circular RBI/2017-18/105 DPSS.CO.PD No.1633/02.14.003/2017-18",
+      "confidence_note": "Verified statutory ceiling. Per-transaction fee cannot exceed Rs 200."
+    },
+    {
+      "rule_id": "R8",
+      "category": "Debit_Non_RuPay",
+      "description": "Visa/Mastercard debit for large merchants (turnover > Rs 20L) capped at 0.90% or max Rs 1,000",
+      "condition": {
+        "sub_instrument": "Debit_non_rupay",
+        "turnover_tier": "above_20L"
+      },
+      "expected_fee_type": "capped_percentage",
+      "expected_fee_value": 0.90,
+      "cap_amount": 1000.0,
+      "source_status": "sourced",
+      "source_citation": "RBI Circular RBI/2017-18/105 DPSS.CO.PD No.1633/02.14.003/2017-18",
+      "confidence_note": "Verified statutory ceiling. Cap applies immediately at ticket values >= Rs 1,11,111."
+    },
+    {
+      "rule_id": "R9",
+      "category": "Credit_Cards_Market",
+      "description": "Visa/Mastercard retail credit cards checked against contracted flat rate (approx 2.0%)",
+      "condition": {
+        "declared_instrument": "Card"
+      },
+      "expected_fee_type": "contract_benchmark",
+      "expected_fee_value": 2.0,
+      "source_status": "illustrative",
+      "source_citation": "Standard Indian Merchant Service Agreement market benchmarks",
+      "confidence_note": "Credit card interchange is unregulated in India; comparison is against contracted MSA rate."
+    },
+    {
+      "rule_id": "R10",
+      "category": "Commercial_L2_L3_Downgrade",
+      "description": "Corporate card surcharge triggered by missing L2/L3 commercial data fields",
+      "condition": {
+        "card_tier": "corporate",
+        "tax_amount_provided": false
+      },
+      "expected_fee_type": "downgrade_penalty",
+      "expected_fee_value": 0.80,
+      "source_status": "illustrative",
+      "source_citation": "Modeled B2B payment gateway data qualification standards",
+      "confidence_note": "Global mechanism modeled for domestic B2B acceptance. Missing PO/Tax data incurs 80 bps penalty."
+    },
+    {
+      "rule_id": "R11",
+      "category": "Blended_vs_IC_Plus",
+      "description": "Batch-level structural leakage: Contracted flat 2.0% MDR charged over actual low-tier interchange cost",
+      "condition": {
+        "pricing_model": "blended_mdr"
+      },
+      "expected_fee_type": "structural_delta",
+      "expected_fee_value": 0.0,
+      "source_status": "illustrative",
+      "source_citation": "Modeled enterprise cost-of-acceptance disparity analysis",
+      "confidence_note": "Evaluated at batch aggregate level, quantifying excess margin absorbed by payment aggregator."
+    },
+    {
+      "rule_id": "R12",
+      "category": "MCC_Misclassification",
+      "description": "Merchant business type misclassified to a higher-rate interchange category",
+      "condition": {
+        "mismatch_detected": true
+      },
+      "expected_fee_type": "category_mismatch",
+      "expected_fee_value": 0.0,
+      "source_status": "illustrative",
+      "source_citation": "Merchant Category Classification standards (ISO 18245)",
+      "confidence_note": "Flags transactions processed under grocery MCC 5411 instead of registered B2B wholesale 5045."
+    },
+    {
+      "rule_id": "R13",
+      "category": "Least_Cost_Routing_Flag",
+      "description": "Detection flag: High-cost credit rail used where lower-cost domestic debit/bank rail was available",
+      "condition": {
+        "high_cost_rail_used": true
+      },
+      "expected_fee_type": "flag_only",
+      "expected_fee_value": 0.0,
+      "source_status": "illustrative",
+      "source_citation": "Payment routing optimization heuristic",
+      "confidence_note": "Advisory flag for reporting dashboard. Highlights potential fee savings without altering transaction flow."
+    }
+  ]
+}
