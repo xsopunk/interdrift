@@ -1,0 +1,16 @@
+{
+  "merchant_id": "MID_IND_99214",
+  "merchant_name": "Sagar Retail Enterprises",
+  "registered_business_type": "B2B wholesale",
+  "expected_mcc": "5045",
+  "annual_turnover_tier": "above_20L",
+  "pricing_model": "blended_mdr",
+  "contracted_rates": {
+    "upi_standard": 0.0,
+    "rupay_debit": 0.0,
+    "cards_flat_blended": 0.02,
+    "rupay_credit_upi_flat": 0.018,
+    "wallet_ppi_flat": 0.018
+  },
+  "tax_rate_gst": 0.18
+}
