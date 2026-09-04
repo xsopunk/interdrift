@@ -1,5 +1,5 @@
 """
-Synthetic Settlement Data Generator
+Module 1 : Synthetic Settlement Data Generator
 Simulates 500+ Indian merchant payment records with injected fee leakage,
 L2/L3 data degradation, and classification exceptions.
 
