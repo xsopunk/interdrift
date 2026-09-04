@@ -15,6 +15,7 @@ from src.rules_engine.engine import run_pipeline
 from src.agent.control_case import get_all_cases, get_case, update_case_status, get_cases_summary
 from src.agent.approval_gate import validate_action, approve_case_action, reject_case_action, enforce_gate
 from src.agent.baseline import capture_baseline, get_baseline, compute_effectiveness
+from src.agent.orchestrator import run_agent_pipeline
 
 REPORT_FILE_PATH = Path("data/processed/final_report.json")
 
@@ -116,6 +117,19 @@ async def upload_settlement_batch(file: UploadFile = File(...)):
         summary = run_pipeline(data_path=str(target_path))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Audit engine execution failed: {str(e)}")
+
+    # Execute Agent Orchestrator Pipeline (Module 14: Integration Wiring)
+    try:
+        print(f"[Integration] Triggering Agent Pipeline for {file.filename}...")
+        agent_result = run_agent_pipeline(
+            skip_llm=False,
+            use_cache=True,
+            capture_baseline_snapshot=False
+        )
+        print(f"[Integration] Agent Pipeline complete. Actionable cases: {agent_result.get('case_summary', {}).get('actionable_count', 0)}")
+    except Exception as e:
+        print(f"[Warning] Agent pipeline execution failed: {str(e)}")
+        # We don't fail the whole upload if the agent fails; graceful degradation.
 
     return {
         "status": "success",
@@ -417,4 +431,32 @@ def get_control_effectiveness():
     Compares current batch metrics against saved baseline.
     Returns % reduction per metric and overall verdict.
     """
-    return compute_effectiveness()
+    return compute_effectiveness()
+
+
+# ============================================================
+# Agent Orchestrator Endpoint (Module 13)
+# ============================================================
+
+@app.post("/agent/run")
+def trigger_agent_pipeline(
+    skip_llm: bool = False,
+    capture_baseline: bool = False,
+    source_label: str = "batch",
+):
+    """
+    Triggers the full agent pipeline:
+    Grouping → Prioritization → LLM Reasoning → Case Creation → Effectiveness.
+
+    Args:
+        skip_llm: Skip Gemini calls (use fallback diagnosis).
+        capture_baseline: Save current metrics as baseline before analysis.
+        source_label: Label for the baseline snapshot.
+    """
+    result = run_agent_pipeline(
+        skip_llm=skip_llm,
+        use_cache=True,
+        capture_baseline_snapshot=capture_baseline,
+        source_label=source_label,
+    )
+    return result
