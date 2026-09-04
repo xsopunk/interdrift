@@ -1,0 +1,221 @@
+{
+  "overview": {
+    "total_transactions": 500,
+    "matched_count": 394,
+    "matched_percent": 78.8,
+    "leaked_count": 22,
+    "leaked_percent": 4.4,
+    "exception_count": 28,
+    "exception_percent": 5.6,
+    "flagged_for_review_count": 56,
+    "flagged_for_review_percent": 11.2,
+    "total_leaked_amount": 6553.57,
+    "structural_overcharge_amount": 4989.21,
+    "mcc_misclassification_amount": 468.53
+  },
+  "leak_by_category": [
+    {
+      "category": "R2",
+      "total_leaked": 807.34,
+      "transaction_count": 9
+    },
+    {
+      "category": "R4",
+      "total_leaked": 189.53,
+      "transaction_count": 4
+    },
+    {
+      "category": "R3",
+      "total_leaked": 46.09,
+      "transaction_count": 5
+    },
+    {
+      "category": "R5",
+      "total_leaked": 43.93,
+      "transaction_count": 3
+    },
+    {
+      "category": "R6b",
+      "total_leaked": 8.94,
+      "transaction_count": 1
+    }
+  ],
+  "top_offenders": [
+    {
+      "transaction_id": "TXN_000132",
+      "rule_id": "R2",
+      "delta": 182.91,
+      "explanation": "You were charged an MDR fee of Rs 182.91 on a RuPay debit card transaction where statutory RBI guidelines cap the expected fee at Rs 0.00. Contact your acquirer immediately to claim a refund under regulatory debit card fee caps."
+    },
+    {
+      "transaction_id": "TXN_000484",
+      "rule_id": "R2",
+      "delta": 182.29,
+      "explanation": "Audit Note: Flagged for manual merchant controller review."
+    },
+    {
+      "transaction_id": "TXN_000420",
+      "rule_id": "R2",
+      "delta": 98.67,
+      "explanation": "Audit Note: Flagged for manual merchant controller review."
+    },
+    {
+      "transaction_id": "TXN_000290",
+      "rule_id": "R2",
+      "delta": 97.13,
+      "explanation": "This RuPay debit card transaction was charged a fee of Rs 97.13 instead of the statutory expected fee of Rs 0.00 under zero-MDR regulations. Contact your acquirer immediately to request a full MDR (Merchant Discount Rate) refund based on RBI guidelines."
+    },
+    {
+      "transaction_id": "TXN_000087",
+      "rule_id": "R2",
+      "delta": 71.92,
+      "explanation": "This RuPay debit card transaction incurred a fee charged of Rs 71.92 despite an expected fee of Rs 0.00 under mandated regulatory zero-MDR norms. Request an immediate MDR (Merchant Discount Rate) refund from your acquiring bank for this full fee amount."
+    },
+    {
+      "transaction_id": "TXN_000149",
+      "rule_id": "R4",
+      "delta": 55.61,
+      "explanation": "This RuPay credit UPI payment of Rs 6,951.00 incurred an MDR fee of Rs 159.88 against an expected fee of Rs 104.27 under statutory caps. Please request an MDR refund and fee tier audit from your acquiring bank."
+    },
+    {
+      "transaction_id": "TXN_000296",
+      "rule_id": "R2",
+      "delta": 50.96,
+      "explanation": "A fee of Rs 50.96 was levied on this RuPay debit transaction despite an expected fee of Rs 0.00 under RBI zero-MDR mandates. Submit a dispute to your payment gateway to reclaim the overcharged Merchant Discount Rate amount."
+    },
+    {
+      "transaction_id": "TXN_000356",
+      "rule_id": "R4",
+      "delta": 49.6,
+      "explanation": "Audit Note: Flagged for manual merchant controller review."
+    },
+    {
+      "transaction_id": "TXN_000412",
+      "rule_id": "R2",
+      "delta": 48.39,
+      "explanation": "Audit Note: Flagged for manual merchant controller review."
+    },
+    {
+      "transaction_id": "TXN_000297",
+      "rule_id": "R4",
+      "delta": 48.35,
+      "explanation": "Audit Note: Flagged for manual merchant controller review."
+    }
+  ],
+  "exceptions": [
+    {
+      "transaction_id": "TXN_000006",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000018",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000022",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000027",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000035",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000061",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000067",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000079",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000100",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000115",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000142",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000158",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000192",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000193",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000194",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000202",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000255",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000279",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000301",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000366",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000404",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000416",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000446",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000447",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000471",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000477",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000493",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    },
+    {
+      "transaction_id": "TXN_000499",
+      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+    }
+  ],
+  "audit_trail_available": true,
+  "generated_at": "2026-09-04T13:08:21.582454"
+}
