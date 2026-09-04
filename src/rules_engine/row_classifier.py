@@ -71,10 +71,9 @@ def compute_expected_fee(row: pd.Series, rule: Dict[str, Any]) -> float:
 def classify_row(row: pd.Series, rules: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Classifies a single transaction into Matched, Leaked, Exception, or Flagged."""
     tx_id = row.get("transaction_id", "UNKNOWN")
-    sub_inst = str(row.get("sub_instrument", "")).strip()
-
+    sub_raw = row.get("sub_instrument")
     # Honest Exception: missing sub-instrument tag prevents classification
-    if not sub_inst or sub_inst.lower() in ["nan", "none", ""]:
+    if pd.isna(sub_raw) or not str(sub_raw).strip() or str(sub_raw).strip().lower() in ["nan", "none"]:
         return {
             "transaction_id": tx_id,
             "classification": "Exception",
@@ -84,7 +83,6 @@ def classify_row(row: pd.Series, rules: List[Dict[str, Any]]) -> Dict[str, Any]:
             "delta": 0.0,
             "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
         }
-
     # Find candidate rules (excluding batch-level R11/R12)
     row_rules = [r for r in rules if r["rule_id"] not in ["R11", "R12", "R13"]]
     matching_rules = [r for r in row_rules if evaluate_condition(row, r.get("condition", {}))]

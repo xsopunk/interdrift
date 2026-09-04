@@ -1,28 +1,28 @@
 {
   "total_transactions": 500,
   "classification_counts": {
-    "Matched": 415,
-    "Leaked": 26,
-    "Exception": 0,
-    "Flagged_For_Review": 59
+    "Matched": 394,
+    "Leaked": 22,
+    "Exception": 28,
+    "Flagged_For_Review": 56
   },
-  "accuracy_rate_pct": 83.0,
-  "total_row_leakage_inr": 1426.52,
+  "accuracy_rate_pct": 78.8,
+  "total_row_leakage_inr": 1095.83,
   "batch_structural_audits": {
     "R11_blended_mdr_spread": {
       "total_card_volume": 1989154.65,
-      "actual_flat_fees_billed": 18902.15,
+      "actual_flat_fees_billed": 39783.09,
       "true_underlying_network_cost": 34793.88,
-      "structural_overcharge_delta": 0.0,
-      "effective_blended_rate_pct": 0.95,
+      "structural_overcharge_delta": 4989.21,
+      "effective_blended_rate_pct": 2.0,
       "effective_true_rate_pct": 1.75,
       "recommendation": "Migrate to Interchange-Plus (IC+) pricing structure to capture network rate spreads."
     },
     "R12_mcc_misclassification": {
-      "mismatched_count": 36,
+      "mismatched_count": 12,
       "expected_mcc": "5045",
       "registered_business_type": "B2B wholesale",
-      "financial_impact_delta": 1515.7,
+      "financial_impact_delta": 468.53,
       "recommendation": "Update gateway configuration to registered MCC 5045 to prevent interchange downgrades."
     }
   }

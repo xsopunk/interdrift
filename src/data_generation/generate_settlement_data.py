@@ -134,8 +134,13 @@ def generate_transaction(tx_id: int, start_date: datetime, msa: dict) -> dict:
     # 4. Inject intentional anomalies
     roll = random.random()
 
+    # Anomaly E: Sub-instrument missing (Unclassifiable Exception)
+    if roll < 0.06:
+        sub_inst = ""  # Left blank to simulate missing tag from raw aggregator feed
+        injected_issue = "exception_missing_tag"
+
     # Anomaly A: Zero-MDR Leakage (RuPay credit or PPI over ₹2,000 charged fee when it should be 0%, or vice versa)
-    if sub_inst in ["RuPay_credit_UPI", "PPI_wallet_UPI"] and amount <= 2000 and roll < 0.20:
+    elif sub_inst in ["RuPay_credit_UPI", "PPI_wallet_UPI"] and amount <= 2000 and roll < 0.20:
         fee_charged = round(amount * 0.015, 2)  # Charged fee despite zero-fee slab
         injected_issue = "R3_R5_zero_rate_leak"
 
@@ -155,12 +160,7 @@ def generate_transaction(tx_id: int, start_date: datetime, msa: dict) -> dict:
     elif roll < 0.10:
         mcc = "5411"  # Force assigned as general grocery instead of B2B wholesale
         injected_issue = "R12_mcc_misclassification"
-
-    # Anomaly E: Sub-instrument missing (Unclassifiable Exception)
-    elif roll < 0.06:
-        sub_inst = ""  # Left blank to simulate missing tag from raw aggregator feed
-        injected_issue = "exception_missing_tag"
-
+        
     tax_charged = round(fee_charged * GST_RATE, 2)
 
     return {

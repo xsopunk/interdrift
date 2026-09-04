@@ -32,24 +32,25 @@ def audit_blended_vs_ic_plus(df: pd.DataFrame, msa: Dict[str, Any]) -> Dict[str,
 
     flat_rate = float(msa["contracted_rates"].get("cards_flat_blended", 0.02))
     total_volume = card_txns["amount"].sum()
-    actual_flat_fees = card_txns["fee_charged"].sum()
+    
+    # What the merchant would pay under their flat 2.0% blended contract:
+    billed_flat_fees = round(total_volume * flat_rate, 2)
 
-    # Calculate true underlying network interchange cost
     def get_tier_cost(tier: str) -> float:
         return CARD_TIER_NETWORK_COST.get(tier, 0.015)
 
     card_txns["true_network_rate"] = card_txns["card_tier"].apply(get_tier_cost)
     card_txns["true_network_cost"] = card_txns["amount"] * card_txns["true_network_rate"]
-    total_true_cost = card_txns["true_network_cost"].sum()
+    total_true_cost = round(card_txns["true_network_cost"].sum(), 2)
 
-    # Structural overcharge = flat fees charged - true network cost
-    blended_overcharge = round(max(0.0, actual_flat_fees - total_true_cost), 2)
-    effective_blended_rate = (actual_flat_fees / total_volume) * 100 if total_volume > 0 else 0.0
+    # Structural overcharge = what flat rate cost them minus true IC cost
+    blended_overcharge = round(max(0.0, billed_flat_fees - total_true_cost), 2)
+    effective_blended_rate = flat_rate * 100
     effective_ic_rate = (total_true_cost / total_volume) * 100 if total_volume > 0 else 0.0
 
     return {
         "total_card_volume": round(total_volume, 2),
-        "actual_flat_fees_billed": round(actual_flat_fees, 2),
+        "actual_flat_fees_billed": round(billed_flat_fees, 2),
         "true_underlying_network_cost": round(total_true_cost, 2),
         "structural_overcharge_delta": blended_overcharge,
         "effective_blended_rate_pct": round(effective_blended_rate, 2),
