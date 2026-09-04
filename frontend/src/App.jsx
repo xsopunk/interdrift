@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getFinalReport } from "./services/api";
 import KPICard from "./components/KPICard";
 import CategoryBreakdown from "./components/CategoryBreakdown";
+import TopOffenders from "./components/TopOffenders";
+import ExceptionsList from "./components/ExceptionsList";
 
 export default function App() {
   const [report, setReport] = useState(null);
@@ -122,6 +124,12 @@ export default function App() {
             </div>
           </div>
         </div>
+
+        {/* Top Offenders & Remediation Stories */}
+        <TopOffenders offenders={report.top_offenders} />
+
+        {/* Honest Exceptions Section */}
+        <ExceptionsList exceptions={report.exceptions} />
       </div>
     </div>
   );
