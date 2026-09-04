@@ -38,6 +38,11 @@ def format_batch_payload(rows_slice: pd.DataFrame) -> str:
         rule_id = str(row.get("matched_rule_id", "EXCEPTION"))
         source_status = "illustrative" if rule_id in ["R10", "R11"] else "sourced"
         
+        expected_fee_raw = row.get('expected_fee')
+        overcharge_raw = row.get('overcharge_amount')
+        expected_fee_str = "N/A" if pd.isna(expected_fee_raw) or expected_fee_raw is None else f"Rs {float(expected_fee_raw):,.2f}"
+        overcharge_str = "N/A" if pd.isna(overcharge_raw) or overcharge_raw is None else f"Rs {float(overcharge_raw):,.2f}"
+
         entry = (
             f"--- Entry ---\n"
             f"Transaction ID: {row.get('transaction_id')}\n"
@@ -48,8 +53,8 @@ def format_batch_payload(rows_slice: pd.DataFrame) -> str:
             f"Amount: Rs {float(row.get('amount', 0)):,.2f}\n"
             f"Instrument: {row.get('declared_instrument')} ({row.get('sub_instrument', 'N/A')})\n"
             f"Fee Charged: Rs {float(row.get('fee_charged', 0)):,.2f}\n"
-            f"Expected Fee: Rs {float(row.get('expected_fee', 0)):,.2f}\n"
-            f"Overcharge Delta: Rs {float(row.get('overcharge_amount', 0)):,.2f}\n"
+            f"Expected Fee: {expected_fee_str}\n"
+            f"Overcharge Delta: {overcharge_str}\n"
         )
         payload_lines.append(entry)
     
