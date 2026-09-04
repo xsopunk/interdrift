@@ -1,0 +1,9 @@
+{
+  "group_id": "GRP_LEAKED_R2_RuPay_debit",
+  "root_cause": "The acquirer is improperly charging MDR fees on zero-rated RuPay debit card transactions, violating regulatory mandates.",
+  "diagnosis": "A total of 9 RuPay debit transactions incurred Rs 807.34 in MDR fees despite regulatory mandates requiring zero MDR for RuPay debit instruments. This indicates an incorrect fee calculation configuration at the gateway or acquiring bank level.",
+  "recommended_action": "request_mdr_refund",
+  "action_rationale": "Requesting an MDR refund directly targets the total overcharged exposure of Rs 807.34 for wrongly assessed fees on zero-rated RuPay debit transactions.",
+  "confidence_level": "high",
+  "human_approval_required": true
+}
