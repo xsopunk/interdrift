@@ -13,6 +13,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.rules_engine.engine import run_pipeline
 
+REPORT_FILE_PATH = Path("data/processed/final_report.json")
+
 app = FastAPI(
     title="InterDrift Autonomous Finance Controller API",
     description="Deterministic regulatory fee auditing and margin leakage detection for Indian payment rails.",
@@ -98,3 +100,15 @@ def get_audit_results():
         "summary": summary,
         "row_level_results": df_rows.to_dict(orient="records")
     }
+@app.get("/report")
+def get_final_report():
+    """
+    Returns the synthesized audit report for dashboard visualization.
+    """
+    if not REPORT_FILE_PATH.exists():
+        raise HTTPException(
+            status_code=404, 
+            detail="Final report not found. Please run the audit and reporting pipeline first."
+        )
+    with open(REPORT_FILE_PATH, "r") as f:
+        return json.load(f)
