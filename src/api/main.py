@@ -12,6 +12,8 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.rules_engine.engine import run_pipeline
+from src.agent.control_case import get_all_cases, get_case, update_case_status, get_cases_summary
+from src.agent.approval_gate import validate_action, approve_case_action, reject_case_action, enforce_gate
 
 REPORT_FILE_PATH = Path("data/processed/final_report.json")
 
@@ -281,4 +283,101 @@ def get_exposure_calculation(group_by: str = "rule_id"):
         "group_by": group_by,
         "total_leaked_inr": round(sum(r["total_exposure_inr"] for r in result), 2),
         "groups": result
+    }
+
+
+# ============================================================
+# Agent Case Management Endpoints (Module 9 + Module 11)
+# ============================================================
+
+@app.get("/cases")
+def list_cases():
+    """
+    Returns all control cases with summary statistics.
+    """
+    cases = get_all_cases()
+    summary = get_cases_summary()
+    return {
+        "summary": summary,
+        "cases": cases,
+    }
+
+
+@app.get("/cases/{case_id}")
+def get_case_detail(case_id: str):
+    """
+    Returns a single control case by ID.
+    """
+    case = get_case(case_id)
+    if not case:
+        raise HTTPException(status_code=404, detail=f"Case '{case_id}' not found.")
+
+    # Enrich with gate validation
+    gate_check = enforce_gate(case)
+    return {
+        **case,
+        "gate_status": gate_check,
+    }
+
+
+@app.post("/cases/{case_id}/approve")
+def approve_case(case_id: str):
+    """
+    Human approves a case's recommended action.
+    Transitions case from AWAITING_HUMAN_APPROVAL to MONITORING.
+    """
+    case = get_case(case_id)
+    if not case:
+        raise HTTPException(status_code=404, detail=f"Case '{case_id}' not found.")
+
+    action_validation = validate_action(case.get("recommended_action", ""))
+    if not action_validation.get("human_approval_required"):
+        return {"message": "This action does not require human approval.", "case_id": case_id}
+
+    if case.get("status") != "AWAITING_HUMAN_APPROVAL":
+        raise HTTPException(
+            status_code=400,
+            detail=f"Case must be in AWAITING_HUMAN_APPROVAL status. Current: {case.get('status')}"
+        )
+
+    # Record approval and transition
+    approval = approve_case_action(case)
+    updated = update_case_status(case_id, "MONITORING", reason="Human operator approved recommended action.")
+    if not updated:
+        raise HTTPException(status_code=500, detail="Failed to update case status.")
+
+    return {
+        "message": "Action approved. Case moved to MONITORING.",
+        "case_id": case_id,
+        "approval_record": approval,
+    }
+
+
+@app.post("/cases/{case_id}/reject")
+def reject_case(case_id: str, reason: str = "Rejected by operator"):
+    """
+    Human rejects a case's recommended action.
+    Transitions case back to INVESTIGATING for re-evaluation.
+    """
+    case = get_case(case_id)
+    if not case:
+        raise HTTPException(status_code=404, detail=f"Case '{case_id}' not found.")
+
+    if case.get("status") != "AWAITING_HUMAN_APPROVAL":
+        raise HTTPException(
+            status_code=400,
+            detail=f"Case must be in AWAITING_HUMAN_APPROVAL status. Current: {case.get('status')}"
+        )
+
+    rejection = reject_case_action(case, reason=reason)
+    # Transition back to INVESTIGATING requires going through valid transitions
+    # AWAITING_HUMAN_APPROVAL -> ESCALATED -> INVESTIGATING
+    updated = update_case_status(case_id, "ESCALATED", reason=reason)
+    if not updated:
+        raise HTTPException(status_code=500, detail="Failed to update case status.")
+
+    return {
+        "message": "Action rejected. Case escalated for re-investigation.",
+        "case_id": case_id,
+        "rejection_record": rejection,
     }
