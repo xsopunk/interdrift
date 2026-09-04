@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getFinalReport, getAuditTrailResults } from "./services/api";
+import { getFinalReport, getAuditTrailResults, getAgentCases, approveCase, rejectCase } from "./services/api";
 import Navbar from "./components/Navbar";
 import ControlCockpit from "./components/ControlCockpit";
 import MetricCard from "./components/MetricCard";
@@ -8,11 +8,14 @@ import StructuralImpactCard from "./components/StructuralImpactCard";
 import RemediationDeck from "./components/RemediationDeck";
 import ExceptionsDrawer from "./components/ExceptionsDrawer";
 import AuditTrailTable from "./components/AuditTrailTable";
+import AgentControlStatus from "./components/AgentControlStatus";
+import AgentRecommendationCard from "./components/AgentRecommendationCard";
 import { TrendingDown, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
 
 export default function App() {
   const [report, setReport] = useState(null);
   const [auditRows, setAuditRows] = useState([]);
+  const [agentData, setAgentData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -25,10 +28,38 @@ export default function App() {
       ]);
       setReport(reportData);
       setAuditRows(auditData.row_level_results || []);
+
+      // Load agent cases (non-blocking — graceful if no cases exist yet)
+      try {
+        const casesData = await getAgentCases();
+        setAgentData(casesData);
+      } catch {
+        setAgentData(null);
+      }
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleApprove = async (caseId) => {
+    try {
+      await approveCase(caseId);
+      const casesData = await getAgentCases();
+      setAgentData(casesData);
+    } catch (err) {
+      console.error("Approval failed:", err.message);
+    }
+  };
+
+  const handleReject = async (caseId) => {
+    try {
+      await rejectCase(caseId);
+      const casesData = await getAgentCases();
+      setAgentData(casesData);
+    } catch (err) {
+      console.error("Rejection failed:", err.message);
     }
   };
 
@@ -82,6 +113,13 @@ export default function App() {
         {/* Operations Cockpit */}
         <ControlCockpit onUploadSuccess={loadAllData} />
 
+        {/* Agent Control Status (new — Module 12) */}
+        {agentData && agentData.summary && (
+          <section>
+            <AgentControlStatus summary={agentData.summary} />
+          </section>
+        )}
+
         {/* Executive KPI Deck */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <MetricCard
@@ -132,12 +170,23 @@ export default function App() {
           </div>
         </section>
 
-        {/* Top Priority Remediation Deck */}
+        {/* Agent Priority Queue (new — Module 12, replaces per-row view with group-level) */}
+        {agentData && agentData.cases && agentData.cases.length > 0 && (
+          <section>
+            <AgentRecommendationCard
+              cases={agentData.cases}
+              onApprove={handleApprove}
+              onReject={handleReject}
+            />
+          </section>
+        )}
+
+        {/* Top Priority Remediation Deck (existing, relabeled) */}
         <section>
           <RemediationDeck offenders={top_offenders} />
         </section>
 
-        {/* Transparent Exceptions Drawer */}
+        {/* Human Review Queue (existing, relabeled from Exceptions & Ambiguities) */}
         <section>
           <ExceptionsDrawer exceptions={exceptions} />
         </section>

@@ -52,3 +52,42 @@ export async function getAuditTrailResults() {
   }
   return response.json();
 }
+
+/**
+ * Fetch all agent control cases with summary
+ */
+export async function getAgentCases() {
+  const response = await fetch(`${API_BASE_URL}/cases`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch cases with status: ${response.status}`);
+  }
+  return response.json();
+}
+
+/**
+ * Approve a case's recommended action (human-in-the-loop)
+ */
+export async function approveCase(caseId) {
+  const response = await fetch(`${API_BASE_URL}/cases/${caseId}/approve`, {
+    method: "POST",
+  });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.detail || "Failed to approve case");
+  }
+  return response.json();
+}
+
+/**
+ * Reject a case's recommended action
+ */
+export async function rejectCase(caseId, reason = "Rejected by operator") {
+  const response = await fetch(`${API_BASE_URL}/cases/${caseId}/reject?reason=${encodeURIComponent(reason)}`, {
+    method: "POST",
+  });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.detail || "Failed to reject case");
+  }
+  return response.json();
+}

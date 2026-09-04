@@ -14,6 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.rules_engine.engine import run_pipeline
 from src.agent.control_case import get_all_cases, get_case, update_case_status, get_cases_summary
 from src.agent.approval_gate import validate_action, approve_case_action, reject_case_action, enforce_gate
+from src.agent.baseline import capture_baseline, get_baseline, compute_effectiveness
 
 REPORT_FILE_PATH = Path("data/processed/final_report.json")
 
@@ -380,4 +381,40 @@ def reject_case(case_id: str, reason: str = "Rejected by operator"):
         "message": "Action rejected. Case escalated for re-investigation.",
         "case_id": case_id,
         "rejection_record": rejection,
-    }
+    }
+
+
+# ============================================================
+# Baseline & Control Effectiveness Endpoints (Module 10)
+# ============================================================
+
+@app.post("/baseline/capture")
+def capture_baseline_snapshot(source_label: str = "batch_1"):
+    """
+    Captures current audit metrics as the baseline snapshot.
+    Call this after the first batch is fully processed.
+    """
+    snapshot = capture_baseline(source_label=source_label)
+    if not snapshot:
+        raise HTTPException(status_code=400, detail="No report available to snapshot.")
+    return {"message": "Baseline captured.", "snapshot": snapshot}
+
+
+@app.get("/baseline")
+def get_baseline_snapshot():
+    """
+    Returns the saved baseline snapshot.
+    """
+    baseline = get_baseline()
+    if not baseline:
+        return {"status": "no_baseline", "message": "No baseline captured yet."}
+    return baseline
+
+
+@app.get("/effectiveness")
+def get_control_effectiveness():
+    """
+    Compares current batch metrics against saved baseline.
+    Returns % reduction per metric and overall verdict.
+    """
+    return compute_effectiveness()

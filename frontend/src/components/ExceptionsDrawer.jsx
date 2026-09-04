@@ -21,7 +21,7 @@ export default function ExceptionsDrawer({ exceptions = [] }) {
           <div>
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-bold text-foreground">
-                Unclassified Exceptions & Ambiguities
+                Human Review Queue
               </h3>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
                 {exceptions.length} Items
