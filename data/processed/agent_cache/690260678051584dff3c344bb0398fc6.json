@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R5_PPI_wallet_UPI",
+  "root_cause": "Fee rules incorrectly applied to fee\u2011free PPI wallet UPI transactions.",
+  "diagnosis": "The gateway/acquirer fee configuration includes a charge for PPI wallet UPI, causing non\u2011zero fees where regulations mandate zero fees.",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "Auditing the fee configuration will reveal and allow removal of the erroneous charge rule.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

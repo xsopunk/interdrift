@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_EXCEPTION_MISSING_TAG",
+  "root_cause": "Transactions lack required tagging (e.g., MCC) causing the fee engine to skip fee assessment.",
+  "diagnosis": "Because the tag is missing, the system cannot apply any fee rules, resulting in both charged and expected fees being zero across the group.",
+  "recommended_action": "request_manual_review",
+  "action_rationale": "A human analyst must verify and correct the missing tags before any automated remediation can be applied.",
+  "confidence_level": "medium",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

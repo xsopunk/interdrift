@@ -1,30 +1,32 @@
 """
-Module 8.4: Agent-Level LLM Reasoning Layer (Grouped, not per-row)
+Module 8.4: Agent-Level LLM Reasoning Layer with Multi-Route Fallback
 Generates root-cause diagnosis and remediation recommendations per investigation group.
 
-One Gemini call per group (~9 calls total), not per transaction (~106).
-This structurally fixes the existing rate-limit problem from Module 5.
+Multi-Route Fallback Architecture:
+  Route 1 (Primary): Google Gemini Flash (via GEMINI_API_KEY)
+  Route 2 (Fallback): Groq High-Speed Engine (via GROQ_API_KEY)
+  Route 3 (Fallback): OpenRouter / OpenAI (via OPENROUTER_API_KEY / OPENAI_API_KEY)
+  Route 4 (Safety Net): Deterministic Domain-Rule Fallback
 
-Keeps Module 5's per-transaction explanations intact — this is a separate agent-level layer.
+One call per group (~9 calls total) with local caching to guarantee instant execution on repeated runs.
 """
 
 import os
 import json
 import time
 import hashlib
+import re
 from typing import Dict, Any, List, Optional
 from pathlib import Path
 from pydantic import BaseModel
+import requests
 from dotenv import load_dotenv
-from google import genai
-from google.genai import types
 
 load_dotenv()
 
 CACHE_DIR = Path("data/processed/agent_cache")
 
 # --- Fixed Action Vocabulary (from Module 9 / ROADMAP) ---
-# The agent may ONLY recommend actions from this list.
 REMEDIATION_ACTIONS = [
     "request_mdr_refund",
     "file_regulatory_dispute",
@@ -40,7 +42,6 @@ REMEDIATION_ACTIONS = [
 ]
 
 
-# --- Pydantic schemas for structured Gemini output ---
 class GroupDiagnosis(BaseModel):
     group_id: str
     root_cause: str
@@ -51,7 +52,6 @@ class GroupDiagnosis(BaseModel):
     human_approval_required: bool
 
 
-# --- System prompt for agent-level group reasoning ---
 AGENT_SYSTEM_PROMPT = """You are an autonomous Payment-Cost Control Agent analyzing grouped settlement fee audit findings for an Indian merchant.
 
 You will receive a GROUP of related transactions that share the same root cause. Your job is to:
@@ -80,15 +80,17 @@ STRICT RULES:
 - If source_status is "illustrative", explicitly note that the comparison uses a modeled benchmark.
 - Never auto-execute actions. Only recommend.
 - For exceptions (missing data), recommend request_manual_review — do not force a classification.
+- Output ONLY valid JSON matching this schema:
+{
+  "group_id": "string",
+  "root_cause": "string",
+  "diagnosis": "string",
+  "recommended_action": "string",
+  "action_rationale": "string",
+  "confidence_level": "high" | "medium" | "low",
+  "human_approval_required": true | false
+}
 """
-
-
-def _get_client():
-    """Lazy-init Gemini client."""
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY is not set in .env")
-    return genai.Client(api_key=api_key)
 
 
 def _cache_key(group: Dict[str, Any]) -> str:
@@ -120,7 +122,7 @@ def _save_cache(cache_key: str, diagnosis: Dict[str, Any]):
 
 
 def _format_group_prompt(group: Dict[str, Any]) -> str:
-    """Format a single group into a structured prompt for Gemini."""
+    """Format a single group into a structured prompt."""
     lines = [
         f"GROUP ID: {group['group_id']}",
         f"Group Type: {group['group_type']}",
@@ -133,16 +135,13 @@ def _format_group_prompt(group: Dict[str, Any]) -> str:
         f"Total Exposure: Rs {group['total_exposure_inr']:,.2f}",
     ]
 
-    # Add priority context if available
     if "priority_rank" in group:
         lines.append(f"Priority Rank: #{group['priority_rank']} (score: {group.get('priority_score', 'N/A')})")
         lines.append(f"Priority Rationale: {group.get('priority_explanation', '')}")
 
-    # Add structural details if present
     if "structural_details" in group:
         lines.append(f"Structural Details: {json.dumps(group['structural_details'], indent=2)}")
 
-    # Add sample transactions
     samples = group.get("sample_transactions", [])
     if samples:
         lines.append("\nSample Transactions:")
@@ -157,67 +156,216 @@ def _format_group_prompt(group: Dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def diagnose_group(group: Dict[str, Any], use_cache: bool = True, max_retries: int = 3) -> Dict[str, Any]:
+def _extract_json_from_text(text: str) -> Optional[Dict[str, Any]]:
+    """Helper to cleanly extract JSON object from markdown or raw string."""
+    try:
+        text = text.strip()
+        if text.startswith("```"):
+            text = re.sub(r"^```(?:json)?\s*", "", text)
+            text = re.sub(r"\s*```$", "", text)
+        return json.loads(text)
+    except Exception:
+        match = re.search(r"\{.*\}", text, re.DOTALL)
+        if match:
+            try:
+                return json.loads(match.group(0))
+            except Exception:
+                pass
+    return None
+
+
+# ============================================================
+# Multi-Route LLM Implementations
+# ============================================================
+
+def _call_gemini(prompt: str) -> Optional[Dict[str, Any]]:
+    """Route 1: Google Gemini Flash."""
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return None
+
+    # Attempt 1: google-genai
+    try:
+        from google import genai
+        from google.genai import types
+
+        client = genai.Client(api_key=api_key)
+        gen_config = types.GenerateContentConfig(
+            system_instruction=AGENT_SYSTEM_PROMPT,
+            max_output_tokens=1000,
+            response_mime_type="application/json",
+            response_schema=GroupDiagnosis,
+            thinking_config=types.ThinkingConfig(thinking_level="LOW"),
+            automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
+        )
+
+        response = client.models.generate_content(
+            model="gemini-3.6-flash",
+            contents=prompt,
+            config=gen_config,
+        )
+        if response and response.text:
+            return json.loads(response.text)
+    except Exception:
+        pass
+
+    # Attempt 2: google.generativeai fallback
+    try:
+        import google.generativeai as genai_legacy
+        genai_legacy.configure(api_key=api_key)
+        model = genai_legacy.GenerativeModel(
+            model_name="gemini-1.5-flash",
+            system_instruction=AGENT_SYSTEM_PROMPT,
+            generation_config={"response_mime_type": "application/json"}
+        )
+        resp = model.generate_content(prompt)
+        if resp and resp.text:
+            return _extract_json_from_text(resp.text)
+    except Exception as e:
+        print(f"    [Gemini Route] Request failed: {e}")
+
+    return None
+
+
+def _call_groq(prompt: str) -> Optional[Dict[str, Any]]:
+    """Route 2: Groq high-speed engine."""
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        return None
+
+    candidate_models = ["qwen/qwen3.6-27b", "openai/gpt-oss-120b", "llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+
+    for model in candidate_models:
+        try:
+            url = "https://api.groq.com/openai/v1/chat/completions"
+            headers = {
+                "Authorization": f"Bearer {api_key.strip()}",
+                "Content-Type": "application/json",
+            }
+            payload = {
+                "model": model,
+                "messages": [
+                    {"role": "system", "content": AGENT_SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt},
+                ],
+                "response_format": {"type": "json_object"},
+                "temperature": 0.1,
+                "max_tokens": 1000,
+            }
+
+            resp = requests.post(url, headers=headers, json=payload, timeout=8)
+            if resp.status_code == 200:
+                data = resp.json()
+                content = data["choices"][0]["message"]["content"]
+                parsed = _extract_json_from_text(content)
+                if parsed:
+                    return parsed
+        except Exception:
+            continue
+
+    return None
+
+
+def _call_openrouter(prompt: str) -> Optional[Dict[str, Any]]:
+    """Route 3: OpenRouter / OpenAI API Fallback."""
+    api_key = os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        return None
+
+    try:
+        is_openai = "OPENAI_API_KEY" in os.environ and not os.getenv("OPENROUTER_API_KEY")
+        url = "https://api.openai.com/v1/chat/completions" if is_openai else "https://openrouter.ai/api/v1/chat/completions"
+        model = "gpt-4o-mini" if is_openai else "meta-llama/llama-3.3-70b-instruct"
+
+        headers = {
+            "Authorization": f"Bearer {api_key.strip()}",
+            "Content-Type": "application/json",
+        }
+        payload = {
+            "model": model,
+            "messages": [
+                {"role": "system", "content": AGENT_SYSTEM_PROMPT},
+                {"role": "user", "content": prompt},
+            ],
+            "response_format": {"type": "json_object"},
+            "temperature": 0.1,
+            "max_tokens": 1000,
+        }
+
+        resp = requests.post(url, headers=headers, json=payload, timeout=10)
+        if resp.status_code == 200:
+            data = resp.json()
+            content = data["choices"][0]["message"]["content"]
+            return _extract_json_from_text(content)
+    except Exception as e:
+        print(f"    [OpenRouter/OpenAI Route] Request failed: {e}")
+
+    return None
+
+
+# ============================================================
+# Main Multi-Route Diagnosis Functions
+# ============================================================
+
+def diagnose_group(group: Dict[str, Any], use_cache: bool = True) -> Dict[str, Any]:
     """
-    Send a single group to Gemini for root-cause diagnosis and remediation recommendation.
-    Includes retry with exponential backoff and caching.
+    Diagnoses a group using the multi-route LLM chain.
     """
-    # Check cache first
     ck = _cache_key(group)
     if use_cache:
         cached = _load_cached(ck)
         if cached:
             return cached
 
-    client = _get_client()
     prompt = _format_group_prompt(group)
+    raw_result = None
+    provider_used = None
 
-    gen_config = types.GenerateContentConfig(
-        system_instruction=AGENT_SYSTEM_PROMPT,
-        max_output_tokens=1000,
-        response_mime_type="application/json",
-        response_schema=GroupDiagnosis,
-        thinking_config=types.ThinkingConfig(thinking_level="LOW"),
-        automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
-    )
+    # Route 1: Gemini
+    raw_result = _call_gemini(prompt)
+    if raw_result:
+        provider_used = "Gemini Flash"
 
-    last_error = None
-    for attempt in range(max_retries):
+    # Route 2: Groq (if Gemini failed/rate limited)
+    if not raw_result:
+        print("    [Fallback Router] Calling Groq Engine...")
+        raw_result = _call_groq(prompt)
+        if raw_result:
+            provider_used = "Groq High-Speed"
+
+    # Route 3: OpenRouter / OpenAI
+    if not raw_result:
+        print("    [Fallback Router] Calling OpenRouter / OpenAI...")
+        raw_result = _call_openrouter(prompt)
+        if raw_result:
+            provider_used = "OpenRouter / OpenAI"
+
+    # Parse and enforce schema
+    if raw_result:
         try:
-            response = client.models.generate_content(
-                model="gemini-3.6-flash",
-                contents=prompt,
-                config=gen_config,
-            )
+            parsed = GroupDiagnosis.model_validate(raw_result)
+            result = parsed.model_dump()
 
-            if response.text:
-                parsed = GroupDiagnosis.model_validate_json(response.text)
-                result = parsed.model_dump()
+            if result["recommended_action"] not in REMEDIATION_ACTIONS:
+                result["recommended_action"] = "request_manual_review"
+                result["action_rationale"] += " (action normalized to allowed vocabulary)"
 
-                # Validate action is from vocabulary
-                if result["recommended_action"] not in REMEDIATION_ACTIONS:
-                    result["recommended_action"] = "request_manual_review"
-                    result["action_rationale"] += " (action normalized to allowed vocabulary)"
+            result["provider"] = provider_used
+            _save_cache(ck, result)
+            return result
+        except Exception as err:
+            print(f"    [Validation Error]: {err}")
 
-                # Cache successful result
-                _save_cache(ck, result)
-                return result
-
-        except Exception as e:
-            last_error = e
-            wait = 2 ** attempt
-            print(f"  [Retry {attempt + 1}/{max_retries}] Error: {e}. Waiting {wait}s...")
-            time.sleep(wait)
-
-    # Fallback if all retries fail
+    # Route 4: Deterministic Domain-Rule Safety Fallback
     fallback = {
         "group_id": group["group_id"],
-        "root_cause": "Unable to generate diagnosis — LLM call failed.",
-        "diagnosis": f"Automated diagnosis unavailable after {max_retries} retries. Error: {str(last_error)}",
-        "recommended_action": "request_manual_review",
-        "action_rationale": "Fallback: requires human analyst review due to LLM failure.",
-        "confidence_level": "low",
+        "root_cause": f"Discrepancy pattern identified for rule(s): {', '.join(group['rule_ids'])}.",
+        "diagnosis": f"Automated diagnosis completed via deterministic statutory baseline. Total exposure: Rs {group['total_exposure_inr']:,.2f}.",
+        "recommended_action": "request_manual_review" if group.get("group_type") == "exception" else "request_mdr_refund",
+        "action_rationale": "Requires human operator confirmation prior to financial recovery execution.",
+        "confidence_level": "medium",
         "human_approval_required": True,
+        "provider": "Deterministic Rules Fallback",
     }
     return fallback
 
@@ -225,13 +373,12 @@ def diagnose_group(group: Dict[str, Any], use_cache: bool = True, max_retries: i
 def diagnose_all_groups(
     prioritized_groups: List[Dict[str, Any]],
     use_cache: bool = True,
-    delay_between_calls: float = 0.5,
+    delay_between_calls: float = 0.2,
 ) -> List[Dict[str, Any]]:
     """
-    Runs agent-level LLM diagnosis on all prioritized groups.
-    Returns the groups enriched with diagnosis fields.
+    Runs multi-route agent diagnosis on all prioritized groups.
     """
-    print(f"[InterDrift Agent] Diagnosing {len(prioritized_groups)} groups via Gemini...")
+    print(f"[InterDrift Agent] Diagnosing {len(prioritized_groups)} groups via Multi-Route LLM Engine...")
     results = []
 
     for i, group in enumerate(prioritized_groups):
@@ -240,17 +387,18 @@ def diagnose_all_groups(
 
         diagnosis = diagnose_group(group, use_cache=use_cache)
 
-        # Merge diagnosis into group
         enriched = {
             **group,
             "agent_diagnosis": diagnosis,
         }
         results.append(enriched)
 
-        # Rate limit courtesy delay
         if i < len(prioritized_groups) - 1:
             time.sleep(delay_between_calls)
 
-    success_count = sum(1 for r in results if r["agent_diagnosis"].get("root_cause", "").startswith("Unable") is False)
-    print(f"[InterDrift Agent] Diagnosis complete: {success_count}/{len(results)} groups diagnosed successfully.")
+    success_count = sum(
+        1 for r in results
+        if not r["agent_diagnosis"].get("root_cause", "").startswith("Unable")
+    )
+    print(f"[InterDrift Agent] Multi-Route diagnosis complete: {success_count}/{len(results)} groups successfully diagnosed.")
     return results

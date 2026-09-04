@@ -1,9 +1,10 @@
 {
   "group_id": "GRP_FLAGGED_R9",
-  "root_cause": "Fee calculation discrepancies flagged across credit card transactions based on an illustrative benchmark model.",
-  "diagnosis": "56 credit card transactions were flagged due to inconsistent fee calculations against a modeled benchmark, resulting in an aggregate overcharge exposure of Rs 1,203.04. Since source_status is illustrative, these comparisons rely on a modeled benchmark rather than verified scheme rate tables.",
-  "recommended_action": "request_manual_review",
-  "action_rationale": "Manual review is required because the findings are based on an illustrative benchmark rather than confirmed contract terms or definitive scheme fee structures.",
+  "root_cause": "Missing Level\u202f2/3 commercial card data on a subset of transactions.",
+  "diagnosis": "Transactions without L2/L3 data are routed with a default higher interchange rate, causing the fee charged to exceed the expected fee for those cases.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing complete L2/L3 data will qualify the transactions for lower interchange fees and eliminate the overcharges.",
   "confidence_level": "medium",
-  "human_approval_required": false
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
 }
