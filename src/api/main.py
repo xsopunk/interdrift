@@ -34,6 +34,56 @@ UPLOAD_DIR = Path("data/raw")
 PROCESSED_DIR = Path("data/processed")
 
 
+RULE_TABLE_PATH = Path("data/rules/rule_table.json")
+MSA_PATH = Path("data/raw/merchant_msa.json")
+EXPLANATIONS_CSV_PATH = Path("data/processed/row_level_results_with_explanations.csv")
+ROW_CSV_PATH = Path("data/processed/row_level_results.csv")
+
+
+def load_rule_map():
+    """Loads rule taxonomy mapping from rule_table.json."""
+    if not RULE_TABLE_PATH.exists():
+        return {}
+    with open(RULE_TABLE_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return {r["rule_id"]: r for r in data.get("rules", [])}
+
+
+def get_normalized_row_records():
+    """
+    Helper function to load row-level audit trail with complete normalized fields:
+    transaction_id, classification, matched_rule_id, category, amount, fee_charged, expected_fee, delta, explanation.
+    """
+    csv_file = EXPLANATIONS_CSV_PATH if EXPLANATIONS_CSV_PATH.exists() else ROW_CSV_PATH
+    if not csv_file.exists():
+        return []
+
+    df = pd.read_csv(csv_file).fillna("")
+    rule_map = load_rule_map()
+    records = []
+
+    for row in df.to_dict(orient="records"):
+        rule_id = str(row.get("matched_rule_id", "NONE"))
+        rule_info = rule_map.get(rule_id, {})
+        category = rule_info.get("category", "Unclassified" if rule_id == "NONE" else rule_id)
+
+        rec = {
+            **row,
+            "transaction_id": str(row.get("transaction_id", "")),
+            "classification": str(row.get("classification", "")),
+            "matched_rule_id": rule_id,
+            "category": category,
+            "amount": float(row.get("amount", 0.0)) if row.get("amount") != "" else 0.0,
+            "fee_charged": float(row.get("fee_charged", 0.0)) if row.get("fee_charged") != "" else 0.0,
+            "expected_fee": float(row.get("expected_fee", 0.0)) if row.get("expected_fee") != "" else 0.0,
+            "delta": float(row.get("delta", 0.0)) if row.get("delta") != "" else 0.0,
+            "explanation": str(row.get("explanation", row.get("note", "")))
+        }
+        records.append(rec)
+
+    return records
+
+
 @app.get("/health")
 def health_check():
     """Health check endpoint to verify server availability."""
@@ -77,12 +127,10 @@ async def upload_settlement_batch(file: UploadFile = File(...)):
 @app.get("/results")
 def get_audit_results():
     """
-    Returns the latest aggregate summary and row-level classification dataset.
+    Returns the latest aggregate summary and normalized row-level classification dataset.
     """
     summary_file = PROCESSED_DIR / "summary.json"
-    row_file = PROCESSED_DIR / "row_level_results.csv"
-
-    if not summary_file.exists() or not row_file.exists():
+    if not summary_file.exists():
         raise HTTPException(
             status_code=404,
             detail="No processed audit results found. Please upload a settlement batch via /upload first."
@@ -91,15 +139,14 @@ def get_audit_results():
     with open(summary_file, "r", encoding="utf-8") as f:
         summary = json.load(f)
 
-    # Load row-level audit trail
-    df_rows = pd.read_csv(row_file)
-    # Replace NaN values with empty string or None for valid JSON serialization
-    df_rows = df_rows.fillna("")
+    records = get_normalized_row_records()
 
     return {
         "summary": summary,
-        "row_level_results": df_rows.to_dict(orient="records")
+        "row_level_results": records
     }
+
+
 @app.get("/report")
 def get_final_report():
     """
@@ -110,5 +157,128 @@ def get_final_report():
             status_code=404, 
             detail="Final report not found. Please run the audit and reporting pipeline first."
         )
-    with open(REPORT_FILE_PATH, "r") as f:
+    with open(REPORT_FILE_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+@app.get("/transactions/{transaction_id}")
+def get_transaction_detail(transaction_id: str):
+    """
+    Capability 2: Single transaction detail lookup by transaction_id.
+    """
+    records = get_normalized_row_records()
+    for rec in records:
+        if rec["transaction_id"] == transaction_id:
+            return rec
+    raise HTTPException(status_code=404, detail=f"Transaction '{transaction_id}' not found.")
+
+
+@app.get("/rules")
+def get_all_rules():
+    """
+    Capability 3: List all rules from the rule table taxonomy.
+    """
+    if not RULE_TABLE_PATH.exists():
+        raise HTTPException(status_code=404, detail="Rule table file not found.")
+    with open(RULE_TABLE_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+@app.get("/rules/{rule_id}")
+def get_rule_evidence(rule_id: str):
+    """
+    Capability 3: Rule evidence lookup by rule_id (returns condition, source_status, source_citation, confidence_note).
+    """
+    rule_map = load_rule_map()
+    if rule_id not in rule_map:
+        raise HTTPException(status_code=404, detail=f"Rule '{rule_id}' not found in rule table.")
+    rule = rule_map[rule_id]
+    return {
+        "rule_id": rule.get("rule_id"),
+        "category": rule.get("category"),
+        "description": rule.get("description"),
+        "condition": rule.get("condition"),
+        "expected_fee_type": rule.get("expected_fee_type"),
+        "expected_fee_value": rule.get("expected_fee_value"),
+        "source_status": rule.get("source_status"),
+        "source_citation": rule.get("source_citation"),
+        "confidence_note": rule.get("confidence_note")
+    }
+
+
+@app.get("/contract")
+def get_contract_terms():
+    """
+    Capability 4: Contract / MSA terms lookup from synthetic MSA.
+    """
+    if not MSA_PATH.exists():
+        raise HTTPException(status_code=404, detail="Merchant MSA contract file not found.")
+    with open(MSA_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+@app.get("/audit/structural")
+def get_structural_audit():
+    """
+    Capability 5: Structural / batch-level audit results (R11 & R12 aggregate metrics).
+    """
+    summary_file = PROCESSED_DIR / "summary.json"
+    if not summary_file.exists():
+        raise HTTPException(status_code=404, detail="Summary results not found.")
+    with open(summary_file, "r", encoding="utf-8") as f:
+        summary = json.load(f)
+    return {
+        "batch_structural_audits": summary.get("batch_structural_audits", {}),
+        "total_row_leakage_inr": summary.get("total_row_leakage_inr", 0.0)
+    }
+
+
+@app.get("/exceptions")
+def get_exceptions():
+    """
+    Capability 6: Exception list (unclassified / missing tag transactions).
+    """
+    records = get_normalized_row_records()
+    exceptions = [r for r in records if r.get("classification") == "Exception"]
+    return {
+        "count": len(exceptions),
+        "exceptions": exceptions
+    }
+
+
+@app.get("/exposure")
+def get_exposure_calculation(group_by: str = "rule_id"):
+    """
+    Capability 7: Exposure calculation by rule_id or category (sum of delta grouped by key).
+    """
+    records = get_normalized_row_records()
+    leaked = [r for r in records if r.get("classification") == "Leaked"]
+    
+    group_map = {}
+    for r in leaked:
+        key = r.get("matched_rule_id" if group_by == "rule_id" else "category", "Unknown")
+        if key not in group_map:
+            group_map[key] = {
+                "group_key": key,
+                "total_exposure_inr": 0.0,
+                "transaction_count": 0,
+                "transaction_ids": []
+            }
+        group_map[key]["total_exposure_inr"] += r.get("delta", 0.0)
+        group_map[key]["transaction_count"] += 1
+        group_map[key]["transaction_ids"].append(r.get("transaction_id"))
+
+    # Round exposure amounts
+    result = []
+    for k, v in group_map.items():
+        v["total_exposure_inr"] = round(v["total_exposure_inr"], 2)
+        result.append(v)
+
+    # Sort descending by exposure
+    result = sorted(result, key=lambda x: x["total_exposure_inr"], reverse=True)
+
+    return {
+        "group_by": group_by,
+        "total_leaked_inr": round(sum(r["total_exposure_inr"] for r in result), 2),
+        "groups": result
+    }
