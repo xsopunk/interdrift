@@ -78,9 +78,9 @@ def classify_row(row: pd.Series, rules: List[Dict[str, Any]]) -> Dict[str, Any]:
             "transaction_id": tx_id,
             "classification": "Exception",
             "matched_rule_id": "NONE",
-            "expected_fee": 0.0,
+            "expected_fee": None,
             "fee_charged": float(row.get("fee_charged", 0.0)),
-            "delta": 0.0,
+            "delta": None,
             "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
         }
     # Find candidate rules (excluding batch-level R11/R12)
@@ -92,9 +92,9 @@ def classify_row(row: pd.Series, rules: List[Dict[str, Any]]) -> Dict[str, Any]:
             "transaction_id": tx_id,
             "classification": "Exception",
             "matched_rule_id": "NONE",
-            "expected_fee": 0.0,
+            "expected_fee": None,
             "fee_charged": float(row.get("fee_charged", 0.0)),
-            "delta": 0.0,
+            "delta": None,
             "note": "No matching statutory rule criteria found for transaction profile."
         }
 

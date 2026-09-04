@@ -81,8 +81,8 @@ def build_investigation_groups() -> List[Dict[str, Any]]:
                     "transaction_id": str(row["transaction_id"]),
                     "amount": float(row.get("amount", 0)),
                     "fee_charged": float(row.get("fee_charged", 0)),
-                    "expected_fee": float(row.get("expected_fee", 0)),
-                    "delta": float(row.get("delta", 0)),
+                    "expected_fee": float(row.get("expected_fee")) if row.get("expected_fee") is not None else None,
+                    "delta": float(row.get("delta")) if row.get("delta") is not None else None,
                 })
 
             groups.append({
@@ -115,8 +115,8 @@ def build_investigation_groups() -> List[Dict[str, Any]]:
                     "transaction_id": str(row["transaction_id"]),
                     "amount": float(row.get("amount", 0)),
                     "fee_charged": float(row.get("fee_charged", 0)),
-                    "expected_fee": float(row.get("expected_fee", 0)),
-                    "delta": float(row.get("delta", 0)),
+                    "expected_fee": float(row.get("expected_fee")) if row.get("expected_fee") is not None else None,
+                    "delta": float(row.get("delta")) if row.get("delta") is not None else None,
                 })
 
             groups.append({
@@ -149,8 +149,8 @@ def build_investigation_groups() -> List[Dict[str, Any]]:
                     "transaction_id": str(tid),
                     "amount": float(row.get("amount", 0)),
                     "fee_charged": float(row.get("fee_charged", 0)),
-                    "expected_fee": 0.0,
-                    "delta": 0.0,
+                    "expected_fee": None,
+                    "delta": None,
                     "note": str(row.get("note", "")),
                 })
 

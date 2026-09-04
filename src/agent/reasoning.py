@@ -149,8 +149,8 @@ def _format_group_prompt(group: Dict[str, Any]) -> str:
             lines.append(
                 f"  - {s.get('transaction_id')}: amount=Rs {s.get('amount', 0):,.2f}, "
                 f"fee_charged=Rs {s.get('fee_charged', 0):,.2f}, "
-                f"expected_fee=Rs {s.get('expected_fee', 0):,.2f}, "
-                f"delta=Rs {s.get('delta', 0):,.2f}"
+                f"expected_fee={'N/A' if s.get('expected_fee') is None else f'Rs {s[\"expected_fee\"]:,.2f}'}, "
+                f"delta={'N/A' if s.get('delta') is None else f'Rs {s[\"delta\"]:,.2f}'}"
             )
 
     return "\n".join(lines)
