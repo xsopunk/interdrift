@@ -1,5 +1,5 @@
 """
-Module 3: Deterministic Row Classifier
+Module 3.1: Deterministic Row Classifier
 Applies transactional rules (R1-R10, R13) to classify settlement records.
 """
 
