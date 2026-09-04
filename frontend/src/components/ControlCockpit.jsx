@@ -1,0 +1,103 @@
+import React, { useState } from "react";
+import { UploadCloud, Play, CheckCircle2, AlertTriangle, FileText } from "lucide-react";
+import { uploadSettlementFile } from "../services/api";
+
+export default function ControlCockpit({ onUploadSuccess }) {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isAuditing, setIsAuditing] = useState(false);
+  const [feedback, setFeedback] = useState(null);
+
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setSelectedFile(e.target.files[0]);
+      setFeedback(null);
+    }
+  };
+
+  const handleRunAudit = async (e) => {
+    e.preventDefault();
+    if (!selectedFile) return;
+
+    try {
+      setIsAuditing(true);
+      setFeedback(null);
+      await uploadSettlementFile(selectedFile);
+      setFeedback({ type: "success", text: `Audit executed on ${selectedFile.name}` });
+      if (onUploadSuccess) {
+        setTimeout(() => {
+          onUploadSuccess();
+          setSelectedFile(null);
+          setFeedback(null);
+        }, 1200);
+      }
+    } catch (err) {
+      setFeedback({ type: "error", text: err.message || "Failed to audit settlement file." });
+    } finally {
+      setIsAuditing(false);
+    }
+  };
+
+  return (
+    <div className="w-full rounded-xl border border-border bg-card p-5 shadow-sm transition-colors duration-200">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        {/* Cockpit Description */}
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">
+              Audit Operations Cockpit
+            </h2>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-secondary text-secondary-foreground border border-border">
+              Layer 1-3 Active
+            </span>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Ingest settlement batches to execute deterministic regulatory rules (R1–R13) and diagnostic LLM explanations.
+          </p>
+        </div>
+
+        {/* Upload & Action Trigger */}
+        <form onSubmit={handleRunAudit} className="flex flex-wrap items-center gap-3">
+          <label className="flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-secondary hover:bg-muted text-secondary-foreground text-xs font-medium cursor-pointer transition-colors">
+            <UploadCloud className="w-4 h-4 text-primary"/>
+            <span className="truncate max-w-[180px]">
+              {selectedFile ? selectedFile.name : "Select Settlement CSV"}
+            </span>
+            <input
+              type="file"
+              accept=".csv"
+              onChange={handleFileChange}
+              className="hidden"
+            />
+          </label>
+
+          <button
+            type="submit"
+            disabled={!selectedFile || isAuditing}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary hover:opacity-90 disabled:opacity-50 text-primary-foreground text-xs font-semibold tracking-wide transition-all shadow-sm cursor-pointer disabled:cursor-not-allowed"
+          >
+            <Play className={`w-3.5 h-3.5 ${isAuditing ? "animate-spin" : ""}`} />
+            <span>{isAuditing ? "Reconciling..." : "Execute Audit"}</span>
+          </button>
+        </form>
+      </div>
+
+      {/* Feedback Banner */}
+      {feedback && (
+        <div
+          className={`mt-4 p-3 rounded-lg border text-xs flex items-center gap-2 ${
+            feedback.type === "success"
+              ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400"
+              : "bg-destructive/10 border-destructive/30 text-destructive dark:text-red-400"
+          }`}
+        >
+          {feedback.type === "success" ? (
+            <CheckCircle2 className="w-4 h-4 shrink-0"/>
+          ) : (
+            <AlertTriangle className="w-4 h-4 shrink-0"/>
+          )}
+          <span>{feedback.text}</span>
+        </div>
+      )}
+    </div>
+  );
+}

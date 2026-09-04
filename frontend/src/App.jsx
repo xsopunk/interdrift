@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getFinalReport, getAuditTrailResults } from "./services/api";
-import KPICard from "./components/KPICard";
-import CategoryBreakdown from "./components/CategoryBreakdown";
-import TopOffenders from "./components/TopOffenders";
-import ExceptionsList from "./components/ExceptionsList";
+import Navbar from "./components/Navbar";
+import ControlCockpit from "./components/ControlCockpit";
+import MetricCard from "./components/MetricCard";
+import CategoryVisualizer from "./components/CategoryVisualizer";
+import StructuralImpactCard from "./components/StructuralImpactCard";
+import RemediationDeck from "./components/RemediationDeck";
+import ExceptionsDrawer from "./components/ExceptionsDrawer";
 import AuditTrailTable from "./components/AuditTrailTable";
-import UploadModal from "./components/UploadModal";
+import { TrendingDown, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
 
 export default function App() {
   const [report, setReport] = useState(null);
@@ -35,116 +38,115 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <p className="text-gray-400 animate-pulse text-sm">Loading InterDrift audit intelligence...</p>
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-foreground">
+        <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mb-4" />
+        <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
+          Initializing InterDrift Audit Cockpit...
+        </p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-6">
-        <div className="bg-surface border border-red-500/30 p-6 rounded-xl max-w-md w-full">
-          <h2 className="text-red-400 font-bold text-base">Unable to connect to backend</h2>
-          <p className="text-xs text-gray-400 mt-2">{error}</p>
-          <p className="text-[11px] text-gray-500 mt-4">Verify FastAPI is running on http://127.0.0.1:8000</p>
+      <div className="min-h-screen bg-background flex items-center justify-center p-6 text-foreground">
+        <div className="bg-card border border-destructive/30 p-6 rounded-xl max-w-md w-full shadow-lg">
+          <h2 className="text-destructive font-bold text-base">Backend Connection Offline</h2>
+          <p className="text-xs text-muted-foreground mt-2">{error}</p>
+          <p className="text-[11px] text-muted-foreground font-mono mt-4">
+            Ensure FastAPI backend is running on http://127.0.0.1:8000
+          </p>
+          <button
+            onClick={loadAllData}
+            className="mt-5 w-full py-2 rounded-lg bg-secondary hover:bg-muted text-xs font-medium cursor-pointer transition-colors"
+          >
+            Retry Connection
+          </button>
         </div>
       </div>
     );
   }
 
-  const { overview, leak_by_category } = report;
+  const { overview, leak_by_category, top_offenders, exceptions } = report;
 
   return (
-    <div className="min-h-screen bg-background text-gray-100 p-6 lg:p-10">
-      <div className="max-w-7xl mx-auto space-y-8">
-        {/* Header */}
-        <header className="flex flex-col md:flex-row md:items-center md:justify-between border-b border-surfaceBorder pb-6 gap-4">
-          <div>
-            <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold tracking-tight text-white">InterDrift</h1>
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-800">
-                Track 4: AI Finance Controller
-              </span>
-            </div>
-            <p className="text-xs text-gray-400 mt-1">
-              Autonomous interchange & MDR reconciliation engine with deterministic grounding
-            </p>
-          </div>
-          <div className="flex items-center gap-2 text-xs text-gray-400 font-mono">
-            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            Audited Batch: {overview.total_transactions} Rows
-          </div>
-        </header>
+    <div className="min-h-screen bg-background text-foreground relative selection:bg-primary selection:text-primary-foreground transition-colors duration-200">
+      {/* Subtle Ambient Patterning */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none opacity-15 dark:opacity-20 z-0" />
 
-        {/* Upload Settlement Trigger */}
-        <UploadModal onUploadSuccess={loadAllData} />
+      {/* Top Navbar */}
+      <Navbar backendStatus="online" rowCount={overview.total_transactions} />
 
-        {/* Top-Line KPI Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <KPICard
+      {/* Main Container */}
+      <main className="relative z-10 max-w-7xl mx-auto space-y-8 px-4 sm:px-6 lg:px-8 py-8">
+        {/* Operations Cockpit */}
+        <ControlCockpit onUploadSuccess={loadAllData} />
+
+        {/* Executive KPI Deck */}
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <MetricCard
             title="Total Direct Leakage"
             value={`₹${overview.total_leaked_amount.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}
             subtitle={`${overview.leaked_count} transactions (${overview.leaked_percent}%)`}
-            highlightColor="accentRed"
-            badge="Action Required"
+            variant="destructive"
+            badge="Direct Loss"
+            icon={TrendingDown}
+            trendText={`${overview.leaked_percent}% batch loss`}
           />
-          <KPICard
-            title="Compliance Match Rate"
+          <MetricCard
+            title="Statutory Match Rate"
             value={`${overview.matched_percent}%`}
             subtitle={`${overview.matched_count} compliant charges`}
-            highlightColor="accentGreen"
-            badge="Healthy"
+            variant="success"
+            badge="Compliant"
+            icon={CheckCircle2}
           />
-          <KPICard
-            title="Structural Overcharge"
+          <MetricCard
+            title="Structural Spread (R11)"
             value={`₹${overview.structural_overcharge_amount.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}
-            subtitle="Blended-MDR vs IC+ baseline spread"
-            highlightColor="accentAmber"
-            badge="Aggregate R11"
+            subtitle="Blended-MDR vs true IC+ spread"
+            variant="warning"
+            badge="Contract Audit"
+            icon={AlertTriangle}
           />
-          <KPICard
+          <MetricCard
             title="Exceptions & Flagged"
             value={`${overview.exception_count + overview.flagged_for_review_count}`}
-            subtitle={`${overview.exception_count} unclassified · ${overview.flagged_for_review_count} review`}
-            highlightColor="accentCyan"
-            badge="Honest Audit"
+            subtitle={`${overview.exception_count} unclassified · ${overview.flagged_for_review_count} flagged`}
+            variant="primary"
+            badge="Transparency"
+            icon={Layers}
           />
-        </div>
+        </section>
 
-        {/* Category Breakdown */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Regulatory Breakdown & Structural Impact */}
+        <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
-            <CategoryBreakdown categories={leak_by_category} />
+            <CategoryVisualizer categories={leak_by_category} />
           </div>
-          <div className="bg-surface border border-surfaceBorder rounded-xl p-6 flex flex-col justify-between">
-            <div>
-              <h3 className="text-base font-bold text-white mb-2">MCC Misclassification Cost</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Transactions routed under generic retail MCC rather than specialized enterprise merchant categories generate structural fee slippage.
-              </p>
-              <div className="mt-6 p-4 rounded-lg bg-gray-900 border border-gray-800">
-                <span className="text-xs text-gray-500 uppercase font-medium">Quantified R12 Impact</span>
-                <p className="text-2xl font-bold text-amber-400 mt-1">
-                  ₹{overview.mcc_misclassification_amount.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
-                </p>
-              </div>
-            </div>
-            <div className="text-[11px] text-gray-500 border-t border-gray-800 pt-4 mt-6">
-              Derived deterministically via Layer 1 batch auditing.
-            </div>
+          <div className="lg:col-span-1">
+            <StructuralImpactCard
+              mccAmount={overview.mcc_misclassification_amount}
+              structuralAmount={overview.structural_overcharge_amount}
+            />
           </div>
-        </div>
+        </section>
 
-        {/* Top Offenders & Remediation Stories */}
-        <TopOffenders offenders={report.top_offenders} />
+        {/* Top Priority Remediation Deck */}
+        <section>
+          <RemediationDeck offenders={top_offenders} />
+        </section>
 
-        {/* Honest Exceptions Section */}
-        <ExceptionsList exceptions={report.exceptions} />
+        {/* Transparent Exceptions Drawer */}
+        <section>
+          <ExceptionsDrawer exceptions={exceptions} />
+        </section>
 
-        {/* Full Audit Trail Data Table & CSV Export */}
-        <AuditTrailTable rows={auditRows} />
-      </div>
+        {/* Full Ledger Audit Trail */}
+        <section>
+          <AuditTrailTable rows={auditRows} />
+        </section>
+      </main>
     </div>
   );
 }

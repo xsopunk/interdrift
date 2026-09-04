@@ -1,90 +1,139 @@
-import { useState } from "react";
+import React, { useState, useMemo } from "react";
+import { 
+  Download, 
+  Search, 
+  ChevronLeft, 
+  ChevronRight, 
+  FileSpreadsheet 
+} from "lucide-react";
 
 export default function AuditTrailTable({ rows = [] }) {
   const [filter, setFilter] = useState("ALL");
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 25;
 
-  const filteredRows = rows.filter((r) => {
-    const matchesFilter = filter === "ALL" || r.classification === filter;
-    const matchesSearch =
-      r.transaction_id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      r.matched_rule_id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      r.sub_instrument?.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesFilter && matchesSearch;
-  });
+  // Filter and search logic
+  const filteredRows = useMemo(() => {
+    return rows.filter((r) => {
+      const matchesFilter = filter === "ALL" || r.classification === filter;
+      const term = searchTerm.toLowerCase();
+      const matchesSearch =
+        !searchTerm ||
+        r.transaction_id?.toLowerCase().includes(term) ||
+        r.matched_rule_id?.toLowerCase().includes(term) ||
+        r.sub_instrument?.toLowerCase().includes(term) ||
+        r.explanation?.toLowerCase().includes(term);
 
+      return matchesFilter && matchesSearch;
+    });
+  }, [rows, filter, searchTerm]);
+
+  // Pagination calculation
+  const totalPages = Math.ceil(filteredRows.length / rowsPerPage) || 1;
+  const paginatedRows = useMemo(() => {
+    const start = (currentPage - 1) * rowsPerPage;
+    return filteredRows.slice(start, start + rowsPerPage);
+  }, [filteredRows, currentPage]);
+
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
+  // CSV Export Utility
   const exportToCSV = () => {
-    if (!rows || rows.length === 0) return;
-    const headers = Object.keys(rows[0]).join(",");
-    const csvContent = [
-      headers,
-      ...rows.map((row) =>
-        Object.values(row)
-          .map((val) => `"${String(val ?? "").replace(/"/g, '""')}"`)
+    if (!filteredRows || filteredRows.length === 0) return;
+
+    const headers = Object.keys(filteredRows[0]);
+    const csvRows = [
+      headers.join(","),
+      ...filteredRows.map((row) =>
+        headers
+          .map((header) => `"${String(row[header] ?? "").replace(/"/g, '""')}"`)
           .join(",")
       ),
-    ].join("\n");
+    ];
 
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const blob = new Blob([csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
+    const timestamp = new Date().toISOString().split("T")[0];
     link.setAttribute("href", url);
-    link.setAttribute("download", "interdrift_audit_trail.csv");
+    link.setAttribute("download", `interdrift_audit_trail_${timestamp}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
-  const getBadgeClass = (status) => {
+  const getBadgeStyle = (status) => {
     switch (status) {
       case "Matched":
-        return "bg-emerald-950/60 text-emerald-400 border-emerald-800";
+        return "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20";
       case "Leaked":
-        return "bg-red-950/60 text-red-400 border-red-800";
+        return "bg-destructive/10 text-destructive dark:text-red-400 border-destructive/20";
       case "Exception":
-        return "bg-amber-950/60 text-amber-400 border-amber-800";
+        return "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20";
       default:
-        return "bg-cyan-950/60 text-cyan-400 border-cyan-800";
+        return "bg-primary/10 text-primary dark:text-primary-foreground border-primary/20";
     }
   };
 
   return (
-    <div className="bg-surface border border-surfaceBorder rounded-xl p-6 shadow-lg space-y-4">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div className="rounded-xl border border-border bg-card p-6 shadow-sm space-y-5">
+      {/* Header & Export Bar */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-border">
         <div>
-          <h2 className="text-lg font-bold text-white tracking-tight">Full Audit Trail</h2>
-          <p className="text-xs text-gray-400 mt-0.5">
-            Row-level verification dataset with deterministic classifications and LLM explanations
+          <div className="flex items-center gap-2">
+            <FileSpreadsheet className="w-4 h-4 text-primary"/>
+            <h3 className="text-base font-bold text-foreground tracking-tight">
+              Row-Level Audit Trail & Verification Ledger
+            </h3>
+          </div>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Deterministic rule verifications accompanied by grounded Layer 2 AI diagnostic explanations
           </p>
         </div>
-        <div className="flex items-center gap-3">
-          <button
-            onClick={exportToCSV}
-            className="px-3.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium transition-colors cursor-pointer shadow"
-          >
-            Export Audit CSV
-          </button>
-        </div>
+
+        <button
+          onClick={exportToCSV}
+          disabled={filteredRows.length === 0}
+          className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-secondary hover:bg-muted border border-border text-foreground text-xs font-semibold tracking-wide transition-colors cursor-pointer shadow-sm self-start md:self-auto disabled:opacity-50"
+        >
+          <Download className="w-3.5 h-3.5 text-primary"/>
+          <span>Export Filtered CSV ({filteredRows.length})</span>
+        </button>
       </div>
 
       {/* Filter and Search Controls */}
-      <div className="flex flex-col sm:flex-row gap-3 pt-2">
-        <input
-          type="text"
-          placeholder="Search by Txn ID, Rule, Sub-instrument..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="flex-1 bg-gray-900 border border-gray-800 rounded-lg px-3 py-1.5 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cyan-500"
-        />
-        <div className="flex gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        {/* Search Input */}
+        <div className="relative flex-1 max-w-md">
+          <Search className="absolute left-3 top-2.5 w-3.5 h-3.5 text-muted-foreground"/>
+          <input
+            type="text"
+            placeholder="Search by Txn ID, Rule, Rail, or Explanation..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="w-full pl-9 pr-3 py-1.5 rounded-lg border border-border bg-secondary/40 text-foreground text-xs placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+          />
+        </div>
+
+        {/* Classification Filter Tabs */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
           {["ALL", "Leaked", "Matched", "Exception", "Flagged_For_Review"].map((cat) => (
             <button
               key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-2.5 py-1 rounded text-xs font-mono transition-colors cursor-pointer ${
+              onClick={() => handleFilterChange(cat)}
+              className={`px-3 py-1.5 rounded-md text-xs font-mono transition-colors cursor-pointer shrink-0 border ${
                 filter === cat
-                  ? "bg-cyan-950 text-cyan-400 border border-cyan-700"
-                  : "bg-gray-900 text-gray-400 border border-gray-800 hover:text-gray-200"
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-secondary text-muted-foreground border-border hover:text-foreground"
               }`}
             >
               {cat}
@@ -93,49 +142,94 @@ export default function AuditTrailTable({ rows = [] }) {
         </div>
       </div>
 
-      {/* Table Display */}
-      <div className="overflow-x-auto rounded-lg border border-gray-800 bg-gray-900/40">
-        <table className="w-full text-left text-xs">
-          <thead className="bg-gray-900/90 text-gray-400 font-mono text-[11px] uppercase border-b border-gray-800">
+      {/* Ledger Table */}
+      <div className="overflow-x-auto rounded-lg border border-border bg-card">
+        <table className="w-full text-left text-xs border-collapse">
+          <thead className="bg-secondary text-foreground/70 font-mono text-xs font-semibold uppercase border-b border-border">
             <tr>
-              <th className="p-3">Txn ID</th>
-              <th className="p-3">Status</th>
-              <th className="p-3">Rule</th>
-              <th className="p-3 text-right">Amount</th>
-              <th className="p-3 text-right">Fee Charged</th>
-              <th className="p-3 text-right">Expected</th>
-              <th className="p-3 text-right">Delta</th>
-              <th className="p-3 min-w-[240px]">LLM Diagnostic Explanation</th>
+              <th className="py-3 px-4">Txn ID</th>
+              <th className="py-3 px-3">Classification</th>
+              <th className="py-3 px-3">Rule</th>
+              <th className="py-3 px-3">Sub-Instrument</th>
+              <th className="py-3 px-3 text-right">Amount</th>
+              <th className="py-3 px-3 text-right">Fee Charged</th>
+              <th className="py-3 px-3 text-right">Expected</th>
+              <th className="py-3 px-3 text-right">Delta</th>
+              <th className="py-3 px-4 min-w-[280px]">Diagnostic Explanation</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-800/60 font-mono text-gray-300">
-            {filteredRows.slice(0, 50).map((row, idx) => (
-              <tr key={idx} className="hover:bg-gray-800/40 transition-colors">
-                <td className="p-3 font-semibold text-white">{row.transaction_id}</td>
-                <td className="p-3">
-                  <span className={`px-2 py-0.5 rounded text-[10px] border ${getBadgeClass(row.classification)}`}>
-                    {row.classification}
-                  </span>
-                </td>
-                <td className="p-3 text-cyan-400">{row.matched_rule_id || "-"}</td>
-                <td className="p-3 text-right">₹{Number(row.amount || 0).toFixed(2)}</td>
-                <td className="p-3 text-right">₹{Number(row.fee_charged || 0).toFixed(2)}</td>
-                <td className="p-3 text-right">₹{Number(row.expected_fee || 0).toFixed(2)}</td>
-                <td className="p-3 text-right font-bold text-red-400">
-                  {row.delta ? `+₹${Number(row.delta).toFixed(2)}` : "₹0.00"}
-                </td>
-                <td className="p-3 font-sans text-xs text-gray-400 line-clamp-2" title={row.explanation}>
-                  {row.explanation || row.note || "-"}
+          <tbody className="divide-y divide-border/60 font-mono text-foreground">
+            {paginatedRows.length === 0 ? (
+              <tr>
+                <td colSpan={9} className="py-8 text-center text-muted-foreground font-sans text-sm">
+                  No matching audit records found.
                 </td>
               </tr>
-            ))}
+            ) : (
+              paginatedRows.map((row, idx) => (
+                <tr key={idx} className="hover:bg-secondary/40 transition-colors">
+                  <td className="py-3 px-4 font-bold text-foreground text-sm">
+                    {row.transaction_id}
+                  </td>
+                  <td className="py-3 px-3">
+                    <span className={`px-2 py-0.5 rounded text-xs font-medium border ${getBadgeStyle(row.classification)}`}>
+                      {row.classification}
+                    </span>
+                  </td>
+                  <td className="py-3 px-3 text-primary font-bold text-sm">
+                    {row.matched_rule_id || "-"}
+                  </td>
+                  <td className="py-3 px-3 text-muted-foreground font-sans text-xs">
+                    {row.sub_instrument || "-"}
+                  </td>
+                  <td className="py-3 px-3 text-right text-sm">
+                    ₹{Number(row.amount || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
+                  </td>
+                  <td className="py-3 px-3 text-right text-sm">
+                    ₹{Number(row.fee_charged || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
+                  </td>
+                  <td className="py-3 px-3 text-right text-muted-foreground text-sm">
+                    ₹{Number(row.expected_fee || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
+                  </td>
+                  <td className="py-3 px-3 text-right font-bold text-destructive dark:text-red-400 text-sm">
+                    {row.delta ? `+₹${Number(row.delta).toLocaleString("en-IN", { minimumFractionDigits: 2 })}` : "₹0.00"}
+                  </td>
+                  <td className="py-3 px-4 font-sans text-sm leading-relaxed text-foreground/90">
+                    {row.explanation || row.note || "-"}
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
 
-      <div className="flex justify-between items-center text-[11px] text-gray-500 font-mono pt-1">
-        <span>Showing up to 50 of {filteredRows.length} filtered items</span>
-        <span>Audit integrity verified</span>
+      {/* Pagination Controls */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 text-xs text-muted-foreground font-mono">
+        <div>
+          Showing {filteredRows.length === 0 ? 0 : (currentPage - 1) * rowsPerPage + 1} to{" "}
+          {Math.min(currentPage * rowsPerPage, filteredRows.length)} of {filteredRows.length} filtered items
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+            disabled={currentPage === 1}
+            className="p-1.5 rounded-md border border-border bg-secondary hover:bg-muted disabled:opacity-40 cursor-pointer"
+          >
+            <ChevronLeft className="w-4 h-4"/>
+          </button>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className="p-1.5 rounded-md border border-border bg-secondary hover:bg-muted disabled:opacity-40 cursor-pointer"
+          >
+            <ChevronRight className="w-4 h-4"/>
+          </button>
+        </div>
       </div>
     </div>
   );
