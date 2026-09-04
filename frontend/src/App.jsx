@@ -1,28 +1,36 @@
 import { useEffect, useState } from "react";
-import { getFinalReport } from "./services/api";
+import { getFinalReport, getAuditTrailResults } from "./services/api";
 import KPICard from "./components/KPICard";
 import CategoryBreakdown from "./components/CategoryBreakdown";
 import TopOffenders from "./components/TopOffenders";
 import ExceptionsList from "./components/ExceptionsList";
+import AuditTrailTable from "./components/AuditTrailTable";
+import UploadModal from "./components/UploadModal";
 
 export default function App() {
   const [report, setReport] = useState(null);
+  const [auditRows, setAuditRows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    async function loadData() {
-      try {
-        setLoading(true);
-        const data = await getFinalReport();
-        setReport(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
+  const loadAllData = async () => {
+    try {
+      setLoading(true);
+      const [reportData, auditData] = await Promise.all([
+        getFinalReport(),
+        getAuditTrailResults(),
+      ]);
+      setReport(reportData);
+      setAuditRows(auditData.row_level_results || []);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
-    loadData();
+  };
+
+  useEffect(() => {
+    loadAllData();
   }, []);
 
   if (loading) {
@@ -68,6 +76,9 @@ export default function App() {
             Audited Batch: {overview.total_transactions} Rows
           </div>
         </header>
+
+        {/* Upload Settlement Trigger */}
+        <UploadModal onUploadSuccess={loadAllData} />
 
         {/* Top-Line KPI Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -130,6 +141,9 @@ export default function App() {
 
         {/* Honest Exceptions Section */}
         <ExceptionsList exceptions={report.exceptions} />
+
+        {/* Full Audit Trail Data Table & CSV Export */}
+        <AuditTrailTable rows={auditRows} />
       </div>
     </div>
   );
