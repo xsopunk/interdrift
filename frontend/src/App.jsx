@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getFinalReport, getAuditTrailResults, getAgentCases, approveCase, rejectCase } from "./services/api";
+import { getFinalReport, getAuditTrailResults, getAgentCases, getControlEffectiveness, approveCase, rejectCase } from "./services/api";
 import Navbar from "./components/Navbar";
 import ControlCockpit from "./components/ControlCockpit";
 import MetricCard from "./components/MetricCard";
@@ -10,12 +10,14 @@ import ExceptionsDrawer from "./components/ExceptionsDrawer";
 import AuditTrailTable from "./components/AuditTrailTable";
 import AgentControlStatus from "./components/AgentControlStatus";
 import AgentRecommendationCard from "./components/AgentRecommendationCard";
+import ControlEffectivenessCard from "./components/ControlEffectivenessCard";
 import { TrendingDown, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
 
 export default function App() {
   const [report, setReport] = useState(null);
   const [auditRows, setAuditRows] = useState([]);
   const [agentData, setAgentData] = useState(null);
+  const [effectivenessData, setEffectivenessData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -29,12 +31,20 @@ export default function App() {
       setReport(reportData);
       setAuditRows(auditData.row_level_results || []);
 
-      // Load agent cases (non-blocking — graceful if no cases exist yet)
+      // Load agent cases
       try {
         const casesData = await getAgentCases();
         setAgentData(casesData);
       } catch {
         setAgentData(null);
+      }
+
+      // Load control effectiveness (Module 10)
+      try {
+        const effData = await getControlEffectiveness();
+        setEffectivenessData(effData);
+      } catch {
+        setEffectivenessData(null);
       }
     } catch (err) {
       setError(err.message);
@@ -113,10 +123,17 @@ export default function App() {
         {/* Operations Cockpit */}
         <ControlCockpit onUploadSuccess={loadAllData} />
 
-        {/* Agent Control Status (new — Module 12) */}
+        {/* Agent Control Status (Module 9) */}
         {agentData && agentData.summary && (
           <section>
             <AgentControlStatus summary={agentData.summary} />
+          </section>
+        )}
+
+        {/* Control Effectiveness & Multi-Batch Tracking (Module 10) */}
+        {effectivenessData && effectivenessData.status === "computed" && (
+          <section>
+            <ControlEffectivenessCard effectiveness={effectivenessData} />
           </section>
         )}
 

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { UploadCloud, Play, CheckCircle2, AlertTriangle, FileText } from "lucide-react";
-import { uploadSettlementFile } from "../services/api";
+import { UploadCloud, Play, CheckCircle2, AlertTriangle, BookmarkPlus } from "lucide-react";
+import { uploadSettlementFile, captureBaselineSnapshot } from "../services/api";
 
 export default function ControlCockpit({ onUploadSuccess }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isAuditing, setIsAuditing] = useState(false);
+  const [isSnapshotting, setIsSnapshotting] = useState(false);
   const [feedback, setFeedback] = useState(null);
 
   const handleFileChange = (e) => {
@@ -37,6 +38,22 @@ export default function ControlCockpit({ onUploadSuccess }) {
     }
   };
 
+  const handleCaptureBaseline = async () => {
+    try {
+      setIsSnapshotting(true);
+      setFeedback(null);
+      const res = await captureBaselineSnapshot("batch_1");
+      setFeedback({ type: "success", text: `Baseline snapshot locked (${res.snapshot?.snapshot_id || "Active"}). Ready for Batch 2 comparison.` });
+      if (onUploadSuccess) {
+        onUploadSuccess();
+      }
+    } catch (err) {
+      setFeedback({ type: "error", text: err.message || "Failed to lock baseline snapshot." });
+    } finally {
+      setIsSnapshotting(false);
+    }
+  };
+
   return (
     <div className="w-full rounded-xl border border-border bg-card p-5 shadow-sm transition-colors duration-200">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -51,35 +68,49 @@ export default function ControlCockpit({ onUploadSuccess }) {
             </span>
           </div>
           <p className="text-xs text-muted-foreground">
-            Ingest settlement batches to execute deterministic regulatory rules (R1–R13) and diagnostic LLM explanations.
+            Ingest settlement batches to execute deterministic regulatory rules (R1–R13) and multi-route agent control.
           </p>
         </div>
 
         {/* Upload & Action Trigger */}
-        <form onSubmit={handleRunAudit} className="flex flex-wrap items-center gap-3">
-          <label className="flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-secondary hover:bg-muted text-secondary-foreground text-xs font-medium cursor-pointer transition-colors">
-            <UploadCloud className="w-4 h-4 text-primary"/>
-            <span className="truncate max-w-[180px]">
-              {selectedFile ? selectedFile.name : "Select Settlement CSV"}
-            </span>
-            <input
-              type="file"
-              accept=".csv"
-              onChange={handleFileChange}
-              className="hidden"
-            />
-          </label>
-
+        <div className="flex flex-wrap items-center gap-3">
           <button
-            type="submit"
-            disabled={!selectedFile || isAuditing}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary hover:opacity-90 disabled:opacity-50 text-primary-foreground text-xs font-semibold tracking-wide transition-all shadow-sm cursor-pointer disabled:cursor-not-allowed"
+            type="button"
+            onClick={handleCaptureBaseline}
+            disabled={isSnapshotting}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border bg-secondary hover:bg-muted text-secondary-foreground text-xs font-medium cursor-pointer transition-colors disabled:opacity-50"
+            title="Lock current metrics as baseline for multi-batch improvement tracking"
           >
-            <Play className={`w-3.5 h-3.5 ${isAuditing ? "animate-spin" : ""}`} />
-            <span>{isAuditing ? "Reconciling..." : "Execute Audit"}</span>
+            <BookmarkPlus className="w-3.5 h-3.5 text-emerald-500" />
+            <span>{isSnapshotting ? "Saving..." : "Lock Baseline"}</span>
           </button>
-        </form>
+
+          <form onSubmit={handleRunAudit} className="flex items-center gap-2">
+            <label className="flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-secondary hover:bg-muted text-secondary-foreground text-xs font-medium cursor-pointer transition-colors">
+              <UploadCloud className="w-4 h-4 text-primary"/>
+              <span className="truncate max-w-[150px]">
+                {selectedFile ? selectedFile.name : "Select CSV"}
+              </span>
+              <input
+                type="file"
+                accept=".csv"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+            </label>
+
+            <button
+              type="submit"
+              disabled={!selectedFile || isAuditing}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary hover:opacity-90 disabled:opacity-50 text-primary-foreground text-xs font-semibold tracking-wide transition-all shadow-sm cursor-pointer disabled:cursor-not-allowed"
+            >
+              <Play className={`w-3.5 h-3.5 ${isAuditing ? "animate-spin" : ""}`} />
+              <span>{isAuditing ? "Auditing..." : "Execute Audit"}</span>
+            </button>
+          </form>
+        </div>
       </div>
+
 
       {/* Feedback Banner */}
       {feedback && (

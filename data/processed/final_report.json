@@ -45,177 +45,177 @@
       "transaction_id": "TXN_000132",
       "rule_id": "R2",
       "delta": 182.91,
-      "explanation": "You were charged an MDR fee of Rs 182.91 on a RuPay debit card transaction where statutory RBI guidelines cap the expected fee at Rs 0.00. Contact your acquirer immediately to claim a refund under regulatory debit card fee caps."
+      "explanation": "Statutory fee overcharge of Rs 182.91 detected under rule R2. Charged fee of Rs 182.91 exceeds statutory cap/expected fee of Rs 0.00."
     },
     {
       "transaction_id": "TXN_000484",
       "rule_id": "R2",
       "delta": 182.29,
-      "explanation": "Audit Note: Flagged for manual merchant controller review."
+      "explanation": "Statutory fee overcharge of Rs 182.29 detected under rule R2. Charged fee of Rs 182.29 exceeds statutory cap/expected fee of Rs 0.00."
     },
     {
       "transaction_id": "TXN_000420",
       "rule_id": "R2",
       "delta": 98.67,
-      "explanation": "Audit Note: Flagged for manual merchant controller review."
+      "explanation": "Statutory fee overcharge of Rs 98.67 detected under rule R2. Charged fee of Rs 98.67 exceeds statutory cap/expected fee of Rs 0.00."
     },
     {
       "transaction_id": "TXN_000290",
       "rule_id": "R2",
       "delta": 97.13,
-      "explanation": "This RuPay debit card transaction was charged a fee of Rs 97.13 instead of the statutory expected fee of Rs 0.00 under zero-MDR regulations. Contact your acquirer immediately to request a full MDR (Merchant Discount Rate) refund based on RBI guidelines."
+      "explanation": "Statutory fee overcharge of Rs 97.13 detected under rule R2. Charged fee of Rs 97.13 exceeds statutory cap/expected fee of Rs 0.00."
     },
     {
       "transaction_id": "TXN_000087",
       "rule_id": "R2",
       "delta": 71.92,
-      "explanation": "This RuPay debit card transaction incurred a fee charged of Rs 71.92 despite an expected fee of Rs 0.00 under mandated regulatory zero-MDR norms. Request an immediate MDR (Merchant Discount Rate) refund from your acquiring bank for this full fee amount."
+      "explanation": "Statutory fee overcharge of Rs 71.92 detected under rule R2. Charged fee of Rs 71.92 exceeds statutory cap/expected fee of Rs 0.00."
     },
     {
       "transaction_id": "TXN_000149",
       "rule_id": "R4",
       "delta": 55.61,
-      "explanation": "This RuPay credit UPI payment of Rs 6,951.00 incurred an MDR fee of Rs 159.88 against an expected fee of Rs 104.27 under statutory caps. Please request an MDR refund and fee tier audit from your acquiring bank."
+      "explanation": "Statutory fee overcharge of Rs 55.61 detected under rule R4. Charged fee of Rs 159.88 exceeds statutory cap/expected fee of Rs 104.27."
     },
     {
       "transaction_id": "TXN_000296",
       "rule_id": "R2",
       "delta": 50.96,
-      "explanation": "A fee of Rs 50.96 was levied on this RuPay debit transaction despite an expected fee of Rs 0.00 under RBI zero-MDR mandates. Submit a dispute to your payment gateway to reclaim the overcharged Merchant Discount Rate amount."
+      "explanation": "Statutory fee overcharge of Rs 50.96 detected under rule R2. Charged fee of Rs 50.96 exceeds statutory cap/expected fee of Rs 0.00."
     },
     {
       "transaction_id": "TXN_000356",
       "rule_id": "R4",
       "delta": 49.6,
-      "explanation": "Audit Note: Flagged for manual merchant controller review."
+      "explanation": "Statutory fee overcharge of Rs 49.60 detected under rule R4. Charged fee of Rs 142.60 exceeds statutory cap/expected fee of Rs 93.00."
     },
     {
       "transaction_id": "TXN_000412",
       "rule_id": "R2",
       "delta": 48.39,
-      "explanation": "Audit Note: Flagged for manual merchant controller review."
+      "explanation": "Statutory fee overcharge of Rs 48.39 detected under rule R2. Charged fee of Rs 48.39 exceeds statutory cap/expected fee of Rs 0.00."
     },
     {
       "transaction_id": "TXN_000297",
       "rule_id": "R4",
       "delta": 48.35,
-      "explanation": "Audit Note: Flagged for manual merchant controller review."
+      "explanation": "Statutory fee overcharge of Rs 48.35 detected under rule R4. Charged fee of Rs 139.00 exceeds statutory cap/expected fee of Rs 90.65."
     }
   ],
   "exceptions": [
     {
       "transaction_id": "TXN_000006",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 14,560.60. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000018",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 1,478.72. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000022",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 80.50. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000027",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 1,318.00. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000035",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 985.98. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000061",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 5,842.72. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000067",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 2,156.45. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000079",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 4,807.49. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000100",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 20,717.79. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000115",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 6,068.99. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000142",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 182.93. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000158",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 948.47. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000192",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 23,282.66. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000193",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 9,560.34. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000194",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 19,847.10. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000202",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 18,989.97. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000255",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 1,021.26. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000279",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 1,409.25. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000301",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 5,985.95. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000366",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 5,285.55. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000404",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 899.87. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000416",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 105.05. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000446",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 4,246.21. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000447",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 3,513.78. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000471",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 4,667.56. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000477",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 7,217.06. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000493",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 6,887.39. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     },
     {
       "transaction_id": "TXN_000499",
-      "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 18,707.40. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
     }
   ],
   "audit_trail_available": true,
-  "generated_at": "2026-09-04T13:08:21.582454"
+  "generated_at": "2026-09-05T04:32:32.953520"
 }

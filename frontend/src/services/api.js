@@ -90,4 +90,30 @@ export async function rejectCase(caseId, reason = "Rejected by operator") {
     throw new Error(err.detail || "Failed to reject case");
   }
   return response.json();
-}
+}
+
+/**
+ * Fetch control effectiveness comparison (baseline vs current)
+ */
+export async function getControlEffectiveness() {
+  const response = await fetch(`${API_BASE_URL}/effectiveness`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch effectiveness with status: ${response.status}`);
+  }
+  return response.json();
+}
+
+/**
+ * Snapshot current audit metrics as baseline
+ */
+export async function captureBaselineSnapshot(sourceLabel = "batch_1") {
+  const response = await fetch(`${API_BASE_URL}/baseline/capture?source_label=${encodeURIComponent(sourceLabel)}`, {
+    method: "POST",
+  });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.detail || "Failed to capture baseline snapshot");
+  }
+  return response.json();
+}
+

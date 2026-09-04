@@ -25,15 +25,15 @@ export default function RemediationDeck({ offenders = [] }) {
           <div className="flex items-center gap-2">
             <AlertOctagon className="w-4 h-4 text-destructive dark:text-red-400"/>
             <h3 className="text-base font-bold text-foreground tracking-tight">
-              Top Priority Fee Discrepancies
+              Granular Transaction Spotlights (Row-Level Evidence)
             </h3>
           </div>
           <p className="text-xs text-muted-foreground mt-0.5">
-            Deterministic rule violations augmented with AI Finance Controller diagnostics and remediation paths
+            Individual transaction overcharge line items. Strategic root-cause remediation is orchestrated in the Agent Priority Queue above.
           </p>
         </div>
         <span className="text-[11px] font-mono px-2.5 py-1 rounded bg-destructive/10 text-destructive dark:text-red-400 border border-destructive/20 font-medium self-start sm:self-auto">
-          {offenders.length} Priority Recoveries
+          {offenders.length} Transaction Highlights
         </span>
       </div>
 

@@ -1,26 +1,73 @@
 """
 Module 6: Reporting & Aggregation Engine
-Synthesizes deterministic audit metrics and LLM explanations into final_report.json.
+Synthesizes deterministic audit metrics and grounded rule-level explanations into final_report.json.
+Guarantees zero arithmetic hallucination and strict adherence to honesty constraints.
 """
 
 import json
 from datetime import datetime
+from pathlib import Path
 import pandas as pd
+
+
+def generate_grounded_explanation(row: pd.Series) -> str:
+    """
+    Generates a deterministic, strictly grounded explanation for a row.
+    Guarantees no false 0-fee claims for unclassified exceptions.
+    """
+    classification = str(row.get("classification", ""))
+    rule_id = str(row.get("matched_rule_id", "NONE"))
+    amount = float(row.get("amount", 0.0))
+    fee_charged = float(row.get("fee_charged", 0.0))
+    expected_fee = float(row.get("expected_fee", 0.0))
+    delta = float(row.get("delta", 0.0))
+    sub_inst = str(row.get("sub_instrument", ""))
+
+    if classification == "Exception":
+        return (
+            f"Missing sub-instrument routing metadata for transaction of Rs {amount:,.2f}. "
+            "Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+        )
+
+    if classification == "Flagged_For_Review":
+        return (
+            f"Credit card transaction of Rs {amount:,.2f} billed at flat market rate (Rs {fee_charged:,.2f}). "
+            "Unverified against statutory caps; requires L2/L3 metadata or IC+ rate schedule."
+        )
+
+    if classification == "Leaked":
+        return (
+            f"Statutory fee overcharge of Rs {delta:,.2f} detected under rule {rule_id}. "
+            f"Charged fee of Rs {fee_charged:,.2f} exceeds statutory cap/expected fee of Rs {expected_fee:,.2f}."
+        )
+
+    return f"Compliant transaction of Rs {amount:,.2f}. Billed fee matches statutory rate schedule."
 
 
 def build_final_report(
     summary_path: str = "data/processed/summary.json",
-    csv_path: str = "data/processed/row_level_results_with_explanations.csv",
-    output_path: str = "data/processed/final_report.json"
+    csv_path: str = "data/processed/row_level_results.csv",
+    output_path: str = "data/processed/final_report.json",
+    output_csv_path: str = "data/processed/row_level_results_with_explanations.csv"
 ) -> dict:
     print(f"[InterDrift Reporter] Loading inputs from {summary_path} and {csv_path}...")
     
     # 1. Load summary metrics from Module 3
-    with open(summary_path, "r") as f:
+    if not Path(summary_path).exists():
+        raise FileNotFoundError(f"Summary file not found at {summary_path}")
+
+    with open(summary_path, "r", encoding="utf-8") as f:
         summary_data = json.load(f)
 
-    # 2. Load row-level audit and explanation data
+    # 2. Load row-level audit data
     df = pd.read_csv(csv_path)
+
+    # Generate strictly grounded explanations for all rows
+    df["explanation"] = df.apply(generate_grounded_explanation, axis=1)
+
+    # Save enriched CSV
+    Path(output_csv_path).parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(output_csv_path, index=False)
 
     total_txns = int(summary_data.get("total_transactions", len(df)))
     counts = summary_data.get("classification_counts", {})
@@ -39,10 +86,8 @@ def build_final_report(
     mcc_misclassification = float(r12_audit.get("financial_impact_delta", 0.0))
     row_leakage = float(summary_data.get("total_row_leakage_inr", 0.0))
     
-    # Total leaked encompasses row leakage + batch structural overcharge
     total_leaked_sum = round(row_leakage + structural_overcharge + mcc_misclassification, 2)
 
-    # Calculate exact percentages for frontend dashboard
     overview = {
         "total_transactions": total_txns,
         "matched_count": matched_count,
@@ -76,36 +121,27 @@ def build_final_report(
                 "transaction_count": int(row["transaction_count"])
             })
         
-        # Sort categories by total leaked descending
         leak_by_category = sorted(leak_by_category, key=lambda x: x["total_leaked"], reverse=True)
 
-    # 4. Extract Top Offenders (Top 5-10 highest overcharge deltas)
+    # 4. Extract Top Offenders (Top 10 highest overcharge deltas)
     top_offenders = []
     if not leaked_df.empty:
         top_df = leaked_df.sort_values(by="delta", ascending=False).head(10)
         for _, row in top_df.iterrows():
-            explanation = str(row.get("explanation", ""))
-            if not explanation or pd.isna(row.get("explanation")):
-                explanation = f"Statutory overcharge detected under rule {row.get('matched_rule_id', 'N/A')}."
-
             top_offenders.append({
                 "transaction_id": str(row["transaction_id"]),
                 "rule_id": str(row.get("matched_rule_id", "N/A")),
                 "delta": round(float(row.get("delta", 0.0)), 2),
-                "explanation": explanation
+                "explanation": str(row.get("explanation", ""))
             })
 
-    # 5. Extract Full Exceptions list (untruncated for audit integrity)
+    # 5. Extract Full Exceptions list
     exceptions = []
     exception_df = df[df["classification"] == "Exception"]
     for _, row in exception_df.iterrows():
-        note_text = str(row.get("note", ""))
-        if not note_text or pd.isna(note_text):
-            note_text = "No matching rule found — check sub_instrument/mcc fields"
-
         exceptions.append({
             "transaction_id": str(row["transaction_id"]),
-            "note": note_text
+            "note": str(row.get("explanation", "Missing sub_instrument routing tag."))
         })
 
     # 6. Assemble complete presentation payload
@@ -118,7 +154,8 @@ def build_final_report(
         "generated_at": datetime.now().isoformat()
     }
 
-    with open(output_path, "w") as f:
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(final_report, f, indent=2)
 
     print(f"[InterDrift Reporter] Report successfully saved to {output_path}")

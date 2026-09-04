@@ -11,6 +11,7 @@ import pandas as pd
 from src.rules_engine.rule_loader import load_rules
 from src.rules_engine.row_classifier import classify_row
 from src.rules_engine.batch_auditor import audit_blended_vs_ic_plus, audit_mcc_misclassification
+from src.reporting.report_builder import build_final_report
 
 
 def run_pipeline(
@@ -66,6 +67,14 @@ def run_pipeline(
     summary_path = Path(output_dir) / "summary.json"
     with open(summary_path, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
+
+    # Synthesize grounded report and row-level explanations
+    build_final_report(
+        summary_path=str(summary_path),
+        csv_path=str(row_output_path),
+        output_path=str(Path(output_dir) / "final_report.json"),
+        output_csv_path=str(Path(output_dir) / "row_level_results_with_explanations.csv")
+    )
 
     print("\n" + "=" * 50)
     print("      INTERDRIFT AUDIT RUN COMPLETE")
