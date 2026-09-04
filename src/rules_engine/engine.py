@@ -80,6 +80,8 @@ def run_pipeline(
     print(f"R12 MCC Misalignment Loss : Rs {r12_audit['financial_impact_delta']:,.2f}")
     print("=" * 50)
 
+    return summary
+
 
 if __name__ == "__main__":
     run_pipeline()
