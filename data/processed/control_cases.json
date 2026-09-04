@@ -1,0 +1,688 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-09-04T20:11:38.560074",
+  "total_cases": 9,
+  "cases": [
+    {
+      "case_id": "CASE_0236092E",
+      "created_at": "2026-09-04T20:11:38.560074",
+      "last_evaluated_at": "2026-09-04T20:11:38.560074",
+      "group_id": "GRP_LEAKED_R2_RuPay_debit",
+      "group_type": "row_leak",
+      "root_cause": "The acquirer is improperly charging MDR fees on zero-rated RuPay debit card transactions, violating regulatory mandates.",
+      "rule_ids": [
+        "R2"
+      ],
+      "category": "RuPay_Debit",
+      "source_status": "sourced",
+      "sub_instrument": "RuPay_debit",
+      "affected_transactions": [
+        "TXN_000011",
+        "TXN_000087",
+        "TXN_000132",
+        "TXN_000156",
+        "TXN_000290",
+        "TXN_000296",
+        "TXN_000412",
+        "TXN_000420",
+        "TXN_000484"
+      ],
+      "transaction_count": 9,
+      "financial_exposure": 807.34,
+      "confidence": "high",
+      "priority_score": 0.7547,
+      "priority_rank": 1,
+      "recommended_action": "request_mdr_refund",
+      "action_rationale": "Requesting an MDR refund directly targets the total overcharged exposure of Rs 807.34 for wrongly assessed fees on zero-rated RuPay debit transactions.",
+      "human_approval_required": true,
+      "status": "AWAITING_HUMAN_APPROVAL",
+      "status_history": [
+        {
+          "status": "AWAITING_HUMAN_APPROVAL",
+          "timestamp": "2026-09-04T20:11:38.560074",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": 807.34,
+      "current_metric": 807.34,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [
+          {
+            "transaction_id": "TXN_000011",
+            "amount": 3828.93,
+            "fee_charged": 30.63,
+            "expected_fee": 0.0,
+            "delta": 30.63
+          },
+          {
+            "transaction_id": "TXN_000087",
+            "amount": 8989.72,
+            "fee_charged": 71.92,
+            "expected_fee": 0.0,
+            "delta": 71.92
+          },
+          {
+            "transaction_id": "TXN_000132",
+            "amount": 22863.13,
+            "fee_charged": 182.91,
+            "expected_fee": 0.0,
+            "delta": 182.91
+          }
+        ],
+        "structural_details": null,
+        "priority_components": {
+          "exposure_normalized": 0.7862,
+          "confidence": 1.0,
+          "recurrence": 0.2762,
+          "controllability": 0.9
+        },
+        "priority_explanation": "Priority driven by high exposure (Rs 807.34), legally verified rule, 9 occurrences."
+      },
+      "agent_reasoning": "A total of 9 RuPay debit transactions incurred Rs 807.34 in MDR fees despite regulatory mandates requiring zero MDR for RuPay debit instruments. This indicates an incorrect fee calculation configuration at the gateway or acquiring bank level."
+    },
+    {
+      "case_id": "CASE_6EF9D52C",
+      "created_at": "2026-09-04T20:11:38.560074",
+      "last_evaluated_at": "2026-09-04T20:11:38.560074",
+      "group_id": "GRP_FLAGGED_R9",
+      "group_type": "flagged_review",
+      "root_cause": "Unable to generate diagnosis \u2014 LLM call failed.",
+      "rule_ids": [
+        "R9"
+      ],
+      "category": "Credit_Cards_Market",
+      "source_status": "illustrative",
+      "sub_instrument": "",
+      "affected_transactions": [
+        "TXN_000020",
+        "TXN_000032",
+        "TXN_000047",
+        "TXN_000050",
+        "TXN_000052",
+        "TXN_000055",
+        "TXN_000068",
+        "TXN_000069",
+        "TXN_000080",
+        "TXN_000081",
+        "TXN_000091",
+        "TXN_000099",
+        "TXN_000138",
+        "TXN_000140",
+        "TXN_000153",
+        "TXN_000155",
+        "TXN_000159",
+        "TXN_000171",
+        "TXN_000181",
+        "TXN_000184",
+        "TXN_000191",
+        "TXN_000208",
+        "TXN_000222",
+        "TXN_000223",
+        "TXN_000233",
+        "TXN_000234",
+        "TXN_000241",
+        "TXN_000246",
+        "TXN_000252",
+        "TXN_000270",
+        "TXN_000276",
+        "TXN_000277",
+        "TXN_000280",
+        "TXN_000298",
+        "TXN_000307",
+        "TXN_000309",
+        "TXN_000310",
+        "TXN_000313",
+        "TXN_000334",
+        "TXN_000351",
+        "TXN_000358",
+        "TXN_000364",
+        "TXN_000374",
+        "TXN_000385",
+        "TXN_000392",
+        "TXN_000399",
+        "TXN_000429",
+        "TXN_000435",
+        "TXN_000445",
+        "TXN_000451",
+        "TXN_000454",
+        "TXN_000458",
+        "TXN_000468",
+        "TXN_000470",
+        "TXN_000485",
+        "TXN_000487"
+      ],
+      "transaction_count": 56,
+      "financial_exposure": 1203.04,
+      "confidence": "low",
+      "priority_score": 0.681,
+      "priority_rank": 2,
+      "recommended_action": "request_manual_review",
+      "action_rationale": "Fallback: requires human analyst review due to LLM failure.",
+      "human_approval_required": true,
+      "status": "INVESTIGATING",
+      "status_history": [
+        {
+          "status": "INVESTIGATING",
+          "timestamp": "2026-09-04T20:11:38.560074",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": 1203.04,
+      "current_metric": 1203.04,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [
+          {
+            "transaction_id": "TXN_000020",
+            "amount": 10751.51,
+            "fee_charged": 215.03,
+            "expected_fee": 215.03,
+            "delta": 0.0
+          },
+          {
+            "transaction_id": "TXN_000032",
+            "amount": 2278.75,
+            "fee_charged": 63.81,
+            "expected_fee": 45.58,
+            "delta": 18.23
+          },
+          {
+            "transaction_id": "TXN_000047",
+            "amount": 21507.25,
+            "fee_charged": 430.14,
+            "expected_fee": 430.14,
+            "delta": 0.0
+          }
+        ],
+        "structural_details": null,
+        "priority_components": {
+          "exposure_normalized": 0.833,
+          "confidence": 0.6,
+          "recurrence": 0.6889,
+          "controllability": 0.4
+        },
+        "priority_explanation": "Priority driven by high exposure (Rs 1,203.04), illustrative/modeled rule, systemic pattern (56 transactions)."
+      },
+      "agent_reasoning": "Automated diagnosis unavailable after 3 retries. Error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 31.92342209s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}"
+    },
+    {
+      "case_id": "CASE_036B4655",
+      "created_at": "2026-09-04T20:11:38.560074",
+      "last_evaluated_at": "2026-09-04T20:11:38.560074",
+      "group_id": "GRP_STRUCTURAL_R11_BLENDED_MDR",
+      "group_type": "structural",
+      "root_cause": "Unable to generate diagnosis \u2014 LLM call failed.",
+      "rule_ids": [
+        "R11"
+      ],
+      "category": "Blended_vs_IC_Plus",
+      "source_status": "illustrative",
+      "sub_instrument": "all_cards",
+      "affected_transactions": [],
+      "transaction_count": 0,
+      "financial_exposure": 4989.21,
+      "confidence": "low",
+      "priority_score": 0.655,
+      "priority_rank": 3,
+      "recommended_action": "request_manual_review",
+      "action_rationale": "Fallback: requires human analyst review due to LLM failure.",
+      "human_approval_required": true,
+      "status": "INVESTIGATING",
+      "status_history": [
+        {
+          "status": "INVESTIGATING",
+          "timestamp": "2026-09-04T20:11:38.560074",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": 4989.21,
+      "current_metric": 4989.21,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [],
+        "structural_details": {
+          "total_card_volume": 1989154.65,
+          "actual_flat_fees_billed": 39783.09,
+          "true_underlying_network_cost": 34793.88,
+          "effective_blended_rate_pct": 2.0,
+          "effective_true_rate_pct": 1.75,
+          "recommendation": "Migrate to Interchange-Plus (IC+) pricing structure to capture network rate spreads."
+        },
+        "priority_components": {
+          "exposure_normalized": 1.0,
+          "confidence": 0.6,
+          "recurrence": 0.0,
+          "controllability": 0.7
+        },
+        "priority_explanation": "Priority driven by high exposure (Rs 4,989.21), illustrative/modeled rule."
+      },
+      "agent_reasoning": "Automated diagnosis unavailable after 3 retries. Error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 21.281483692s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '21s'}]}}"
+    },
+    {
+      "case_id": "CASE_8D3CD771",
+      "created_at": "2026-09-04T20:11:38.560074",
+      "last_evaluated_at": "2026-09-04T20:11:38.560074",
+      "group_id": "GRP_STRUCTURAL_R12_MCC_MISMATCH",
+      "group_type": "structural",
+      "root_cause": "Unable to generate diagnosis \u2014 LLM call failed.",
+      "rule_ids": [
+        "R12"
+      ],
+      "category": "MCC_Misclassification",
+      "source_status": "illustrative",
+      "sub_instrument": "",
+      "affected_transactions": [],
+      "transaction_count": 12,
+      "financial_exposure": 468.53,
+      "confidence": "low",
+      "priority_score": 0.6228,
+      "priority_rank": 4,
+      "recommended_action": "request_manual_review",
+      "action_rationale": "Fallback: requires human analyst review due to LLM failure.",
+      "human_approval_required": true,
+      "status": "INVESTIGATING",
+      "status_history": [
+        {
+          "status": "INVESTIGATING",
+          "timestamp": "2026-09-04T20:11:38.560074",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": 468.53,
+      "current_metric": 468.53,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [],
+        "structural_details": {
+          "expected_mcc": "5045",
+          "registered_business_type": "B2B wholesale",
+          "recommendation": "Update gateway configuration to registered MCC 5045 to prevent interchange downgrades."
+        },
+        "priority_components": {
+          "exposure_normalized": 0.7224,
+          "confidence": 0.6,
+          "recurrence": 0.3189,
+          "controllability": 0.8
+        },
+        "priority_explanation": "Priority driven by high exposure (Rs 468.53), illustrative/modeled rule, systemic pattern (12 transactions)."
+      },
+      "agent_reasoning": "Automated diagnosis unavailable after 3 retries. Error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 11.73968582s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.6-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '11s'}]}}"
+    },
+    {
+      "case_id": "CASE_21D0521C",
+      "created_at": "2026-09-04T20:11:38.560074",
+      "last_evaluated_at": "2026-09-04T20:11:38.560074",
+      "group_id": "GRP_LEAKED_R3_RuPay_credit_UPI",
+      "group_type": "row_leak",
+      "root_cause": "Unable to generate diagnosis \u2014 LLM call failed.",
+      "rule_ids": [
+        "R3"
+      ],
+      "category": "RuPay_Credit_UPI",
+      "source_status": "sourced",
+      "sub_instrument": "RuPay_credit_UPI",
+      "affected_transactions": [
+        "TXN_000008",
+        "TXN_000106",
+        "TXN_000109",
+        "TXN_000231",
+        "TXN_000342"
+      ],
+      "transaction_count": 5,
+      "financial_exposure": 46.09,
+      "confidence": "low",
+      "priority_score": 0.5921,
+      "priority_rank": 5,
+      "recommended_action": "request_manual_review",
+      "action_rationale": "Fallback: requires human analyst review due to LLM failure.",
+      "human_approval_required": true,
+      "status": "INVESTIGATING",
+      "status_history": [
+        {
+          "status": "INVESTIGATING",
+          "timestamp": "2026-09-04T20:11:38.560074",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": 46.09,
+      "current_metric": 46.09,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [
+          {
+            "transaction_id": "TXN_000008",
+            "amount": 1041.14,
+            "fee_charged": 15.62,
+            "expected_fee": 0.0,
+            "delta": 15.62
+          },
+          {
+            "transaction_id": "TXN_000106",
+            "amount": 467.92,
+            "fee_charged": 7.02,
+            "expected_fee": 0.0,
+            "delta": 7.02
+          },
+          {
+            "transaction_id": "TXN_000109",
+            "amount": 226.07,
+            "fee_charged": 1.81,
+            "expected_fee": 0.0,
+            "delta": 1.81
+          }
+        ],
+        "structural_details": null,
+        "priority_components": {
+          "exposure_normalized": 0.4524,
+          "confidence": 1.0,
+          "recurrence": 0.2058,
+          "controllability": 0.8
+        },
+        "priority_explanation": "Priority driven by moderate exposure (Rs 46.09), legally verified rule, 5 occurrences."
+      },
+      "agent_reasoning": "Automated diagnosis unavailable after 3 retries. Error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 2.574043063s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.6-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '2s'}]}}"
+    },
+    {
+      "case_id": "CASE_87F4D710",
+      "created_at": "2026-09-04T20:11:38.560074",
+      "last_evaluated_at": "2026-09-04T20:11:38.560074",
+      "group_id": "GRP_LEAKED_R5_PPI_wallet_UPI",
+      "group_type": "row_leak",
+      "root_cause": "Unable to generate diagnosis \u2014 LLM call failed.",
+      "rule_ids": [
+        "R5"
+      ],
+      "category": "PPI_Wallet_UPI",
+      "source_status": "sourced",
+      "sub_instrument": "PPI_wallet_UPI",
+      "affected_transactions": [
+        "TXN_000074",
+        "TXN_000229",
+        "TXN_000448"
+      ],
+      "transaction_count": 3,
+      "financial_exposure": 43.93,
+      "confidence": "low",
+      "priority_score": 0.5806,
+      "priority_rank": 6,
+      "recommended_action": "request_manual_review",
+      "action_rationale": "Fallback: requires human analyst review due to LLM failure.",
+      "human_approval_required": true,
+      "status": "INVESTIGATING",
+      "status_history": [
+        {
+          "status": "INVESTIGATING",
+          "timestamp": "2026-09-04T20:11:38.560074",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": 43.93,
+      "current_metric": 43.93,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [
+          {
+            "transaction_id": "TXN_000074",
+            "amount": 995.04,
+            "fee_charged": 14.93,
+            "expected_fee": 0.0,
+            "delta": 14.93
+          },
+          {
+            "transaction_id": "TXN_000229",
+            "amount": 638.83,
+            "fee_charged": 9.58,
+            "expected_fee": 0.0,
+            "delta": 9.58
+          },
+          {
+            "transaction_id": "TXN_000448",
+            "amount": 1294.44,
+            "fee_charged": 19.42,
+            "expected_fee": 0.0,
+            "delta": 19.42
+          }
+        ],
+        "structural_details": null,
+        "priority_components": {
+          "exposure_normalized": 0.4469,
+          "confidence": 1.0,
+          "recurrence": 0.1594,
+          "controllability": 0.8
+        },
+        "priority_explanation": "Priority driven by moderate exposure (Rs 43.93), legally verified rule, 3 occurrences."
+      },
+      "agent_reasoning": "Automated diagnosis unavailable after 3 retries. Error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 53.134096185s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.6-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '53s'}]}}"
+    },
+    {
+      "case_id": "CASE_BCED34EF",
+      "created_at": "2026-09-04T20:11:38.560074",
+      "last_evaluated_at": "2026-09-04T20:11:38.560074",
+      "group_id": "GRP_LEAKED_R4_RuPay_credit_UPI",
+      "group_type": "row_leak",
+      "root_cause": "Unable to generate diagnosis \u2014 LLM call failed.",
+      "rule_ids": [
+        "R4"
+      ],
+      "category": "RuPay_Credit_UPI",
+      "source_status": "illustrative",
+      "sub_instrument": "RuPay_credit_UPI",
+      "affected_transactions": [
+        "TXN_000149",
+        "TXN_000173",
+        "TXN_000297",
+        "TXN_000356"
+      ],
+      "transaction_count": 4,
+      "financial_exposure": 189.53,
+      "confidence": "low",
+      "priority_score": 0.5534,
+      "priority_rank": 7,
+      "recommended_action": "request_manual_review",
+      "action_rationale": "Fallback: requires human analyst review due to LLM failure.",
+      "human_approval_required": true,
+      "status": "INVESTIGATING",
+      "status_history": [
+        {
+          "status": "INVESTIGATING",
+          "timestamp": "2026-09-04T20:11:38.560074",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": 189.53,
+      "current_metric": 189.53,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [
+          {
+            "transaction_id": "TXN_000149",
+            "amount": 6951.0,
+            "fee_charged": 159.88,
+            "expected_fee": 104.27,
+            "delta": 55.61
+          },
+          {
+            "transaction_id": "TXN_000173",
+            "amount": 4496.53,
+            "fee_charged": 103.42,
+            "expected_fee": 67.45,
+            "delta": 35.97
+          },
+          {
+            "transaction_id": "TXN_000297",
+            "amount": 6043.61,
+            "fee_charged": 139.0,
+            "expected_fee": 90.65,
+            "delta": 48.35
+          }
+        ],
+        "structural_details": null,
+        "priority_components": {
+          "exposure_normalized": 0.6165,
+          "confidence": 0.6,
+          "recurrence": 0.1841,
+          "controllability": 0.8
+        },
+        "priority_explanation": "Priority driven by high exposure (Rs 189.53), illustrative/modeled rule, 4 occurrences."
+      },
+      "agent_reasoning": "Automated diagnosis unavailable after 3 retries. Error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 44.021669838s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '44s'}]}}"
+    },
+    {
+      "case_id": "CASE_47D5812A",
+      "created_at": "2026-09-04T20:11:38.560074",
+      "last_evaluated_at": "2026-09-04T20:11:38.560074",
+      "group_id": "GRP_LEAKED_R6b_PPI_wallet_UPI",
+      "group_type": "row_leak",
+      "root_cause": "Unable to generate diagnosis \u2014 LLM call failed.",
+      "rule_ids": [
+        "R6b"
+      ],
+      "category": "PPI_Wallet_UPI",
+      "source_status": "sourced",
+      "sub_instrument": "PPI_wallet_UPI",
+      "affected_transactions": [
+        "TXN_000498"
+      ],
+      "transaction_count": 1,
+      "financial_exposure": 8.94,
+      "confidence": "low",
+      "priority_score": 0.4963,
+      "priority_rank": 8,
+      "recommended_action": "request_manual_review",
+      "action_rationale": "Fallback: requires human analyst review due to LLM failure.",
+      "human_approval_required": true,
+      "status": "INVESTIGATING",
+      "status_history": [
+        {
+          "status": "INVESTIGATING",
+          "timestamp": "2026-09-04T20:11:38.560074",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": 8.94,
+      "current_metric": 8.94,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [
+          {
+            "transaction_id": "TXN_000498",
+            "amount": 4470.83,
+            "fee_charged": 49.18,
+            "expected_fee": 40.24,
+            "delta": 8.94
+          }
+        ],
+        "structural_details": null,
+        "priority_components": {
+          "exposure_normalized": 0.2697,
+          "confidence": 1.0,
+          "recurrence": 0.0921,
+          "controllability": 0.8
+        },
+        "priority_explanation": "Priority driven by moderate exposure (Rs 8.94), legally verified rule, 1 occurrences."
+      },
+      "agent_reasoning": "Automated diagnosis unavailable after 3 retries. Error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 34.971500596s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '34s'}]}}"
+    },
+    {
+      "case_id": "CASE_2A7BE096",
+      "created_at": "2026-09-04T20:11:38.560074",
+      "last_evaluated_at": "2026-09-04T20:11:38.560074",
+      "group_id": "GRP_EXCEPTION_MISSING_TAG",
+      "group_type": "exception",
+      "root_cause": "Unable to generate diagnosis \u2014 LLM call failed.",
+      "rule_ids": [
+        "NONE"
+      ],
+      "category": "Unclassified",
+      "source_status": "n/a",
+      "sub_instrument": "",
+      "affected_transactions": [
+        "TXN_000006",
+        "TXN_000018",
+        "TXN_000022",
+        "TXN_000027",
+        "TXN_000035",
+        "TXN_000061",
+        "TXN_000067",
+        "TXN_000079",
+        "TXN_000100",
+        "TXN_000115",
+        "TXN_000142",
+        "TXN_000158",
+        "TXN_000192",
+        "TXN_000193",
+        "TXN_000194",
+        "TXN_000202",
+        "TXN_000255",
+        "TXN_000279",
+        "TXN_000301",
+        "TXN_000366",
+        "TXN_000404",
+        "TXN_000416",
+        "TXN_000446",
+        "TXN_000447",
+        "TXN_000471",
+        "TXN_000477",
+        "TXN_000493",
+        "TXN_000499"
+      ],
+      "transaction_count": 28,
+      "financial_exposure": 0.0,
+      "confidence": "low",
+      "priority_score": 0.2024,
+      "priority_rank": 9,
+      "recommended_action": "request_manual_review",
+      "action_rationale": "Fallback: requires human analyst review due to LLM failure.",
+      "human_approval_required": true,
+      "status": "INVESTIGATING",
+      "status_history": [
+        {
+          "status": "INVESTIGATING",
+          "timestamp": "2026-09-04T20:11:38.560074",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": 0.0,
+      "current_metric": 0.0,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [
+          {
+            "transaction_id": "TXN_000006",
+            "amount": 14560.6,
+            "fee_charged": 291.21,
+            "expected_fee": 0.0,
+            "delta": 0.0,
+            "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+          },
+          {
+            "transaction_id": "TXN_000018",
+            "amount": 1478.72,
+            "fee_charged": 0.0,
+            "expected_fee": 0.0,
+            "delta": 0.0,
+            "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+          },
+          {
+            "transaction_id": "TXN_000022",
+            "amount": 80.5,
+            "fee_charged": 0.0,
+            "expected_fee": 0.0,
+            "delta": 0.0,
+            "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
+          }
+        ],
+        "structural_details": null,
+        "priority_components": {
+          "exposure_normalized": 0.0,
+          "confidence": 0.3,
+          "recurrence": 0.4871,
+          "controllability": 0.2
+        },
+        "priority_explanation": "Priority driven by low exposure (Rs 0.00), illustrative/modeled rule, systemic pattern (28 transactions)."
+      },
+      "agent_reasoning": "Automated diagnosis unavailable after 3 retries. Error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 24.8552022s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '24s'}]}}"
+    }
+  ]
+}
