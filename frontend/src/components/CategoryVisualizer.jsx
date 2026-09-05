@@ -2,7 +2,7 @@ import React from "react";
 import { Layers } from "lucide-react";
 
 export default function CategoryVisualizer({ categories = [] }) {
-  const totalLeakage = categories.reduce((sum, item) => sum + (item.total_leaked || 0), 0);
+  const totalLeakage = categories.reduce((sum, item) => sum + Math.abs(item.total_leaked || 0), 0);
 
   const isIllustrative = (categoryName) => {
     const lower = categoryName.toLowerCase();
@@ -37,7 +37,7 @@ export default function CategoryVisualizer({ categories = [] }) {
 
       <div className="divide-y divide-border/60 mt-2">
         {categories.map((cat, idx) => {
-          const share = totalLeakage > 0 ? ((cat.total_leaked / totalLeakage) * 100).toFixed(1) : "0.0";
+          const share = totalLeakage > 0 ? ((Math.abs(cat.total_leaked || 0) / totalLeakage) * 100).toFixed(1) : "0.0";
           const illustrative = isIllustrative(cat.category);
 
           return (

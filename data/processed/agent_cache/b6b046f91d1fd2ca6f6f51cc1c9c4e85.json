@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_EXCEPTION_MISSING_TAG",
+  "root_cause": "Missing or incorrect transaction tag/MCC prevents fee calculation.",
+  "diagnosis": "The gateway configuration lacks the required tag or MCC mapping, so fees are not being computed and are recorded as zero.",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "An audit will identify and correct the missing tag configuration so fees are applied correctly.",
+  "confidence_level": "medium",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

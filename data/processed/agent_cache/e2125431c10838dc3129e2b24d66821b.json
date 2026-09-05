@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R5_PPI_wallet_UPI",
+  "root_cause": "Fee configuration incorrectly applies charges to fee\u2011exempt PPI wallet UPI transactions.",
+  "diagnosis": "The gateway/acquirer fee rules are mis\u2011mapped, causing MDR fees to be levied on transactions that should be free under regulation.",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "Auditing and correcting the fee configuration will stop the improper charges.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

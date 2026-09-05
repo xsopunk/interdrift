@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R4_RuPay_credit_UPI",
+  "root_cause": "Fee configuration leak for RuPay credit UPI resulting in MDR overcharge",
+  "diagnosis": "The transaction shows an overcharge of Rs 29.15 because the fee applied (Rs 83.80) exceeds the modeled benchmark expected fee (Rs 54.65) for RuPay credit UPI, indicating a misconfigured fee schedule.",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "Auditing the gateway/acquirer fee configuration will reveal and correct the incorrect MDR rate causing the overcharge.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_STRUCTURAL_R12_MCC_MISMATCH",
+  "root_cause": "MCC misclassification in gateway configuration causing interchange downgrades.",
+  "diagnosis": "The gateway is using an incorrect MCC instead of the registered 5045, leading to higher interchange fees for the 40 B2B wholesale transactions.",
+  "recommended_action": "correct_mcc_mapping",
+  "action_rationale": "Updating the gateway to the correct MCC 5045 will stop downgrade penalties and align fees with the intended rate.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}
