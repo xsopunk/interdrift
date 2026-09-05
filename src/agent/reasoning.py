@@ -206,8 +206,8 @@ def _call_gemini(prompt: str) -> Optional[Dict[str, Any]]:
         )
         if response and response.text:
             return json.loads(response.text)
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"    [Gemini Route] google-genai attempt failed: {e}")
 
     # Attempt 2: google.generativeai fallback
     try:
@@ -260,7 +260,8 @@ def _call_groq(prompt: str) -> Optional[Dict[str, Any]]:
                 parsed = _extract_json_from_text(content)
                 if parsed:
                     return parsed
-        except Exception:
+        except Exception as e:
+            print(f"    [Groq Route] Model {model} failed: {e}")
             continue
 
     return None

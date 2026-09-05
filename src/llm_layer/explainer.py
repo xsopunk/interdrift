@@ -101,27 +101,40 @@ def run_explanation_pipeline(
         batch_payload = format_batch_payload(batch_df)
 
         print(f"  -> Sending batch [{i+1} to {min(i + batch_size, total_targets)}] to Gemini Flash...")
-        try:
-            response = client.models.generate_content(
-                model="gemini-3.6-flash",
-                contents=batch_payload,
-                config=gen_config,
-            )
+        max_retries = 2
+        for attempt in range(max_retries + 1):
+            try:
+                response = client.models.generate_content(
+                    model="gemini-3.6-flash",
+                    contents=batch_payload,
+                    config=gen_config,
+                )
 
-            if response.text:
-                parsed_batch = AuditExplanationBatch.model_validate_json(response.text)
-                for item in parsed_batch.items:
-                    matched_row = df[df["transaction_id"] == item.transaction_id]
-                    if not matched_row.empty:
-                        df.at[matched_row.index[0], "explanation"] = item.explanation
-                        processed_count += 1
-            else:
-                print(f"     [Warning] Received empty response for batch.")
+                if response.text:
+                    parsed_batch = AuditExplanationBatch.model_validate_json(response.text)
+                    for item in parsed_batch.items:
+                        matched_row = df[df["transaction_id"] == item.transaction_id]
+                        if not matched_row.empty:
+                            df.at[matched_row.index[0], "explanation"] = item.explanation
+                            processed_count += 1
+                    break  # Success, exit retry loop
+                else:
+                    print(f"     [Warning] Received empty response for batch (attempt {attempt + 1}).")
+                    if attempt < max_retries:
+                        time.sleep(2 ** attempt)
+                        continue
 
-        except Exception as e:
-            print(f"     [Batch Warning] Failed batch processing: {e}")
+            except Exception as e:
+                print(f"     [Batch Error] Attempt {attempt + 1}/{max_retries + 1} failed: {e}")
+                if attempt < max_retries:
+                    time.sleep(2 ** attempt)
+                    continue
+
+        else:
+            # All retries exhausted — surface explicit failure, not a generic note
+            print(f"     [Batch FAILED] All {max_retries + 1} attempts exhausted.")
             for row_idx in batch_idx_chunk:
-                df.at[row_idx, "explanation"] = "Audit Note: Flagged for manual merchant controller review."
+                df.at[row_idx, "explanation"] = "AI Explanation Unavailable: LLM service error after retries. Transaction data preserved for manual review."
 
         time.sleep(0.5)
 
