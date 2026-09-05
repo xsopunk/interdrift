@@ -1,15 +1,15 @@
 {
   "overview": {
     "total_transactions": 500,
-    "matched_count": 408,
-    "matched_percent": 81.6,
-    "leaked_count": 22,
-    "leaked_percent": 4.4,
+    "matched_count": 394,
+    "matched_percent": 78.8,
+    "leaked_count": 36,
+    "leaked_percent": 7.2,
     "exception_count": 28,
     "exception_percent": 5.6,
     "flagged_for_review_count": 42,
     "flagged_for_review_percent": 8.4,
-    "total_leaked_amount": 3727.92,
+    "total_leaked_amount": 5738.3,
     "structural_overcharge_amount": 4989.21,
     "mcc_misclassification_amount": 468.53
   },
@@ -64,70 +64,70 @@
       "category": "R10",
       "rule_name": "Corporate card surcharge triggered by missing L2/L3 commercial data fields",
       "source_status": "illustrative",
-      "total_leaked": -2018.31,
-      "transaction_count": 9
+      "total_leaked": -7.93,
+      "transaction_count": 23
     }
   ],
   "top_offenders": [
+    {
+      "transaction_id": "TXN_000458",
+      "rule_id": "R10",
+      "delta": 170.67,
+      "explanation": "Statutory fee overcharge of Rs 170.67 detected under rule R10. Charged fee of Rs 597.35 exceeds statutory cap/expected fee of Rs 426.68."
+    },
+    {
+      "transaction_id": "TXN_000485",
+      "rule_id": "R10",
+      "delta": 167.44,
+      "explanation": "Statutory fee overcharge of Rs 167.44 detected under rule R10. Charged fee of Rs 586.04 exceeds statutory cap/expected fee of Rs 418.60."
+    },
+    {
+      "transaction_id": "TXN_000223",
+      "rule_id": "R10",
+      "delta": 166.68,
+      "explanation": "Statutory fee overcharge of Rs 166.68 detected under rule R10. Charged fee of Rs 583.39 exceeds statutory cap/expected fee of Rs 416.71."
+    },
+    {
+      "transaction_id": "TXN_000171",
+      "rule_id": "R10",
+      "delta": 129.94,
+      "explanation": "Statutory fee overcharge of Rs 129.94 detected under rule R10. Charged fee of Rs 454.79 exceeds statutory cap/expected fee of Rs 324.85."
+    },
+    {
+      "transaction_id": "TXN_000091",
+      "rule_id": "R10",
+      "delta": 128.44,
+      "explanation": "Statutory fee overcharge of Rs 128.44 detected under rule R10. Charged fee of Rs 449.55 exceeds statutory cap/expected fee of Rs 321.11."
+    },
+    {
+      "transaction_id": "TXN_000454",
+      "rule_id": "R10",
+      "delta": 96.18,
+      "explanation": "Statutory fee overcharge of Rs 96.18 detected under rule R10. Charged fee of Rs 336.62 exceeds statutory cap/expected fee of Rs 240.44."
+    },
+    {
+      "transaction_id": "TXN_000358",
+      "rule_id": "R10",
+      "delta": 92.25,
+      "explanation": "Statutory fee overcharge of Rs 92.25 detected under rule R10. Charged fee of Rs 322.87 exceeds statutory cap/expected fee of Rs 230.62."
+    },
+    {
+      "transaction_id": "TXN_000184",
+      "rule_id": "R10",
+      "delta": 69.93,
+      "explanation": "Statutory fee overcharge of Rs 69.93 detected under rule R10. Charged fee of Rs 244.75 exceeds statutory cap/expected fee of Rs 174.82."
+    },
+    {
+      "transaction_id": "TXN_000140",
+      "rule_id": "R10",
+      "delta": 57.68,
+      "explanation": "Statutory fee overcharge of Rs 57.68 detected under rule R10. Charged fee of Rs 201.87 exceeds statutory cap/expected fee of Rs 144.19."
+    },
     {
       "transaction_id": "TXN_000149",
       "rule_id": "R4",
       "delta": 55.61,
       "explanation": "Statutory fee overcharge of Rs 55.61 detected under rule R4. Charged fee of Rs 159.88 exceeds statutory cap/expected fee of Rs 104.27."
-    },
-    {
-      "transaction_id": "TXN_000356",
-      "rule_id": "R4",
-      "delta": 49.6,
-      "explanation": "Statutory fee overcharge of Rs 49.60 detected under rule R4. Charged fee of Rs 142.60 exceeds statutory cap/expected fee of Rs 93.00."
-    },
-    {
-      "transaction_id": "TXN_000297",
-      "rule_id": "R4",
-      "delta": 48.35,
-      "explanation": "Statutory fee overcharge of Rs 48.35 detected under rule R4. Charged fee of Rs 139.00 exceeds statutory cap/expected fee of Rs 90.65."
-    },
-    {
-      "transaction_id": "TXN_000173",
-      "rule_id": "R4",
-      "delta": 35.97,
-      "explanation": "Statutory fee overcharge of Rs 35.97 detected under rule R4. Charged fee of Rs 103.42 exceeds statutory cap/expected fee of Rs 67.45."
-    },
-    {
-      "transaction_id": "TXN_000448",
-      "rule_id": "R5",
-      "delta": 19.42,
-      "explanation": "Statutory fee overcharge of Rs 19.42 detected under rule R5. Charged fee of Rs 19.42 exceeds statutory cap/expected fee of Rs 0.00."
-    },
-    {
-      "transaction_id": "TXN_000008",
-      "rule_id": "R3",
-      "delta": 15.62,
-      "explanation": "Statutory fee overcharge of Rs 15.62 detected under rule R3. Charged fee of Rs 15.62 exceeds statutory cap/expected fee of Rs 0.00."
-    },
-    {
-      "transaction_id": "TXN_000074",
-      "rule_id": "R5",
-      "delta": 14.93,
-      "explanation": "Statutory fee overcharge of Rs 14.93 detected under rule R5. Charged fee of Rs 14.93 exceeds statutory cap/expected fee of Rs 0.00."
-    },
-    {
-      "transaction_id": "TXN_000231",
-      "rule_id": "R3",
-      "delta": 11.95,
-      "explanation": "Statutory fee overcharge of Rs 11.95 detected under rule R3. Charged fee of Rs 11.95 exceeds statutory cap/expected fee of Rs 0.00."
-    },
-    {
-      "transaction_id": "TXN_000342",
-      "rule_id": "R3",
-      "delta": 9.69,
-      "explanation": "Statutory fee overcharge of Rs 9.69 detected under rule R3. Charged fee of Rs 9.69 exceeds statutory cap/expected fee of Rs 0.00."
-    },
-    {
-      "transaction_id": "TXN_000229",
-      "rule_id": "R5",
-      "delta": 9.58,
-      "explanation": "Statutory fee overcharge of Rs 9.58 detected under rule R5. Charged fee of Rs 9.58 exceeds statutory cap/expected fee of Rs 0.00."
     }
   ],
   "exceptions": [
@@ -245,5 +245,5 @@
     }
   ],
   "audit_trail_available": true,
-  "generated_at": "2026-09-05T19:29:44.753573"
+  "generated_at": "2026-09-05T20:08:59.627879"
 }

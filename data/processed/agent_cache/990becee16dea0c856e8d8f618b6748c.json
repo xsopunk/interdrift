@@ -1,10 +1,10 @@
 {
   "group_id": "GRP_EXCEPTION_MISSING_TAG",
-  "root_cause": "Missing expected fee/tag data prevents fee discrepancy analysis.",
-  "diagnosis": "The transactions lack expected fee values or classification tags, so the system cannot determine whether fees are over- or under\u2011charged.",
+  "root_cause": "Unclassified transaction group with missing fee configuration and expected fee tags across 28 transactions.",
+  "diagnosis": "The system encountered unclassified transactions missing necessary fee rules and expected fee data, making automated audit validation impossible.",
   "recommended_action": "request_manual_review",
-  "action_rationale": "A human analyst must examine the raw transaction details to identify the proper fee expectations.",
-  "confidence_level": "low",
+  "action_rationale": "Manual review is necessary to inspect raw transaction logs and assign correct pricing metadata before auditing.",
+  "confidence_level": "high",
   "human_approval_required": false,
-  "provider": "Groq High-Speed"
+  "provider": "Gemini Flash"
 }

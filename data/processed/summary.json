@@ -1,13 +1,13 @@
 {
   "total_transactions": 500,
   "classification_counts": {
-    "Matched": 408,
-    "Leaked": 22,
+    "Matched": 394,
+    "Leaked": 36,
     "Exception": 28,
     "Flagged_For_Review": 42
   },
-  "accuracy_rate_pct": 81.6,
-  "total_row_leakage_inr": -1729.82,
+  "accuracy_rate_pct": 78.8,
+  "total_row_leakage_inr": 280.56,
   "batch_structural_audits": {
     "R11_blended_mdr_spread": {
       "total_card_volume": 1989154.65,

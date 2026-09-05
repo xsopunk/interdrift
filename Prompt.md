@@ -1,18 +1,39 @@
-AUDIT PROMPT 2 of 4 — Visible Agentic Behavior
+# AUDIT PROMPT 3 of 4 — Backend Rigor & Correctness
 
-Goal
+## Context
+Two prior passes covered frontend content completeness and visible agentic behavior. This pass turns to the backend itself: does it compute, classify, and reason correctly and efficiently, matching what the project actually intends? Investigate the real code and run real tests against real/synthetic data — do not infer correctness from the frontend looking reasonable.
 
-Assess whether the frontend actually demonstrates agentic behavior — investigation, grouping, reasoning, decision-making, and a closed action loop — rather than just displaying static labels that claim agency. Investigate actual code/behavior, don't assume.
+## Goal
+Verify the backend delivers what was designed, accurately and efficiently, end to end: rule classification, batch structural audits, agent grouping/prioritization, LLM diagnosis, case lifecycle, and baseline/effectiveness comparison.
 
-Specific things to check
-Agent Orchestration Pipeline (currently: 5 static checkmarks, "Idle · 5/5 Steps Verified") — this doesn't show reasoning happening, just a fixed completion state. Determine: does the backend actually expose per-step data (timing, input/output, intermediate results) for Grouping/Prioritization/LLM Diagnosis/Case Lifecycle/Effectiveness? If yes, propose surfacing it — e.g., expandable steps showing what each stage actually did on this run (X transactions grouped into Y clusters, Z cases prioritized, N LLM calls made, etc.), not just a checkmark. If the backend doesn't expose this granularity, flag it as a backend gap, don't fabricate frontend-only detail.
-Status badges (Monitoring/Action Ready/Escalated/Awaiting Approval) — after Audit 1's fix, clicking now filters the queue. Verify this alone is sufficient, or whether each status needs its own explanatory context when filtered (e.g., when viewing "Monitoring" cases, does the UI explain what baseline it's tracking against and current drift, not just list cases with that badge).
-"Stage Remediation" button — currently just turns green with no visible downstream effect. This is the biggest gap: it should visibly close the agentic loop. Determine what actually should happen in the data model when this is clicked (per the ControlCase status lifecycle: does it move a case to AWAITING_HUMAN_APPROVAL or ACTION_RECOMMENDED → next state?), verify if that state change exists in the backend at all, and if so, wire the frontend to: (a) actually call the backend to update case status, (b) reflect the new status somewhere the user can see (e.g., the case now appears under a different Agent Control Status count, or shows an updated timeline/history on the case card itself).
-Case → Transaction traceability — verify a user can click from a Priority Queue case down into the specific transactions that make up that case (the "orchestrated in the Agent Priority Queue above" language in Transaction Spotlights implies this relationship should be navigable, not just stated in text).
-General sweep — identify any other place where the UI implies autonomous agent activity (words like "agent," "autonomous," "diagnostic") without actual visible mechanism behind it, or any other missing feedback loop that would make a judge doubt genuine agentic behavior versus a static report with agent-flavored labels.
-Constraints
-Do not fix anything yet — investigate and report only.
-For each item: confirm what currently exists in code/data vs. what's just visual, and propose the minimal fix that makes the behavior real and visible without inventing new backend capabilities that don't exist (flag as a backend gap instead, for prioritization).
-Output
+## Specific things to check
 
-Concise findings list. Stop after reporting.
+1. **Rule classification correctness (ground-truth check)** — the synthetic dataset generator injects known leak/exception patterns (`injected_issue` field or equivalent). Cross-check the rules engine's actual classification output against these known ground-truth labels across the full dataset, not a handful of rows. Report: how many known-injected leaks were correctly classified as Leaked, how many known-clean rows were correctly Matched, and how many genuinely-ambiguous rows were correctly left as Exception (not force-classified). Any mismatch is a real bug — find and report root cause, not just the count.
+
+2. **Null vs. zero handling (previously flagged issue)** — confirm `expected_fee` and `delta` are properly null/undefined for Exception rows across the entire dataset now, not just spot-checked rows. Confirm this holds after the Test Data Generator feature was added (new code path, verify it wasn't reintroduced there).
+
+3. **Rule precedence/conflict handling** — confirm the fix for "multiple rules matching a transaction" (explicit specificity sorting, not JSON-order-dependent) actually produces correct results across the full dataset, including edge cases at exact threshold boundaries (e.g., exactly ₹2,000, exactly ₹20L turnover).
+
+4. **Floating-point tolerance** — confirm the Matched/Leaked boundary tolerance is applied consistently everywhere fee comparisons happen (per-row classification, batch structural audits, agent exposure calculations) — check for any place still doing exact equality comparison.
+
+5. **Batch structural audits (R11/R12) correctness** — verify the Blended-MDR and MCC-misclassification aggregate calculations are mathematically correct against the actual dataset (recompute independently and compare), not just "produces a plausible-looking number."
+
+6. **Agent grouping and prioritization** — verify groups are being formed on genuinely shared root causes (not just coincidentally similar rule IDs), and that the priority score formula (exposure × confidence × recurrence × controllability) is actually being computed as designed, not a placeholder/simplified stand-in. Report the actual formula/weights currently implemented.
+
+7. **LLM diagnosis grounding and reliability** — confirm the multi-routing/grouped-call approach eliminated the original rate-limit failures (test with the full ~106-item flagged/exception set, report actual success rate). Confirm diagnoses are grounded to the specific group's real data (spot-check several against raw transactions) and that illustrative vs. sourced rules are still correctly distinguished in LLM output language.
+
+8. **Case lifecycle correctness** — verify case status transitions (OPEN → INVESTIGATING → ACTION_RECOMMENDED → AWAITING_HUMAN_APPROVAL → MONITORING → IMPROVED/ESCALATED → CLOSED) actually follow the intended logic, and that the approve/reject endpoints correctly update state (tie this to Audit 2's Stage Remediation fix — confirm the wiring actually works backend-side, not just that the endpoint exists).
+
+9. **Baseline/effectiveness comparison accuracy** — verify percent-change and improved/worsened/unchanged determinations are mathematically correct and consistently signed (this directly follows up on the earlier "+17.1%" / "-14.29%" direction-bug fixes — confirm those fixes are correct across all metrics, not just the ones originally flagged).
+
+10. **Test Data Generator correctness** — verify the configurable injection rates (RuPay-credit-on-UPI leak rate, L2/L3 downgrade rate, MCC misclassification rate, exception rate) actually produce datasets matching the requested rates within reasonable statistical tolerance, and that the ₹1,00,000 amount range doesn't break turnover-tier-dependent rules (R7/R8) or any other range-dependent logic.
+
+11. **Performance/efficiency** — report actual end-to-end processing time for a full 500-transaction batch (upload → classification → agent pipeline → case generation), and flag anything unexpectedly slow given the buildathon demo context.
+
+## Constraints
+- Investigate and test against real data — run actual code, don't estimate.
+- Do not fix anything in this pass — report only.
+- For each item: state pass/fail with evidence (actual numbers, specific examples), and for any fail, root cause + proposed fix.
+
+## Output
+Concise findings list, numbered to match above. Stop after reporting.

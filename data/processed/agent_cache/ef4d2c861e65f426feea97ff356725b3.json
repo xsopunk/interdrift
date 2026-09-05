@@ -1,10 +1,10 @@
 {
   "group_id": "GRP_LEAKED_R4_RuPay_credit_UPI",
-  "root_cause": "Incorrect fee configuration for RuPay credit UPI transactions",
-  "diagnosis": "The charged fees consistently exceed the modeled expected fees, indicating the acquirer/gateway is applying a higher MDR rate than the benchmark for RuPay credit UPI (source_status is illustrative, so the comparison uses a modeled benchmark).",
-  "recommended_action": "audit_gateway_fee_config",
-  "action_rationale": "Auditing the gateway's fee configuration will identify and correct the misapplied MDR rate.",
+  "root_cause": "Systematic overcharging on RuPay Credit on UPI transactions resulting in an excess fee leak across 4 transactions.",
+  "diagnosis": "The acquirer is applying a higher MDR than expected for RuPay Credit on UPI transactions, resulting in a total leakage of Rs 189.53. Note that this comparison relies on an illustrative modeled benchmark.",
+  "recommended_action": "request_mdr_refund",
+  "action_rationale": "Requesting a refund for the overcharged MDR is the direct mechanism to recover the Rs 189.53 in excess fees deducted by the acquirer.",
   "confidence_level": "high",
-  "human_approval_required": false,
-  "provider": "Groq High-Speed"
+  "human_approval_required": true,
+  "provider": "Gemini Flash"
 }

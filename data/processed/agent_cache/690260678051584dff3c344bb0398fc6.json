@@ -1,10 +1,10 @@
 {
   "group_id": "GRP_LEAKED_R5_PPI_wallet_UPI",
-  "root_cause": "Fee rules for PPI wallet UPI transactions are misconfigured, causing fees where regulation mandates zero.",
-  "diagnosis": "The gateway applied a non\u2011zero MDR to PPI wallet UPI payments, resulting in overcharges of Rs\u202f14.93, Rs\u202f9.58 and Rs\u202f19.42 respectively.",
+  "root_cause": "Transactions via PPI Wallet UPI were incorrectly assessed MDR fees despite an expected zero fee rate.",
+  "diagnosis": "The gateway charged Rs 43.93 across 3 PPI Wallet UPI transactions where the expected MDR is Rs 0.00, indicating an incorrect fee configuration or erroneous billing logic by the acquirer.",
   "recommended_action": "request_mdr_refund",
-  "action_rationale": "Refunding the overcharged MDR directly recovers the excess fees incurred.",
+  "action_rationale": "Requesting a refund directly recovers the overcharged MDR fees resulting from the gateway's improper billing on zero-rated PPI Wallet UPI transactions.",
   "confidence_level": "high",
   "human_approval_required": true,
-  "provider": "Groq High-Speed"
+  "provider": "Gemini Flash"
 }

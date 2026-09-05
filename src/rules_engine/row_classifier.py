@@ -61,8 +61,11 @@ def compute_expected_fee(row: pd.Series, rule: Dict[str, Any]) -> float:
         fee = amount * (val / 100.0)
         return round(min(fee, cap), 2)
     elif fee_type == "downgrade_penalty":
-        # Commercial card base benchmark (2.0%) + penalty (0.80%)
-        return round(amount * ((2.0 + val) / 100.0), 2)
+        # Commercial card base benchmark rate (2.0% or contracted flat rate)
+        # The merchant should receive this rate if L2/L3 data were provided.
+        # Downgrade penalty (val = 0.80%) charged on top is the leak delta.
+        base_rate = float(row.get("contracted_flat_rate", 0.02)) if row.get("contracted_flat_rate") is not None else 0.02
+        return round(amount * base_rate, 2)
     elif fee_type == "contract_benchmark":
         return round(amount * (val / 100.0), 2)
     return 0.0

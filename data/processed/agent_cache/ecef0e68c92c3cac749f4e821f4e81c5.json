@@ -1,10 +1,10 @@
 {
   "group_id": "GRP_STRUCTURAL_R12_MCC_MISMATCH",
-  "root_cause": "MCC misclassification in gateway configuration causing interchange rate downgrades.",
-  "diagnosis": "The illustrative model shows the gateway is using an MCC other than the expected 5045 for a B2B wholesale merchant, leading to higher fees due to downgraded interchange pricing.",
+  "root_cause": "Merchant Category Code (MCC) misclassification in gateway configuration leading to higher pricing.",
+  "diagnosis": "The merchant's transactions are incurring interchange downgrades because the gateway configuration does not match the registered B2B wholesale MCC 5045. Note that comparison figures use an illustrative modeled benchmark.",
   "recommended_action": "correct_mcc_mapping",
-  "action_rationale": "Aligning the gateway's MCC to the correct 5045 will stop downgrade penalties and lower settlement fees.",
+  "action_rationale": "Updating the gateway configuration to the correct registered MCC 5045 will align processing fees with standard B2B wholesale interchange rates.",
   "confidence_level": "high",
-  "human_approval_required": false,
-  "provider": "Groq High-Speed"
+  "human_approval_required": true,
+  "provider": "Gemini Flash"
 }

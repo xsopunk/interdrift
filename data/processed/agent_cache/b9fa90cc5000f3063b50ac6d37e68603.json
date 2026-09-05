@@ -1,10 +1,10 @@
 {
   "group_id": "GRP_LEAKED_R10_RuPay_debit",
-  "root_cause": "Missing Level\u202f2/3 commercial card data causing transactions to be downgraded to a lower\u2011fee pricing tier.",
-  "diagnosis": "Because the merchant does not supply L2/L3 data for RuPay debit transactions, the acquirer routes them as non\u2011commercial, resulting in fees that are significantly lower than the modeled commercial\u2011rate expectation (e.g., Rs\u202f30.63 vs Rs\u202f107.21).",
-  "recommended_action": "supply_l2_l3_data",
-  "action_rationale": "Providing the required L2/L3 data will keep the transactions in the commercial pricing tier, eliminating the fee leakage.",
+  "root_cause": "The gateway charged lower fees than expected for RuPay debit transactions, indicating a potential under-billing or commercial card level processing mismatch against the modeled benchmark.",
+  "diagnosis": "Across 9 RuPay debit transactions, the merchant was billed Rs 30.63 to Rs 182.91 versus an expected benchmark fee of Rs 107.21 to Rs 640.17, creating a negative delta exposure of Rs -2,018.31. Note that source_status is illustrative, meaning this comparison relies on a modeled benchmark rather than explicit contracted terms.",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "Auditing the gateway fee configuration will verify whether the lower billed MDR rates are correct per contract or if the gateway is misapplying pricing rules.",
   "confidence_level": "medium",
-  "human_approval_required": false,
-  "provider": "Groq High-Speed"
+  "human_approval_required": true,
+  "provider": "Gemini Flash"
 }
