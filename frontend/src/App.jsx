@@ -26,6 +26,7 @@ export default function App() {
   const [isTestDataModalOpen, setIsTestDataModalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("overview");
   const [caseStatusFilter, setCaseStatusFilter] = useState("ALL");
+  const [selectedCaseId, setSelectedCaseId] = useState(null);
 
   const loadAllData = async () => {
     try {
@@ -227,6 +228,11 @@ export default function App() {
                   <AgentRecommendationCard
                     cases={agentData.cases}
                     selectedStatusFilter={caseStatusFilter}
+                    selectedCaseId={selectedCaseId}
+                    onViewTransactions={(caseId) => {
+                      setSelectedCaseId(caseId);
+                      setActiveSection("remediation");
+                    }}
                     onClearFilter={() => setCaseStatusFilter("ALL")}
                     onApprove={handleApprove}
                     onReject={handleReject}
@@ -240,7 +246,16 @@ export default function App() {
           {activeSection === "remediation" && (
             <div className="space-y-8 animate-in fade-in duration-200">
               <section>
-                <RemediationDeck offenders={top_offenders} />
+                <RemediationDeck
+                  offenders={top_offenders}
+                  cases={agentData?.cases || []}
+                  selectedCaseId={selectedCaseId}
+                  onClearCaseFilter={() => setSelectedCaseId(null)}
+                  onGoToCase={(caseId) => {
+                    setSelectedCaseId(caseId);
+                    setActiveSection("governance");
+                  }}
+                />
               </section>
 
               <section>

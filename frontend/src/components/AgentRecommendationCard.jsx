@@ -24,7 +24,15 @@ const STATUS_BADGE = {
   ESCALATED: { label: "Escalated", color: "text-red-500 bg-red-500/10 border-red-500/20" },
 };
 
-export default function AgentRecommendationCard({ cases = [], selectedStatusFilter = "ALL", onClearFilter, onApprove, onReject }) {
+export default function AgentRecommendationCard({
+  cases = [],
+  selectedStatusFilter = "ALL",
+  selectedCaseId = null,
+  onViewTransactions,
+  onClearFilter,
+  onApprove,
+  onReject
+}) {
   const [expandedId, setExpandedId] = useState(null);
 
   // Filter cases by active status selection and sort by priority rank
@@ -75,6 +83,7 @@ export default function AgentRecommendationCard({ cases = [], selectedStatusFilt
         ) : (
           topCases.map((c) => {
           const isExpanded = expandedId === c.case_id;
+          const isSelected = selectedCaseId === c.case_id;
           const badge = STATUS_BADGE[c.status] || STATUS_BADGE.INVESTIGATING;
           const actionLabel = ACTION_LABELS[c.recommended_action] || c.recommended_action;
           const isAwaiting = c.status === "AWAITING_HUMAN_APPROVAL";
@@ -88,7 +97,9 @@ export default function AgentRecommendationCard({ cases = [], selectedStatusFilt
             <div
               key={c.case_id}
               className={`rounded-lg border transition-all ${
-                isAwaiting
+                isSelected
+                  ? "border-primary ring-2 ring-primary/40 bg-primary/5"
+                  : isAwaiting
                   ? "border-purple-500/30 bg-purple-500/5"
                   : "border-border bg-card"
               }`}
@@ -152,7 +163,7 @@ export default function AgentRecommendationCard({ cases = [], selectedStatusFilt
                   </div>
 
                   {/* Recommended Action */}
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-secondary/50 border border-border">
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-secondary/50 border border-border flex-wrap gap-2">
                     <div>
                       <span className="text-[10px] font-mono text-muted-foreground uppercase">Recommended Action</span>
                       <p className="text-xs font-semibold text-foreground mt-0.5">{actionLabel}</p>
@@ -160,12 +171,23 @@ export default function AgentRecommendationCard({ cases = [], selectedStatusFilt
                         {c.transaction_count || 0} transactions · Confidence: {c.confidence || "—"}
                       </p>
                     </div>
-                    {c.human_approval_required && (
-                      <div className="flex items-center gap-1 text-[10px] text-purple-500 font-mono">
-                        <ShieldAlert className="w-3 h-3" />
-                        <span>Requires Approval</span>
-                      </div>
-                    )}
+                    <div className="flex items-center gap-2">
+                      {c.human_approval_required && (
+                        <div className="flex items-center gap-1 text-[10px] text-purple-500 font-mono">
+                          <ShieldAlert className="w-3 h-3" />
+                          <span>Requires Approval</span>
+                        </div>
+                      )}
+                      {onViewTransactions && (
+                        <button
+                          type="button"
+                          onClick={() => onViewTransactions(c.case_id)}
+                          className="flex items-center gap-1 px-2.5 py-1 rounded bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 text-xs font-medium font-mono transition-colors cursor-pointer"
+                        >
+                          <span>View {c.transaction_count || 0} Transactions →</span>
+                        </button>
+                      )}
+                    </div>
                   </div>
 
                   {/* Approval Buttons (only for AWAITING_HUMAN_APPROVAL) */}
