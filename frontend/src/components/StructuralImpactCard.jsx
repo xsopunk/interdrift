@@ -51,9 +51,9 @@ export default function StructuralImpactCard({ mccAmount = 0, structuralAmount =
       <div className="pt-4 border-t border-border flex items-center justify-between text-[11px] text-muted-foreground font-mono">
         <span className="flex items-center gap-1">
           <ShieldAlert className="w-3.5 h-3.5 text-primary"/>
-          Pre-negotiation audit
+          Contract Review Evidence
         </span>
-        <span>Reclaimable</span>
+        <span className="text-foreground font-semibold">Potential Margin Recovery</span>
       </div>
     </div>
   );
