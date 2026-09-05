@@ -59,7 +59,7 @@ export default function AgentWorkflowTracker({ agentData, report }) {
             Agent Orchestrator Pipeline
           </h3>
           <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-secondary text-muted-foreground border border-border">
-            {isAnimating ? "Executing Pipeline..." : "Idle · 5/5 Steps Verified"}
+            {isAnimating ? "Replaying Stage Sequence..." : "Pipeline Architecture · 5 Stages Verified"}
           </span>
         </div>
 
