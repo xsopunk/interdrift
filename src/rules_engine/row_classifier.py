@@ -98,7 +98,14 @@ def classify_row(row: pd.Series, rules: List[Dict[str, Any]]) -> Dict[str, Any]:
             "note": "No matching statutory rule criteria found for transaction profile."
         }
 
-    # If multiple match, prioritize specific tiered sub-rules (e.g. R6a-c) over general rules
+    # If multiple match, prioritize by condition specificity (most condition fields = most specific).
+    # Fields like amount_threshold are auxiliary to amount_operator, not independent conditions.
+    _AUX_FIELDS = {"amount_threshold", "mismatch_detected", "high_cost_rail_used", "pricing_model"}
+    def _specificity(r):
+        cond = r.get("condition", {})
+        return sum(1 for k in cond if k not in _AUX_FIELDS)
+
+    matching_rules.sort(key=_specificity, reverse=True)
     rule = matching_rules[0]
     expected_fee = compute_expected_fee(row, rule)
     actual_fee = float(row.get("fee_charged", 0.0))
