@@ -24,6 +24,27 @@ const STATUS_BADGE = {
   ESCALATED: { label: "Escalated", color: "text-red-500 bg-red-500/10 border-red-500/20" },
 };
 
+const STATUS_CONTEXTS = {
+  MONITORING: (caseList) => {
+    const sampleCase = caseList.find((c) => c.status === "MONITORING") || caseList[0];
+    const timestamp = sampleCase?.status_history?.find((h) => h.status === "MONITORING")?.timestamp || sampleCase?.created_at;
+    const dateStr = timestamp
+      ? new Date(timestamp).toLocaleDateString("en-IN", { month: "short", day: "numeric", year: "numeric" })
+      : "active baseline";
+    return `Tracking root-cause remediations against baseline captured on ${dateStr}.`;
+  },
+  AWAITING_HUMAN_APPROVAL: () =>
+    "Cases requiring operator approval to stage automated gateway configuration & contract remediation.",
+  ACTION_RECOMMENDED: () =>
+    "Agent has completed LLM root-cause diagnosis and generated high-confidence remediation actions.",
+  INVESTIGATING: () =>
+    "Agent is actively evaluating anomaly clusters against statutory rule taxonomy and contract terms.",
+  ESCALATED: () =>
+    "Human operator rejected initial recommendation or compliance threshold breached; pending manual review.",
+  IMPROVED: () =>
+    "Remediation confirmed effective; margin leakage reduced against initial baseline snapshot.",
+};
+
 export default function AgentRecommendationCard({
   cases = [],
   selectedStatusFilter = "ALL",
@@ -45,32 +66,48 @@ export default function AgentRecommendationCard({
 
   if (cases.length === 0) return null;
 
+  const activeContext = STATUS_CONTEXTS[selectedStatusFilter]
+    ? typeof STATUS_CONTEXTS[selectedStatusFilter] === "function"
+      ? STATUS_CONTEXTS[selectedStatusFilter](filteredCases)
+      : STATUS_CONTEXTS[selectedStatusFilter]
+    : null;
+
   return (
     <div className="rounded-xl border border-border bg-card p-5 shadow-sm space-y-4">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border">
-        <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-primary/10 text-primary border border-primary/20">
-            <Bot className="w-4 h-4" />
+      <div className="flex flex-col gap-3 pb-3 border-b border-border">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <div className="p-1.5 rounded-lg bg-primary/10 text-primary border border-primary/20">
+              <Bot className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-foreground">Agent Priority Queue</h3>
+              <p className="text-[11px] text-muted-foreground">
+                Root-cause clusters ranked by recoverable exposure, regulatory confidence, recurrence & controllability
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-sm font-bold text-foreground">Agent Priority Queue</h3>
-            <p className="text-[11px] text-muted-foreground">
-              Root-cause clusters ranked by recoverable exposure, regulatory confidence, recurrence & controllability
-            </p>
-          </div>
+
+          {selectedStatusFilter !== "ALL" && (
+            <button
+              onClick={onClearFilter}
+              className="text-[10px] text-primary hover:underline font-mono font-bold cursor-pointer self-start sm:self-auto"
+            >
+              Clear Filter ✕
+            </button>
+          )}
         </div>
 
         {selectedStatusFilter !== "ALL" && (
-          <div className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-secondary border border-border text-xs">
-            <span className="text-[11px] text-muted-foreground font-mono">
-              Filtered: <strong className="text-foreground">{STATUS_BADGE[selectedStatusFilter]?.label || selectedStatusFilter}</strong> ({topCases.length})
-            </span>
-            <button
-              onClick={onClearFilter}
-              className="text-[10px] text-primary hover:underline font-mono font-bold cursor-pointer"
-            >
-              Clear Filter
-            </button>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-2.5 rounded-lg bg-secondary/70 border border-border text-xs">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className={`text-[10px] font-mono px-2 py-0.5 rounded border font-medium ${STATUS_BADGE[selectedStatusFilter]?.color || "text-foreground"}`}>
+                {STATUS_BADGE[selectedStatusFilter]?.label || selectedStatusFilter} ({topCases.length})
+              </span>
+              <span className="text-[11px] text-muted-foreground font-sans">
+                {activeContext}
+              </span>
+            </div>
           </div>
         )}
       </div>
