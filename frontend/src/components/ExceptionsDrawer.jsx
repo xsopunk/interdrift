@@ -28,7 +28,7 @@ export default function ExceptionsDrawer({ exceptions = [] }) {
               </span>
             </div>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Transactions with missing sub-instrument tags or conflicting metadata, presented transparently
+              Transactions with missing payment routing tags or unverified fee structures, held for operator inspection
             </p>
           </div>
         </div>
@@ -56,11 +56,11 @@ export default function ExceptionsDrawer({ exceptions = [] }) {
                 <div className="flex items-center gap-2 font-mono">
                   <span className="font-semibold text-foreground text-sm">{item.transaction_id}</span>
                   <span className="text-[10px] px-1.5 py-0.2 rounded bg-secondary text-secondary-foreground border border-border">
-                    Exception
+                    Unverified Tag
                   </span>
                 </div>
                 <span className="text-foreground/90 text-right sm:text-left font-sans text-xs">
-                  {item.note || "Missing or incomplete sub_instrument metadata."}
+                  {item.note || "Missing or incomplete routing metadata from aggregator feed."}
                 </span>
               </div>
             ))}
