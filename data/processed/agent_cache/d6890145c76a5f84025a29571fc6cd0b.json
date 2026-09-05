@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_Mastercard_credit",
+  "root_cause": "Mastercard credit transactions suffered fee downgrades due to missing Level 2/3 commercial transaction data.",
+  "diagnosis": "A total of 7 commercial Mastercard credit transactions experienced fee downgrades resulting in an overcharge exposure of Rs 519.76. Note that this comparison relies on an illustrative modeled benchmark.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing Level 2 and Level 3 transaction data ensures commercial cards qualify for lower interchange rates and prevents costly downgrades.",
+  "confidence_level": "medium",
+  "human_approval_required": true,
+  "provider": "Gemini Flash"
+}

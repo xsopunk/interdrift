@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_RuPay_debit",
+  "root_cause": "Transactions experienced L2/L3 commercial card downgrades on RuPay debit transactions resulting in undercharged MDR based on an illustrative benchmark.",
+  "diagnosis": "A pattern of commercial card downgrades was detected across 9 RuPay debit transactions, causing a variance between charged fees and modeled expected rates. Note that the source status is illustrative, indicating the baseline uses a modeled benchmark.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing Level 2 and Level 3 data fields for commercial card processing prevents transaction downgrades and ensures accurate processing fees.",
+  "confidence_level": "medium",
+  "human_approval_required": true,
+  "provider": "Gemini Flash"
+}

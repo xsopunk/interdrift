@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_Visa_credit",
+  "root_cause": "Visa commercial credit card transactions are experiencing fee downgrades due to missing Level 2/3 enhanced transaction data.",
+  "diagnosis": "The merchant was charged higher interchange fees totaling Rs 683.28 across 7 transactions because commercial card Level 2/3 line-item data was not passed to the processor, triggering a downgrade penalty. Note that benchmark comparisons are based on an illustrative source status.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing Level 2 and Level 3 data fields during authorization satisfies commercial card qualification requirements and prevents fee downgrades.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Gemini Flash"
+}
