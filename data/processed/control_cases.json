@@ -1,12 +1,12 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-09-05T06:17:10.984481",
+  "last_updated": "2026-09-05T06:23:15.277120",
   "total_cases": 9,
   "cases": [
     {
-      "case_id": "CASE_61624F9C",
-      "created_at": "2026-09-05T06:17:10.983483",
-      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "case_id": "CASE_BB822E3E",
+      "created_at": "2026-09-05T06:23:15.277120",
+      "last_evaluated_at": "2026-09-05T06:23:15.277120",
       "group_id": "GRP_STRUCTURAL_R11_BLENDED_MDR",
       "group_type": "structural",
       "root_cause": "The merchant is on a blended pricing model that applies a 2.0% rate, which is higher than the true underlying network cost of 1.75%.",
@@ -29,7 +29,7 @@
       "status_history": [
         {
           "status": "AWAITING_HUMAN_APPROVAL",
-          "timestamp": "2026-09-05T06:17:10.983483",
+          "timestamp": "2026-09-05T06:23:15.277120",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -57,9 +57,9 @@
       "agent_reasoning": "This rate mismatch causes the merchant to be overcharged by Rs\u202f4,989.21 (actual flat fees Rs\u202f39,783.09 vs. network cost Rs\u202f34,793.88)."
     },
     {
-      "case_id": "CASE_DC5E82F8",
-      "created_at": "2026-09-05T06:17:10.983483",
-      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "case_id": "CASE_72300ECF",
+      "created_at": "2026-09-05T06:23:15.277120",
+      "last_evaluated_at": "2026-09-05T06:23:15.277120",
       "group_id": "GRP_STRUCTURAL_R12_MCC_MISMATCH",
       "group_type": "structural",
       "root_cause": "MCC misclassification in gateway configuration",
@@ -82,7 +82,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T06:17:10.983483",
+          "timestamp": "2026-09-05T06:23:15.277120",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -107,9 +107,9 @@
       "agent_reasoning": "The gateway is using an incorrect MCC instead of the expected 5045, causing interchange downgrades and higher fees; this assessment uses an illustrative benchmark model."
     },
     {
-      "case_id": "CASE_E2A74B28",
-      "created_at": "2026-09-05T06:17:10.983483",
-      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "case_id": "CASE_BC2642FA",
+      "created_at": "2026-09-05T06:23:15.277120",
+      "last_evaluated_at": "2026-09-05T06:23:15.277120",
       "group_id": "GRP_LEAKED_R3_RuPay_credit_UPI",
       "group_type": "row_leak",
       "root_cause": "Fee configuration applies MDR to fee\u2011exempt RuPay credit UPI transactions",
@@ -138,7 +138,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T06:17:10.983483",
+          "timestamp": "2026-09-05T06:23:15.277120",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -181,9 +181,9 @@
       "agent_reasoning": "The gateway/acquirer is incorrectly charging a standard MDR on RuPay credit UPI, which should be fee\u2011free, leading to overcharges on each transaction."
     },
     {
-      "case_id": "CASE_EDDB3EE9",
-      "created_at": "2026-09-05T06:17:10.983483",
-      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "case_id": "CASE_F2B23359",
+      "created_at": "2026-09-05T06:23:15.277120",
+      "last_evaluated_at": "2026-09-05T06:23:15.277120",
       "group_id": "GRP_LEAKED_R5_PPI_wallet_UPI",
       "group_type": "row_leak",
       "root_cause": "Fee rules incorrectly applied to fee\u2011free PPI wallet UPI transactions.",
@@ -210,7 +210,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T06:17:10.983483",
+          "timestamp": "2026-09-05T06:23:15.277120",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -253,9 +253,9 @@
       "agent_reasoning": "The gateway/acquirer fee configuration includes a charge for PPI wallet UPI, causing non\u2011zero fees where regulations mandate zero fees."
     },
     {
-      "case_id": "CASE_BB2DD3FC",
-      "created_at": "2026-09-05T06:17:10.983483",
-      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "case_id": "CASE_B5AF199C",
+      "created_at": "2026-09-05T06:23:15.277120",
+      "last_evaluated_at": "2026-09-05T06:23:15.277120",
       "group_id": "GRP_LEAKED_R4_RuPay_credit_UPI",
       "group_type": "row_leak",
       "root_cause": "Misconfigured fee schedule for RuPay credit UPI transactions",
@@ -283,7 +283,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T06:17:10.983483",
+          "timestamp": "2026-09-05T06:23:15.277120",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -326,9 +326,9 @@
       "agent_reasoning": "The gateway/acquirer is applying a higher MDR than the expected rate, resulting in consistent overcharges across the sample transactions"
     },
     {
-      "case_id": "CASE_DD8C8445",
-      "created_at": "2026-09-05T06:17:10.983483",
-      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "case_id": "CASE_6D544623",
+      "created_at": "2026-09-05T06:23:15.277120",
+      "last_evaluated_at": "2026-09-05T06:23:15.277120",
       "group_id": "GRP_LEAKED_R6b_PPI_wallet_UPI",
       "group_type": "row_leak",
       "root_cause": "Overcharged MDR fee on PPI wallet UPI transaction",
@@ -353,7 +353,7 @@
       "status_history": [
         {
           "status": "AWAITING_HUMAN_APPROVAL",
-          "timestamp": "2026-09-05T06:17:10.983483",
+          "timestamp": "2026-09-05T06:23:15.277120",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -382,9 +382,9 @@
       "agent_reasoning": "The fee charged (Rs\u202f49.18) exceeds the expected fee (Rs\u202f40.24) by Rs\u202f8.94, indicating the acquirer applied an incorrect higher rate for this transaction type."
     },
     {
-      "case_id": "CASE_B670BBE4",
-      "created_at": "2026-09-05T06:17:10.983483",
-      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "case_id": "CASE_4F63053D",
+      "created_at": "2026-09-05T06:23:15.277120",
+      "last_evaluated_at": "2026-09-05T06:23:15.277120",
       "group_id": "GRP_FLAGGED_R9",
       "group_type": "flagged_review",
       "root_cause": "Transactions are flagged for manual review due to an illustrative rule trigger, despite zero monetary fee discrepancy across the group.",
@@ -450,7 +450,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T06:17:10.983483",
+          "timestamp": "2026-09-05T06:23:15.277120",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -493,9 +493,9 @@
       "agent_reasoning": "A total of 42 transactions were flagged under rule R9 using an illustrative modeled benchmark; however, the actual fee charged matches the expected fee exactly with a total exposure of Rs 0.00."
     },
     {
-      "case_id": "CASE_99E38D1F",
-      "created_at": "2026-09-05T06:17:10.983483",
-      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "case_id": "CASE_A0BE25AD",
+      "created_at": "2026-09-05T06:23:15.277120",
+      "last_evaluated_at": "2026-09-05T06:23:15.277120",
       "group_id": "GRP_LEAKED_R10_RuPay_debit",
       "group_type": "row_leak",
       "root_cause": "Missing Level\u202f2/3 transaction data caused commercial RuPay debit transactions to be downgraded to a lower\u2011rate tier.",
@@ -528,7 +528,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T06:17:10.983483",
+          "timestamp": "2026-09-05T06:23:15.277120",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -571,9 +571,9 @@
       "agent_reasoning": "Because the gateway did not receive L2/L3 details, the transactions were processed at a basic interchange rate, resulting in fees far below the expected commercial\u2011rate benchmark (illustrative model)."
     },
     {
-      "case_id": "CASE_68F302EB",
-      "created_at": "2026-09-05T06:17:10.983483",
-      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "case_id": "CASE_D7EE8DF9",
+      "created_at": "2026-09-05T06:23:15.277120",
+      "last_evaluated_at": "2026-09-05T06:23:15.277120",
       "group_id": "GRP_EXCEPTION_MISSING_TAG",
       "group_type": "exception",
       "root_cause": "Transactions lack required tagging (e.g., MCC) causing the fee engine to skip fee assessment.",
@@ -625,7 +625,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T06:17:10.983483",
+          "timestamp": "2026-09-05T06:23:15.277120",
           "reason": "Case created from agent investigation"
         }
       ],
