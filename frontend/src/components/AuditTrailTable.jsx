@@ -7,6 +7,42 @@ import {
   FileSpreadsheet 
 } from "lucide-react";
 
+const RULE_METADATA = {
+  R1: "Bank UPI (0% Statutory Cap)",
+  R2: "RuPay Debit (0% Statutory Cap)",
+  R3: "RuPay Credit UPI ≤ ₹2k (0% Cap)",
+  R4: "RuPay Credit UPI > ₹2k (1.5% Cap)",
+  R5: "PPI Wallet UPI ≤ ₹2k (0% Cap)",
+  R6b: "PPI Wallet UPI > ₹2k (0.5% Cap)",
+  R8: "Non-RuPay Debit (RBI ₹1k Cap)",
+  R9: "Credit Card Rate (Unverified Tier)",
+  R10: "L2/L3 Downgrade Penalty",
+  R11: "Blended Flat-Rate Spread",
+  R12: "MCC Rate Misalignment",
+};
+
+const FILTER_TABS = [
+  { id: "ALL", label: "All Records" },
+  { id: "Leaked", label: "Fee Leaks" },
+  { id: "Matched", label: "Compliant" },
+  { id: "Flagged_For_Review", label: "Flagged for Review" },
+  { id: "Exception", label: "Exceptions" },
+];
+
+const formatSubInstrument = (val) => {
+  if (!val) return <span className="text-amber-600 dark:text-amber-400 italic">Missing Tag</span>;
+  const mapping = {
+    bank_UPI: "Bank UPI",
+    RuPay_debit: "RuPay Debit",
+    RuPay_credit_UPI: "RuPay Credit (UPI)",
+    PPI_wallet_UPI: "PPI Wallet (UPI)",
+    Visa_credit: "Visa Credit",
+    Mastercard_credit: "Mastercard Credit",
+    Debit_non_rupay: "Non-RuPay Debit",
+  };
+  return mapping[val] || val.replace(/_/g, " ");
+};
+
 export default function AuditTrailTable({ rows = [] }) {
   const [filter, setFilter] = useState("ALL");
   const [searchTerm, setSearchTerm] = useState("");
@@ -96,7 +132,7 @@ export default function AuditTrailTable({ rows = [] }) {
             </h3>
           </div>
           <p className="text-xs text-muted-foreground mt-0.5">
-            Deterministic rule verifications accompanied by grounded Layer 2 AI diagnostic explanations
+            Deterministic rule verifications accompanied by grounded diagnostic explanations
           </p>
         </div>
 
@@ -126,17 +162,17 @@ export default function AuditTrailTable({ rows = [] }) {
 
         {/* Classification Filter Tabs */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
-          {["ALL", "Leaked", "Matched", "Exception", "Flagged_For_Review"].map((cat) => (
+          {FILTER_TABS.map((tab) => (
             <button
-              key={cat}
-              onClick={() => handleFilterChange(cat)}
-              className={`px-3 py-1.5 rounded-md text-xs font-mono transition-colors cursor-pointer shrink-0 border ${
-                filter === cat
-                  ? "bg-primary text-primary-foreground border-primary"
+              key={tab.id}
+              onClick={() => handleFilterChange(tab.id)}
+              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer shrink-0 border ${
+                filter === tab.id
+                  ? "bg-primary text-primary-foreground border-primary font-semibold"
                   : "bg-secondary text-muted-foreground border-border hover:text-foreground"
               }`}
             >
-              {cat}
+              {tab.label}
             </button>
           ))}
         </div>
@@ -149,8 +185,8 @@ export default function AuditTrailTable({ rows = [] }) {
             <tr>
               <th className="py-3 px-4">Txn ID</th>
               <th className="py-3 px-3">Classification</th>
-              <th className="py-3 px-3">Rule</th>
-              <th className="py-3 px-3">Sub-Instrument</th>
+              <th className="py-3 px-3">Rule & Citation</th>
+              <th className="py-3 px-3">Payment Instrument</th>
               <th className="py-3 px-3 text-right">Amount</th>
               <th className="py-3 px-3 text-right">Fee Charged</th>
               <th className="py-3 px-3 text-right">Expected</th>
@@ -166,39 +202,55 @@ export default function AuditTrailTable({ rows = [] }) {
                 </td>
               </tr>
             ) : (
-              paginatedRows.map((row, idx) => (
-                <tr key={idx} className="hover:bg-secondary/40 transition-colors">
-                  <td className="py-3 px-4 font-bold text-foreground text-sm">
-                    {row.transaction_id}
-                  </td>
-                  <td className="py-3 px-3">
-                    <span className={`px-2 py-0.5 rounded text-xs font-medium border ${getBadgeStyle(row.classification)}`}>
-                      {row.classification}
-                    </span>
-                  </td>
-                  <td className="py-3 px-3 text-primary font-bold text-sm">
-                    {row.matched_rule_id || "-"}
-                  </td>
-                  <td className="py-3 px-3 text-muted-foreground font-sans text-xs">
-                    {row.sub_instrument || "-"}
-                  </td>
-                  <td className="py-3 px-3 text-right text-sm">
-                    ₹{Number(row.amount || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
-                  </td>
-                  <td className="py-3 px-3 text-right text-sm">
-                    ₹{Number(row.fee_charged || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
-                  </td>
-                  <td className="py-3 px-3 text-right text-muted-foreground text-sm">
-                    ₹{Number(row.expected_fee || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
-                  </td>
-                  <td className="py-3 px-3 text-right font-bold text-destructive dark:text-red-400 text-sm">
-                    {row.delta ? `+₹${Number(row.delta).toLocaleString("en-IN", { minimumFractionDigits: 2 })}` : "₹0.00"}
-                  </td>
-                  <td className="py-3 px-4 font-sans text-sm leading-relaxed text-foreground/90">
-                    {row.explanation || row.note || "-"}
-                  </td>
-                </tr>
-              ))
+              paginatedRows.map((row, idx) => {
+                const ruleDesc = RULE_METADATA[row.matched_rule_id];
+
+                return (
+                  <tr key={idx} className="hover:bg-secondary/40 transition-colors">
+                    <td className="py-3 px-4 font-bold text-foreground text-sm">
+                      {row.transaction_id}
+                    </td>
+                    <td className="py-3 px-3">
+                      <span className={`px-2 py-0.5 rounded text-xs font-medium border ${getBadgeStyle(row.classification)}`}>
+                        {row.classification ? row.classification.replace(/_/g, " ") : "-"}
+                      </span>
+                    </td>
+                    <td className="py-3 px-3">
+                      <div className="flex flex-col">
+                        <span 
+                          className="font-mono text-xs font-bold text-primary cursor-help"
+                          title={ruleDesc ? `Rule ${row.matched_rule_id}: ${ruleDesc}` : `Rule ${row.matched_rule_id}`}
+                        >
+                          {row.matched_rule_id && row.matched_rule_id !== "NONE" ? `Rule ${row.matched_rule_id}` : "Unclassified"}
+                        </span>
+                        {ruleDesc && (
+                          <span className="text-[10px] font-sans text-muted-foreground truncate max-w-[130px]">
+                            {ruleDesc}
+                          </span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="py-3 px-3 text-foreground font-sans text-xs">
+                      {formatSubInstrument(row.sub_instrument)}
+                    </td>
+                    <td className="py-3 px-3 text-right text-sm">
+                      ₹{Number(row.amount || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
+                    </td>
+                    <td className="py-3 px-3 text-right text-sm">
+                      ₹{Number(row.fee_charged || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
+                    </td>
+                    <td className="py-3 px-3 text-right text-muted-foreground text-sm">
+                      ₹{Number(row.expected_fee || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
+                    </td>
+                    <td className="py-3 px-3 text-right font-bold text-destructive dark:text-red-400 text-sm">
+                      {row.delta ? `+₹${Number(row.delta).toLocaleString("en-IN", { minimumFractionDigits: 2 })}` : "₹0.00"}
+                    </td>
+                    <td className="py-3 px-4 font-sans text-sm leading-relaxed text-foreground/90">
+                      {row.explanation || row.note || "-"}
+                    </td>
+                  </tr>
+                );
+              })
             )}
           </tbody>
         </table>
