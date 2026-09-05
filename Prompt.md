@@ -1,27 +1,18 @@
-# AUDIT PROMPT 1 of 4 — Visual & Content Completeness (Judge/Merchant POV)
+AUDIT PROMPT 2 of 4 — Visible Agentic Behavior
 
-## Context
-This is the first of four sequential audit passes covering: (1) visual/content completeness, (2) visible agentic behavior, (3) backend rigor/correctness, (4) frontend-backend wiring. This pass covers #1 only. Investigate the actual running app and code — do not assume the screenshots are the full picture.
+Goal
 
-## Goal
-Assess whether the frontend, as it currently renders, gives a judge or merchant (non-technical, no prior context) a complete, accurate, and honest picture of what the system does and found — purely from a content/visual-completeness standpoint. Do not address agentic-behavior visualization here (that's the next pass) — focus only on: is anything missing, unclear, inconsistent, or misleading in what's currently displayed.
+Assess whether the frontend actually demonstrates agentic behavior — investigation, grouping, reasoning, decision-making, and a closed action loop — rather than just displaying static labels that claim agency. Investigate actual code/behavior, don't assume.
 
-## Specific things to check (from reviewing current screenshots — verify each against live app, don't assume screenshot is current state)
+Specific things to check
+Agent Orchestration Pipeline (currently: 5 static checkmarks, "Idle · 5/5 Steps Verified") — this doesn't show reasoning happening, just a fixed completion state. Determine: does the backend actually expose per-step data (timing, input/output, intermediate results) for Grouping/Prioritization/LLM Diagnosis/Case Lifecycle/Effectiveness? If yes, propose surfacing it — e.g., expandable steps showing what each stage actually did on this run (X transactions grouped into Y clusters, Z cases prioritized, N LLM calls made, etc.), not just a checkmark. If the backend doesn't expose this granularity, flag it as a backend gap, don't fabricate frontend-only detail.
+Status badges (Monitoring/Action Ready/Escalated/Awaiting Approval) — after Audit 1's fix, clicking now filters the queue. Verify this alone is sufficient, or whether each status needs its own explanatory context when filtered (e.g., when viewing "Monitoring" cases, does the UI explain what baseline it's tracking against and current drift, not just list cases with that badge).
+"Stage Remediation" button — currently just turns green with no visible downstream effect. This is the biggest gap: it should visibly close the agentic loop. Determine what actually should happen in the data model when this is clicked (per the ControlCase status lifecycle: does it move a case to AWAITING_HUMAN_APPROVAL or ACTION_RECOMMENDED → next state?), verify if that state change exists in the backend at all, and if so, wire the frontend to: (a) actually call the backend to update case status, (b) reflect the new status somewhere the user can see (e.g., the case now appears under a different Agent Control Status count, or shows an updated timeline/history on the case card itself).
+Case → Transaction traceability — verify a user can click from a Priority Queue case down into the specific transactions that make up that case (the "orchestrated in the Agent Priority Queue above" language in Transaction Spotlights implies this relationship should be navigable, not just stated in text).
+General sweep — identify any other place where the UI implies autonomous agent activity (words like "agent," "autonomous," "diagnostic") without actual visible mechanism behind it, or any other missing feedback loop that would make a judge doubt genuine agentic behavior versus a static report with agent-flavored labels.
+Constraints
+Do not fix anything yet — investigate and report only.
+For each item: confirm what currently exists in code/data vs. what's just visual, and propose the minimal fix that makes the behavior real and visible without inventing new backend capabilities that don't exist (flag as a backend gap instead, for prioritization).
+Output
 
-1. **Header/subtitle** — "Autonomous Payment Fee Controller · Audit, Recover & Prevent Leakage" — confirm this accurately reflects everything the system now does (investigation, grouping, prioritization, case tracking, effectiveness verification), not just audit/recover/prevent. Propose a better version if it undersells or overclaims.
-2. **Agent Control Status counts (Monitoring / Action Ready / Escalated / Awaiting Approval)** — confirm each count is accurate against actual case data, and that clicking each status badge does something meaningful (see Prompt 2 for the deeper agentic-behavior fix — for this pass, just confirm/report current click behavior and whether counts themselves are correct).
-3. **Fee Leakage by Rail** — confirm every listed rail (RuPay Credit on UPI Large/Small, PPI Wallet Large/Small, Commercial Card L2/L3) has consistent, correctly-labeled tags ("Statutory Gazette," "Modeled Benchmark") — verify these tags are being applied correctly per rule's actual `source_status`, not just visually plausible.
-4. **Batch Structural Audits section** — only 2 cards shown (MCC Drift, Blended-MDR Spread) — confirm this is the full/correct set for the current dataset, not a truncated or stale view.
-5. **Agent Priority Queue case cards** — confirm the visible tag combination (Rule ID + "Modeled Benchmark"/"Statutory Gazette" + status badge) is complete and non-redundant, and that the one-line description under each title is grounded to real case data (per earlier LLM-grounding fixes), not generic filler.
-6. **Transaction Spotlights** — confirm the "10 Transaction Highlights" count matches what's actually displayed/available, and that every card's explanation text is transaction-specific (spot-check a few against raw data), not templated boilerplate.
-7. **Row-Level Audit Trail** — confirm the "RULE & CITATION" column's secondary text (e.g., "Bank UPI (0% Statutory Cap)") is dynamically generated per rule, not hardcoded per the 5 rules currently visible — must generalize to any rule. Confirm filter tabs (All Records/Fee Leaks/Compliant/Flagged for Review/Exceptions) map correctly to actual classification values and each returns correct, non-overlapping results.
-8. **Cross-page consistency** — confirm numbers that appear in multiple places (e.g., total exceptions count, total leaked amount, case counts) match exactly everywhere they're shown — no drift between the cockpit summary, the priority queue, and the audit trail.
-9. **General sweep** — identify anything else incomplete, cut off, inconsistent, or confusing from a first-time viewer's perspective that isn't listed above, including anything below the fold not captured in these screenshots.
-
-## Constraints
-- Do not fix anything yet in this response — investigate and report only.
-- For each item above: confirm correct, or report the specific issue with file/component reference and a proposed fix.
-- Do not address the "how do we show agentic behavior better" question — that's Prompt 2, coming next.
-
-## Output
-Concise findings list, one entry per item, using this pass's numbering. Stop after reporting — do not implement.
+Concise findings list. Stop after reporting.

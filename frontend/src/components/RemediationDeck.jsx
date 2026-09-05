@@ -85,7 +85,7 @@ export default function RemediationDeck({ offenders = [] }) {
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-1.5 text-[10px] font-mono text-primary uppercase font-semibold">
                     <Sparkles className="w-3 h-3"/>
-                    <span>Agent Diagnostic Verdict</span>
+                    <span>Rule Engine Verdict</span>
                   </div>
                   <p className="text-sm leading-relaxed text-foreground/90 font-sans">
                     {item.explanation || "Statutory fee discrepancy flagged by deterministic engine."}
