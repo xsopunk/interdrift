@@ -113,18 +113,20 @@ export default function CopilotSidePanel() {
 
   return (
     <>
-      {/* Persistent Floating Tab (When Closed) */}
+      {/* Persistent Floating Tab (When Closed) - Vertically Centered Sleek Pill */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed top-20 right-0 z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-l-xl bg-primary text-primary-foreground shadow-lg hover:shadow-xl hover:translate-x-[-2px] transition-all cursor-pointer border border-r-0 border-primary-foreground/20 group"
+          className="fixed top-1/2 -translate-y-1/2 right-0 z-40 flex flex-col items-center gap-2 py-3 px-1.5 rounded-l-lg bg-primary text-primary-foreground shadow-md hover:shadow-xl hover:translate-x-[-2px] transition-all cursor-pointer border border-r-0 border-primary-foreground/20 group"
           title="Open AI Finance Copilot"
         >
           <div className="relative">
-            <Bot className="w-4 h-4 group-hover:scale-110 transition-transform" />
-            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <Bot className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+            <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           </div>
-          <span className="text-xs font-semibold tracking-wide font-sans">Copilot</span>
+          <span className="[writing-mode:vertical-rl] rotate-180 text-[10px] font-bold tracking-widest font-mono uppercase text-primary-foreground/90">
+            Copilot
+          </span>
         </button>
       )}
 

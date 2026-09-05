@@ -1,7 +1,7 @@
 import React from "react";
-import { ShieldCheck, FlaskConical } from "lucide-react";
+import { ShieldCheck, FlaskConical, BookOpen } from "lucide-react";
 
-export default function Navbar({ rowCount = 0, backendStatus = "online", onOpenTestData }) {
+export default function Navbar({ rowCount = 0, backendStatus = "online", onOpenTestData, onOpenRules }) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-xl transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-4">
@@ -34,6 +34,16 @@ export default function Navbar({ rowCount = 0, backendStatus = "online", onOpenT
           >
             <FlaskConical className="w-3.5 h-3.5" />
             <span>Test Data</span>
+          </button>
+
+          {/* Audit Rules Modal Trigger */}
+          <button
+            onClick={onOpenRules}
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-zinc-800 hover:border-zinc-700 bg-zinc-900/80 hover:bg-zinc-800/80 text-zinc-200 text-xs font-medium transition-all cursor-pointer shadow-xs"
+            title="Browse Statutory Rules & Codex"
+          >
+            <BookOpen className="w-3.5 h-3.5 text-primary" />
+            <span>Audit Rules</span>
           </button>
 
           {/* Engine Status Indicator */}

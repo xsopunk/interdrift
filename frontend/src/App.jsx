@@ -15,6 +15,7 @@ import ControlEffectivenessCard from "./components/ControlEffectivenessCard";
 import AgentWorkflowTracker from "./components/AgentWorkflowTracker";
 import TestDataModal from "./components/TestDataModal";
 import CopilotSidePanel from "./components/copilot/CopilotSidePanel";
+import RulesModal from "./components/RulesModal";
 import { TrendingDown, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isTestDataModalOpen, setIsTestDataModalOpen] = useState(false);
+  const [isRulesModalOpen, setIsRulesModalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("overview");
   const [caseStatusFilter, setCaseStatusFilter] = useState("ALL");
   const [selectedCaseId, setSelectedCaseId] = useState(null);
@@ -128,6 +130,7 @@ export default function App() {
         backendStatus="online" 
         rowCount={overview.total_transactions} 
         onOpenTestData={() => setIsTestDataModalOpen(true)}
+        onOpenRules={() => setIsRulesModalOpen(true)}
       />
 
       {/* Main Container with Left Icon Sidebar */}
@@ -281,6 +284,12 @@ export default function App() {
         isOpen={isTestDataModalOpen}
         onClose={() => setIsTestDataModalOpen(false)}
         onAuditSuccess={loadAllData}
+      />
+
+      {/* Statutory Rules & Codex Modal */}
+      <RulesModal
+        isOpen={isRulesModalOpen}
+        onClose={() => setIsRulesModalOpen(false)}
       />
 
       {/* Persistent AI Finance Controller Copilot Side Panel */}
