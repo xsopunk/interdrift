@@ -114,8 +114,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative selection:bg-primary selection:text-primary-foreground transition-colors duration-200">
-      {/* Subtle Ambient Patterning */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none opacity-15 dark:opacity-20 z-0" />
+      {/* Ambient Grid Dots Patterning */}
+      <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1.2px,transparent_1.2px)] dark:bg-[radial-gradient(#3f3f46_1.2px,transparent_1.2px)] [background-size:20px_20px] pointer-events-none opacity-20 dark:opacity-35 z-0" />
 
       {/* Top Navbar */}
       <Navbar 

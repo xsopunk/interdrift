@@ -1,33 +1,13 @@
-**PROMPT — Frontend Copy/Abstraction Pass**
+PROMPT — Regression Check: Hardcoding Audit
 
-**Objective (internalize this, don't just pattern-match the examples below):** every hardcoded and dynamic text on this frontend must be understandable by a merchant, a non-technical judge, and a technical judge with zero payments-domain knowledge — without needing to know what "R4," "MDR," "IC+," or "Blended-MDR" mean. Replace internal shorthand with plain, professional, self-explanatory language everywhere it appears — including places not shown below if you find the same pattern elsewhere (badges, tooltips, empty states, loading/status strings, error messages, chart labels, agent-generated status text templates). Never change layout, components, styling, or fonts — text content only.
+Goal: verify the text/copy rewrites from the previous pass did not accidentally convert any dynamic, data-driven text into a hardcoded static string. This is a real risk when rewriting for clarity — e.g., turning a templated case title (built from rule_id, category, amount, merchant_true_category, etc.) into a fixed literal string, or hardcoding a rupee/percentage value that should update per dataset/audit run.
 
-**Specific findings in Frontend:**
+Check specifically:
 
-**1 (Cockpit header):**
-- Title "InterDrift — Interchange & Cost-of-Acceptance Autonomous Auditor" undersells current scope (it's now an agentic control system, not just an auditor). Propose a better subtitle reflecting investigate→prioritize→recommend→track→verify, not just "auditor."
-- "Ingest settlement batches to execute deterministic regulatory rules (R1–R13) and multi-route agent control" — exposes internal rule-ID naming and "multi-route" (an implementation detail) to end users. Rewrite in outcome language.
-- "Margin Regression (Leakage Up)" badge — "Margin Regression" is jargon; say what happened plainly.
-- Card labels fine ("Direct Leakage," "Structural Spread," "Statutory Match Rate") but consider one-line tooltips/subtext if not already present, since "Structural Spread (R11)" still exposes a rule ID in the visible label.
+Agent Priority Queue case names/titles — confirm names like "MCC_Misclassification" were rewritten as a template/function (still building from rule_id/category/transaction data), not replaced with one fixed display string that would show identically regardless of what the actual audit finds.
+Rail breakdown labels (R4, R6b, R10 rows) — confirm human-readable names are derived from the rule's category/description field in the rule table (or a lookup keyed by rule_id), not hardcoded per-rule display strings written once for this specific dataset's current rules — must still work correctly if R10's exposure changes, a new rule is added, or a different rule triggers.
+Sub-instrument formatting (RuPay_debit → "RuPay Debit" etc.) — confirm this is a general formatting function (e.g., replace underscores, title-case) applied to whatever value the data contains, not a hardcoded mapping of only the specific values currently visible in the screenshots — must handle any valid sub-instrument value, including ones not shown to you.
+Any numbers, counts, or ₹ amounts referenced in your rewritten copy (e.g., in badge text, descriptions, or example strings) — confirm none were accidentally frozen as literals instead of continuing to read live from the underlying data/state.
+Filter tab / status label fixes (e.g., "Flagged_For_Review" → cleaned label) — confirm the underlying value/key used for filtering logic is unchanged, and only the displayed label was reformatted — filtering must still function correctly against the real classification value.
 
-**2 (Summary cards + rail breakdown + structural audits):**
-- Every rail row shows a bare rule ID (R4, R6b, R10) as the primary label with no explanation — this is the single biggest abstraction gap on the page. Each rail needs a human-readable name (you already do this correctly in "MCC Drift Impact (R12)" and "Blended-MDR Spread (R11)" below — apply that same pattern here, rule ID as a small secondary tag, not the headline).
-- "3 Rails Flagged," "Pre-negotiation audit," "Reclaimable" — check these read clearly to a layman; "Pre-negotiation audit" especially is unclear standalone.
-
-**3 (Agent Priority Queue):**
-- Case names are raw internal identifiers: "MCC_Misclassification," "Blended_vs_IC_Plus," "RuPay_Credit_UPI," "PPI_Wallet_UPI," "Credit_Cards_Market" — with underscores, clearly not written for display. Rewrite each as a real sentence/title a merchant would read naturally. Rule IDs (R12, R4, etc.) can stay as small secondary tags only.
-- "Credit_Cards_Market" case says "flagged review pattern... against an illustrative benchmark with zero financial variance" — if the variance is genuinely zero, reconsider whether this belongs in a "Priority Queue" of financial findings at all, or should be labeled differently (e.g., informational, not actionable).
-
-**4 (Transaction Spotlights):**
-- Good section overall — "Agent Diagnostic Verdict" text is clear. Minor: "Rule R4" tag on each card still exposes the raw ID with no inline meaning; consider a hover/tooltip or short parenthetical.
-- Confirm this pattern (rule ID + one-line plain explanation) is applied consistently to every card, not just the top ones.
-
-**5 (Human Review Queue):**
-- Very good already — "Honesty Constraint" framing and explanations are clear and merchant-readable. No major changes; check tone stays consistent with terminology fixes elsewhere.
-
-**6 (Row-Level Audit Trail):**
-- Column header "RULE" shows raw IDs (R2, R1, R6c, R8) with zero context — least abstracted section on the page. At minimum add a hover tooltip with the rule's plain description; ideally show a short human label inline or on expand.
-- Filter tabs "Leaked / Matched / Exception / Flagged_For_Review" — "Flagged_For_Review" has a raw underscore, inconsistent with the polish elsewhere; fix casing/spacing.
-- "SUB-INSTRUMENT" column values ("RuPay_debit," "bank_UPI," "PPI_wallet_UPI," "Debit_non_rupay") are raw internal enum values with underscores — reformat for display (e.g., "RuPay Debit," "Bank UPI," "PPI Wallet (UPI)," "Non-RuPay Debit").
-
-**Process:** fix one finding at a time, in the order above (or your own reasonable prioritization if some share a root cause/component — note if so). After each fix, stop and output only: what changed, one-line confirmation it matches intent, and a short commit message. No verbose explanation. Proceed.
+For each of the 5 checks: confirm clean, or report exactly which file/line hardcoded something that should remain dynamic in your previous fixes, with a proposed fix. Do not fix anything yet — report only. Output concisely (in 100 words) asking if you can fix. then next 5. 
