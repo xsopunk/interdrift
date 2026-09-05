@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import { AlertOctagon, ArrowUpRight, Check, Sparkles } from "lucide-react";
 
+const RULE_NAMES = {
+  R1: "Bank UPI Zero-Fee",
+  R2: "RuPay Debit Zero-Fee",
+  R3: "RuPay Credit UPI (≤ ₹2k)",
+  R4: "RuPay Credit UPI (> ₹2k)",
+  R5: "PPI Wallet UPI (≤ ₹2k)",
+  R6b: "PPI Wallet UPI (> ₹2k)",
+  R8: "Non-RuPay Debit Fee Cap",
+  R10: "L2/L3 Downgrade Penalty",
+  R11: "Blended Pricing Spread",
+  R12: "MCC Rate Misalignment",
+};
+
 export default function RemediationDeck({ offenders = [] }) {
   const [reclaimedIds, setReclaimedIds] = useState(new Set());
 
@@ -40,6 +53,7 @@ export default function RemediationDeck({ offenders = [] }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {offenders.map((item, idx) => {
           const isReclaimed = reclaimedIds.has(item.transaction_id);
+          const ruleLabel = RULE_NAMES[item.rule_id] || `Rule ${item.rule_id}`;
 
           return (
             <div
@@ -49,12 +63,15 @@ export default function RemediationDeck({ offenders = [] }) {
               <div className="space-y-3">
                 {/* Header row: Transaction & Delta */}
                 <div className="flex items-center justify-between gap-2 border-b border-border/60 pb-3">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <span className="font-mono text-xs font-bold text-foreground">
                       {item.transaction_id}
                     </span>
-                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-secondary text-secondary-foreground border border-border">
-                      Rule {item.rule_id}
+                    <span 
+                      className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-secondary text-secondary-foreground border border-border cursor-help"
+                      title={`Statutory Rule ${item.rule_id}: ${ruleLabel}`}
+                    >
+                      Rule {item.rule_id} · {ruleLabel}
                     </span>
                   </div>
                   <div className="text-right font-mono">
