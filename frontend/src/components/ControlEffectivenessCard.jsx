@@ -1,5 +1,5 @@
 import React from "react";
-import { TrendingDown, TrendingUp, Minus, Activity, ShieldCheck } from "lucide-react";
+import { TrendingDown, TrendingUp, Minus, Activity, ShieldCheck, AlertTriangle } from "lucide-react";
 
 export default function ControlEffectivenessCard({ effectiveness = null }) {
   if (!effectiveness || effectiveness.status !== "computed") {
@@ -26,6 +26,12 @@ export default function ControlEffectivenessCard({ effectiveness = null }) {
           label: "Margin Regression (Leakage Up)",
           color: "text-red-500 bg-red-500/10 border-red-500/30",
           icon: TrendingUp,
+        };
+      case "MIXED":
+        return {
+          label: "Mixed Results (Review Needed)",
+          color: "text-amber-500 bg-amber-500/10 border-amber-500/30",
+          icon: AlertTriangle,
         };
       case "STABLE":
       default:

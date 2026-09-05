@@ -148,12 +148,26 @@ def compute_effectiveness() -> Dict[str, Any]:
         }
 
     # Determine overall verdict
-    if leaked_change is not None and leaked_change < 0:
-        verdict = "IMPROVING"
-    elif leaked_change is not None and leaked_change > 0:
-        verdict = "REGRESSING"
-    elif leaked_change == 0:
-        verdict = "STABLE"
+    if leaked_change is not None and exception_change is not None:
+        if (leaked_change < 0 and exception_change > 0) or (leaked_change > 0 and exception_change < 0):
+            verdict = "MIXED"
+        elif leaked_change < 0:
+            verdict = "IMPROVING"
+        elif leaked_change > 0:
+            verdict = "REGRESSING"
+        elif leaked_change == 0 and exception_change < 0:
+            verdict = "IMPROVING"
+        elif leaked_change == 0 and exception_change > 0:
+            verdict = "REGRESSING"
+        else:
+            verdict = "STABLE"
+    elif leaked_change is not None:
+        if leaked_change < 0:
+            verdict = "IMPROVING"
+        elif leaked_change > 0:
+            verdict = "REGRESSING"
+        else:
+            verdict = "STABLE"
     else:
         verdict = "INSUFFICIENT_DATA"
 
