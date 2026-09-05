@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_RuPay_debit",
+  "root_cause": "Missing Level\u202f2/3 commercial card data causing transactions to be downgraded to a lower\u2011fee pricing tier.",
+  "diagnosis": "Because the merchant does not supply L2/L3 data for RuPay debit transactions, the acquirer routes them as non\u2011commercial, resulting in fees that are significantly lower than the modeled commercial\u2011rate expectation (e.g., Rs\u202f30.63 vs Rs\u202f107.21).",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing the required L2/L3 data will keep the transactions in the commercial pricing tier, eliminating the fee leakage.",
+  "confidence_level": "medium",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

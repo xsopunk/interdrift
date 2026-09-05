@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R6b_PPI_wallet_UPI",
+  "root_cause": "Overcharged MDR due to misconfigured fee schedule for PPI wallet UPI transactions.",
+  "diagnosis": "The fee charged (Rs\u202f49.18) exceeds the expected fee (Rs\u202f40.24) by Rs\u202f8.94, indicating the acquirer applied an incorrect rate for this instrument.",
+  "recommended_action": "request_mdr_refund",
+  "action_rationale": "A refund request will recover the Rs\u202f8.94 overcharge directly from the acquirer.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_EXCEPTION_MISSING_TAG",
+  "root_cause": "Missing expected fee/tag data prevents fee discrepancy analysis.",
+  "diagnosis": "The transactions lack expected fee values or classification tags, so the system cannot determine whether fees are over- or under\u2011charged.",
+  "recommended_action": "request_manual_review",
+  "action_rationale": "A human analyst must examine the raw transaction details to identify the proper fee expectations.",
+  "confidence_level": "low",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

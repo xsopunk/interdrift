@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R5_PPI_wallet_UPI",
+  "root_cause": "Fee rules for PPI wallet UPI transactions are misconfigured, causing fees where regulation mandates zero.",
+  "diagnosis": "The gateway applied a non\u2011zero MDR to PPI wallet UPI payments, resulting in overcharges of Rs\u202f14.93, Rs\u202f9.58 and Rs\u202f19.42 respectively.",
+  "recommended_action": "request_mdr_refund",
+  "action_rationale": "Refunding the overcharged MDR directly recovers the excess fees incurred.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

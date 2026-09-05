@@ -1,0 +1,221 @@
+{
+  "overview": {
+    "total_transactions": 500,
+    "matched_count": 408,
+    "matched_percent": 81.6,
+    "leaked_count": 22,
+    "leaked_percent": 4.4,
+    "exception_count": 28,
+    "exception_percent": 5.6,
+    "flagged_for_review_count": 42,
+    "flagged_for_review_percent": 8.4,
+    "total_leaked_amount": 3727.92,
+    "structural_overcharge_amount": 4989.21,
+    "mcc_misclassification_amount": 468.53
+  },
+  "leak_by_category": [
+    {
+      "category": "R4",
+      "total_leaked": 189.53,
+      "transaction_count": 4
+    },
+    {
+      "category": "R3",
+      "total_leaked": 46.09,
+      "transaction_count": 5
+    },
+    {
+      "category": "R5",
+      "total_leaked": 43.93,
+      "transaction_count": 3
+    },
+    {
+      "category": "R6b",
+      "total_leaked": 8.94,
+      "transaction_count": 1
+    },
+    {
+      "category": "R10",
+      "total_leaked": -2018.31,
+      "transaction_count": 9
+    }
+  ],
+  "top_offenders": [
+    {
+      "transaction_id": "TXN_000149",
+      "rule_id": "R4",
+      "delta": 55.61,
+      "explanation": "Statutory fee overcharge of Rs 55.61 detected under rule R4. Charged fee of Rs 159.88 exceeds statutory cap/expected fee of Rs 104.27."
+    },
+    {
+      "transaction_id": "TXN_000356",
+      "rule_id": "R4",
+      "delta": 49.6,
+      "explanation": "Statutory fee overcharge of Rs 49.60 detected under rule R4. Charged fee of Rs 142.60 exceeds statutory cap/expected fee of Rs 93.00."
+    },
+    {
+      "transaction_id": "TXN_000297",
+      "rule_id": "R4",
+      "delta": 48.35,
+      "explanation": "Statutory fee overcharge of Rs 48.35 detected under rule R4. Charged fee of Rs 139.00 exceeds statutory cap/expected fee of Rs 90.65."
+    },
+    {
+      "transaction_id": "TXN_000173",
+      "rule_id": "R4",
+      "delta": 35.97,
+      "explanation": "Statutory fee overcharge of Rs 35.97 detected under rule R4. Charged fee of Rs 103.42 exceeds statutory cap/expected fee of Rs 67.45."
+    },
+    {
+      "transaction_id": "TXN_000448",
+      "rule_id": "R5",
+      "delta": 19.42,
+      "explanation": "Statutory fee overcharge of Rs 19.42 detected under rule R5. Charged fee of Rs 19.42 exceeds statutory cap/expected fee of Rs 0.00."
+    },
+    {
+      "transaction_id": "TXN_000008",
+      "rule_id": "R3",
+      "delta": 15.62,
+      "explanation": "Statutory fee overcharge of Rs 15.62 detected under rule R3. Charged fee of Rs 15.62 exceeds statutory cap/expected fee of Rs 0.00."
+    },
+    {
+      "transaction_id": "TXN_000074",
+      "rule_id": "R5",
+      "delta": 14.93,
+      "explanation": "Statutory fee overcharge of Rs 14.93 detected under rule R5. Charged fee of Rs 14.93 exceeds statutory cap/expected fee of Rs 0.00."
+    },
+    {
+      "transaction_id": "TXN_000231",
+      "rule_id": "R3",
+      "delta": 11.95,
+      "explanation": "Statutory fee overcharge of Rs 11.95 detected under rule R3. Charged fee of Rs 11.95 exceeds statutory cap/expected fee of Rs 0.00."
+    },
+    {
+      "transaction_id": "TXN_000342",
+      "rule_id": "R3",
+      "delta": 9.69,
+      "explanation": "Statutory fee overcharge of Rs 9.69 detected under rule R3. Charged fee of Rs 9.69 exceeds statutory cap/expected fee of Rs 0.00."
+    },
+    {
+      "transaction_id": "TXN_000229",
+      "rule_id": "R5",
+      "delta": 9.58,
+      "explanation": "Statutory fee overcharge of Rs 9.58 detected under rule R5. Charged fee of Rs 9.58 exceeds statutory cap/expected fee of Rs 0.00."
+    }
+  ],
+  "exceptions": [
+    {
+      "transaction_id": "TXN_000006",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 14,560.60. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000018",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 1,478.72. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000022",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 80.50. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000027",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 1,318.00. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000035",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 985.98. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000061",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 5,842.72. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000067",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 2,156.45. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000079",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 4,807.49. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000100",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 20,717.79. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000115",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 6,068.99. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000142",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 182.93. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000158",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 948.47. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000192",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 23,282.66. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000193",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 9,560.34. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000194",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 19,847.10. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000202",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 18,989.97. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000255",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 1,021.26. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000279",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 1,409.25. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000301",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 5,985.95. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000366",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 5,285.55. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000404",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 899.87. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000416",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 105.05. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000446",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 4,246.21. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000447",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 3,513.78. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000471",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 4,667.56. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000477",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 7,217.06. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000493",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 6,887.39. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    },
+    {
+      "transaction_id": "TXN_000499",
+      "note": "Missing sub-instrument routing metadata for transaction of Rs 18,707.40. Fee cannot be verified against statutory caps until gateway provides complete instrument tags."
+    }
+  ],
+  "audit_trail_available": true,
+  "generated_at": "2026-09-05T15:09:03.625079"
+}

@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_STRUCTURAL_R11_BLENDED_MDR",
+  "root_cause": "The merchant is on a blended pricing model that overcharges relative to the true network cost.",
+  "diagnosis": "Using a 2.0% blended rate versus the actual 1.75% network rate creates an excess fee of approximately Rs 4,989.21; this comparison is based on an illustrative benchmark model.",
+  "recommended_action": "migrate_to_ic_plus_pricing",
+  "action_rationale": "Switching to interchange\u2011plus pricing aligns fees with the underlying network cost, eliminating the overcharge.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

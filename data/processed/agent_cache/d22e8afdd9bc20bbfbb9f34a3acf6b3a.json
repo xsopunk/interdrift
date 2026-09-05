@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R3_RuPay_credit_UPI",
+  "root_cause": "Fee configuration error applying charges to RuPay credit UPI transactions that should be fee\u2011free",
+  "diagnosis": "The acquirer/gateway is incorrectly applying a fee schedule to RuPay credit UPI, resulting in overcharges where regulatory rules mandate a zero fee",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "Auditing and correcting the gateway fee configuration will stop the illegal fee leakage",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}
