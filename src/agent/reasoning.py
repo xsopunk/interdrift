@@ -146,11 +146,15 @@ def _format_group_prompt(group: Dict[str, Any]) -> str:
     if samples:
         lines.append("\nSample Transactions:")
         for s in samples:
+            exp_fee = s.get('expected_fee')
+            d = s.get('delta')
+            exp_str = 'N/A' if exp_fee is None else f'Rs {exp_fee:,.2f}'
+            delta_str = 'N/A' if d is None else f'Rs {d:,.2f}'
             lines.append(
                 f"  - {s.get('transaction_id')}: amount=Rs {s.get('amount', 0):,.2f}, "
                 f"fee_charged=Rs {s.get('fee_charged', 0):,.2f}, "
-                f"expected_fee={'N/A' if s.get('expected_fee') is None else f'Rs {s[\"expected_fee\"]:,.2f}'}, "
-                f"delta={'N/A' if s.get('delta') is None else f'Rs {s[\"delta\"]:,.2f}'}"
+                f"expected_fee={exp_str}, "
+                f"delta={delta_str}"
             )
 
     return "\n".join(lines)
