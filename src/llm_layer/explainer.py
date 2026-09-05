@@ -6,12 +6,14 @@ Processes anomalous transactions in batches using Gemini 3.6 Flash.
 import os
 import time
 import pandas as pd
+from typing import Dict, Any
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
 from src.llm_layer.prompts import SYSTEM_PROMPT
+from src.rules_engine.rule_loader import load_rules
 
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
@@ -31,12 +33,16 @@ class AuditExplanationBatch(BaseModel):
     items: list[AuditExplanation]
 
 
-def format_batch_payload(rows_slice: pd.DataFrame) -> str:
+def format_batch_payload(rows_slice: pd.DataFrame, rule_map: Dict[str, Dict[str, Any]] = None) -> str:
     """Formats up to 5 anomaly rows into a single structured batch payload."""
+    if rule_map is None:
+        rules = load_rules()
+        rule_map = {r["rule_id"]: r for r in rules}
+
     payload_lines = ["Audit Anomalies Batch:"]
     for _, row in rows_slice.iterrows():
         rule_id = str(row.get("matched_rule_id", "EXCEPTION"))
-        source_status = "illustrative" if rule_id in ["R10", "R11"] else "sourced"
+        source_status = rule_map.get(rule_id, {}).get("source_status", "unknown") if rule_id != "NONE" else "n/a"
         
         expected_fee_raw = row.get('expected_fee')
         overcharge_raw = row.get('overcharge_amount')
