@@ -11,6 +11,7 @@ import AuditTrailTable from "./components/AuditTrailTable";
 import AgentControlStatus from "./components/AgentControlStatus";
 import AgentRecommendationCard from "./components/AgentRecommendationCard";
 import ControlEffectivenessCard from "./components/ControlEffectivenessCard";
+import TestDataModal from "./components/TestDataModal";
 import { TrendingDown, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
   const [effectivenessData, setEffectivenessData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isTestDataModalOpen, setIsTestDataModalOpen] = useState(false);
 
   const loadAllData = async () => {
     try {
@@ -116,7 +118,11 @@ export default function App() {
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none opacity-15 dark:opacity-20 z-0" />
 
       {/* Top Navbar */}
-      <Navbar backendStatus="online" rowCount={overview.total_transactions} />
+      <Navbar 
+        backendStatus="online" 
+        rowCount={overview.total_transactions} 
+        onOpenTestData={() => setIsTestDataModalOpen(true)}
+      />
 
       {/* Main Container */}
       <main className="relative z-10 max-w-7xl mx-auto space-y-8 px-4 sm:px-6 lg:px-8 py-8">
@@ -213,6 +219,13 @@ export default function App() {
           <AuditTrailTable rows={auditRows} />
         </section>
       </main>
+
+      {/* Synthetic Test Data & Contract Modal */}
+      <TestDataModal
+        isOpen={isTestDataModalOpen}
+        onClose={() => setIsTestDataModalOpen(false)}
+        onAuditSuccess={loadAllData}
+      />
     </div>
   );
 }

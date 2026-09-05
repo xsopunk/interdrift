@@ -1,7 +1,7 @@
 import React from "react";
-import { ShieldCheck, Layers } from "lucide-react";
+import { ShieldCheck, Layers, FlaskConical } from "lucide-react";
 
-export default function Navbar({ rowCount = 0, backendStatus = "online" }) {
+export default function Navbar({ rowCount = 0, backendStatus = "online", onOpenTestData }) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-card/80 backdrop-blur-md transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
@@ -23,8 +23,17 @@ export default function Navbar({ rowCount = 0, backendStatus = "online" }) {
           </div>
         </div>
 
-        {/* Live State Badges */}
+        {/* Live State Badges & Actions */}
         <div className="flex items-center gap-3">
+          {/* Test Data Trigger Button */}
+          <button
+            onClick={onOpenTestData}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-semibold shadow-sm transition-all cursor-pointer"
+          >
+            <FlaskConical className="w-3.5 h-3.5" />
+            <span>Test Data</span>
+          </button>
+
           {/* Engine Status Indicator */}
           <div className="hidden md:flex items-center gap-2 px-2.5 py-1 rounded-md border border-border bg-secondary/50 text-xs font-mono">
             <span className="relative flex h-2 w-2">
