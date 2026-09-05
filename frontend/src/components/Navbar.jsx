@@ -18,7 +18,7 @@ export default function Navbar({ rowCount = 0, backendStatus = "online", onOpenT
               </span>
             </div>
             <p className="text-[11px] text-muted-foreground hidden sm:block">
-              Interchange & Cost-of-Acceptance Autonomous Auditor
+              Autonomous Payment Fee Controller · Audit, Recover & Prevent Leakage
             </p>
           </div>
         </div>

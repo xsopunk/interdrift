@@ -68,7 +68,7 @@ export default function ControlCockpit({ onUploadSuccess }) {
             </span>
           </div>
           <p className="text-xs text-muted-foreground">
-            Ingest settlement batches to execute deterministic regulatory rules (R1–R13) and multi-route agent control.
+            Ingest payment settlement files to audit fee overcharges, detect margin leaks, and trigger autonomous remediation cases.
           </p>
         </div>
 

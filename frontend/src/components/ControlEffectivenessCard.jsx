@@ -23,7 +23,7 @@ export default function ControlEffectivenessCard({ effectiveness = null }) {
         };
       case "REGRESSING":
         return {
-          label: "Margin Regression (Leakage Up)",
+          label: "Fee Leakage Increased",
           color: "text-red-500 bg-red-500/10 border-red-500/30",
           icon: TrendingUp,
         };

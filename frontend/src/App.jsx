@@ -163,11 +163,11 @@ export default function App() {
             icon={CheckCircle2}
           />
           <MetricCard
-            title="Structural Spread (R11)"
+            title="Contract Pricing Spread"
             value={`₹${overview.structural_overcharge_amount.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}
-            subtitle="Blended-MDR vs true IC+ spread"
+            subtitle="Blended flat rate vs. true network cost"
             variant="warning"
-            badge="Contract Audit"
+            badge="Pricing Audit"
             icon={AlertTriangle}
           />
           <MetricCard
