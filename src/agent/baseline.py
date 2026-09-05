@@ -103,10 +103,10 @@ def compute_effectiveness() -> Dict[str, Any]:
     current = report.get("overview", {})
 
     def pct_change(baseline_val: float, current_val: float) -> Optional[float]:
-        """Calculate % change. Positive = improvement (reduction in leakage)."""
+        """Calculate standard % change: ((current - baseline) / baseline) * 100."""
         if baseline_val == 0:
             return None
-        return round(((baseline_val - current_val) / baseline_val) * 100, 2)
+        return round(((current_val - baseline_val) / baseline_val) * 100, 2)
 
     # Core effectiveness metrics
     leaked_change = pct_change(
@@ -143,13 +143,14 @@ def compute_effectiveness() -> Dict[str, Any]:
         category_changes[cat] = {
             "baseline_inr": b_val,
             "current_inr": c_val,
-            "percent_reduction": change,
+            "percent_change": change,
+            "percent_reduction": round(-change, 2) if change is not None else None,
         }
 
     # Determine overall verdict
-    if leaked_change is not None and leaked_change > 0:
+    if leaked_change is not None and leaked_change < 0:
         verdict = "IMPROVING"
-    elif leaked_change is not None and leaked_change < 0:
+    elif leaked_change is not None and leaked_change > 0:
         verdict = "REGRESSING"
     elif leaked_change == 0:
         verdict = "STABLE"
@@ -167,17 +168,20 @@ def compute_effectiveness() -> Dict[str, Any]:
             "total_leaked": {
                 "baseline_inr": baseline.get("total_leaked_amount", 0),
                 "current_inr": current.get("total_leaked_amount", 0),
-                "percent_reduction": leaked_change,
+                "percent_change": leaked_change,
+                "percent_reduction": round(-leaked_change, 2) if leaked_change is not None else None,
             },
             "structural_overcharge": {
                 "baseline_inr": baseline.get("structural_overcharge_amount", 0),
                 "current_inr": current.get("structural_overcharge_amount", 0),
-                "percent_reduction": structural_change,
+                "percent_change": structural_change,
+                "percent_reduction": round(-structural_change, 2) if structural_change is not None else None,
             },
             "exception_count": {
                 "baseline": baseline.get("exception_count", 0),
                 "current": current.get("exception_count", 0),
-                "percent_reduction": exception_change,
+                "percent_change": exception_change,
+                "percent_reduction": round(-exception_change, 2) if exception_change is not None else None,
             },
             "match_rate": {
                 "baseline_pct": baseline.get("matched_percent", 0),

@@ -40,10 +40,10 @@ export default function ControlEffectivenessCard({ effectiveness = null }) {
   const badge = getVerdictBadge(verdict);
   const VerdictIcon = badge.icon;
 
-  const formatDelta = (val, isPercentage = true, invertGood = true) => {
+  const formatDelta = (val, isPercentage = true, invertGood = false) => {
     if (val === null || val === undefined) return "—";
     const sign = val > 0 ? "+" : "";
-    const isGood = invertGood ? val > 0 : val < 0;
+    const isGood = invertGood ? val < 0 : val > 0;
     const color = val === 0 ? "text-muted-foreground" : isGood ? "text-emerald-500" : "text-destructive";
     return <span className={`font-bold font-mono ${color}`}>{sign}{val}{isPercentage ? "%" : ""}</span>;
   };
@@ -81,13 +81,13 @@ export default function ControlEffectivenessCard({ effectiveness = null }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {/* Direct Leakage */}
         <div className="p-3.5 rounded-lg bg-secondary/30 border border-border space-y-1">
-          <span className="text-[10px] font-mono text-muted-foreground uppercase">Direct Leakage Reduction</span>
+          <span className="text-[10px] font-mono text-muted-foreground uppercase">Direct Leakage</span>
           <div className="flex items-baseline justify-between">
             <span className="text-base font-bold font-mono text-foreground">
               ₹{(totalLeaked.current_inr || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
             </span>
             <div className="text-xs">
-              {formatDelta(totalLeaked.percent_reduction, true, true)}
+              {formatDelta(totalLeaked.percent_change ?? totalLeaked.percent_reduction, true, true)}
             </div>
           </div>
           <p className="text-[10px] text-muted-foreground">
@@ -103,7 +103,7 @@ export default function ControlEffectivenessCard({ effectiveness = null }) {
               ₹{(structural.current_inr || 0).toLocaleString("en-IN", { minimumFractionDigits: 2 })}
             </span>
             <div className="text-xs">
-              {formatDelta(structural.percent_reduction, true, true)}
+              {formatDelta(structural.percent_change ?? structural.percent_reduction, true, true)}
             </div>
           </div>
           <p className="text-[10px] text-muted-foreground">
@@ -119,7 +119,7 @@ export default function ControlEffectivenessCard({ effectiveness = null }) {
               {matchRate.current_pct || 0}%
             </span>
             <div className="text-xs">
-              {formatDelta(matchRate.delta_pct, true, true)}
+              {formatDelta(matchRate.delta_pct, true, false)}
             </div>
           </div>
           <p className="text-[10px] text-muted-foreground">
@@ -129,13 +129,13 @@ export default function ControlEffectivenessCard({ effectiveness = null }) {
 
         {/* Exceptions */}
         <div className="p-3.5 rounded-lg bg-secondary/30 border border-border space-y-1">
-          <span className="text-[10px] font-mono text-muted-foreground uppercase">Exceptions Resolved</span>
+          <span className="text-[10px] font-mono text-muted-foreground uppercase">Unresolved Exceptions</span>
           <div className="flex items-baseline justify-between">
             <span className="text-base font-bold font-mono text-foreground">
               {exceptions.current || 0} Items
             </span>
             <div className="text-xs">
-              {formatDelta(exceptions.percent_reduction, true, true)}
+              {formatDelta(exceptions.percent_change ?? exceptions.percent_reduction, true, true)}
             </div>
           </div>
           <p className="text-[10px] text-muted-foreground">
