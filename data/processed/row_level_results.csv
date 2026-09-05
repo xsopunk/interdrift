@@ -1,501 +1,491 @@
 transaction_id,timestamp,amount,declared_instrument,sub_instrument,card_bin,card_tier,mcc,merchant_true_category,tax_amount_provided,po_code_provided,line_item_detail_provided,contracted_flat_rate,fee_charged,tax_charged,turnover_tier,injected_issue,classification,matched_rule_id,expected_fee,fee_charged,delta,note
-TXN_000001,2026-08-25 12:01:47,373.66,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000002,2026-08-15 09:05:13,5108.79,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000003,2026-08-24 17:51:55,5854.86,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000004,2026-08-18 19:06:05,3924.56,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000005,2026-08-26 23:34:07,9649.8,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,86.85,15.63,above_20L,clean,Matched,R8,86.85,86.85,0.0,Accurate fee verified against R8.
-TXN_000006,2026-08-29 05:39:56,14560.6,Card,,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,291.21,52.42,above_20L,exception_missing_tag,Exception,NONE,,291.21,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000007,2026-08-18 18:05:54,3564.96,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000008,2026-08-20 15:42:17,1041.14,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,15.62,2.81,above_20L,R3_R5_zero_rate_leak,Leaked,R3,0.0,15.62,15.62,"Statutory disparity against R3: expected Rs 0.00, charged Rs 15.62."
-TXN_000009,2026-08-21 17:59:40,368.44,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000010,2026-08-27 19:25:17,5141.13,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000011,2026-08-22 21:56:58,3828.93,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,30.63,5.51,above_20L,R10_l2_l3_downgrade,Leaked,R10,76.58,30.63,-45.95,"Statutory disparity against R10: expected Rs 76.58, charged Rs 30.63."
-TXN_000012,2026-08-24 02:16:47,22476.23,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000013,2026-08-18 01:31:05,1298.6,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000014,2026-08-21 21:38:29,24285.64,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000015,2026-08-17 06:56:34,3903.96,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,58.56,10.54,above_20L,clean,Matched,R4,58.56,58.56,0.0,Accurate fee verified against R4.
-TXN_000016,2026-08-16 08:56:46,775.85,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000017,2026-08-20 05:32:38,592.18,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000018,2026-08-22 09:07:59,1478.72,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000019,2026-08-30 03:05:05,1233.23,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000020,2026-08-23 14:16:33,10751.51,Card,Visa_credit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,215.03,38.71,above_20L,clean,Flagged_For_Review,R9,215.03,215.03,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000021,2026-08-28 08:44:12,5710.69,UPI,RuPay_credit_UPI,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,85.66,15.42,above_20L,clean,Matched,R4,85.66,85.66,0.0,Accurate fee verified against R4.
-TXN_000022,2026-08-22 12:15:14,80.5,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000023,2026-08-27 05:03:14,95.55,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000024,2026-08-22 15:34:08,1329.46,UPI,RuPay_credit_UPI,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000025,2026-08-18 12:06:42,664.19,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000026,2026-08-25 12:03:25,1210.86,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000027,2026-08-17 22:11:17,1318.0,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000028,2026-08-23 09:05:59,4264.96,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,63.97,11.51,above_20L,clean,Matched,R4,63.97,63.97,0.0,Accurate fee verified against R4.
-TXN_000029,2026-08-29 10:10:24,7099.52,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000030,2026-08-27 08:50:35,12320.78,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000031,2026-08-16 03:47:34,2323.28,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000032,2026-08-29 01:10:03,2278.75,Card,Mastercard_credit,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,63.81,11.49,above_20L,R10_l2_l3_downgrade,Leaked,R10,45.58,63.81,18.23,"Statutory disparity against R10: expected Rs 45.58, charged Rs 63.81."
-TXN_000033,2026-08-17 06:55:15,1415.31,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000034,2026-08-22 06:37:36,23387.24,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000035,2026-08-20 16:16:25,985.98,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000036,2026-08-25 03:06:04,12795.35,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000037,2026-08-29 11:56:15,6593.91,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000038,2026-08-28 05:33:00,13998.68,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000039,2026-08-17 17:07:56,852.17,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000040,2026-08-19 06:40:54,758.37,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000041,2026-08-21 17:02:00,239.69,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000042,2026-08-24 07:27:35,159.1,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000043,2026-08-28 20:37:35,234.8,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000044,2026-08-19 06:15:42,6868.53,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000045,2026-08-26 13:59:59,285.63,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000046,2026-08-15 14:47:59,1399.68,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000047,2026-08-28 07:06:24,21507.25,Card,Visa_credit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,430.14,77.43,above_20L,clean,Flagged_For_Review,R9,430.14,430.14,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000048,2026-08-29 23:22:19,1313.42,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000049,2026-08-19 11:49:17,5753.37,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000050,2026-08-16 17:11:37,6857.02,Card,Mastercard_credit,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,137.14,24.69,above_20L,clean,Flagged_For_Review,R9,137.14,137.14,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000051,2026-08-21 08:50:20,1477.14,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000052,2026-08-26 22:00:33,13599.76,Card,Mastercard_credit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,272.0,48.96,above_20L,clean,Flagged_For_Review,R9,272.0,272.0,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000053,2026-08-17 06:58:21,16685.67,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000054,2026-08-20 01:19:42,633.48,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000055,2026-08-25 21:43:47,15503.22,Card,Visa_credit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,310.06,55.81,above_20L,clean,Flagged_For_Review,R9,310.06,310.06,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000056,2026-08-28 09:19:18,5356.31,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000057,2026-08-23 06:13:32,1356.71,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000058,2026-08-20 01:42:40,2606.66,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000059,2026-08-18 15:09:01,1476.71,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000060,2026-08-30 05:36:12,606.77,UPI,RuPay_credit_UPI,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000061,2026-08-28 12:49:27,5842.72,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000062,2026-08-18 12:29:08,7434.01,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,81.77,14.72,above_20L,clean,Matched,R6c,81.77,81.77,0.0,Accurate fee verified against R6c.
-TXN_000063,2026-08-29 23:39:52,6576.6,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,98.65,17.76,above_20L,clean,Matched,R4,98.65,98.65,0.0,Accurate fee verified against R4.
-TXN_000064,2026-08-22 23:16:48,6223.68,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000065,2026-08-19 23:04:45,443.99,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000066,2026-08-18 21:44:09,4271.42,UPI,RuPay_credit_UPI,607111.0,basic,5411,B2B wholesale,True,True,False,0.02,64.07,11.53,above_20L,R12_mcc_misclassification,Matched,R4,64.07,64.07,0.0,Accurate fee verified against R4.
-TXN_000067,2026-08-28 22:24:57,2156.45,UPI,,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,32.35,5.82,above_20L,exception_missing_tag,Exception,NONE,,32.35,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000068,2026-08-20 18:48:24,23849.73,Card,Visa_credit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,476.99,85.86,above_20L,clean,Flagged_For_Review,R9,476.99,476.99,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000069,2026-08-27 02:51:38,12359.27,Card,Visa_credit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,247.19,44.49,above_20L,clean,Flagged_For_Review,R9,247.19,247.19,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000070,2026-08-15 21:21:42,2949.49,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,44.24,7.96,above_20L,clean,Matched,R4,44.24,44.24,0.0,Accurate fee verified against R4.
-TXN_000071,2026-08-23 09:58:25,16676.09,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000072,2026-08-17 23:11:03,4528.11,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000073,2026-08-21 17:48:53,1260.62,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000074,2026-08-20 16:41:04,995.04,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,14.93,2.69,above_20L,R3_R5_zero_rate_leak,Leaked,R5,0.0,14.93,14.93,"Statutory disparity against R5: expected Rs 0.00, charged Rs 14.93."
-TXN_000075,2026-08-16 04:09:15,1020.72,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000076,2026-08-19 20:10:38,18773.76,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000077,2026-08-17 18:06:37,5741.54,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000078,2026-08-26 15:04:37,2605.36,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,39.08,7.03,above_20L,clean,Matched,R4,39.08,39.08,0.0,Accurate fee verified against R4.
-TXN_000079,2026-08-24 10:22:34,4807.49,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000080,2026-08-22 00:06:27,15998.95,Card,Mastercard_credit,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,319.98,57.6,above_20L,clean,Flagged_For_Review,R9,319.98,319.98,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000081,2026-08-21 14:46:33,6971.04,Card,Mastercard_credit,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,139.42,25.1,above_20L,clean,Flagged_For_Review,R9,139.42,139.42,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000082,2026-08-29 08:37:17,7143.69,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000083,2026-08-18 23:36:39,8609.0,Card,RuPay_debit,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000084,2026-08-18 00:13:22,6847.74,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,75.33,13.56,above_20L,clean,Matched,R6c,75.33,75.33,0.0,Accurate fee verified against R6c.
-TXN_000085,2026-08-23 15:05:15,6182.0,UPI,RuPay_credit_UPI,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,92.73,16.69,above_20L,clean,Matched,R4,92.73,92.73,0.0,Accurate fee verified against R4.
-TXN_000086,2026-08-15 11:18:14,5668.58,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000087,2026-08-23 20:27:47,8989.72,Card,RuPay_debit,607222.0,corporate,5045,B2B wholesale,False,False,False,0.02,71.92,12.95,above_20L,R10_l2_l3_downgrade,Leaked,R10,179.79,71.92,-107.87,"Statutory disparity against R10: expected Rs 179.79, charged Rs 71.92."
-TXN_000088,2026-08-19 16:07:46,223.35,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000089,2026-08-27 00:17:46,19077.14,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000090,2026-08-28 15:18:14,488.29,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000091,2026-08-16 02:18:44,16055.38,Card,Mastercard_credit,607222.0,corporate,5045,B2B wholesale,False,False,True,0.02,449.55,80.92,above_20L,R10_l2_l3_downgrade,Leaked,R10,321.11,449.55,128.44,"Statutory disparity against R10: expected Rs 321.11, charged Rs 449.55."
-TXN_000092,2026-08-16 03:18:30,7311.96,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000093,2026-08-22 12:52:04,157.42,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000094,2026-08-28 03:19:05,3225.75,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,29.03,5.23,above_20L,clean,Matched,R8,29.03,29.03,0.0,Accurate fee verified against R8.
-TXN_000095,2026-08-25 04:50:39,4505.3,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000096,2026-08-24 22:19:36,15357.88,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000097,2026-08-19 05:13:16,4179.31,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000098,2026-08-17 09:26:28,2227.89,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,33.42,6.02,above_20L,clean,Matched,R4,33.42,33.42,0.0,Accurate fee verified against R4.
-TXN_000099,2026-08-22 11:43:14,19759.35,Card,Mastercard_credit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,395.19,71.13,above_20L,clean,Flagged_For_Review,R9,395.19,395.19,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000100,2026-08-23 16:41:09,20717.79,Card,,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,414.36,74.58,above_20L,exception_missing_tag,Exception,NONE,,414.36,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000101,2026-08-27 18:38:47,4443.39,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,48.88,8.8,above_20L,clean,Matched,R6c,48.88,48.88,0.0,Accurate fee verified against R6c.
-TXN_000102,2026-08-26 21:17:32,11112.64,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000103,2026-08-26 19:38:16,381.94,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000104,2026-08-25 17:36:02,4878.35,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,73.18,13.17,above_20L,clean,Matched,R4,73.18,73.18,0.0,Accurate fee verified against R4.
-TXN_000105,2026-08-24 22:40:52,3946.39,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000106,2026-08-16 14:21:26,467.92,UPI,RuPay_credit_UPI,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,7.02,1.26,above_20L,R3_R5_zero_rate_leak,Leaked,R3,0.0,7.02,7.02,"Statutory disparity against R3: expected Rs 0.00, charged Rs 7.02."
-TXN_000107,2026-08-19 19:07:49,7435.25,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000108,2026-08-19 01:23:39,956.84,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000109,2026-08-29 18:28:56,226.07,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,1.81,0.33,above_20L,R10_l2_l3_downgrade,Leaked,R3,0.0,1.81,1.81,"Statutory disparity against R3: expected Rs 0.00, charged Rs 1.81."
-TXN_000110,2026-08-16 02:26:05,1270.04,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000111,2026-08-18 00:59:45,4314.42,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000112,2026-08-18 23:35:09,1386.71,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000113,2026-08-19 22:21:59,2063.98,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,22.7,4.09,above_20L,clean,Matched,R6c,22.7,22.7,0.0,Accurate fee verified against R6c.
-TXN_000114,2026-08-25 06:31:55,3930.93,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000115,2026-08-20 15:44:15,6068.99,Card,,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000116,2026-08-27 00:45:58,609.81,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000117,2026-08-15 13:32:37,195.53,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000118,2026-08-22 09:46:09,2891.27,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000119,2026-08-19 19:39:44,3840.68,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000120,2026-08-26 07:56:48,834.47,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000121,2026-08-29 18:14:47,1468.59,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000122,2026-08-26 18:57:01,3648.85,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000123,2026-08-19 01:26:36,3004.13,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,45.06,8.11,above_20L,clean,Matched,R4,45.06,45.06,0.0,Accurate fee verified against R4.
-TXN_000124,2026-08-24 13:14:29,11651.39,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000125,2026-08-22 18:43:34,3933.33,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000126,2026-08-22 07:16:29,4146.58,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,45.61,8.21,above_20L,clean,Matched,R6c,45.61,45.61,0.0,Accurate fee verified against R6c.
-TXN_000127,2026-08-22 03:22:36,2169.57,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000128,2026-08-25 06:49:47,22792.24,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,205.13,36.92,above_20L,clean,Matched,R8,205.13,205.13,0.0,Accurate fee verified against R8.
-TXN_000129,2026-08-28 18:49:51,1212.8,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000130,2026-08-26 08:49:42,248.33,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000131,2026-08-16 03:23:46,3830.62,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000132,2026-08-18 02:56:23,22863.13,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,False,False,True,0.02,182.91,32.92,above_20L,R10_l2_l3_downgrade,Leaked,R10,457.26,182.91,-274.35,"Statutory disparity against R10: expected Rs 457.26, charged Rs 182.91."
-TXN_000133,2026-08-29 00:51:18,541.14,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000134,2026-08-19 06:46:43,24191.56,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,217.72,39.19,above_20L,clean,Matched,R8,217.72,217.72,0.0,Accurate fee verified against R8.
-TXN_000135,2026-08-20 11:50:25,4528.58,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000136,2026-08-29 05:23:06,5426.53,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,81.4,14.65,above_20L,clean,Matched,R4,81.4,81.4,0.0,Accurate fee verified against R4.
-TXN_000137,2026-08-25 23:58:44,642.03,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000138,2026-08-22 12:06:15,3650.9,Card,Visa_credit,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,73.02,13.14,above_20L,clean,Flagged_For_Review,R9,73.02,73.02,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000139,2026-08-27 07:34:26,18247.0,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000140,2026-08-29 00:39:26,7209.58,Card,Mastercard_credit,533333.0,corporate,5045,B2B wholesale,False,False,False,0.02,201.87,36.34,above_20L,R10_l2_l3_downgrade,Leaked,R10,144.19,201.87,57.68,"Statutory disparity against R10: expected Rs 144.19, charged Rs 201.87."
-TXN_000141,2026-08-22 16:54:23,5017.34,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000142,2026-08-19 15:07:54,182.93,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000143,2026-08-20 16:08:50,1994.67,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000144,2026-08-28 16:21:49,1355.77,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000145,2026-08-23 17:51:11,2768.33,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000146,2026-08-19 03:20:01,125.98,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000147,2026-08-22 23:49:23,208.13,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000148,2026-08-30 06:33:19,2381.5,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000149,2026-08-22 06:06:31,6951.0,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,159.88,28.78,above_20L,R10_l2_l3_downgrade,Leaked,R4,104.27,159.88,55.61,"Statutory disparity against R4: expected Rs 104.27, charged Rs 159.88."
-TXN_000150,2026-08-20 04:40:37,8332.08,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000151,2026-08-24 22:06:50,1286.55,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000152,2026-08-18 22:21:52,2568.22,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000153,2026-08-19 20:09:43,1958.19,Card,Mastercard_credit,422222.0,premium_rewards,5411,B2B wholesale,True,True,False,0.02,39.16,7.05,above_20L,R12_mcc_misclassification,Flagged_For_Review,R9,39.16,39.16,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000154,2026-08-17 08:47:23,5246.23,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,57.71,10.39,above_20L,clean,Matched,R6c,57.71,57.71,0.0,Accurate fee verified against R6c.
-TXN_000155,2026-08-21 20:55:42,10746.54,Card,Mastercard_credit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,214.93,38.69,above_20L,clean,Flagged_For_Review,R9,214.93,214.93,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000156,2026-08-24 18:22:06,5554.65,Card,RuPay_debit,607222.0,corporate,5045,B2B wholesale,False,False,False,0.02,44.44,8.0,above_20L,R10_l2_l3_downgrade,Leaked,R10,111.09,44.44,-66.65,"Statutory disparity against R10: expected Rs 111.09, charged Rs 44.44."
-TXN_000157,2026-08-16 20:54:35,5178.85,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000158,2026-08-28 04:39:43,948.47,Card,,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000159,2026-08-20 07:48:19,8970.28,Card,Mastercard_credit,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,179.41,32.29,above_20L,clean,Flagged_For_Review,R9,179.41,179.41,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000160,2026-08-25 06:25:04,968.1,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000161,2026-08-22 19:10:23,520.36,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000162,2026-08-17 14:48:39,4464.97,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000163,2026-08-22 22:17:13,4393.03,UPI,RuPay_credit_UPI,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,65.9,11.86,above_20L,clean,Matched,R4,65.9,65.9,0.0,Accurate fee verified against R4.
-TXN_000164,2026-08-19 10:14:25,1653.11,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,14.88,2.68,above_20L,clean,Matched,R8,14.88,14.88,0.0,Accurate fee verified against R8.
-TXN_000165,2026-08-18 13:48:16,4760.75,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000166,2026-08-22 02:45:14,1258.36,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000167,2026-08-26 10:27:01,3756.18,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000168,2026-08-27 05:26:18,3819.99,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000169,2026-08-29 20:05:27,402.81,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000170,2026-08-20 08:21:14,293.79,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000171,2026-08-18 20:22:46,16242.44,Card,Mastercard_credit,433333.0,corporate,5045,B2B wholesale,False,False,True,0.02,454.79,81.86,above_20L,R10_l2_l3_downgrade,Leaked,R10,324.85,454.79,129.94,"Statutory disparity against R10: expected Rs 324.85, charged Rs 454.79."
-TXN_000172,2026-08-17 17:12:11,19077.32,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000173,2026-08-28 05:31:29,4496.53,UPI,RuPay_credit_UPI,533333.0,corporate,5045,B2B wholesale,False,False,False,0.02,103.42,18.62,above_20L,R10_l2_l3_downgrade,Leaked,R4,67.45,103.42,35.97,"Statutory disparity against R4: expected Rs 67.45, charged Rs 103.42."
-TXN_000174,2026-08-17 00:28:40,448.28,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000175,2026-08-22 10:03:23,161.26,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000176,2026-08-23 21:29:37,19857.9,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000177,2026-08-28 03:41:12,739.66,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000178,2026-08-27 19:45:05,3400.2,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000179,2026-08-24 01:39:10,4161.42,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000180,2026-08-16 05:41:21,5747.17,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000181,2026-08-29 06:58:38,8534.04,Card,Visa_credit,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,170.68,30.72,above_20L,clean,Flagged_For_Review,R9,170.68,170.68,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000182,2026-08-20 05:44:42,7162.11,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000183,2026-08-25 19:52:08,1251.99,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000184,2026-08-15 20:19:11,8740.79,Card,Mastercard_credit,607222.0,corporate,5045,B2B wholesale,False,False,False,0.02,244.75,44.05,above_20L,R10_l2_l3_downgrade,Leaked,R10,174.82,244.75,69.93,"Statutory disparity against R10: expected Rs 174.82, charged Rs 244.75."
-TXN_000185,2026-08-17 13:04:18,196.65,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000186,2026-08-30 04:08:38,285.26,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000187,2026-08-15 22:23:43,5377.75,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,80.67,14.52,above_20L,clean,Matched,R4,80.67,80.67,0.0,Accurate fee verified against R4.
-TXN_000188,2026-08-20 00:57:53,5158.79,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000189,2026-08-19 21:32:33,284.98,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000190,2026-08-16 05:30:55,1404.73,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000191,2026-08-27 14:17:28,3939.51,Card,Visa_credit,607111.0,basic,5411,B2B wholesale,True,True,False,0.02,78.79,14.18,above_20L,R12_mcc_misclassification,Flagged_For_Review,R9,78.79,78.79,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000192,2026-08-29 16:52:28,23282.66,Card,,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,465.65,83.82,above_20L,exception_missing_tag,Exception,NONE,,465.65,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000193,2026-08-23 20:15:24,9560.34,Card,,,,5045,B2B wholesale,True,True,False,0.02,86.04,15.49,above_20L,exception_missing_tag,Exception,NONE,,86.04,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000194,2026-08-29 12:53:45,19847.1,Card,,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000195,2026-08-30 00:44:53,1073.03,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000196,2026-08-15 17:13:53,5368.4,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000197,2026-08-19 16:19:07,6376.75,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000198,2026-08-29 00:38:34,797.29,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000199,2026-08-16 04:22:15,4926.65,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000200,2026-08-20 11:33:34,5070.13,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000201,2026-08-16 05:24:23,6347.43,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000202,2026-08-26 05:06:49,18989.97,Card,,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000203,2026-08-23 19:52:41,4582.19,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000204,2026-08-27 13:04:45,713.64,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000205,2026-08-29 10:20:59,6493.96,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000206,2026-08-28 05:12:18,6768.6,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000207,2026-08-27 20:27:56,7262.81,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000208,2026-08-23 07:31:23,13126.11,Card,Mastercard_credit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,262.52,47.25,above_20L,clean,Flagged_For_Review,R9,262.52,262.52,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000209,2026-08-16 22:38:52,2609.16,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000210,2026-08-19 23:38:45,1050.16,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000211,2026-08-29 20:39:27,1471.04,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000212,2026-08-21 20:32:51,2219.72,UPI,RuPay_credit_UPI,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,33.3,5.99,above_20L,clean,Matched,R4,33.3,33.3,0.0,Accurate fee verified against R4.
-TXN_000213,2026-08-19 05:23:23,5347.77,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000214,2026-08-20 23:48:04,13377.66,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000215,2026-08-19 16:07:01,773.61,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000216,2026-08-26 23:13:39,1378.89,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000217,2026-08-16 23:11:57,6467.3,UPI,RuPay_credit_UPI,533333.0,corporate,5045,B2B wholesale,True,True,False,0.02,97.01,17.46,above_20L,clean,Matched,R4,97.01,97.01,0.0,Accurate fee verified against R4.
-TXN_000218,2026-08-24 02:18:57,278.38,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000219,2026-08-23 16:07:12,4742.42,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,52.17,9.39,above_20L,clean,Matched,R6c,52.17,52.17,0.0,Accurate fee verified against R6c.
-TXN_000220,2026-08-20 23:51:35,2408.33,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000221,2026-08-27 00:33:26,2451.94,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,36.78,6.62,above_20L,clean,Matched,R4,36.78,36.78,0.0,Accurate fee verified against R4.
-TXN_000222,2026-08-26 01:22:08,19572.49,Card,Visa_credit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,391.45,70.46,above_20L,clean,Flagged_For_Review,R9,391.45,391.45,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000223,2026-08-17 22:32:58,20835.35,Card,Visa_credit,433333.0,corporate,5045,B2B wholesale,False,False,True,0.02,583.39,105.01,above_20L,R10_l2_l3_downgrade,Leaked,R10,416.71,583.39,166.68,"Statutory disparity against R10: expected Rs 416.71, charged Rs 583.39."
-TXN_000224,2026-08-17 19:59:45,4877.99,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000225,2026-08-19 15:40:35,956.28,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000226,2026-08-18 03:37:09,6965.9,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000227,2026-08-24 10:52:55,5545.92,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000228,2026-08-28 03:26:39,12601.54,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000229,2026-08-20 00:15:51,638.83,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,9.58,1.72,above_20L,R3_R5_zero_rate_leak,Leaked,R5,0.0,9.58,9.58,"Statutory disparity against R5: expected Rs 0.00, charged Rs 9.58."
-TXN_000230,2026-08-22 00:29:13,6745.09,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000231,2026-08-28 20:25:08,796.72,UPI,RuPay_credit_UPI,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,11.95,2.15,above_20L,R3_R5_zero_rate_leak,Leaked,R3,0.0,11.95,11.95,"Statutory disparity against R3: expected Rs 0.00, charged Rs 11.95."
-TXN_000232,2026-08-22 16:09:06,6759.69,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000233,2026-08-28 14:52:20,18111.87,Card,Mastercard_credit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,362.24,65.2,above_20L,clean,Flagged_For_Review,R9,362.24,362.24,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000234,2026-08-23 01:29:31,12585.05,Card,Visa_credit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,251.7,45.31,above_20L,clean,Flagged_For_Review,R9,251.7,251.7,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000235,2026-08-23 23:15:13,1501.86,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000236,2026-08-30 05:43:30,61.86,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000237,2026-08-26 20:48:25,630.84,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000238,2026-08-19 11:24:32,847.29,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000239,2026-08-16 21:23:50,14078.45,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,126.71,22.81,above_20L,clean,Matched,R8,126.71,126.71,0.0,Accurate fee verified against R8.
-TXN_000240,2026-08-17 15:38:32,2262.08,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000241,2026-08-23 23:09:38,3752.59,Card,Visa_credit,533333.0,corporate,5045,B2B wholesale,False,False,False,0.02,105.07,18.91,above_20L,R10_l2_l3_downgrade,Leaked,R10,75.05,105.07,30.02,"Statutory disparity against R10: expected Rs 75.05, charged Rs 105.07."
-TXN_000242,2026-08-25 08:53:19,12830.68,Card,RuPay_debit,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000243,2026-08-20 00:52:01,7390.44,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000244,2026-08-27 07:40:01,6858.6,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000245,2026-08-25 00:10:33,15607.47,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000246,2026-08-25 16:02:36,3014.42,Card,Mastercard_credit,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,60.29,10.85,above_20L,clean,Flagged_For_Review,R9,60.29,60.29,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000247,2026-08-21 13:26:44,5382.56,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000248,2026-08-27 08:03:45,3821.52,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000249,2026-08-20 14:29:58,13792.95,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000250,2026-08-18 16:17:35,7403.32,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000251,2026-08-27 07:31:20,7142.95,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000252,2026-08-25 06:34:24,10044.95,Card,Visa_credit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,200.9,36.16,above_20L,clean,Flagged_For_Review,R9,200.9,200.9,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000253,2026-08-27 13:18:02,3937.68,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000254,2026-08-27 00:13:12,5113.0,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,56.24,10.12,above_20L,clean,Matched,R6c,56.24,56.24,0.0,Accurate fee verified against R6c.
-TXN_000255,2026-08-25 08:37:15,1021.26,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000256,2026-08-21 19:45:30,1167.61,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000257,2026-08-30 00:30:41,1447.68,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000258,2026-08-17 05:36:14,18161.01,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000259,2026-08-17 22:56:53,7484.59,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000260,2026-08-18 08:55:59,104.33,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000261,2026-08-20 18:29:41,12499.64,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000262,2026-08-22 17:12:51,4551.08,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000263,2026-08-16 08:21:50,3102.73,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000264,2026-08-23 19:05:25,4864.1,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000265,2026-08-29 16:00:16,3505.12,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000266,2026-08-27 03:00:16,17411.38,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000267,2026-08-22 18:10:25,6888.52,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,103.33,18.6,above_20L,clean,Matched,R4,103.33,103.33,0.0,Accurate fee verified against R4.
-TXN_000268,2026-08-19 20:39:14,2884.86,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000269,2026-08-24 00:48:34,1247.13,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000270,2026-08-24 07:23:04,3071.56,Card,Visa_credit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,61.43,11.06,above_20L,clean,Flagged_For_Review,R9,61.43,61.43,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000271,2026-08-17 14:20:54,3171.13,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000272,2026-08-22 11:57:32,2769.1,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000273,2026-08-16 02:29:43,1098.76,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000274,2026-08-24 11:02:27,142.45,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000275,2026-08-22 10:18:26,5546.31,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000276,2026-08-29 21:28:55,9624.16,Card,Visa_credit,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,192.48,34.65,above_20L,clean,Flagged_For_Review,R9,192.48,192.48,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000277,2026-08-26 02:08:41,3230.24,Card,Visa_credit,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,64.6,11.63,above_20L,clean,Flagged_For_Review,R9,64.6,64.6,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000278,2026-08-26 16:53:00,4573.37,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,68.6,12.35,above_20L,clean,Matched,R4,68.6,68.6,0.0,Accurate fee verified against R4.
-TXN_000279,2026-08-18 23:22:09,1409.25,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000280,2026-08-25 22:39:49,22259.32,Card,Mastercard_credit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,445.19,80.13,above_20L,clean,Flagged_For_Review,R9,445.19,445.19,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000281,2026-08-17 04:02:28,17671.17,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000282,2026-08-15 21:28:14,18933.33,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000283,2026-08-19 16:52:58,5308.65,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,79.63,14.33,above_20L,clean,Matched,R4,79.63,79.63,0.0,Accurate fee verified against R4.
-TXN_000284,2026-08-18 06:33:14,448.97,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000285,2026-08-22 02:31:03,23557.18,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,212.01,38.16,above_20L,clean,Matched,R8,212.01,212.01,0.0,Accurate fee verified against R8.
-TXN_000286,2026-08-28 01:20:44,4101.71,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000287,2026-08-18 18:54:45,2364.05,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000288,2026-08-24 01:08:24,5574.55,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000289,2026-08-17 02:46:53,439.27,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000290,2026-08-19 03:46:42,12141.04,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,False,False,True,0.02,97.13,17.48,above_20L,R10_l2_l3_downgrade,Leaked,R10,242.82,97.13,-145.69,"Statutory disparity against R10: expected Rs 242.82, charged Rs 97.13."
-TXN_000291,2026-08-29 09:13:59,6120.49,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000292,2026-08-27 04:45:13,3802.8,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000293,2026-08-24 05:22:19,793.58,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000294,2026-08-27 00:48:53,344.53,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000295,2026-08-19 08:09:01,5206.33,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000296,2026-08-18 19:14:24,6369.53,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,False,False,False,0.02,50.96,9.17,above_20L,R10_l2_l3_downgrade,Leaked,R10,127.39,50.96,-76.43,"Statutory disparity against R10: expected Rs 127.39, charged Rs 50.96."
-TXN_000297,2026-08-29 00:46:41,6043.61,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,139.0,25.02,above_20L,R10_l2_l3_downgrade,Leaked,R4,90.65,139.0,48.35,"Statutory disparity against R4: expected Rs 90.65, charged Rs 139.00."
-TXN_000298,2026-08-24 00:11:58,24760.99,Card,Visa_credit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,495.22,89.14,above_20L,clean,Flagged_For_Review,R9,495.22,495.22,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000299,2026-08-28 11:52:42,59.26,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000300,2026-08-17 09:13:32,5525.62,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000301,2026-08-15 09:34:35,5985.95,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000302,2026-08-29 07:43:27,1369.17,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000303,2026-08-18 15:39:33,563.94,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000304,2026-08-21 23:36:15,5878.67,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,52.91,9.52,above_20L,clean,Matched,R8,52.91,52.91,0.0,Accurate fee verified against R8.
-TXN_000305,2026-08-28 11:41:54,1082.61,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000306,2026-08-24 00:03:40,4774.23,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000307,2026-08-21 03:54:06,23003.06,Card,Visa_credit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,460.06,82.81,above_20L,clean,Flagged_For_Review,R9,460.06,460.06,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000308,2026-08-29 07:56:36,2455.2,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000309,2026-08-25 06:02:11,8067.77,Card,Mastercard_credit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,161.36,29.04,above_20L,clean,Flagged_For_Review,R9,161.36,161.36,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000310,2026-08-28 07:52:25,7692.14,Card,Mastercard_credit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,153.84,27.69,above_20L,clean,Flagged_For_Review,R9,153.84,153.84,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000311,2026-08-28 21:43:57,9781.0,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000312,2026-08-27 08:05:32,551.5,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000313,2026-08-28 04:38:25,8361.5,Card,Mastercard_credit,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,167.23,30.1,above_20L,clean,Flagged_For_Review,R9,167.23,167.23,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000314,2026-08-23 00:14:22,9573.05,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000315,2026-08-25 21:05:49,20011.96,Card,RuPay_debit,422222.0,premium_rewards,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000316,2026-08-17 21:45:50,18569.49,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000317,2026-08-16 09:19:28,441.16,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000318,2026-08-24 02:32:26,5070.5,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000319,2026-08-15 18:26:24,1101.02,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000320,2026-08-18 06:24:10,486.64,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000321,2026-08-19 22:19:30,7196.01,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,79.16,14.25,above_20L,clean,Matched,R6c,79.16,79.16,0.0,Accurate fee verified against R6c.
-TXN_000322,2026-08-18 23:06:08,3860.58,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000323,2026-08-20 23:21:27,1296.29,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000324,2026-08-25 07:12:30,7329.55,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000325,2026-08-26 00:36:50,6499.9,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000326,2026-08-30 03:12:37,4744.2,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,42.7,7.69,above_20L,clean,Matched,R8,42.7,42.7,0.0,Accurate fee verified against R8.
-TXN_000327,2026-08-16 08:29:45,1206.64,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000328,2026-08-27 22:43:31,489.11,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000329,2026-08-27 21:04:28,12137.1,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,109.23,19.66,above_20L,clean,Matched,R8,109.23,109.23,0.0,Accurate fee verified against R8.
-TXN_000330,2026-08-24 07:26:34,1454.22,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000331,2026-08-19 06:42:22,5119.55,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000332,2026-08-20 22:06:00,371.9,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000333,2026-08-21 23:49:43,12661.5,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000334,2026-08-22 12:18:26,2420.61,Card,Mastercard_credit,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,67.77,12.2,above_20L,R10_l2_l3_downgrade,Leaked,R10,48.41,67.77,19.36,"Statutory disparity against R10: expected Rs 48.41, charged Rs 67.77."
-TXN_000335,2026-08-20 23:50:13,8903.02,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000336,2026-08-26 23:20:04,2677.21,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000337,2026-08-25 14:59:47,2922.74,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000338,2026-08-18 21:40:11,1003.1,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000339,2026-08-21 21:00:45,453.6,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000340,2026-08-28 02:11:23,3479.83,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000341,2026-08-25 19:38:24,14799.02,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000342,2026-08-23 04:11:52,1210.89,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,9.69,1.74,above_20L,R10_l2_l3_downgrade,Leaked,R3,0.0,9.69,9.69,"Statutory disparity against R3: expected Rs 0.00, charged Rs 9.69."
-TXN_000343,2026-08-18 18:07:11,254.97,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000344,2026-08-21 14:31:40,23003.28,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000345,2026-08-22 18:08:11,2342.18,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000346,2026-08-22 13:12:52,5609.23,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000347,2026-08-22 07:53:28,169.87,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000348,2026-08-19 16:34:18,6096.72,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000349,2026-08-17 03:07:17,1243.76,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000350,2026-08-23 02:13:27,6144.83,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000351,2026-08-15 23:16:22,2448.48,Card,Visa_credit,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,48.97,8.81,above_20L,clean,Flagged_For_Review,R9,48.97,48.97,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000352,2026-08-18 15:51:47,8960.58,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000353,2026-08-17 15:52:13,876.61,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000354,2026-08-26 18:18:36,1294.12,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000355,2026-08-27 22:58:03,21716.08,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,195.44,35.18,above_20L,clean,Matched,R8,195.44,195.44,0.0,Accurate fee verified against R8.
-TXN_000356,2026-08-28 13:15:09,6200.03,UPI,RuPay_credit_UPI,607222.0,corporate,5045,B2B wholesale,False,False,False,0.02,142.6,25.67,above_20L,R10_l2_l3_downgrade,Leaked,R4,93.0,142.6,49.6,"Statutory disparity against R4: expected Rs 93.00, charged Rs 142.60."
-TXN_000357,2026-08-25 17:40:26,159.5,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000358,2026-08-26 17:44:59,11530.98,Card,Visa_credit,607222.0,corporate,5045,B2B wholesale,False,False,True,0.02,322.87,58.12,above_20L,R10_l2_l3_downgrade,Leaked,R10,230.62,322.87,92.25,"Statutory disparity against R10: expected Rs 230.62, charged Rs 322.87."
-TXN_000359,2026-08-16 08:05:46,15980.56,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,143.83,25.89,above_20L,clean,Matched,R8,143.83,143.83,0.0,Accurate fee verified against R8.
-TXN_000360,2026-08-28 11:50:34,6545.42,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000361,2026-08-28 18:21:35,14283.71,Card,RuPay_debit,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000362,2026-08-30 06:48:03,957.96,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000363,2026-08-28 14:28:29,1439.15,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000364,2026-08-19 14:55:59,2605.5,Card,Visa_credit,533333.0,corporate,5045,B2B wholesale,False,False,False,0.02,72.95,13.13,above_20L,R10_l2_l3_downgrade,Leaked,R10,52.11,72.95,20.84,"Statutory disparity against R10: expected Rs 52.11, charged Rs 72.95."
-TXN_000365,2026-08-21 06:57:41,624.7,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000366,2026-08-17 07:06:00,5285.55,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000367,2026-08-26 19:52:07,10731.15,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,96.58,17.38,above_20L,clean,Matched,R8,96.58,96.58,0.0,Accurate fee verified against R8.
-TXN_000368,2026-08-16 16:24:05,3757.77,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,56.37,10.15,above_20L,clean,Matched,R4,56.37,56.37,0.0,Accurate fee verified against R4.
-TXN_000369,2026-08-28 13:41:43,819.24,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000370,2026-08-26 15:40:47,646.98,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000371,2026-08-16 13:48:07,9785.59,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000372,2026-08-17 16:17:41,5320.04,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000373,2026-08-26 09:54:54,7750.74,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000374,2026-08-20 05:03:50,23880.39,Card,Visa_credit,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,477.61,85.97,above_20L,clean,Flagged_For_Review,R9,477.61,477.61,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000375,2026-08-19 00:40:38,2115.77,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000376,2026-08-17 21:55:53,9325.69,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000377,2026-08-27 11:01:37,430.17,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000378,2026-08-22 01:18:40,4358.49,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,65.38,11.77,above_20L,clean,Matched,R4,65.38,65.38,0.0,Accurate fee verified against R4.
-TXN_000379,2026-08-24 04:09:17,164.58,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000380,2026-08-22 03:40:48,2410.33,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,26.51,4.77,above_20L,clean,Matched,R6c,26.51,26.51,0.0,Accurate fee verified against R6c.
-TXN_000381,2026-08-28 16:03:15,680.0,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000382,2026-08-27 06:47:11,1076.46,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000383,2026-08-21 01:33:50,4076.69,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,44.84,8.07,above_20L,clean,Matched,R6c,44.84,44.84,0.0,Accurate fee verified against R6c.
-TXN_000384,2026-08-16 09:21:51,809.59,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000385,2026-08-23 20:03:31,4421.97,Card,Visa_credit,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,123.82,22.29,above_20L,R10_l2_l3_downgrade,Leaked,R10,88.44,123.82,35.38,"Statutory disparity against R10: expected Rs 88.44, charged Rs 123.82."
-TXN_000386,2026-08-17 03:43:46,1124.13,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000387,2026-08-22 20:24:58,6723.29,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000388,2026-08-18 22:58:46,1247.7,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000389,2026-08-29 10:11:14,1473.05,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000390,2026-08-28 18:49:54,4539.27,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000391,2026-08-24 18:47:39,584.0,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000392,2026-08-23 16:09:00,890.58,Card,Mastercard_credit,533333.0,corporate,5045,B2B wholesale,True,True,False,0.02,17.81,3.21,above_20L,clean,Flagged_For_Review,R9,17.81,17.81,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000393,2026-08-26 09:21:00,6072.55,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,91.09,16.4,above_20L,clean,Matched,R4,91.09,91.09,0.0,Accurate fee verified against R4.
-TXN_000394,2026-08-18 22:31:03,3816.63,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,34.35,6.18,above_20L,clean,Matched,R8,34.35,34.35,0.0,Accurate fee verified against R8.
-TXN_000395,2026-08-15 16:57:54,1066.23,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000396,2026-08-23 13:40:52,908.25,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000397,2026-08-19 19:59:51,3828.07,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000398,2026-08-16 15:08:49,2625.83,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,28.88,5.2,above_20L,clean,Matched,R6c,28.88,28.88,0.0,Accurate fee verified against R6c.
-TXN_000399,2026-08-21 12:34:22,5428.61,Card,Mastercard_credit,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,108.57,19.54,above_20L,clean,Flagged_For_Review,R9,108.57,108.57,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000400,2026-08-28 12:05:10,491.11,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000401,2026-08-28 19:09:05,1454.18,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000402,2026-08-17 09:25:54,3411.7,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000403,2026-08-27 13:07:00,1182.39,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000404,2026-08-21 06:40:41,899.87,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000405,2026-08-16 15:57:41,6982.67,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000406,2026-08-22 10:10:59,20595.63,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000407,2026-08-22 06:27:11,3548.65,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000408,2026-08-16 04:39:39,4295.36,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000409,2026-08-19 21:08:26,1332.75,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000410,2026-08-28 07:22:30,12271.58,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000411,2026-08-17 09:20:38,1348.86,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000412,2026-08-23 01:22:49,6049.22,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,48.39,8.71,above_20L,R10_l2_l3_downgrade,Leaked,R10,120.98,48.39,-72.59,"Statutory disparity against R10: expected Rs 120.98, charged Rs 48.39."
-TXN_000413,2026-08-25 16:17:34,1380.03,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R5,0.0,0.0,0.0,Accurate fee verified against R5.
-TXN_000414,2026-08-27 21:22:59,3009.75,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,33.11,5.96,above_20L,clean,Matched,R6c,33.11,33.11,0.0,Accurate fee verified against R6c.
-TXN_000415,2026-08-26 20:58:37,1065.81,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000416,2026-08-19 00:34:19,105.05,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000417,2026-08-22 09:21:58,20219.2,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000418,2026-08-29 19:03:01,1071.81,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000419,2026-08-28 20:04:23,5243.79,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,78.66,14.16,above_20L,clean,Matched,R4,78.66,78.66,0.0,Accurate fee verified against R4.
-TXN_000420,2026-08-18 08:27:50,12333.84,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,False,False,True,0.02,98.67,17.76,above_20L,R10_l2_l3_downgrade,Leaked,R10,246.68,98.67,-148.01,"Statutory disparity against R10: expected Rs 246.68, charged Rs 98.67."
-TXN_000421,2026-08-24 07:56:59,9113.59,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000422,2026-08-27 07:18:08,5875.95,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000423,2026-08-28 03:02:11,23049.64,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000424,2026-08-17 00:09:21,395.09,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000425,2026-08-26 05:46:56,66.52,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000426,2026-08-27 12:46:00,685.42,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000427,2026-08-22 21:22:34,1251.77,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000428,2026-08-16 10:18:01,1429.91,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000429,2026-08-18 08:04:35,24457.63,Card,Mastercard_credit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,489.15,88.05,above_20L,clean,Flagged_For_Review,R9,489.15,489.15,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000430,2026-08-25 00:45:01,5359.88,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000431,2026-08-16 19:13:12,7094.38,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000432,2026-08-19 16:06:03,847.01,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000433,2026-08-21 11:18:52,15125.32,Card,RuPay_debit,511111.0,basic,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000434,2026-08-18 14:40:18,11997.2,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,107.97,19.43,above_20L,clean,Matched,R8,107.97,107.97,0.0,Accurate fee verified against R8.
-TXN_000435,2026-08-27 21:30:31,6845.61,Card,Visa_credit,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,136.91,24.64,above_20L,clean,Flagged_For_Review,R9,136.91,136.91,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000436,2026-08-29 21:23:11,431.78,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000437,2026-08-24 10:09:48,5691.37,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,85.37,15.37,above_20L,clean,Matched,R4,85.37,85.37,0.0,Accurate fee verified against R4.
-TXN_000438,2026-08-28 21:52:33,6774.57,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000439,2026-08-19 00:19:05,1288.21,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000440,2026-08-27 23:11:10,20268.98,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,182.42,32.84,above_20L,clean,Matched,R8,182.42,182.42,0.0,Accurate fee verified against R8.
-TXN_000441,2026-08-21 11:43:27,2855.94,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000442,2026-08-26 11:05:24,13935.74,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000443,2026-08-29 09:50:44,13207.28,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000444,2026-08-17 13:36:37,24131.34,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000445,2026-08-24 12:50:18,22039.35,Card,Visa_credit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,440.79,79.34,above_20L,clean,Flagged_For_Review,R9,440.79,440.79,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000446,2026-08-26 00:36:38,4246.21,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000447,2026-08-29 19:44:15,3513.78,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000448,2026-08-28 18:19:17,1294.44,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,19.42,3.5,above_20L,R3_R5_zero_rate_leak,Leaked,R5,0.0,19.42,19.42,"Statutory disparity against R5: expected Rs 0.00, charged Rs 19.42."
-TXN_000449,2026-08-26 23:49:52,1106.76,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000450,2026-08-18 22:47:31,1307.42,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000451,2026-08-23 21:08:49,22019.52,Card,Visa_credit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,440.39,79.27,above_20L,clean,Flagged_For_Review,R9,440.39,440.39,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000452,2026-08-29 15:53:03,711.85,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000453,2026-08-28 23:32:25,3359.66,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000454,2026-08-23 04:28:11,12022.18,Card,Mastercard_credit,533333.0,corporate,5045,B2B wholesale,False,False,True,0.02,336.62,60.59,above_20L,R10_l2_l3_downgrade,Leaked,R10,240.44,336.62,96.18,"Statutory disparity against R10: expected Rs 240.44, charged Rs 336.62."
-TXN_000455,2026-08-28 17:47:53,463.35,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000456,2026-08-25 16:43:13,643.79,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000457,2026-08-18 05:11:38,5365.47,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,59.02,10.62,above_20L,clean,Matched,R6c,59.02,59.02,0.0,Accurate fee verified against R6c.
-TXN_000458,2026-08-27 05:17:27,21334.18,Card,Visa_credit,607222.0,corporate,5045,B2B wholesale,False,False,True,0.02,597.35,107.52,above_20L,R10_l2_l3_downgrade,Leaked,R10,426.68,597.35,170.67,"Statutory disparity against R10: expected Rs 426.68, charged Rs 597.35."
-TXN_000459,2026-08-22 18:43:33,2607.6,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,28.68,5.16,above_20L,clean,Matched,R6c,28.68,28.68,0.0,Accurate fee verified against R6c.
-TXN_000460,2026-08-25 04:18:19,3882.75,UPI,RuPay_credit_UPI,533333.0,corporate,5045,B2B wholesale,True,True,False,0.02,58.24,10.48,above_20L,clean,Matched,R4,58.24,58.24,0.0,Accurate fee verified against R4.
-TXN_000461,2026-08-20 05:45:57,4952.49,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000462,2026-08-28 04:25:42,2188.73,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000463,2026-08-19 22:25:24,895.38,UPI,RuPay_credit_UPI,533333.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000464,2026-08-19 06:34:40,5711.68,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,62.83,11.31,above_20L,clean,Matched,R6c,62.83,62.83,0.0,Accurate fee verified against R6c.
-TXN_000465,2026-08-29 06:56:35,2747.3,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000466,2026-08-23 14:43:57,3986.29,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000467,2026-08-29 19:23:16,11754.89,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000468,2026-08-29 05:37:37,2059.03,Card,Mastercard_credit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,41.18,7.41,above_20L,clean,Flagged_For_Review,R9,41.18,41.18,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000469,2026-08-29 06:24:33,128.39,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000470,2026-08-20 22:36:57,11602.01,Card,Visa_credit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,232.04,41.77,above_20L,clean,Flagged_For_Review,R9,232.04,232.04,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000471,2026-08-17 11:31:21,4667.56,Card,,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000472,2026-08-19 15:48:49,1158.5,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000473,2026-08-22 05:27:25,742.23,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000474,2026-08-15 19:48:53,742.53,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000475,2026-08-18 16:44:56,4140.35,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000476,2026-08-28 10:19:18,4906.44,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000477,2026-08-17 19:57:31,7217.06,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000478,2026-08-19 08:08:13,2970.97,UPI,RuPay_credit_UPI,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,44.56,8.02,above_20L,clean,Matched,R4,44.56,44.56,0.0,Accurate fee verified against R4.
-TXN_000479,2026-08-25 17:49:34,14969.92,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000480,2026-08-25 09:03:44,2723.59,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000481,2026-08-17 15:44:43,7737.58,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000482,2026-08-20 04:38:44,1254.45,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000483,2026-08-27 12:31:12,19515.59,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
-TXN_000484,2026-08-21 18:10:02,22785.81,Card,RuPay_debit,607222.0,corporate,5045,B2B wholesale,False,False,True,0.02,182.29,32.81,above_20L,R10_l2_l3_downgrade,Leaked,R10,455.72,182.29,-273.43,"Statutory disparity against R10: expected Rs 455.72, charged Rs 182.29."
-TXN_000485,2026-08-15 09:42:05,20930.23,Card,Visa_credit,607222.0,corporate,5045,B2B wholesale,False,False,True,0.02,586.04,105.49,above_20L,R10_l2_l3_downgrade,Leaked,R10,418.6,586.04,167.44,"Statutory disparity against R10: expected Rs 418.60, charged Rs 586.04."
-TXN_000486,2026-08-17 01:04:46,5561.64,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,83.42,15.02,above_20L,clean,Matched,R4,83.42,83.42,0.0,Accurate fee verified against R4.
-TXN_000487,2026-08-15 12:52:11,21350.54,Card,Visa_credit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,427.01,76.86,above_20L,clean,Flagged_For_Review,R9,427.01,427.01,0.0,Market credit card rate applied; requires bilateral MSA contract review.
-TXN_000488,2026-08-20 22:47:07,1149.4,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000489,2026-08-17 19:22:57,951.62,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000490,2026-08-20 14:07:25,6604.61,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000491,2026-08-25 14:07:08,135.04,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000492,2026-08-25 00:51:36,4119.64,UPI,RuPay_credit_UPI,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,61.79,11.12,above_20L,clean,Matched,R4,61.79,61.79,0.0,Accurate fee verified against R4.
-TXN_000493,2026-08-30 08:57:08,6887.39,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000494,2026-08-20 05:20:00,1033.0,UPI,RuPay_credit_UPI,533333.0,corporate,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R3,0.0,0.0,0.0,Accurate fee verified against R3.
-TXN_000495,2026-08-27 07:39:06,4676.52,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000496,2026-08-29 02:57:39,2905.25,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000497,2026-08-28 14:04:48,399.29,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
-TXN_000498,2026-08-24 05:24:25,4470.83,UPI,PPI_wallet_UPI,,,5411,B2B wholesale,True,True,False,0.02,49.18,8.85,above_20L,R12_mcc_misclassification,Leaked,R6b,40.24,49.18,8.94,"Statutory disparity against R6b: expected Rs 40.24, charged Rs 49.18."
-TXN_000499,2026-08-22 23:20:07,18707.4,Card,,,,5045,B2B wholesale,True,True,True,0.02,168.37,30.31,above_20L,exception_missing_tag,Exception,NONE,,168.37,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
-TXN_000500,2026-08-21 22:02:35,20699.95,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000001,2026-08-25 18:54:53,52442.14,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000002,2026-08-18 08:29:18,2021.95,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,30.33,5.46,above_20L,clean,Matched,R4,30.33,30.33,0.0,Accurate fee verified against R4.
+TXN_000003,2026-08-25 17:53:11,35109.13,Card,Visa_credit,433333.0,corporate,5045,B2B wholesale,False,False,True,0.02,983.05,176.95,above_20L,R10_l2_l3_downgrade,Leaked,R10,702.18,983.05,280.87,"Statutory disparity against R10: expected Rs 702.18, charged Rs 983.05."
+TXN_000004,2026-08-18 13:53:45,2002.52,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000005,2026-08-28 02:38:14,62896.77,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000006,2026-08-28 10:08:05,2148.5,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000007,2026-08-29 17:11:15,63786.84,Card,Debit_non_rupay,,,5411,B2B wholesale,True,True,True,0.02,574.08,103.33,above_20L,R12_mcc_misclassification,Matched,R8,574.08,574.08,0.0,Accurate fee verified against R8.
+TXN_000008,2026-08-18 15:10:03,32179.35,Card,Visa_credit,533333.0,corporate,5045,B2B wholesale,False,False,True,0.02,901.02,162.18,above_20L,R10_l2_l3_downgrade,Leaked,R10,643.59,901.02,257.43,"Statutory disparity against R10: expected Rs 643.59, charged Rs 901.02."
+TXN_000009,2026-08-27 20:30:51,30442.28,Card,,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,608.85,109.59,above_20L,exception_missing_tag,Exception,NONE,,608.85,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000010,2026-08-25 08:16:29,29461.96,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000011,2026-08-19 08:34:19,2203.92,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,24.24,4.36,above_20L,clean,Matched,R6c,24.24,24.24,0.0,Accurate fee verified against R6c.
+TXN_000012,2026-08-29 12:49:10,2140.92,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000013,2026-08-28 12:57:03,2176.74,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000014,2026-08-30 04:17:44,17706.7,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000015,2026-08-21 03:35:52,47313.06,Card,Mastercard_credit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,946.26,170.33,above_20L,clean,Flagged_For_Review,R9,946.26,946.26,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000016,2026-08-21 23:19:45,37079.34,UPI,RuPay_credit_UPI,533333.0,corporate,5411,B2B wholesale,True,True,True,0.02,556.19,100.11,above_20L,R12_mcc_misclassification,Matched,R4,556.19,556.19,0.0,Accurate fee verified against R4.
+TXN_000017,2026-08-20 21:11:19,2400.25,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000018,2026-08-29 06:07:25,13533.94,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000019,2026-08-27 17:40:43,2317.93,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000020,2026-08-21 10:32:59,36787.22,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000021,2026-08-23 18:43:43,2242.14,UPI,RuPay_credit_UPI,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,33.63,6.05,above_20L,clean,Matched,R4,33.63,33.63,0.0,Accurate fee verified against R4.
+TXN_000022,2026-08-28 01:35:59,2093.23,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000023,2026-08-27 15:00:49,41267.77,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000024,2026-08-24 11:31:26,25642.95,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000025,2026-08-19 20:11:35,52842.14,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000026,2026-08-16 20:40:52,2207.75,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000027,2026-08-27 05:38:36,20074.32,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000028,2026-08-29 22:39:50,48911.13,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000029,2026-08-24 04:33:49,59575.44,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000030,2026-08-19 01:39:09,34833.56,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000031,2026-08-22 04:47:00,2328.69,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000032,2026-08-21 18:03:43,2099.9,UPI,RuPay_credit_UPI,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,31.5,5.67,above_20L,clean,Matched,R4,31.5,31.5,0.0,Accurate fee verified against R4.
+TXN_000033,2026-08-29 12:38:29,20923.19,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000034,2026-08-24 17:53:24,24393.56,Card,Visa_credit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,487.87,87.82,above_20L,clean,Flagged_For_Review,R9,487.87,487.87,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000035,2026-08-19 21:22:28,2073.13,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000036,2026-08-27 10:54:35,52555.38,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000037,2026-08-22 21:18:05,24732.28,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000038,2026-08-23 14:03:56,2145.39,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000039,2026-08-19 23:32:25,31740.5,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000040,2026-08-23 08:38:58,40483.24,UPI,bank_UPI,,,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000041,2026-08-30 05:29:31,11083.84,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000042,2026-08-24 19:11:21,35059.41,Card,Visa_credit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,701.19,126.21,above_20L,clean,Flagged_For_Review,R9,701.19,701.19,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000043,2026-08-21 07:13:54,16358.57,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000044,2026-08-22 20:11:25,15902.49,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000045,2026-08-25 10:46:32,2364.2,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000046,2026-08-16 17:16:24,8910.18,UPI,RuPay_credit_UPI,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,133.65,24.06,above_20L,clean,Matched,R4,133.65,133.65,0.0,Accurate fee verified against R4.
+TXN_000047,2026-08-26 19:58:18,15695.24,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000048,2026-08-26 12:35:36,2228.43,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000049,2026-08-28 19:15:29,52698.0,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,579.68,104.34,above_20L,clean,Matched,R6c,579.68,579.68,0.0,Accurate fee verified against R6c.
+TXN_000050,2026-08-26 11:08:32,59241.29,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,651.65,117.3,above_20L,clean,Matched,R6c,651.65,651.65,0.0,Accurate fee verified against R6c.
+TXN_000051,2026-08-29 16:52:22,61289.86,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000052,2026-08-28 14:54:52,9592.93,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,86.34,15.54,above_20L,clean,Matched,R8,86.34,86.34,0.0,Accurate fee verified against R8.
+TXN_000053,2026-08-26 21:56:08,2357.35,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000054,2026-08-22 11:53:12,2300.06,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,34.5,6.21,above_20L,clean,Matched,R4,34.5,34.5,0.0,Accurate fee verified against R4.
+TXN_000055,2026-08-16 20:23:45,58747.76,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000056,2026-08-29 20:58:41,31633.48,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000057,2026-08-29 00:34:42,2185.3,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000058,2026-08-27 02:45:37,2116.8,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,23.28,4.19,above_20L,clean,Matched,R6c,23.28,23.28,0.0,Accurate fee verified against R6c.
+TXN_000059,2026-08-21 16:13:26,2134.8,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,32.02,5.76,above_20L,clean,Matched,R4,32.02,32.02,0.0,Accurate fee verified against R4.
+TXN_000060,2026-08-23 16:09:21,14984.31,Card,Mastercard_credit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,299.69,53.94,above_20L,clean,Flagged_For_Review,R9,299.69,299.69,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000061,2026-08-17 15:37:39,18024.01,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000062,2026-08-16 18:33:59,44233.74,Card,Visa_credit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,884.67,159.24,above_20L,clean,Flagged_For_Review,R9,884.67,884.67,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000063,2026-08-29 22:55:56,42806.51,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000064,2026-08-23 13:14:21,12642.35,UPI,RuPay_credit_UPI,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,189.64,34.14,above_20L,clean,Matched,R4,189.64,189.64,0.0,Accurate fee verified against R4.
+TXN_000065,2026-08-20 19:04:58,52811.75,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000066,2026-08-25 10:51:39,17039.74,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000067,2026-08-27 23:38:28,2166.46,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000068,2026-08-29 22:46:49,15804.22,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000069,2026-08-15 16:23:56,2276.51,UPI,PPI_wallet_UPI,,,5411,B2B wholesale,True,True,False,0.02,25.04,4.51,above_20L,R12_mcc_misclassification,Leaked,R6b,20.49,25.04,4.55,"Statutory disparity against R6b: expected Rs 20.49, charged Rs 25.04."
+TXN_000070,2026-08-28 00:53:21,49099.23,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000071,2026-08-23 17:33:06,2237.53,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000072,2026-08-28 07:45:09,59236.97,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000073,2026-08-21 20:59:22,58771.85,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000074,2026-08-20 23:20:35,2346.02,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,35.19,6.33,above_20L,clean,Matched,R4,35.19,35.19,0.0,Accurate fee verified against R4.
+TXN_000075,2026-08-25 06:33:45,42332.98,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000076,2026-08-24 20:59:49,16518.37,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000077,2026-08-27 00:22:42,7476.53,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000078,2026-08-16 19:09:24,37283.21,UPI,bank_UPI,,,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000079,2026-08-17 13:18:50,12518.57,Card,Mastercard_credit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,250.37,45.07,above_20L,clean,Flagged_For_Review,R9,250.37,250.37,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000080,2026-08-21 05:47:38,40574.81,Card,,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000081,2026-08-16 06:21:35,59967.17,Card,Mastercard_credit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,1199.34,215.88,above_20L,clean,Flagged_For_Review,R9,1199.34,1199.34,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000082,2026-08-27 20:19:15,57436.1,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000083,2026-08-19 18:13:16,2271.87,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000084,2026-08-24 22:52:22,9979.69,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,89.82,16.17,above_20L,clean,Matched,R8,89.82,89.82,0.0,Accurate fee verified against R8.
+TXN_000085,2026-08-21 16:09:16,2053.1,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,30.8,5.54,above_20L,clean,Matched,R4,30.8,30.8,0.0,Accurate fee verified against R4.
+TXN_000086,2026-08-23 07:27:24,2192.83,UPI,RuPay_credit_UPI,433333.0,corporate,5411,B2B wholesale,True,True,False,0.02,32.89,5.92,above_20L,R12_mcc_misclassification,Matched,R4,32.89,32.89,0.0,Accurate fee verified against R4.
+TXN_000087,2026-08-25 18:50:12,2369.26,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000088,2026-08-26 13:54:08,17550.0,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000089,2026-08-15 22:01:11,38733.53,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000090,2026-08-22 00:29:05,2447.73,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000091,2026-08-17 13:24:55,35732.48,Card,RuPay_debit,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000092,2026-08-16 16:31:40,21565.47,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000093,2026-08-26 20:46:10,2284.3,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000094,2026-08-24 14:44:17,50806.17,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000095,2026-08-18 17:19:52,6447.75,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000096,2026-08-19 14:14:13,30574.27,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000097,2026-08-28 14:01:16,25716.86,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000098,2026-08-28 23:50:50,46193.07,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,508.12,91.46,above_20L,clean,Matched,R6c,508.12,508.12,0.0,Accurate fee verified against R6c.
+TXN_000099,2026-08-25 13:57:42,2012.37,UPI,PPI_wallet_UPI,,,5411,B2B wholesale,True,True,False,0.02,22.14,3.99,above_20L,R12_mcc_misclassification,Leaked,R6b,18.11,22.14,4.03,"Statutory disparity against R6b: expected Rs 18.11, charged Rs 22.14."
+TXN_000100,2026-08-28 21:38:51,2437.59,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,26.81,4.83,above_20L,clean,Matched,R6c,26.81,26.81,0.0,Accurate fee verified against R6c.
+TXN_000101,2026-08-27 15:45:05,43334.98,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000102,2026-08-24 15:11:23,37388.51,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000103,2026-08-18 14:50:47,2417.51,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000104,2026-08-20 03:46:55,2185.0,UPI,RuPay_credit_UPI,533333.0,corporate,5045,B2B wholesale,False,False,False,0.02,50.25,9.04,above_20L,R10_l2_l3_downgrade,Leaked,R4,32.77,50.25,17.48,"Statutory disparity against R4: expected Rs 32.77, charged Rs 50.25."
+TXN_000105,2026-08-27 15:50:42,3528.44,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000106,2026-08-21 11:21:04,51484.81,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,566.33,101.94,above_20L,clean,Matched,R6c,566.33,566.33,0.0,Accurate fee verified against R6c.
+TXN_000107,2026-08-19 05:48:46,20675.89,UPI,bank_UPI,,,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000108,2026-08-21 17:13:02,46484.22,Card,RuPay_debit,522222.0,premium_rewards,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000109,2026-08-16 18:13:26,61313.25,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000110,2026-08-23 21:07:13,2360.32,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000111,2026-08-20 17:53:06,2126.52,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000112,2026-08-23 04:55:20,2241.69,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000113,2026-08-24 09:55:14,2219.73,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000114,2026-08-21 10:34:51,2426.54,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000115,2026-08-25 21:34:49,2146.82,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000116,2026-08-28 05:14:06,21699.21,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000117,2026-08-27 03:32:18,21068.08,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,316.02,56.88,above_20L,clean,Matched,R4,316.02,316.02,0.0,Accurate fee verified against R4.
+TXN_000118,2026-08-15 19:09:23,61434.84,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000119,2026-08-27 02:14:59,2331.67,UPI,PPI_wallet_UPI,,,5411,B2B wholesale,True,True,False,0.02,25.65,4.62,above_20L,R12_mcc_misclassification,Leaked,R6b,20.99,25.65,4.66,"Statutory disparity against R6b: expected Rs 20.99, charged Rs 25.65."
+TXN_000120,2026-08-19 14:27:42,2062.1,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000121,2026-08-17 12:40:52,37974.17,Card,RuPay_debit,411111.0,basic,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000122,2026-08-29 22:51:27,2063.06,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000123,2026-08-26 07:11:44,46323.16,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,509.55,91.72,above_20L,clean,Matched,R6c,509.55,509.55,0.0,Accurate fee verified against R6c.
+TXN_000124,2026-08-24 09:42:02,2363.81,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000125,2026-08-24 02:55:02,63604.37,Card,Visa_credit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,1272.09,228.98,above_20L,clean,Flagged_For_Review,R9,1272.09,1272.09,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000126,2026-08-23 16:13:26,2335.21,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000127,2026-08-16 17:25:29,2131.87,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,23.45,4.22,above_20L,clean,Matched,R6c,23.45,23.45,0.0,Accurate fee verified against R6c.
+TXN_000128,2026-08-20 06:26:19,29989.6,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000129,2026-08-15 19:02:29,2208.37,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,33.13,5.96,above_20L,clean,Matched,R4,33.13,33.13,0.0,Accurate fee verified against R4.
+TXN_000130,2026-08-29 04:27:22,2346.81,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,25.81,4.65,above_20L,clean,Matched,R6c,25.81,25.81,0.0,Accurate fee verified against R6c.
+TXN_000131,2026-08-16 10:33:03,2384.06,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,35.76,6.44,above_20L,clean,Matched,R4,35.76,35.76,0.0,Accurate fee verified against R4.
+TXN_000132,2026-08-27 15:45:38,2351.77,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000133,2026-08-16 02:45:00,2024.99,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,22.27,4.01,above_20L,clean,Matched,R6c,22.27,22.27,0.0,Accurate fee verified against R6c.
+TXN_000134,2026-08-20 20:38:56,10967.46,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000135,2026-08-17 10:27:52,2260.74,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000136,2026-08-22 23:36:49,2313.52,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000137,2026-08-17 04:13:36,18389.69,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000138,2026-08-18 18:48:13,2228.18,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000139,2026-08-15 14:34:44,2116.22,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000140,2026-08-21 19:46:51,8900.25,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000141,2026-08-15 22:40:22,38856.58,UPI,RuPay_credit_UPI,533333.0,corporate,5045,B2B wholesale,False,False,True,0.02,893.7,160.87,above_20L,R10_l2_l3_downgrade,Leaked,R4,582.85,893.7,310.85,"Statutory disparity against R4: expected Rs 582.85, charged Rs 893.70."
+TXN_000142,2026-08-25 15:41:15,2076.27,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,31.14,5.61,above_20L,clean,Matched,R4,31.14,31.14,0.0,Accurate fee verified against R4.
+TXN_000143,2026-08-25 22:27:56,2352.8,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000144,2026-08-28 01:21:39,31902.98,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000145,2026-08-21 06:36:57,23120.88,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000146,2026-08-18 13:04:07,13683.76,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000147,2026-08-26 21:57:22,2008.07,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000148,2026-08-16 23:45:57,2171.08,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000149,2026-08-27 09:06:45,63530.76,Card,Visa_credit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,1270.62,228.71,above_20L,clean,Flagged_For_Review,R9,1270.62,1270.62,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000150,2026-08-21 04:02:41,2442.04,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000151,2026-08-19 21:19:59,12486.51,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000152,2026-08-25 10:58:53,13407.47,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000153,2026-08-17 23:05:53,63329.8,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000154,2026-08-22 07:21:59,19583.62,Card,Debit_non_rupay,,,5411,B2B wholesale,True,True,True,0.02,176.25,31.72,above_20L,R12_mcc_misclassification,Matched,R8,176.25,176.25,0.0,Accurate fee verified against R8.
+TXN_000155,2026-08-16 01:43:27,55658.35,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000156,2026-08-27 13:10:07,31956.26,Card,,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,639.13,115.04,above_20L,exception_missing_tag,Exception,NONE,,639.13,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000157,2026-08-27 14:37:54,52622.88,UPI,bank_UPI,,,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000158,2026-08-25 22:02:54,43535.59,Card,Visa_credit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,870.71,156.73,above_20L,clean,Flagged_For_Review,R9,870.71,870.71,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000159,2026-08-23 01:17:07,2214.74,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,24.36,4.38,above_20L,clean,Matched,R6c,24.36,24.36,0.0,Accurate fee verified against R6c.
+TXN_000160,2026-08-30 06:21:07,50786.26,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000161,2026-08-20 01:29:28,2248.93,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000162,2026-08-18 17:27:15,57750.61,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000163,2026-08-16 06:39:34,2414.05,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000164,2026-08-25 01:47:36,30540.44,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000165,2026-08-19 01:46:43,23647.32,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000166,2026-08-22 20:58:59,5807.98,Card,Mastercard_credit,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,116.16,20.91,above_20L,clean,Flagged_For_Review,R9,116.16,116.16,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000167,2026-08-23 20:01:42,2268.15,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000168,2026-08-20 01:16:47,21821.11,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000169,2026-08-24 01:47:54,2175.86,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000170,2026-08-24 11:59:26,2182.3,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000171,2026-08-23 06:47:32,2334.23,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,25.68,4.62,above_20L,clean,Matched,R6c,25.68,25.68,0.0,Accurate fee verified against R6c.
+TXN_000172,2026-08-20 03:47:40,2202.01,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000173,2026-08-20 02:03:45,9316.05,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,83.84,15.09,above_20L,clean,Matched,R8,83.84,83.84,0.0,Accurate fee verified against R8.
+TXN_000174,2026-08-29 13:33:27,5703.89,Card,Visa_credit,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,114.08,20.53,above_20L,clean,Flagged_For_Review,R9,114.08,114.08,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000175,2026-08-25 17:26:27,4819.64,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,43.38,7.81,above_20L,clean,Matched,R8,43.38,43.38,0.0,Accurate fee verified against R8.
+TXN_000176,2026-08-20 13:57:43,62635.27,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000177,2026-08-17 10:56:48,9929.48,Card,Mastercard_credit,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,198.59,35.75,above_20L,clean,Flagged_For_Review,R9,198.59,198.59,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000178,2026-08-15 11:56:08,57933.99,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000179,2026-08-29 01:25:52,23975.39,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000180,2026-08-23 08:39:57,2396.89,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000181,2026-08-21 07:13:44,35486.16,Card,,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000182,2026-08-27 05:30:02,2377.92,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000183,2026-08-16 10:21:00,2365.03,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000184,2026-08-24 14:09:28,19602.94,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000185,2026-08-25 09:20:28,27428.66,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000186,2026-08-26 12:06:05,2280.68,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,25.09,4.52,above_20L,clean,Matched,R6c,25.09,25.09,0.0,Accurate fee verified against R6c.
+TXN_000187,2026-08-18 06:25:59,2308.05,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000188,2026-08-23 21:35:57,62601.76,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000189,2026-08-15 18:37:36,11907.79,Card,RuPay_debit,433333.0,corporate,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000190,2026-08-19 04:17:11,2367.52,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000191,2026-08-16 20:26:02,2203.62,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000192,2026-08-29 08:14:32,58525.24,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000193,2026-08-17 05:13:58,2296.76,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000194,2026-08-22 15:55:47,3177.81,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000195,2026-08-19 21:56:12,10595.48,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000196,2026-08-27 08:02:21,53585.44,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000197,2026-08-25 04:23:04,2062.33,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000198,2026-08-28 11:47:46,2423.25,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000199,2026-08-27 13:14:40,26522.2,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000200,2026-08-29 08:22:40,13315.86,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000201,2026-08-21 04:46:02,29408.33,UPI,RuPay_credit_UPI,607222.0,corporate,5045,B2B wholesale,False,False,True,0.02,676.39,121.75,above_20L,R10_l2_l3_downgrade,Leaked,R4,441.12,676.39,235.27,"Statutory disparity against R4: expected Rs 441.12, charged Rs 676.39."
+TXN_000202,2026-08-17 18:40:20,2049.58,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,22.55,4.06,above_20L,clean,Matched,R6c,22.55,22.55,0.0,Accurate fee verified against R6c.
+TXN_000203,2026-08-28 04:40:02,32769.75,Card,Mastercard_credit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,655.39,117.97,above_20L,clean,Flagged_For_Review,R9,655.39,655.39,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000204,2026-08-21 17:54:50,62754.93,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000205,2026-08-16 14:07:07,2064.99,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000206,2026-08-19 23:16:12,35242.91,Card,,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,704.86,126.87,above_20L,exception_missing_tag,Exception,NONE,,704.86,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000207,2026-08-19 11:32:37,12786.45,Card,Visa_credit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,255.73,46.03,above_20L,clean,Flagged_For_Review,R9,255.73,255.73,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000208,2026-08-29 22:42:20,10352.34,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000209,2026-08-17 21:19:06,2449.68,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,56.35,10.14,above_20L,R10_l2_l3_downgrade,Leaked,R4,36.75,56.35,19.6,"Statutory disparity against R4: expected Rs 36.75, charged Rs 56.35."
+TXN_000210,2026-08-24 15:39:06,31144.48,UPI,RuPay_credit_UPI,533333.0,corporate,5045,B2B wholesale,False,False,True,0.02,716.33,128.94,above_20L,R10_l2_l3_downgrade,Leaked,R4,467.17,716.33,249.16,"Statutory disparity against R4: expected Rs 467.17, charged Rs 716.33."
+TXN_000211,2026-08-17 16:22:53,24474.25,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,False,False,True,0.02,195.79,35.24,above_20L,R10_l2_l3_downgrade,Leaked,R10,489.49,195.79,-293.7,"Statutory disparity against R10: expected Rs 489.49, charged Rs 195.79."
+TXN_000212,2026-08-15 12:23:12,2252.44,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000213,2026-08-24 04:32:35,2022.17,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000214,2026-08-26 20:17:35,27941.68,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000215,2026-08-24 06:16:15,2153.41,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000216,2026-08-19 01:37:44,44265.99,Card,Mastercard_credit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,885.32,159.36,above_20L,clean,Flagged_For_Review,R9,885.32,885.32,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000217,2026-08-19 21:35:10,30822.8,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000218,2026-08-19 22:54:21,49768.06,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000219,2026-08-20 15:12:30,17652.69,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000220,2026-08-19 20:17:22,2312.67,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000221,2026-08-18 12:15:02,2350.43,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000222,2026-08-27 23:10:28,12594.36,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000223,2026-08-24 20:41:32,14509.17,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,159.6,28.73,above_20L,clean,Matched,R6c,159.6,159.6,0.0,Accurate fee verified against R6c.
+TXN_000224,2026-08-19 02:16:27,2291.06,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000225,2026-08-18 12:41:47,2210.52,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000226,2026-08-19 05:43:53,2267.79,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,34.02,6.12,above_20L,clean,Matched,R4,34.02,34.02,0.0,Accurate fee verified against R4.
+TXN_000227,2026-08-26 13:03:03,2517.16,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,27.69,4.98,above_20L,clean,Matched,R6c,27.69,27.69,0.0,Accurate fee verified against R6c.
+TXN_000228,2026-08-23 08:49:15,2143.67,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000229,2026-08-21 22:56:57,52780.09,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000230,2026-08-29 11:26:58,19771.1,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000231,2026-08-20 05:20:06,2163.96,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000232,2026-08-26 23:50:18,2088.78,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,31.33,5.64,above_20L,clean,Matched,R4,31.33,31.33,0.0,Accurate fee verified against R4.
+TXN_000233,2026-08-26 20:37:16,2370.01,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,False,False,False,0.02,54.51,9.81,above_20L,R10_l2_l3_downgrade,Leaked,R4,35.55,54.51,18.96,"Statutory disparity against R4: expected Rs 35.55, charged Rs 54.51."
+TXN_000234,2026-08-26 06:38:06,12124.61,Card,Visa_credit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,242.49,43.65,above_20L,clean,Flagged_For_Review,R9,242.49,242.49,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000235,2026-08-21 10:14:51,2124.32,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000236,2026-08-20 01:30:02,2252.09,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000237,2026-08-27 08:41:28,2145.65,UPI,,607222.0,corporate,5045,B2B wholesale,True,True,False,0.02,32.18,5.79,above_20L,exception_missing_tag,Exception,NONE,,32.18,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000238,2026-08-21 15:26:34,2380.69,UPI,RuPay_credit_UPI,607222.0,corporate,5045,B2B wholesale,False,False,False,0.02,54.76,9.86,above_20L,R10_l2_l3_downgrade,Leaked,R4,35.71,54.76,19.05,"Statutory disparity against R4: expected Rs 35.71, charged Rs 54.76."
+TXN_000239,2026-08-24 18:21:21,30879.95,Card,Visa_credit,433333.0,corporate,5045,B2B wholesale,False,False,True,0.02,864.64,155.64,above_20L,R10_l2_l3_downgrade,Leaked,R10,617.6,864.64,247.04,"Statutory disparity against R10: expected Rs 617.60, charged Rs 864.64."
+TXN_000240,2026-08-23 09:07:17,2154.87,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,32.32,5.82,above_20L,clean,Matched,R4,32.32,32.32,0.0,Accurate fee verified against R4.
+TXN_000241,2026-08-23 14:29:28,6245.7,Card,Mastercard_credit,533333.0,corporate,5411,B2B wholesale,True,True,False,0.02,124.91,22.48,above_20L,R12_mcc_misclassification,Flagged_For_Review,R9,124.91,124.91,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000242,2026-08-30 00:50:19,2088.13,UPI,PPI_wallet_UPI,,,5411,B2B wholesale,True,True,False,0.02,22.97,4.13,above_20L,R12_mcc_misclassification,Leaked,R6b,18.79,22.97,4.18,"Statutory disparity against R6b: expected Rs 18.79, charged Rs 22.97."
+TXN_000243,2026-08-24 13:25:40,2265.88,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000244,2026-08-20 21:40:09,2299.77,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000245,2026-08-30 06:49:02,2430.5,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000246,2026-08-18 14:31:18,2237.54,UPI,,533333.0,corporate,5045,B2B wholesale,True,True,False,0.02,33.56,6.04,above_20L,exception_missing_tag,Exception,NONE,,33.56,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000247,2026-08-29 03:42:41,47469.35,Card,Visa_credit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,949.39,170.89,above_20L,clean,Flagged_For_Review,R9,949.39,949.39,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000248,2026-08-21 09:37:16,53567.17,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000249,2026-08-22 02:05:39,2039.89,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000250,2026-08-20 11:05:19,12795.38,Card,Visa_credit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,255.91,46.06,above_20L,clean,Flagged_For_Review,R9,255.91,255.91,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000251,2026-08-25 14:31:52,63231.97,Card,Mastercard_credit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,1264.64,227.64,above_20L,clean,Flagged_For_Review,R9,1264.64,1264.64,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000252,2026-08-27 07:23:47,62466.73,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000253,2026-08-20 02:57:14,50834.62,Card,Mastercard_credit,422222.0,premium_rewards,5411,B2B wholesale,True,True,True,0.02,1016.69,183.0,above_20L,R12_mcc_misclassification,Flagged_For_Review,R9,1016.69,1016.69,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000254,2026-08-21 20:21:10,2041.99,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,22.46,4.04,above_20L,clean,Matched,R6c,22.46,22.46,0.0,Accurate fee verified against R6c.
+TXN_000255,2026-08-22 08:40:29,16148.18,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000256,2026-08-25 20:17:55,44686.09,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000257,2026-08-17 22:04:05,2275.66,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000258,2026-08-21 16:01:17,5112.08,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000259,2026-08-27 04:28:44,11064.04,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,121.7,21.91,above_20L,clean,Matched,R6c,121.7,121.7,0.0,Accurate fee verified against R6c.
+TXN_000260,2026-08-16 05:54:19,40631.51,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000261,2026-08-27 04:18:44,46011.91,Card,,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000262,2026-08-21 22:26:44,2253.52,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,24.79,4.46,above_20L,clean,Matched,R6c,24.79,24.79,0.0,Accurate fee verified against R6c.
+TXN_000263,2026-08-20 20:43:45,40048.18,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000264,2026-08-20 12:54:22,22321.82,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000265,2026-08-16 05:06:16,5136.0,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000266,2026-08-17 18:47:08,56784.85,UPI,,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000267,2026-08-20 00:03:26,60227.35,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000268,2026-08-28 08:13:31,44201.95,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000269,2026-08-24 20:21:55,57904.92,Card,Mastercard_credit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,1158.1,208.46,above_20L,clean,Flagged_For_Review,R9,1158.1,1158.1,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000270,2026-08-15 17:15:01,18814.33,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,True,0.02,169.33,30.48,above_20L,clean,Matched,R8,169.33,169.33,0.0,Accurate fee verified against R8.
+TXN_000271,2026-08-21 05:15:12,28674.36,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000272,2026-08-18 21:04:32,63195.49,Card,Visa_credit,533333.0,corporate,5411,B2B wholesale,True,True,True,0.02,1263.91,227.5,above_20L,R12_mcc_misclassification,Flagged_For_Review,R9,1263.91,1263.91,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000273,2026-08-28 02:05:07,2261.34,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000274,2026-08-21 11:13:55,2127.88,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000275,2026-08-23 18:40:15,2103.33,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,23.14,4.17,above_20L,clean,Matched,R6c,23.14,23.14,0.0,Accurate fee verified against R6c.
+TXN_000276,2026-08-18 19:11:26,2171.52,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000277,2026-08-17 11:41:14,2287.55,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000278,2026-08-28 10:22:35,23330.07,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000279,2026-08-17 04:42:32,2252.72,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000280,2026-08-19 09:03:02,2448.55,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,36.73,6.61,above_20L,clean,Matched,R4,36.73,36.73,0.0,Accurate fee verified against R4.
+TXN_000281,2026-08-24 13:25:53,2154.79,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000282,2026-08-26 13:32:46,2227.27,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,33.41,6.01,above_20L,clean,Matched,R4,33.41,33.41,0.0,Accurate fee verified against R4.
+TXN_000283,2026-08-23 04:37:55,28989.61,Card,RuPay_debit,607111.0,basic,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000284,2026-08-19 05:47:51,2167.86,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,23.85,4.29,above_20L,clean,Matched,R6c,23.85,23.85,0.0,Accurate fee verified against R6c.
+TXN_000285,2026-08-27 14:18:33,2344.05,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000286,2026-08-24 19:27:42,2418.49,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000287,2026-08-23 06:18:20,54649.36,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000288,2026-08-30 02:02:02,2407.81,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000289,2026-08-23 09:50:34,13503.94,Card,Visa_credit,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,270.08,48.61,above_20L,clean,Flagged_For_Review,R9,270.08,270.08,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000290,2026-08-28 04:58:00,2003.3,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000291,2026-08-19 10:23:03,2167.23,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000292,2026-08-21 21:07:36,2058.12,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000293,2026-08-25 17:38:42,10961.81,Card,Debit_non_rupay,,,5411,B2B wholesale,True,True,True,0.02,98.66,17.76,above_20L,R12_mcc_misclassification,Matched,R8,98.66,98.66,0.0,Accurate fee verified against R8.
+TXN_000294,2026-08-16 14:49:05,2249.98,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000295,2026-08-25 11:57:44,19096.93,Card,Mastercard_credit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,381.94,68.75,above_20L,clean,Flagged_For_Review,R9,381.94,381.94,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000296,2026-08-28 07:47:34,2314.04,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000297,2026-08-23 03:12:58,60428.31,UPI,,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000298,2026-08-18 04:12:25,32285.5,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000299,2026-08-15 20:42:33,49642.28,Card,,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000300,2026-08-23 17:08:29,2003.06,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,30.05,5.41,above_20L,clean,Matched,R4,30.05,30.05,0.0,Accurate fee verified against R4.
+TXN_000301,2026-08-18 13:46:16,2415.55,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000302,2026-08-24 10:38:59,19869.68,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000303,2026-08-20 19:33:59,2410.67,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,36.16,6.51,above_20L,clean,Matched,R4,36.16,36.16,0.0,Accurate fee verified against R4.
+TXN_000304,2026-08-27 21:45:48,2355.99,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000305,2026-08-18 03:18:26,23977.12,Card,Mastercard_credit,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,479.54,86.32,above_20L,clean,Flagged_For_Review,R9,479.54,479.54,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000306,2026-08-17 15:36:56,2209.06,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000307,2026-08-21 01:23:44,25120.92,Card,Mastercard_credit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,502.42,90.44,above_20L,clean,Flagged_For_Review,R9,502.42,502.42,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000308,2026-08-20 11:52:03,20502.61,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000309,2026-08-27 15:41:41,58382.1,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000310,2026-08-22 21:43:40,55175.38,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000311,2026-08-30 04:07:33,2024.73,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000312,2026-08-27 17:52:05,45133.52,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,496.47,89.36,above_20L,clean,Matched,R6c,496.47,496.47,0.0,Accurate fee verified against R6c.
+TXN_000313,2026-08-19 12:46:25,10916.98,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,163.75,29.47,above_20L,clean,Matched,R4,163.75,163.75,0.0,Accurate fee verified against R4.
+TXN_000314,2026-08-16 04:33:35,46958.22,Card,Mastercard_credit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,939.16,169.05,above_20L,clean,Flagged_For_Review,R9,939.16,939.16,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000315,2026-08-23 16:42:11,32777.71,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,360.55,64.9,above_20L,clean,Matched,R6c,360.55,360.55,0.0,Accurate fee verified against R6c.
+TXN_000316,2026-08-27 04:24:12,2178.32,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000317,2026-08-22 16:17:07,39252.65,Card,,,,5045,B2B wholesale,True,True,True,0.02,353.27,63.59,above_20L,exception_missing_tag,Exception,NONE,,353.27,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000318,2026-08-27 23:05:39,16934.37,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000319,2026-08-24 03:30:04,25996.67,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,False,False,True,0.02,207.97,37.43,above_20L,R10_l2_l3_downgrade,Leaked,R10,519.93,207.97,-311.96,"Statutory disparity against R10: expected Rs 519.93, charged Rs 207.97."
+TXN_000320,2026-08-23 02:13:54,14102.19,UPI,RuPay_credit_UPI,433333.0,corporate,5411,B2B wholesale,True,True,True,0.02,211.53,38.08,above_20L,R12_mcc_misclassification,Matched,R4,211.53,211.53,0.0,Accurate fee verified against R4.
+TXN_000321,2026-08-27 04:13:27,44940.52,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000322,2026-08-17 06:24:04,50768.65,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,761.53,137.08,above_20L,clean,Matched,R4,761.53,761.53,0.0,Accurate fee verified against R4.
+TXN_000323,2026-08-15 10:50:48,2073.19,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000324,2026-08-21 14:11:24,2235.99,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000325,2026-08-19 05:43:20,2074.18,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000326,2026-08-22 07:28:26,2131.48,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000327,2026-08-16 11:24:55,17720.36,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000328,2026-08-22 05:03:22,2084.05,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,22.92,4.13,above_20L,clean,Matched,R6c,22.92,22.92,0.0,Accurate fee verified against R6c.
+TXN_000329,2026-08-26 17:06:35,5331.85,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000330,2026-08-15 16:22:14,2312.89,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000331,2026-08-26 02:35:56,2282.06,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,25.1,4.52,above_20L,clean,Matched,R6c,25.1,25.1,0.0,Accurate fee verified against R6c.
+TXN_000332,2026-08-22 04:45:31,2286.87,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000333,2026-08-26 22:25:08,2072.52,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000334,2026-08-23 08:06:32,4962.32,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000335,2026-08-26 18:28:29,55629.6,Card,RuPay_debit,422222.0,premium_rewards,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000336,2026-08-22 10:21:34,2210.2,UPI,RuPay_credit_UPI,607111.0,basic,5411,B2B wholesale,True,True,False,0.02,33.15,5.97,above_20L,R12_mcc_misclassification,Matched,R4,33.15,33.15,0.0,Accurate fee verified against R4.
+TXN_000337,2026-08-19 14:40:34,24092.86,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000338,2026-08-29 15:58:17,10327.77,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000339,2026-08-16 13:34:30,62957.97,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000340,2026-08-29 02:07:06,57671.76,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000341,2026-08-19 03:20:06,2381.95,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000342,2026-08-26 08:31:52,2127.59,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000343,2026-08-25 23:49:28,2132.89,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000344,2026-08-24 04:18:13,54738.12,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000345,2026-08-23 03:47:40,2115.69,UPI,PPI_wallet_UPI,,,5411,B2B wholesale,True,True,False,0.02,23.27,4.19,above_20L,R12_mcc_misclassification,Leaked,R6b,19.04,23.27,4.23,"Statutory disparity against R6b: expected Rs 19.04, charged Rs 23.27."
+TXN_000346,2026-08-26 18:38:46,59215.63,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,651.37,117.25,above_20L,clean,Matched,R6c,651.37,651.37,0.0,Accurate fee verified against R6c.
+TXN_000347,2026-08-17 01:04:48,2306.7,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000348,2026-08-21 18:55:11,2075.43,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000349,2026-08-29 17:58:19,2061.68,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000350,2026-08-16 20:49:06,2261.85,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,33.93,6.11,above_20L,clean,Matched,R4,33.93,33.93,0.0,Accurate fee verified against R4.
+TXN_000351,2026-08-28 20:22:06,2028.68,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000352,2026-08-21 23:16:06,57127.95,UPI,,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000353,2026-08-20 23:30:50,40358.3,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000354,2026-08-25 21:49:30,43684.18,Card,Visa_credit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,873.68,157.26,above_20L,clean,Flagged_For_Review,R9,873.68,873.68,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000355,2026-08-29 00:48:15,63263.93,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000356,2026-08-21 23:27:16,2306.83,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000357,2026-08-16 09:38:04,5691.6,Card,RuPay_debit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000358,2026-08-16 00:01:03,2279.21,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000359,2026-08-18 11:48:32,35666.2,UPI,bank_UPI,,,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000360,2026-08-28 20:55:48,61097.29,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000361,2026-08-18 02:10:24,25083.31,UPI,bank_UPI,,,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000362,2026-08-24 16:54:28,37455.93,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000363,2026-08-29 09:43:29,54040.45,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,810.61,145.91,above_20L,clean,Matched,R4,810.61,810.61,0.0,Accurate fee verified against R4.
+TXN_000364,2026-08-15 09:13:18,2049.96,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,30.75,5.54,above_20L,clean,Matched,R4,30.75,30.75,0.0,Accurate fee verified against R4.
+TXN_000365,2026-08-19 00:30:34,57600.65,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000366,2026-08-19 11:30:01,52823.77,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000367,2026-08-25 06:52:43,2415.58,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000368,2026-08-24 10:13:40,32242.22,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000369,2026-08-20 04:13:38,60746.07,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000370,2026-08-23 03:42:33,49278.54,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000371,2026-08-28 13:30:39,21271.95,Card,,,,5045,B2B wholesale,True,True,True,0.02,191.45,34.46,above_20L,exception_missing_tag,Exception,NONE,,191.45,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000372,2026-08-21 21:52:53,9768.51,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000373,2026-08-18 10:39:22,24114.36,UPI,RuPay_credit_UPI,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,361.72,65.11,above_20L,clean,Matched,R4,361.72,361.72,0.0,Accurate fee verified against R4.
+TXN_000374,2026-08-20 11:32:28,18387.23,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000375,2026-08-20 08:38:59,2390.53,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,26.3,4.73,above_20L,clean,Matched,R6c,26.3,26.3,0.0,Accurate fee verified against R6c.
+TXN_000376,2026-08-17 19:50:09,2245.38,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,24.7,4.45,above_20L,clean,Matched,R6c,24.7,24.7,0.0,Accurate fee verified against R6c.
+TXN_000377,2026-08-21 02:44:01,2053.54,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,30.8,5.54,above_20L,clean,Matched,R4,30.8,30.8,0.0,Accurate fee verified against R4.
+TXN_000378,2026-08-29 02:09:04,45700.31,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000379,2026-08-20 23:54:37,2409.43,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000380,2026-08-25 02:50:29,7191.35,Card,Debit_non_rupay,,,5045,B2B wholesale,True,True,False,0.02,64.72,11.65,above_20L,clean,Matched,R8,64.72,64.72,0.0,Accurate fee verified against R8.
+TXN_000381,2026-08-18 07:50:34,32970.11,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,362.67,65.28,above_20L,clean,Matched,R6c,362.67,362.67,0.0,Accurate fee verified against R6c.
+TXN_000382,2026-08-17 23:45:14,27287.8,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000383,2026-08-18 21:52:12,2276.0,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000384,2026-08-26 18:01:37,2098.81,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000385,2026-08-25 01:16:49,24833.2,Card,Mastercard_credit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,496.66,89.4,above_20L,clean,Flagged_For_Review,R9,496.66,496.66,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000386,2026-08-18 09:21:43,52009.72,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000387,2026-08-26 23:06:07,14361.09,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,215.42,38.78,above_20L,clean,Matched,R4,215.42,215.42,0.0,Accurate fee verified against R4.
+TXN_000388,2026-08-27 18:13:51,2261.79,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000389,2026-08-25 07:05:03,2321.34,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000390,2026-08-26 23:29:54,2273.18,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000391,2026-08-23 18:15:00,2274.48,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000392,2026-08-26 13:39:45,32485.17,UPI,RuPay_credit_UPI,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,487.28,87.71,above_20L,clean,Matched,R4,487.28,487.28,0.0,Accurate fee verified against R4.
+TXN_000393,2026-08-29 23:24:03,31376.27,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000394,2026-08-19 02:12:07,59094.23,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000395,2026-08-19 05:39:02,19061.09,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000396,2026-08-15 16:25:46,15820.81,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000397,2026-08-23 00:05:59,9426.5,Card,Mastercard_credit,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,188.53,33.94,above_20L,clean,Flagged_For_Review,R9,188.53,188.53,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000398,2026-08-22 04:46:46,47934.65,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000399,2026-08-26 07:41:15,2106.26,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000400,2026-08-30 00:34:30,2235.01,UPI,RuPay_credit_UPI,411111.0,basic,5045,B2B wholesale,True,True,False,0.02,33.53,6.04,above_20L,clean,Matched,R4,33.53,33.53,0.0,Accurate fee verified against R4.
+TXN_000401,2026-08-18 15:14:24,2255.66,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000402,2026-08-30 06:10:59,2328.82,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000403,2026-08-18 07:51:50,34342.05,Card,Mastercard_credit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,686.84,123.63,above_20L,clean,Flagged_For_Review,R9,686.84,686.84,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000404,2026-08-22 14:26:09,29209.29,Card,Visa_credit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,584.19,105.15,above_20L,clean,Flagged_For_Review,R9,584.19,584.19,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000405,2026-08-28 02:04:19,30160.83,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000406,2026-08-24 10:01:44,27630.76,Card,RuPay_debit,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000407,2026-08-24 06:35:03,49170.7,Card,RuPay_debit,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000408,2026-08-28 22:56:58,2065.15,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000409,2026-08-23 16:25:51,10720.74,UPI,bank_UPI,,,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000410,2026-08-30 08:46:24,2393.4,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000411,2026-08-26 17:27:14,27538.63,UPI,,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,413.08,74.35,above_20L,exception_missing_tag,Exception,NONE,,413.08,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000412,2026-08-17 16:36:12,7305.97,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000413,2026-08-20 06:10:40,20650.57,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000414,2026-08-16 03:01:59,56406.88,Card,,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000415,2026-08-30 01:10:44,2286.92,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000416,2026-08-16 15:40:13,61253.2,Card,,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,1225.06,220.51,above_20L,exception_missing_tag,Exception,NONE,,1225.06,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000417,2026-08-28 15:51:32,2219.06,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000418,2026-08-18 05:55:56,2133.89,UPI,PPI_wallet_UPI,,,5411,B2B wholesale,True,True,False,0.02,23.47,4.22,above_20L,R12_mcc_misclassification,Leaked,R6b,19.21,23.47,4.26,"Statutory disparity against R6b: expected Rs 19.21, charged Rs 23.47."
+TXN_000419,2026-08-17 16:47:24,51270.25,UPI,bank_UPI,,,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000420,2026-08-16 15:02:10,2423.24,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000421,2026-08-24 08:56:42,2239.1,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000422,2026-08-25 15:46:38,20865.46,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,229.52,41.31,above_20L,clean,Matched,R6c,229.52,229.52,0.0,Accurate fee verified against R6c.
+TXN_000423,2026-08-21 06:35:00,2301.09,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000424,2026-08-29 02:24:08,2225.47,UPI,RuPay_credit_UPI,433333.0,corporate,5045,B2B wholesale,True,True,False,0.02,33.38,6.01,above_20L,clean,Matched,R4,33.38,33.38,0.0,Accurate fee verified against R4.
+TXN_000425,2026-08-20 00:05:01,49632.37,Card,RuPay_debit,607222.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000426,2026-08-16 21:41:08,2284.68,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,25.13,4.52,above_20L,clean,Matched,R6c,25.13,25.13,0.0,Accurate fee verified against R6c.
+TXN_000427,2026-08-17 07:48:25,2150.08,UPI,RuPay_credit_UPI,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,32.25,5.8,above_20L,clean,Matched,R4,32.25,32.25,0.0,Accurate fee verified against R4.
+TXN_000428,2026-08-27 13:57:45,29290.8,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000429,2026-08-29 08:24:11,55582.13,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000430,2026-08-18 22:41:35,11977.11,Card,RuPay_debit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000431,2026-08-26 09:50:07,4784.74,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000432,2026-08-27 02:52:01,36453.78,Card,Visa_credit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,729.08,131.23,above_20L,clean,Flagged_For_Review,R9,729.08,729.08,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000433,2026-08-21 02:56:14,60802.08,Card,Mastercard_credit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,1216.04,218.89,above_20L,clean,Flagged_For_Review,R9,1216.04,1216.04,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000434,2026-08-27 22:29:35,38970.56,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,True,0.02,428.68,77.16,above_20L,clean,Matched,R6c,428.68,428.68,0.0,Accurate fee verified against R6c.
+TXN_000435,2026-08-21 18:36:15,10077.87,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000436,2026-08-19 04:43:51,2107.88,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000437,2026-08-24 15:29:49,13878.73,Card,RuPay_debit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000438,2026-08-21 14:12:19,2265.02,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,False,0.02,33.98,6.12,above_20L,clean,Matched,R4,33.98,33.98,0.0,Accurate fee verified against R4.
+TXN_000439,2026-08-25 01:11:09,52660.74,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000440,2026-08-27 16:43:02,2378.07,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000441,2026-08-16 00:13:03,9854.1,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000442,2026-08-17 12:32:51,2133.99,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000443,2026-08-29 06:07:08,2200.38,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000444,2026-08-24 04:17:58,2058.47,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,22.64,4.08,above_20L,clean,Matched,R6c,22.64,22.64,0.0,Accurate fee verified against R6c.
+TXN_000445,2026-08-21 22:59:39,2010.72,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000446,2026-08-24 01:57:01,2215.18,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000447,2026-08-16 04:00:32,26487.59,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000448,2026-08-26 23:18:11,15280.26,UPI,bank_UPI,,,5411,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000449,2026-08-27 13:56:32,29253.88,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000450,2026-08-21 02:04:15,27638.17,Card,RuPay_debit,422222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000451,2026-08-20 02:25:02,2236.9,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000452,2026-08-26 11:10:05,23469.4,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000453,2026-08-18 06:18:09,45531.53,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000454,2026-08-23 05:04:46,52095.13,Card,Mastercard_credit,522222.0,premium_rewards,5045,B2B wholesale,True,True,True,0.02,1041.9,187.54,above_20L,clean,Flagged_For_Review,R9,1041.9,1041.9,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000455,2026-08-23 12:47:24,2095.2,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,23.05,4.15,above_20L,clean,Matched,R6c,23.05,23.05,0.0,Accurate fee verified against R6c.
+TXN_000456,2026-08-26 18:01:59,2165.05,UPI,RuPay_credit_UPI,533333.0,corporate,5045,B2B wholesale,True,True,False,0.02,32.48,5.85,above_20L,clean,Matched,R4,32.48,32.48,0.0,Accurate fee verified against R4.
+TXN_000457,2026-08-27 07:49:07,30753.73,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000458,2026-08-24 01:55:51,41326.72,Card,Mastercard_credit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,826.53,148.78,above_20L,clean,Flagged_For_Review,R9,826.53,826.53,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000459,2026-08-21 22:53:45,32958.83,Card,Debit_non_rupay,,,5411,B2B wholesale,True,True,True,0.02,296.63,53.39,above_20L,R12_mcc_misclassification,Matched,R8,296.63,296.63,0.0,Accurate fee verified against R8.
+TXN_000460,2026-08-18 07:44:56,6730.98,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000461,2026-08-19 08:13:59,2095.79,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000462,2026-08-20 18:24:08,17034.47,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000463,2026-08-26 13:03:18,9916.71,Card,RuPay_debit,522222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000464,2026-08-17 16:20:12,52024.02,UPI,RuPay_credit_UPI,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,780.36,140.46,above_20L,clean,Matched,R4,780.36,780.36,0.0,Accurate fee verified against R4.
+TXN_000465,2026-08-21 10:53:33,2210.6,UPI,RuPay_credit_UPI,511111.0,basic,5045,B2B wholesale,True,True,False,0.02,33.16,5.97,above_20L,clean,Matched,R4,33.16,33.16,0.0,Accurate fee verified against R4.
+TXN_000466,2026-08-26 03:34:06,2147.27,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000467,2026-08-26 10:42:19,53192.96,UPI,,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000468,2026-08-19 03:03:24,2325.91,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000469,2026-08-30 00:27:48,29748.4,Card,Visa_credit,411111.0,basic,5045,B2B wholesale,True,True,True,0.02,594.97,107.09,above_20L,clean,Flagged_For_Review,R9,594.97,594.97,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000470,2026-08-18 22:36:13,2284.46,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000471,2026-08-17 08:31:11,2060.87,UPI,,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,exception_missing_tag,Exception,NONE,,0.0,,Missing sub_instrument routing tag; cannot verify applicable statutory MDR.
+TXN_000472,2026-08-28 02:45:26,33858.78,Card,Visa_credit,533333.0,corporate,5045,B2B wholesale,True,True,True,0.02,677.18,121.89,above_20L,clean,Flagged_For_Review,R9,677.18,677.18,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000473,2026-08-28 22:37:04,2439.41,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000474,2026-08-27 14:07:03,7768.89,UPI,PPI_wallet_UPI,,,5411,B2B wholesale,True,True,False,0.02,85.46,15.38,above_20L,R12_mcc_misclassification,Leaked,R6b,69.92,85.46,15.54,"Statutory disparity against R6b: expected Rs 69.92, charged Rs 85.46."
+TXN_000475,2026-08-20 19:49:58,2225.09,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000476,2026-08-22 02:36:25,36872.74,Card,RuPay_debit,607111.0,basic,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R2,0.0,0.0,0.0,Accurate fee verified against R2.
+TXN_000477,2026-08-22 13:06:04,38085.61,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000478,2026-08-19 05:10:18,2402.43,UPI,bank_UPI,,,5411,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,R12_mcc_misclassification,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000479,2026-08-15 12:54:10,2399.82,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000480,2026-08-16 00:51:12,43639.98,Card,Mastercard_credit,433333.0,corporate,5045,B2B wholesale,True,True,True,0.02,872.8,157.1,above_20L,clean,Flagged_For_Review,R9,872.8,872.8,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000481,2026-08-18 09:37:38,46810.09,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000482,2026-08-27 03:11:28,2087.69,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000483,2026-08-23 08:32:53,2091.24,UPI,PPI_wallet_UPI,,,5045,B2B wholesale,True,True,False,0.02,23.0,4.14,above_20L,clean,Matched,R6c,23.0,23.0,0.0,Accurate fee verified against R6c.
+TXN_000484,2026-08-18 05:22:46,2206.76,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000485,2026-08-17 09:29:36,2237.61,UPI,bank_UPI,,,5045,B2B wholesale,True,True,False,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000486,2026-08-20 12:52:32,14089.76,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000487,2026-08-28 01:04:13,12131.62,Card,RuPay_debit,533333.0,corporate,5045,B2B wholesale,False,False,True,0.02,97.05,17.47,above_20L,R10_l2_l3_downgrade,Leaked,R10,242.63,97.05,-145.58,"Statutory disparity against R10: expected Rs 242.63, charged Rs 97.05."
+TXN_000488,2026-08-23 04:01:03,8150.11,Card,Mastercard_credit,422222.0,premium_rewards,5045,B2B wholesale,True,True,False,0.02,163.0,29.34,above_20L,clean,Flagged_For_Review,R9,163.0,163.0,0.0,Market credit card rate applied; requires bilateral MSA contract review.
+TXN_000489,2026-08-29 21:50:20,42173.45,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.
+TXN_000490,2026-08-18 14:08:11,40288.29,UPI,bank_UPI,,,5045,B2B wholesale,True,True,True,0.02,0.0,0.0,above_20L,clean,Matched,R1,0.0,0.0,0.0,Accurate fee verified against R1.

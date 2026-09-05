@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_Visa_credit",
+  "root_cause": "Commercial Visa credit transactions are being downgraded to higher-cost consumer pricing tiers due to missing Level 2/Level 3 commercial card data.",
+  "diagnosis": "The fee deltas (Rs 578.35 and Rs 229.50) indicate that the gateway is applying a higher interchange rate than the expected commercial rate. This is a classic symptom of L2/L3 data leakage, where the absence of specific commercial card fields causes the processor to default to a more expensive consumer or generic interchange tier. Note: This analysis uses a modeled benchmark as the source status is illustrative.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing Level 2/3 commercial card data will prevent the gateway from downgrading these transactions to higher-cost consumer interchange tiers.",
+  "confidence_level": "medium",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

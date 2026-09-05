@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_EXCEPTION_MISSING_TAG",
+  "root_cause": "Transactions lack required fee tagging or classification metadata.",
+  "diagnosis": "The pattern arises because fee-related tags are missing, preventing calculation of expected fees and resulting in N/A deltas.",
+  "recommended_action": "request_manual_review",
+  "action_rationale": "A human analyst must examine the missing tags to determine the correct fee configuration.",
+  "confidence_level": "medium",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

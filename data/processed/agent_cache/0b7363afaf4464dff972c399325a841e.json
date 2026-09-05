@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_EXCEPTION_MISSING_TAG",
+  "root_cause": "The transactions lack the necessary metadata tags (such as MCC or instrument type) required to calculate expected fees, resulting in a null expected fee and zero delta.",
+  "diagnosis": "This group represents a data quality exception where the absence of critical classification tags prevents the audit engine from establishing a benchmark fee. Consequently, the system cannot determine if an overcharge or undercharge occurred, leading to a total exposure of Rs 0.00 and an 'Unclassified' status.",
+  "recommended_action": "request_manual_review",
+  "action_rationale": "Because the expected fee is undefined due to missing data, automated remediation is impossible, and a human analyst must investigate the missing tags to determine the correct fee structure.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R3_RuPay_credit_UPI",
+  "root_cause": "The gateway is incorrectly applying a standard credit card MDR rate to RuPay Credit UPI transactions, which are mandated to be zero-fee under RBI guidelines.",
+  "diagnosis": "All 7 transactions in this group show a fee_charged amount greater than zero while the expected_fee is Rs 0.00, indicating that the payment processor is failing to recognize the RuPay Credit UPI instrument as a zero-fee rail and is instead charging the merchant the standard credit card interchange rate.",
+  "recommended_action": "request_mdr_refund",
+  "action_rationale": "Since the fees were charged in violation of the zero-fee mandate for RuPay Credit UPI, the merchant is entitled to a full refund of the overcharged MDR amounts.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

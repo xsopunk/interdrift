@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R5_PPI_wallet_UPI",
+  "root_cause": "The payment gateway is incorrectly applying a percentage-based MDR fee to PPI Wallet/UPI transactions, which are legally mandated to be zero-fee for merchants under RBI guidelines.",
+  "diagnosis": "All transactions in this group are classified as PPI Wallet/UPI, where the expected fee is Rs 0.00, yet the gateway is charging a fee proportional to the transaction amount (e.g., ~1.5% in samples). This indicates a configuration error where the UPI/PPI rail is being treated as a standard card or digital wallet rail with a non-zero MDR rate, resulting in systematic overcharging.",
+  "recommended_action": "request_mdr_refund",
+  "action_rationale": "Since the fees charged are legally invalid for this instrument type, the merchant is entitled to a full refund of the overcharged amounts.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

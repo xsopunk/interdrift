@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_STRUCTURAL_R11_BLENDED_MDR",
+  "root_cause": "The merchant is paying a 2.0% blended MDR rate, which is 0.25 percentage points higher than the 1.75% true underlying network cost, resulting in a structural margin leak.",
+  "diagnosis": "The comparison uses a modeled benchmark (illustrative source status) showing that the current flat-rate pricing structure does not reflect the actual interchange and network costs, causing the merchant to overpay by Rs 11,109.29 on a volume of Rs 4,406,770.11.",
+  "recommended_action": "migrate_to_ic_plus_pricing",
+  "action_rationale": "Switching to an Interchange-Plus pricing model will align fees with actual network costs, eliminating the structural spread and capturing the savings from the 0.25% rate differential.",
+  "confidence_level": "medium",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

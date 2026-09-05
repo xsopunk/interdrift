@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_Visa_credit",
+  "root_cause": "Commercial Visa credit transactions are being downgraded to higher-cost consumer interchange rates because Level 2/3 commercial card data is not being transmitted to the processor.",
+  "diagnosis": "The consistent fee overcharge across all three transactions (totaling Rs 785.34) indicates that the gateway is applying a higher blended or consumer MDR rate instead of the lower commercial interchange rate. This occurs because the necessary Level 2/3 data (e.g., cardholder name, POI data) is missing, causing the transaction to be downgraded in the interchange network. Note: This analysis uses a modeled benchmark as the source status is illustrative.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing Level 2/3 commercial card data will prevent the interchange downgrade, ensuring transactions are processed at the correct, lower commercial rate.",
+  "confidence_level": "medium",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_Mastercard_credit",
+  "root_cause": "Mastercard credit transactions are being downgraded to higher-cost processing tiers due to missing Level 2/3 commercial card data.",
+  "diagnosis": "The consistent fee overcharges across all three transactions indicate that the gateway is applying a higher interchange rate because it lacks the specific commercial card data (Level 2/3) required to qualify for lower commercial rates. Note: This analysis uses a modeled benchmark as the source status is illustrative.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing Level 2/3 commercial card data will allow the gateway to correctly classify these transactions and apply the lower interchange rates, eliminating the fee leakage.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

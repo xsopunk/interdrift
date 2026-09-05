@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_RuPay_debit",
+  "root_cause": "Missing Level\u202f2/3 data causing commercial\u2011card downgrade",
+  "diagnosis": "Because the transactions did not include Level\u202f2/3 commercial card data, the gateway downgraded them to a consumer rate, resulting in fees that are lower than the expected commercial fee benchmark.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Supplying L2/L3 data will qualify the transactions for the proper commercial pricing and eliminate the fee shortfall.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

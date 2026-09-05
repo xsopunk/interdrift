@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R6b_PPI_wallet_UPI",
+  "root_cause": "The gateway is applying a higher fee rate to PPI wallet/UPI transactions than the regulatory cap or contracted rate for this instrument type, resulting in consistent overcharges.",
+  "diagnosis": "Across 7 transactions, the charged fees consistently exceed the expected fees by approximately 20-25% (e.g., Rs 25.04 charged vs Rs 20.49 expected), indicating a systematic misconfiguration of the fee schedule for PPI wallet/UPI instruments rather than isolated errors.",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "Since the overcharges are consistent and tied to a specific instrument type, the acquirer/gateway must audit their fee configuration to identify and correct the erroneous rate mapping for PPI wallet/UPI transactions.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

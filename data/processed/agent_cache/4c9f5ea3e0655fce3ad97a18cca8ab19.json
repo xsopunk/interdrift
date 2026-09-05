@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R6b_PPI_wallet_UPI",
+  "root_cause": "Overcharged MDR fee on PPI wallet UPI transaction",
+  "diagnosis": "The fee charged (Rs 114.93) exceeds the expected fee (Rs 94.03) by Rs 20.90, indicating the acquirer applied a higher rate than the merchant's contract for this instrument.",
+  "recommended_action": "request_mdr_refund",
+  "action_rationale": "Refunding the overcharged MDR recovers the Rs 20.90 excess fee.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_STRUCTURAL_R12_MCC_MISMATCH",
+  "root_cause": "The merchant's transactions are being processed under an incorrect MCC, causing interchange downgrades that inflate fees compared to the expected rate for MCC 5045 (B2B wholesale).",
+  "diagnosis": "55 transactions totaling Rs 5,928.95 in exposure are being charged at higher interchange rates because the gateway is not using the registered business MCC 5045. Since the source status is illustrative, this comparison uses a modeled benchmark, but the systemic pattern of 55 transactions indicates a persistent configuration error rather than isolated incidents.",
+  "recommended_action": "correct_mcc_mapping",
+  "action_rationale": "Correcting the MCC in the gateway configuration to the registered 5045 will align interchange pricing with the merchant's actual business type, eliminating the structural fee leak.",
+  "confidence_level": "medium",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

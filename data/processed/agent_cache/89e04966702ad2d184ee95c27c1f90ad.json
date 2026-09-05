@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_STRUCTURAL_R11_BLENDED_MDR",
+  "root_cause": "Use of blended pricing instead of interchange\u2011plus causing higher fees.",
+  "diagnosis": "The blended rate of 2.0% yields fees of Rs\u202f144,140.57 versus the true network cost of Rs\u202f130,294.86 (effective rate 1.81%), overcharging the merchant by Rs\u202f13,845.71.",
+  "recommended_action": "migrate_to_ic_plus_pricing",
+  "action_rationale": "Switching to IC+ pricing aligns charges with the actual network cost, eliminating the overcharge.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

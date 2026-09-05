@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R4_RuPay_credit_UPI",
+  "root_cause": "The gateway is applying an incorrect or higher MDR rate to RuPay Credit UPI transactions, resulting in fees that exceed the modeled benchmark for this sub-instrument.",
+  "diagnosis": "Both transactions show a consistent overcharge pattern where the fee_charged is significantly higher than the expected_fee (e.g., Rs 2,201.06 vs Rs 1,435.47 for TXN_000016). Since the source status is 'illustrative', this comparison uses a modeled benchmark, but the consistent positive delta across multiple transactions suggests a systematic configuration error in how RuPay Credit UPI is priced by the acquirer or gateway.",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "As the discrepancy is based on an illustrative benchmark and involves a specific sub-instrument (RuPay Credit UPI), the first step is to verify if the gateway's fee configuration for this rail matches the agreed or standard rates before pursuing refunds or disputes.",
+  "confidence_level": "medium",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}
