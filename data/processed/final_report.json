@@ -13,29 +13,57 @@
     "structural_overcharge_amount": 4989.21,
     "mcc_misclassification_amount": 468.53
   },
+  "batch_structural_audits": {
+    "R11_blended_mdr_spread": {
+      "total_card_volume": 1989154.65,
+      "actual_flat_fees_billed": 39783.09,
+      "true_underlying_network_cost": 34793.88,
+      "structural_overcharge_delta": 4989.21,
+      "effective_blended_rate_pct": 2.0,
+      "effective_true_rate_pct": 1.75,
+      "recommendation": "Migrate to Interchange-Plus (IC+) pricing structure to capture network rate spreads."
+    },
+    "R12_mcc_misclassification": {
+      "mismatched_count": 12,
+      "expected_mcc": "5045",
+      "registered_business_type": "B2B wholesale",
+      "financial_impact_delta": 468.53,
+      "recommendation": "Update gateway configuration to registered MCC 5045 to prevent interchange downgrades."
+    }
+  },
   "leak_by_category": [
     {
       "category": "R4",
+      "rule_name": "RuPay credit card on UPI transactions over Rs 2,000 incur tiered interchange (approx 1.5% - 2.0%)",
+      "source_status": "illustrative",
       "total_leaked": 189.53,
       "transaction_count": 4
     },
     {
       "category": "R3",
+      "rule_name": "RuPay credit card on UPI transactions up to Rs 2,000 must incur 0% MDR",
+      "source_status": "sourced",
       "total_leaked": 46.09,
       "transaction_count": 5
     },
     {
       "category": "R5",
+      "rule_name": "PPI wallet on UPI transactions up to Rs 2,000 carry zero interchange",
+      "source_status": "sourced",
       "total_leaked": 43.93,
       "transaction_count": 3
     },
     {
       "category": "R6b",
+      "rule_name": "PPI wallet on UPI over Rs 2,000 for Standard Retail/Supermarkets capped at 0.90%",
+      "source_status": "sourced",
       "total_leaked": 8.94,
       "transaction_count": 1
     },
     {
       "category": "R10",
+      "rule_name": "Corporate card surcharge triggered by missing L2/L3 commercial data fields",
+      "source_status": "illustrative",
       "total_leaked": -2018.31,
       "transaction_count": 9
     }
@@ -217,5 +245,5 @@
     }
   ],
   "audit_trail_available": true,
-  "generated_at": "2026-09-05T15:09:03.625079"
+  "generated_at": "2026-09-05T19:29:44.753573"
 }

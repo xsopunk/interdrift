@@ -25,6 +25,7 @@ export default function App() {
   const [error, setError] = useState(null);
   const [isTestDataModalOpen, setIsTestDataModalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("overview");
+  const [caseStatusFilter, setCaseStatusFilter] = useState("ALL");
 
   const loadAllData = async () => {
     try {
@@ -187,6 +188,7 @@ export default function App() {
                   {/* Batch Structural Audits (Horizontal in Main Stream - Aligned to Bottom) */}
                   <section>
                     <StructuralImpactCard
+                      audits={report?.batch_structural_audits}
                       mccAmount={overview.mcc_misclassification_amount}
                       structuralAmount={overview.structural_overcharge_amount}
                     />
@@ -206,7 +208,11 @@ export default function App() {
             <div className="space-y-8 animate-in fade-in duration-200">
               {agentData && agentData.summary && (
                 <section>
-                  <AgentControlStatus summary={agentData.summary} />
+                  <AgentControlStatus
+                    summary={agentData.summary}
+                    selectedStatus={caseStatusFilter}
+                    onSelectStatus={setCaseStatusFilter}
+                  />
                 </section>
               )}
 
@@ -220,6 +226,8 @@ export default function App() {
                 <section>
                   <AgentRecommendationCard
                     cases={agentData.cases}
+                    selectedStatusFilter={caseStatusFilter}
+                    onClearFilter={() => setCaseStatusFilter("ALL")}
                     onApprove={handleApprove}
                     onReject={handleReject}
                   />

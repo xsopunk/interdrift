@@ -16,19 +16,6 @@ const RAIL_METADATA = {
 export default function CategoryVisualizer({ categories = [] }) {
   const totalLeakage = categories.reduce((sum, item) => sum + Math.abs(item.total_leaked || 0), 0);
 
-  const isIllustrative = (categoryName) => {
-    const lower = categoryName.toLowerCase();
-    return (
-      lower.includes("blended") ||
-      lower.includes("mcc") ||
-      lower.includes("lcr") ||
-      lower.includes("downgrade") ||
-      lower.includes("r10") ||
-      lower.includes("r11") ||
-      lower.includes("r12")
-    );
-  };
-
   return (
     <div className="rounded-xl border border-border bg-card p-4 shadow-sm transition-colors space-y-3">
       <div className="pb-3 border-b border-border/80 space-y-1">
@@ -51,18 +38,20 @@ export default function CategoryVisualizer({ categories = [] }) {
       <div className="divide-y divide-border/50">
         {categories.map((cat, idx) => {
           const share = totalLeakage > 0 ? ((Math.abs(cat.total_leaked || 0) / totalLeakage) * 100).toFixed(1) : "0.0";
-          const illustrative = isIllustrative(cat.category);
-          const meta = RAIL_METADATA[cat.category] || { name: cat.category.replace(/_/g, " "), ruleTag: cat.category };
+          const illustrative = cat.source_status ? cat.source_status === "illustrative" : RAIL_METADATA[cat.category]?.name?.includes("Spread") || false;
+          const fallbackMeta = RAIL_METADATA[cat.category] || {};
+          const displayName = cat.rule_name || fallbackMeta.name || cat.category.replace(/_/g, " ");
+          const ruleTag = fallbackMeta.ruleTag || (cat.category?.startsWith("R") ? `Rule ${cat.category}` : cat.category);
 
           return (
             <div key={idx} className="py-3 first:pt-1 last:pb-0 space-y-1.5">
               <div className="flex flex-col gap-1 text-xs">
                 <div className="flex items-center justify-between gap-1 flex-wrap">
                   <span className="font-semibold text-foreground text-[11px]">
-                    {meta.name}
+                    {displayName}
                   </span>
                   <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-secondary text-secondary-foreground border border-border">
-                    {meta.ruleTag}
+                    {ruleTag}
                   </span>
                 </div>
 

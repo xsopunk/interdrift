@@ -83,6 +83,8 @@ def get_normalized_row_records():
             "classification": str(row.get("classification", "")),
             "matched_rule_id": rule_id,
             "category": category,
+            "rule_description": rule_info.get("description", ""),
+            "source_status": rule_info.get("source_status", "sourced"),
             "amount": float(row.get("amount", 0.0)) if row.get("amount") != "" else 0.0,
             "fee_charged": float(row.get("fee_charged", 0.0)) if row.get("fee_charged") != "" else 0.0,
             "expected_fee": float(row.get("expected_fee", 0.0)) if row.get("expected_fee") != "" else 0.0,

@@ -7,20 +7,6 @@ import {
   FileSpreadsheet 
 } from "lucide-react";
 
-const RULE_METADATA = {
-  R1: "Bank UPI (0% Statutory Cap)",
-  R2: "RuPay Debit (0% Statutory Cap)",
-  R3: "RuPay Credit UPI ≤ ₹2k (0% Cap)",
-  R4: "RuPay Credit UPI > ₹2k (1.5% Cap)",
-  R5: "PPI Wallet UPI ≤ ₹2k (0% Cap)",
-  R6b: "PPI Wallet UPI > ₹2k (0.5% Cap)",
-  R8: "Non-RuPay Debit (RBI ₹1k Cap)",
-  R9: "Credit Card Rate (Unverified Tier)",
-  R10: "L2/L3 Downgrade Penalty",
-  R11: "Blended Flat-Rate Spread",
-  R12: "MCC Rate Misalignment",
-};
-
 const FILTER_TABS = [
   { id: "ALL", label: "All Records" },
   { id: "Leaked", label: "Fee Leaks" },
@@ -31,16 +17,16 @@ const FILTER_TABS = [
 
 const formatSubInstrument = (val) => {
   if (!val) return <span className="text-amber-600 dark:text-amber-400 italic">Missing Tag</span>;
-  const mapping = {
-    bank_UPI: "Bank UPI",
-    RuPay_debit: "RuPay Debit",
-    RuPay_credit_UPI: "RuPay Credit (UPI)",
-    PPI_wallet_UPI: "PPI Wallet (UPI)",
-    Visa_credit: "Visa Credit",
-    Mastercard_credit: "Mastercard Credit",
-    Debit_non_rupay: "Non-RuPay Debit",
-  };
-  return mapping[val] || val.replace(/_/g, " ");
+  return val
+    .replace(/_/g, " ")
+    .split(" ")
+    .map((word) => {
+      const upper = word.toUpperCase();
+      if (["UPI", "PPI", "MCC", "MDR", "RBI", "IC"].includes(upper)) return upper;
+      if (word.toLowerCase() === "rupay") return "RuPay";
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
 };
 
 export default function AuditTrailTable({ rows = [] }) {
@@ -203,7 +189,7 @@ export default function AuditTrailTable({ rows = [] }) {
               </tr>
             ) : (
               paginatedRows.map((row, idx) => {
-                const ruleDesc = RULE_METADATA[row.matched_rule_id];
+                const ruleDesc = row.rule_description || (row.category ? row.category.replace(/_/g, " ") : "");
 
                 return (
                   <tr key={idx} className="hover:bg-secondary/40 transition-colors">

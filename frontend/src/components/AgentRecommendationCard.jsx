@@ -24,49 +24,65 @@ const STATUS_BADGE = {
   ESCALATED: { label: "Escalated", color: "text-red-500 bg-red-500/10 border-red-500/20" },
 };
 
-const CATEGORY_TITLES = {
-  MCC_Misclassification: "Merchant Category (MCC) Misclassification",
-  Blended_vs_IC_Plus: "Blended Flat-Rate vs. Interchange-Plus Cost Spread",
-  RuPay_Credit_UPI: "RuPay Credit on UPI Statutory Fee Cap Breach",
-  PPI_Wallet_UPI: "Prepaid Wallet (PPI) on UPI Statutory Fee Cap Breach",
-  Credit_Cards_Market: "Commercial & Consumer Card Interchange Tier Review",
-  RuPay_Debit: "RuPay Debit Mandatory Zero-Fee Violation",
-  Debit_Non_RuPay: "Non-RuPay Debit Card Cap Violation",
-  Unclassified: "Unclassified Routing Exceptions (Missing Metadata)",
-};
-
-export default function AgentRecommendationCard({ cases = [], onApprove, onReject }) {
+export default function AgentRecommendationCard({ cases = [], selectedStatusFilter = "ALL", onClearFilter, onApprove, onReject }) {
   const [expandedId, setExpandedId] = useState(null);
 
-  // Show top 5 actionable cases sorted by priority
-  const topCases = cases
+  // Filter cases by active status selection and sort by priority rank
+  const filteredCases = cases
     .filter((c) => c.status !== "CLOSED")
-    .sort((a, b) => (a.priority_rank || 99) - (b.priority_rank || 99))
-    .slice(0, 5);
+    .filter((c) => selectedStatusFilter === "ALL" || c.status === selectedStatusFilter)
+    .sort((a, b) => (a.priority_rank || 99) - (b.priority_rank || 99));
 
-  if (topCases.length === 0) return null;
+  const topCases = selectedStatusFilter === "ALL" ? filteredCases.slice(0, 5) : filteredCases;
+
+  if (cases.length === 0) return null;
 
   return (
     <div className="rounded-xl border border-border bg-card p-5 shadow-sm space-y-4">
-      <div className="flex items-center gap-2 pb-3 border-b border-border">
-        <div className="p-1.5 rounded-lg bg-primary/10 text-primary border border-primary/20">
-          <Bot className="w-4 h-4" />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-border">
+        <div className="flex items-center gap-2">
+          <div className="p-1.5 rounded-lg bg-primary/10 text-primary border border-primary/20">
+            <Bot className="w-4 h-4" />
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-foreground">Agent Priority Queue</h3>
+            <p className="text-[11px] text-muted-foreground">
+              Root-cause clusters ranked by recoverable exposure, regulatory confidence, recurrence & controllability
+            </p>
+          </div>
         </div>
-        <div>
-          <h3 className="text-sm font-bold text-foreground">Agent Priority Queue</h3>
-          <p className="text-[11px] text-muted-foreground">
-            Root-cause clusters ranked by recoverable exposure, regulatory confidence, recurrence & controllability
-          </p>
-        </div>
+
+        {selectedStatusFilter !== "ALL" && (
+          <div className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-secondary border border-border text-xs">
+            <span className="text-[11px] text-muted-foreground font-mono">
+              Filtered: <strong className="text-foreground">{STATUS_BADGE[selectedStatusFilter]?.label || selectedStatusFilter}</strong> ({topCases.length})
+            </span>
+            <button
+              onClick={onClearFilter}
+              className="text-[10px] text-primary hover:underline font-mono font-bold cursor-pointer"
+            >
+              Clear Filter
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="space-y-3">
-        {topCases.map((c) => {
+        {topCases.length === 0 ? (
+          <div className="p-6 text-center text-xs text-muted-foreground font-sans bg-secondary/30 rounded-lg border border-border">
+            No cases match the selected status filter "{STATUS_BADGE[selectedStatusFilter]?.label || selectedStatusFilter}".
+          </div>
+        ) : (
+          topCases.map((c) => {
           const isExpanded = expandedId === c.case_id;
           const badge = STATUS_BADGE[c.status] || STATUS_BADGE.INVESTIGATING;
           const actionLabel = ACTION_LABELS[c.recommended_action] || c.recommended_action;
           const isAwaiting = c.status === "AWAITING_HUMAN_APPROVAL";
-          const title = CATEGORY_TITLES[c.category] || (c.category ? c.category.replace(/_/g, " ") : c.group_id.replace(/_/g, " "));
+          const title = c.category
+            ? c.category.replace(/_/g, " ")
+            : c.group_id
+            ? c.group_id.replace(/^GRP_/, "").replace(/_/g, " ")
+            : "Audit Investigation Case";
 
           return (
             <div
@@ -95,11 +111,15 @@ export default function AgentRecommendationCard({ cases = [], onApprove, onRejec
                       <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-secondary text-secondary-foreground border border-border shrink-0">
                         Rule {(c.rule_ids || []).join(", ")}
                       </span>
-                      {c.source_status === "illustrative" && (
+                      {c.source_status === "illustrative" ? (
                         <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20 shrink-0">
                           Modeled Benchmark
                         </span>
-                      )}
+                      ) : c.source_status === "sourced" ? (
+                        <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 shrink-0">
+                          Statutory Gazette
+                        </span>
+                      ) : null}
                     </div>
                     <p className="text-[11px] text-muted-foreground mt-0.5 truncate">
                       {c.root_cause || "Pending investigation..."}
@@ -173,7 +193,7 @@ export default function AgentRecommendationCard({ cases = [], onApprove, onRejec
               )}
             </div>
           );
-        })}
+        }))}
       </div>
     </div>
   );

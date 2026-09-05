@@ -104,6 +104,12 @@ def build_final_report(
     }
 
     # 3. Build leak_by_category breakdown
+    rules_path = Path("data/rules/rule_table.json")
+    rule_map = {}
+    if rules_path.exists():
+        with open(rules_path, "r", encoding="utf-8") as f:
+            rule_map = {r["rule_id"]: r for r in json.load(f).get("rules", [])}
+
     leaked_df = df[df["classification"] == "Leaked"].copy()
     leak_by_category = []
 
@@ -115,8 +121,12 @@ def build_final_report(
         ).reset_index()
 
         for _, row in grouped.iterrows():
+            rule_id = str(row[category_col])
+            rule_info = rule_map.get(rule_id, {})
             leak_by_category.append({
-                "category": str(row[category_col]),
+                "category": rule_id,
+                "rule_name": rule_info.get("description", rule_info.get("category", rule_id)),
+                "source_status": rule_info.get("source_status", "sourced"),
                 "total_leaked": round(float(row["total_leaked"]), 2),
                 "transaction_count": int(row["transaction_count"])
             })
@@ -147,6 +157,7 @@ def build_final_report(
     # 6. Assemble complete presentation payload
     final_report = {
         "overview": overview,
+        "batch_structural_audits": batch_audits,
         "leak_by_category": leak_by_category,
         "top_offenders": top_offenders,
         "exceptions": exceptions,

@@ -12,7 +12,7 @@ const STATUS_CONFIG = {
   CLOSED: { label: "Closed", icon: XCircle, color: "text-zinc-400", bg: "bg-zinc-500/10", border: "border-zinc-500/20" },
 };
 
-export default function AgentControlStatus({ summary = {} }) {
+export default function AgentControlStatus({ summary = {}, selectedStatus = "ALL", onSelectStatus }) {
   const statusCounts = summary.status_counts || {};
   const totalCases = summary.total_cases || 0;
   const totalExposure = summary.total_exposure_inr || 0;
@@ -43,17 +43,24 @@ export default function AgentControlStatus({ summary = {} }) {
         {Object.entries(statusCounts).map(([status, count]) => {
           const config = STATUS_CONFIG[status] || STATUS_CONFIG.OPEN;
           const Icon = config.icon;
+          const isSelected = selectedStatus === status;
+
           return (
-            <div
+            <button
+              type="button"
               key={status}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg ${config.bg} border ${config.border} transition-all`}
+              onClick={() => onSelectStatus && onSelectStatus(isSelected ? "ALL" : status)}
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg ${config.bg} border ${
+                isSelected ? "ring-2 ring-primary border-primary font-bold shadow-xs scale-[1.02]" : config.border
+              } hover:opacity-90 transition-all cursor-pointer text-left`}
+              title={`Click to filter Agent Priority Queue by ${config.label}`}
             >
               <Icon className={`w-3.5 h-3.5 ${config.color}`} />
               <div>
                 <span className={`text-sm font-bold ${config.color}`}>{count}</span>
                 <span className="text-[10px] text-muted-foreground ml-1.5">{config.label}</span>
               </div>
-            </div>
+            </button>
           );
         })}
       </div>
