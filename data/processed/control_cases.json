@@ -1,220 +1,12 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-09-05T04:06:39.775828",
+  "last_updated": "2026-09-05T06:17:10.984481",
   "total_cases": 9,
   "cases": [
     {
-      "case_id": "CASE_F0F0C0C5",
-      "created_at": "2026-09-05T04:05:53.407103",
-      "last_evaluated_at": "2026-09-05T04:06:17.566420",
-      "group_id": "GRP_LEAKED_R2_RuPay_debit",
-      "group_type": "row_leak",
-      "root_cause": "RuPay Debit transactions were incorrectly charged MDR fees despite regulatory zero-MDR mandates.",
-      "rule_ids": [
-        "R2"
-      ],
-      "category": "RuPay_Debit",
-      "source_status": "sourced",
-      "sub_instrument": "RuPay_debit",
-      "affected_transactions": [
-        "TXN_000011",
-        "TXN_000087",
-        "TXN_000132",
-        "TXN_000156",
-        "TXN_000290",
-        "TXN_000296",
-        "TXN_000412",
-        "TXN_000420",
-        "TXN_000484"
-      ],
-      "transaction_count": 9,
-      "financial_exposure": 807.34,
-      "confidence": "high",
-      "priority_score": 0.7547,
-      "priority_rank": 1,
-      "recommended_action": "request_mdr_refund",
-      "action_rationale": "Requesting a refund directly recovers the illegal MDR overcharges levied on zero-rated RuPay Debit transactions.",
-      "human_approval_required": true,
-      "status": "MONITORING",
-      "status_history": [
-        {
-          "status": "AWAITING_HUMAN_APPROVAL",
-          "timestamp": "2026-09-05T04:05:53.407103",
-          "reason": "Case created from agent investigation"
-        },
-        {
-          "status": "MONITORING",
-          "timestamp": "2026-09-05T04:06:17.566420",
-          "reason": "Human operator approved recommended action."
-        }
-      ],
-      "baseline_metric": 807.34,
-      "current_metric": 807.34,
-      "target_metric": 0.0,
-      "evidence": {
-        "sample_transactions": [
-          {
-            "transaction_id": "TXN_000011",
-            "amount": 3828.93,
-            "fee_charged": 30.63,
-            "expected_fee": 0.0,
-            "delta": 30.63
-          },
-          {
-            "transaction_id": "TXN_000087",
-            "amount": 8989.72,
-            "fee_charged": 71.92,
-            "expected_fee": 0.0,
-            "delta": 71.92
-          },
-          {
-            "transaction_id": "TXN_000132",
-            "amount": 22863.13,
-            "fee_charged": 182.91,
-            "expected_fee": 0.0,
-            "delta": 182.91
-          }
-        ],
-        "structural_details": null,
-        "priority_components": {
-          "exposure_normalized": 0.7862,
-          "confidence": 1.0,
-          "recurrence": 0.2762,
-          "controllability": 0.9
-        },
-        "priority_explanation": "Priority driven by high exposure (Rs 807.34), legally verified rule, 9 occurrences."
-      },
-      "agent_reasoning": "The acquirer levied MDR fees totaling Rs 807.34 across 9 RuPay Debit transactions where the expected fee according to regulatory rules (R2) is Rs 0.00."
-    },
-    {
-      "case_id": "CASE_6B8110C6",
-      "created_at": "2026-09-05T04:05:53.407103",
-      "last_evaluated_at": "2026-09-05T04:05:53.407103",
-      "group_id": "GRP_FLAGGED_R9",
-      "group_type": "flagged_review",
-      "root_cause": "Missing Level\u202f2/3 commercial card data on a subset of transactions.",
-      "rule_ids": [
-        "R9"
-      ],
-      "category": "Credit_Cards_Market",
-      "source_status": "illustrative",
-      "sub_instrument": "",
-      "affected_transactions": [
-        "TXN_000020",
-        "TXN_000032",
-        "TXN_000047",
-        "TXN_000050",
-        "TXN_000052",
-        "TXN_000055",
-        "TXN_000068",
-        "TXN_000069",
-        "TXN_000080",
-        "TXN_000081",
-        "TXN_000091",
-        "TXN_000099",
-        "TXN_000138",
-        "TXN_000140",
-        "TXN_000153",
-        "TXN_000155",
-        "TXN_000159",
-        "TXN_000171",
-        "TXN_000181",
-        "TXN_000184",
-        "TXN_000191",
-        "TXN_000208",
-        "TXN_000222",
-        "TXN_000223",
-        "TXN_000233",
-        "TXN_000234",
-        "TXN_000241",
-        "TXN_000246",
-        "TXN_000252",
-        "TXN_000270",
-        "TXN_000276",
-        "TXN_000277",
-        "TXN_000280",
-        "TXN_000298",
-        "TXN_000307",
-        "TXN_000309",
-        "TXN_000310",
-        "TXN_000313",
-        "TXN_000334",
-        "TXN_000351",
-        "TXN_000358",
-        "TXN_000364",
-        "TXN_000374",
-        "TXN_000385",
-        "TXN_000392",
-        "TXN_000399",
-        "TXN_000429",
-        "TXN_000435",
-        "TXN_000445",
-        "TXN_000451",
-        "TXN_000454",
-        "TXN_000458",
-        "TXN_000468",
-        "TXN_000470",
-        "TXN_000485",
-        "TXN_000487"
-      ],
-      "transaction_count": 56,
-      "financial_exposure": 1203.04,
-      "confidence": "medium",
-      "priority_score": 0.681,
-      "priority_rank": 2,
-      "recommended_action": "supply_l2_l3_data",
-      "action_rationale": "Providing complete L2/L3 data will qualify the transactions for lower interchange fees and eliminate the overcharges.",
-      "human_approval_required": false,
-      "status": "ACTION_RECOMMENDED",
-      "status_history": [
-        {
-          "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T04:05:53.407103",
-          "reason": "Case created from agent investigation"
-        }
-      ],
-      "baseline_metric": 1203.04,
-      "current_metric": 1203.04,
-      "target_metric": 0.0,
-      "evidence": {
-        "sample_transactions": [
-          {
-            "transaction_id": "TXN_000020",
-            "amount": 10751.51,
-            "fee_charged": 215.03,
-            "expected_fee": 215.03,
-            "delta": 0.0
-          },
-          {
-            "transaction_id": "TXN_000032",
-            "amount": 2278.75,
-            "fee_charged": 63.81,
-            "expected_fee": 45.58,
-            "delta": 18.23
-          },
-          {
-            "transaction_id": "TXN_000047",
-            "amount": 21507.25,
-            "fee_charged": 430.14,
-            "expected_fee": 430.14,
-            "delta": 0.0
-          }
-        ],
-        "structural_details": null,
-        "priority_components": {
-          "exposure_normalized": 0.833,
-          "confidence": 0.6,
-          "recurrence": 0.6889,
-          "controllability": 0.4
-        },
-        "priority_explanation": "Priority driven by high exposure (Rs 1,203.04), illustrative/modeled rule, systemic pattern (56 transactions)."
-      },
-      "agent_reasoning": "Transactions without L2/L3 data are routed with a default higher interchange rate, causing the fee charged to exceed the expected fee for those cases."
-    },
-    {
-      "case_id": "CASE_7172FAD0",
-      "created_at": "2026-09-05T04:05:53.407103",
-      "last_evaluated_at": "2026-09-05T04:06:39.775828",
+      "case_id": "CASE_61624F9C",
+      "created_at": "2026-09-05T06:17:10.983483",
+      "last_evaluated_at": "2026-09-05T06:17:10.983483",
       "group_id": "GRP_STRUCTURAL_R11_BLENDED_MDR",
       "group_type": "structural",
       "root_cause": "The merchant is on a blended pricing model that applies a 2.0% rate, which is higher than the true underlying network cost of 1.75%.",
@@ -229,21 +21,16 @@
       "financial_exposure": 4989.21,
       "confidence": "high",
       "priority_score": 0.655,
-      "priority_rank": 3,
+      "priority_rank": 1,
       "recommended_action": "migrate_to_ic_plus_pricing",
       "action_rationale": "Switching to interchange\u2011plus pricing aligns fees with the actual network cost, eliminating the blended\u2011rate overcharge.",
       "human_approval_required": true,
-      "status": "MONITORING",
+      "status": "AWAITING_HUMAN_APPROVAL",
       "status_history": [
         {
           "status": "AWAITING_HUMAN_APPROVAL",
-          "timestamp": "2026-09-05T04:05:53.407103",
+          "timestamp": "2026-09-05T06:17:10.983483",
           "reason": "Case created from agent investigation"
-        },
-        {
-          "status": "MONITORING",
-          "timestamp": "2026-09-05T04:06:39.775828",
-          "reason": "Human operator approved recommended action."
         }
       ],
       "baseline_metric": 4989.21,
@@ -270,9 +57,9 @@
       "agent_reasoning": "This rate mismatch causes the merchant to be overcharged by Rs\u202f4,989.21 (actual flat fees Rs\u202f39,783.09 vs. network cost Rs\u202f34,793.88)."
     },
     {
-      "case_id": "CASE_465569CA",
-      "created_at": "2026-09-05T04:05:53.407103",
-      "last_evaluated_at": "2026-09-05T04:05:53.407103",
+      "case_id": "CASE_DC5E82F8",
+      "created_at": "2026-09-05T06:17:10.983483",
+      "last_evaluated_at": "2026-09-05T06:17:10.983483",
       "group_id": "GRP_STRUCTURAL_R12_MCC_MISMATCH",
       "group_type": "structural",
       "root_cause": "MCC misclassification in gateway configuration",
@@ -286,8 +73,8 @@
       "transaction_count": 12,
       "financial_exposure": 468.53,
       "confidence": "high",
-      "priority_score": 0.6228,
-      "priority_rank": 4,
+      "priority_score": 0.6269,
+      "priority_rank": 2,
       "recommended_action": "correct_mcc_mapping",
       "action_rationale": "Aligning the MCC with the registered B2B wholesale type will stop fee downgrades and reduce costs.",
       "human_approval_required": false,
@@ -295,7 +82,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T04:05:53.407103",
+          "timestamp": "2026-09-05T06:17:10.983483",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -312,7 +99,7 @@
         "priority_components": {
           "exposure_normalized": 0.7224,
           "confidence": 0.6,
-          "recurrence": 0.3189,
+          "recurrence": 0.3397,
           "controllability": 0.8
         },
         "priority_explanation": "Priority driven by high exposure (Rs 468.53), illustrative/modeled rule, systemic pattern (12 transactions)."
@@ -320,9 +107,9 @@
       "agent_reasoning": "The gateway is using an incorrect MCC instead of the expected 5045, causing interchange downgrades and higher fees; this assessment uses an illustrative benchmark model."
     },
     {
-      "case_id": "CASE_81019EB0",
-      "created_at": "2026-09-05T04:05:53.407103",
-      "last_evaluated_at": "2026-09-05T04:05:53.407103",
+      "case_id": "CASE_E2A74B28",
+      "created_at": "2026-09-05T06:17:10.983483",
+      "last_evaluated_at": "2026-09-05T06:17:10.983483",
       "group_id": "GRP_LEAKED_R3_RuPay_credit_UPI",
       "group_type": "row_leak",
       "root_cause": "Fee configuration applies MDR to fee\u2011exempt RuPay credit UPI transactions",
@@ -342,8 +129,8 @@
       "transaction_count": 5,
       "financial_exposure": 46.09,
       "confidence": "high",
-      "priority_score": 0.5921,
-      "priority_rank": 5,
+      "priority_score": 0.5948,
+      "priority_rank": 3,
       "recommended_action": "audit_gateway_fee_config",
       "action_rationale": "An audit will reveal and correct the misapplied fee rule, stopping future overcharges.",
       "human_approval_required": false,
@@ -351,7 +138,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T04:05:53.407103",
+          "timestamp": "2026-09-05T06:17:10.983483",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -386,7 +173,7 @@
         "priority_components": {
           "exposure_normalized": 0.4524,
           "confidence": 1.0,
-          "recurrence": 0.2058,
+          "recurrence": 0.2193,
           "controllability": 0.8
         },
         "priority_explanation": "Priority driven by moderate exposure (Rs 46.09), legally verified rule, 5 occurrences."
@@ -394,9 +181,9 @@
       "agent_reasoning": "The gateway/acquirer is incorrectly charging a standard MDR on RuPay credit UPI, which should be fee\u2011free, leading to overcharges on each transaction."
     },
     {
-      "case_id": "CASE_2DED3E21",
-      "created_at": "2026-09-05T04:05:53.407103",
-      "last_evaluated_at": "2026-09-05T04:05:53.407103",
+      "case_id": "CASE_EDDB3EE9",
+      "created_at": "2026-09-05T06:17:10.983483",
+      "last_evaluated_at": "2026-09-05T06:17:10.983483",
       "group_id": "GRP_LEAKED_R5_PPI_wallet_UPI",
       "group_type": "row_leak",
       "root_cause": "Fee rules incorrectly applied to fee\u2011free PPI wallet UPI transactions.",
@@ -414,8 +201,8 @@
       "transaction_count": 3,
       "financial_exposure": 43.93,
       "confidence": "high",
-      "priority_score": 0.5806,
-      "priority_rank": 6,
+      "priority_score": 0.5827,
+      "priority_rank": 4,
       "recommended_action": "audit_gateway_fee_config",
       "action_rationale": "Auditing the fee configuration will reveal and allow removal of the erroneous charge rule.",
       "human_approval_required": false,
@@ -423,7 +210,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T04:05:53.407103",
+          "timestamp": "2026-09-05T06:17:10.983483",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -458,7 +245,7 @@
         "priority_components": {
           "exposure_normalized": 0.4469,
           "confidence": 1.0,
-          "recurrence": 0.1594,
+          "recurrence": 0.1698,
           "controllability": 0.8
         },
         "priority_explanation": "Priority driven by moderate exposure (Rs 43.93), legally verified rule, 3 occurrences."
@@ -466,9 +253,9 @@
       "agent_reasoning": "The gateway/acquirer fee configuration includes a charge for PPI wallet UPI, causing non\u2011zero fees where regulations mandate zero fees."
     },
     {
-      "case_id": "CASE_A5C0646E",
-      "created_at": "2026-09-05T04:05:53.407103",
-      "last_evaluated_at": "2026-09-05T04:05:53.407103",
+      "case_id": "CASE_BB2DD3FC",
+      "created_at": "2026-09-05T06:17:10.983483",
+      "last_evaluated_at": "2026-09-05T06:17:10.983483",
       "group_id": "GRP_LEAKED_R4_RuPay_credit_UPI",
       "group_type": "row_leak",
       "root_cause": "Misconfigured fee schedule for RuPay credit UPI transactions",
@@ -487,8 +274,8 @@
       "transaction_count": 4,
       "financial_exposure": 189.53,
       "confidence": "high",
-      "priority_score": 0.5534,
-      "priority_rank": 7,
+      "priority_score": 0.5558,
+      "priority_rank": 5,
       "recommended_action": "audit_gateway_fee_config",
       "action_rationale": "Auditing the fee configuration will reveal and allow correction of the incorrect rate causing the overcharges",
       "human_approval_required": false,
@@ -496,7 +283,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T04:05:53.407103",
+          "timestamp": "2026-09-05T06:17:10.983483",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -531,7 +318,7 @@
         "priority_components": {
           "exposure_normalized": 0.6165,
           "confidence": 0.6,
-          "recurrence": 0.1841,
+          "recurrence": 0.1961,
           "controllability": 0.8
         },
         "priority_explanation": "Priority driven by high exposure (Rs 189.53), illustrative/modeled rule, 4 occurrences."
@@ -539,9 +326,9 @@
       "agent_reasoning": "The gateway/acquirer is applying a higher MDR than the expected rate, resulting in consistent overcharges across the sample transactions"
     },
     {
-      "case_id": "CASE_A95A6073",
-      "created_at": "2026-09-05T04:05:53.407103",
-      "last_evaluated_at": "2026-09-05T04:05:53.407103",
+      "case_id": "CASE_DD8C8445",
+      "created_at": "2026-09-05T06:17:10.983483",
+      "last_evaluated_at": "2026-09-05T06:17:10.983483",
       "group_id": "GRP_LEAKED_R6b_PPI_wallet_UPI",
       "group_type": "row_leak",
       "root_cause": "Overcharged MDR fee on PPI wallet UPI transaction",
@@ -557,8 +344,8 @@
       "transaction_count": 1,
       "financial_exposure": 8.94,
       "confidence": "high",
-      "priority_score": 0.4963,
-      "priority_rank": 8,
+      "priority_score": 0.4975,
+      "priority_rank": 6,
       "recommended_action": "request_mdr_refund",
       "action_rationale": "Refunding the overcharged MDR directly recovers the excess amount identified.",
       "human_approval_required": true,
@@ -566,7 +353,7 @@
       "status_history": [
         {
           "status": "AWAITING_HUMAN_APPROVAL",
-          "timestamp": "2026-09-05T04:05:53.407103",
+          "timestamp": "2026-09-05T06:17:10.983483",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -587,7 +374,7 @@
         "priority_components": {
           "exposure_normalized": 0.2697,
           "confidence": 1.0,
-          "recurrence": 0.0921,
+          "recurrence": 0.0981,
           "controllability": 0.8
         },
         "priority_explanation": "Priority driven by moderate exposure (Rs 8.94), legally verified rule, 1 occurrences."
@@ -595,9 +382,198 @@
       "agent_reasoning": "The fee charged (Rs\u202f49.18) exceeds the expected fee (Rs\u202f40.24) by Rs\u202f8.94, indicating the acquirer applied an incorrect higher rate for this transaction type."
     },
     {
-      "case_id": "CASE_949CD6C1",
-      "created_at": "2026-09-05T04:05:53.407103",
-      "last_evaluated_at": "2026-09-05T04:05:53.407103",
+      "case_id": "CASE_B670BBE4",
+      "created_at": "2026-09-05T06:17:10.983483",
+      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "group_id": "GRP_FLAGGED_R9",
+      "group_type": "flagged_review",
+      "root_cause": "Transactions are flagged for manual review due to an illustrative rule trigger, despite zero monetary fee discrepancy across the group.",
+      "rule_ids": [
+        "R9"
+      ],
+      "category": "Credit_Cards_Market",
+      "source_status": "illustrative",
+      "sub_instrument": "",
+      "affected_transactions": [
+        "TXN_000020",
+        "TXN_000047",
+        "TXN_000050",
+        "TXN_000052",
+        "TXN_000055",
+        "TXN_000068",
+        "TXN_000069",
+        "TXN_000080",
+        "TXN_000081",
+        "TXN_000099",
+        "TXN_000138",
+        "TXN_000153",
+        "TXN_000155",
+        "TXN_000159",
+        "TXN_000181",
+        "TXN_000191",
+        "TXN_000208",
+        "TXN_000222",
+        "TXN_000233",
+        "TXN_000234",
+        "TXN_000246",
+        "TXN_000252",
+        "TXN_000270",
+        "TXN_000276",
+        "TXN_000277",
+        "TXN_000280",
+        "TXN_000298",
+        "TXN_000307",
+        "TXN_000309",
+        "TXN_000310",
+        "TXN_000313",
+        "TXN_000351",
+        "TXN_000374",
+        "TXN_000392",
+        "TXN_000399",
+        "TXN_000429",
+        "TXN_000435",
+        "TXN_000445",
+        "TXN_000451",
+        "TXN_000468",
+        "TXN_000470",
+        "TXN_000487"
+      ],
+      "transaction_count": 42,
+      "financial_exposure": 0.0,
+      "confidence": "medium",
+      "priority_score": 0.3371,
+      "priority_rank": 7,
+      "recommended_action": "request_manual_review",
+      "action_rationale": "Manual analyst review is required to evaluate the underlying illustrative rule parameters and confirm whether any configuration updates or further actions are needed.",
+      "human_approval_required": false,
+      "status": "ACTION_RECOMMENDED",
+      "status_history": [
+        {
+          "status": "ACTION_RECOMMENDED",
+          "timestamp": "2026-09-05T06:17:10.983483",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": 0.0,
+      "current_metric": 0.0,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [
+          {
+            "transaction_id": "TXN_000020",
+            "amount": 10751.51,
+            "fee_charged": 215.03,
+            "expected_fee": 215.03,
+            "delta": 0.0
+          },
+          {
+            "transaction_id": "TXN_000047",
+            "amount": 21507.25,
+            "fee_charged": 430.14,
+            "expected_fee": 430.14,
+            "delta": 0.0
+          },
+          {
+            "transaction_id": "TXN_000050",
+            "amount": 6857.02,
+            "fee_charged": 137.14,
+            "expected_fee": 137.14,
+            "delta": 0.0
+          }
+        ],
+        "structural_details": null,
+        "priority_components": {
+          "exposure_normalized": 0.0,
+          "confidence": 0.6,
+          "recurrence": 0.6355,
+          "controllability": 0.4
+        },
+        "priority_explanation": "Priority driven by low exposure (Rs 0.00), illustrative/modeled rule, systemic pattern (42 transactions)."
+      },
+      "agent_reasoning": "A total of 42 transactions were flagged under rule R9 using an illustrative modeled benchmark; however, the actual fee charged matches the expected fee exactly with a total exposure of Rs 0.00."
+    },
+    {
+      "case_id": "CASE_99E38D1F",
+      "created_at": "2026-09-05T06:17:10.983483",
+      "last_evaluated_at": "2026-09-05T06:17:10.983483",
+      "group_id": "GRP_LEAKED_R10_RuPay_debit",
+      "group_type": "row_leak",
+      "root_cause": "Missing Level\u202f2/3 transaction data caused commercial RuPay debit transactions to be downgraded to a lower\u2011rate tier.",
+      "rule_ids": [
+        "R10"
+      ],
+      "category": "Commercial_L2_L3_Downgrade",
+      "source_status": "illustrative",
+      "sub_instrument": "RuPay_debit",
+      "affected_transactions": [
+        "TXN_000011",
+        "TXN_000087",
+        "TXN_000132",
+        "TXN_000156",
+        "TXN_000290",
+        "TXN_000296",
+        "TXN_000412",
+        "TXN_000420",
+        "TXN_000484"
+      ],
+      "transaction_count": 9,
+      "financial_exposure": -2018.31,
+      "confidence": "high",
+      "priority_score": 0.2988,
+      "priority_rank": 8,
+      "recommended_action": "supply_l2_l3_data",
+      "action_rationale": "Providing the required L2/L3 data will prevent downgrades and ensure fees are charged at the correct commercial rate.",
+      "human_approval_required": false,
+      "status": "ACTION_RECOMMENDED",
+      "status_history": [
+        {
+          "status": "ACTION_RECOMMENDED",
+          "timestamp": "2026-09-05T06:17:10.983483",
+          "reason": "Case created from agent investigation"
+        }
+      ],
+      "baseline_metric": -2018.31,
+      "current_metric": -2018.31,
+      "target_metric": 0.0,
+      "evidence": {
+        "sample_transactions": [
+          {
+            "transaction_id": "TXN_000011",
+            "amount": 3828.93,
+            "fee_charged": 30.63,
+            "expected_fee": 107.21,
+            "delta": -76.58
+          },
+          {
+            "transaction_id": "TXN_000087",
+            "amount": 8989.72,
+            "fee_charged": 71.92,
+            "expected_fee": 251.71,
+            "delta": -179.79
+          },
+          {
+            "transaction_id": "TXN_000132",
+            "amount": 22863.13,
+            "fee_charged": 182.91,
+            "expected_fee": 640.17,
+            "delta": -457.26
+          }
+        ],
+        "structural_details": null,
+        "priority_components": {
+          "exposure_normalized": 0.0,
+          "confidence": 0.6,
+          "recurrence": 0.2942,
+          "controllability": 0.6
+        },
+        "priority_explanation": "Priority driven by low exposure (Rs -2,018.31), illustrative/modeled rule, 9 occurrences."
+      },
+      "agent_reasoning": "Because the gateway did not receive L2/L3 details, the transactions were processed at a basic interchange rate, resulting in fees far below the expected commercial\u2011rate benchmark (illustrative model)."
+    },
+    {
+      "case_id": "CASE_68F302EB",
+      "created_at": "2026-09-05T06:17:10.983483",
+      "last_evaluated_at": "2026-09-05T06:17:10.983483",
       "group_id": "GRP_EXCEPTION_MISSING_TAG",
       "group_type": "exception",
       "root_cause": "Transactions lack required tagging (e.g., MCC) causing the fee engine to skip fee assessment.",
@@ -640,7 +616,7 @@
       "transaction_count": 28,
       "financial_exposure": 0.0,
       "confidence": "medium",
-      "priority_score": 0.2024,
+      "priority_score": 0.2088,
       "priority_rank": 9,
       "recommended_action": "request_manual_review",
       "action_rationale": "A human analyst must verify and correct the missing tags before any automated remediation can be applied.",
@@ -649,7 +625,7 @@
       "status_history": [
         {
           "status": "ACTION_RECOMMENDED",
-          "timestamp": "2026-09-05T04:05:53.407103",
+          "timestamp": "2026-09-05T06:17:10.983483",
           "reason": "Case created from agent investigation"
         }
       ],
@@ -662,24 +638,24 @@
             "transaction_id": "TXN_000006",
             "amount": 14560.6,
             "fee_charged": 291.21,
-            "expected_fee": 0.0,
-            "delta": 0.0,
+            "expected_fee": null,
+            "delta": null,
             "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
           },
           {
             "transaction_id": "TXN_000018",
             "amount": 1478.72,
             "fee_charged": 0.0,
-            "expected_fee": 0.0,
-            "delta": 0.0,
+            "expected_fee": null,
+            "delta": null,
             "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
           },
           {
             "transaction_id": "TXN_000022",
             "amount": 80.5,
             "fee_charged": 0.0,
-            "expected_fee": 0.0,
-            "delta": 0.0,
+            "expected_fee": null,
+            "delta": null,
             "note": "Missing sub_instrument routing tag; cannot verify applicable statutory MDR."
           }
         ],
@@ -687,7 +663,7 @@
         "priority_components": {
           "exposure_normalized": 0.0,
           "confidence": 0.3,
-          "recurrence": 0.4871,
+          "recurrence": 0.5189,
           "controllability": 0.2
         },
         "priority_explanation": "Priority driven by low exposure (Rs 0.00), illustrative/modeled rule, systemic pattern (28 transactions)."

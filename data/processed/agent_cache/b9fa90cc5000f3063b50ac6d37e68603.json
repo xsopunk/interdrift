@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_RuPay_debit",
+  "root_cause": "Missing Level\u202f2/3 transaction data caused commercial RuPay debit transactions to be downgraded to a lower\u2011rate tier.",
+  "diagnosis": "Because the gateway did not receive L2/L3 details, the transactions were processed at a basic interchange rate, resulting in fees far below the expected commercial\u2011rate benchmark (illustrative model).",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing the required L2/L3 data will prevent downgrades and ensure fees are charged at the correct commercial rate.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}
