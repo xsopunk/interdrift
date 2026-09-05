@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_EXCEPTION_MISSING_TAG",
+  "root_cause": "Missing or incorrect merchant category code (MCC) tag in gateway configuration.",
+  "diagnosis": "The gateway cannot apply the appropriate fee schedule without a valid MCC, resulting in inconsistent or zero fees across the sample transactions.",
+  "recommended_action": "correct_mcc_mapping",
+  "action_rationale": "Fixing the MCC mapping will align transactions with the correct fee schedule and eliminate the fee discrepancy.",
+  "confidence_level": "medium",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

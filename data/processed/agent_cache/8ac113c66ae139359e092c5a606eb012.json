@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R5_PPI_wallet_UPI",
+  "root_cause": "Fee leakage due to misapplied MDR on a PPI wallet UPI transaction that should be fee\u2011free.",
+  "diagnosis": "The gateway/acquirer charged Rs\u202f14.30 on a transaction where the expected fee is Rs\u202f0.00, indicating an incorrect fee rule for PPI wallet UPI.",
+  "recommended_action": "request_mdr_refund",
+  "action_rationale": "Refunding the MDR recovers the overcharged amount and corrects the immediate loss.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Groq High-Speed"
+}

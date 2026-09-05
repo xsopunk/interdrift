@@ -1,52 +1,31 @@
 {
-  "snapshot_id": "baseline_20260905_200122",
-  "source_label": "test_batch_01",
-  "captured_at": "2026-09-05T20:01:22.530185",
-  "total_transactions": 500,
-  "total_leaked_amount": 3727.92,
-  "leaked_count": 22,
-  "leaked_percent": 4.4,
-  "matched_count": 408,
-  "matched_percent": 81.6,
-  "exception_count": 28,
-  "flagged_for_review_count": 42,
-  "structural_overcharge_amount": 4989.21,
-  "mcc_misclassification_amount": 468.53,
+  "snapshot_id": "baseline_20260905_202542",
+  "source_label": "batch_alpha_baseline",
+  "captured_at": "2026-09-05T20:25:42.660183",
+  "total_transactions": 150,
+  "total_leaked_amount": 9394.72,
+  "leaked_count": 5,
+  "leaked_percent": 3.33,
+  "matched_count": 119,
+  "matched_percent": 79.33,
+  "exception_count": 11,
+  "flagged_for_review_count": 15,
+  "structural_overcharge_amount": 7339.16,
+  "mcc_misclassification_amount": 1964.03,
   "leak_by_category": [
-    {
-      "category": "R4",
-      "rule_name": "RuPay credit card on UPI transactions over Rs 2,000 incur tiered interchange (approx 1.5% - 2.0%)",
-      "source_status": "illustrative",
-      "total_leaked": 189.53,
-      "transaction_count": 4
-    },
     {
       "category": "R3",
       "rule_name": "RuPay credit card on UPI transactions up to Rs 2,000 must incur 0% MDR",
       "source_status": "sourced",
-      "total_leaked": 46.09,
-      "transaction_count": 5
+      "total_leaked": 77.23,
+      "transaction_count": 4
     },
     {
       "category": "R5",
       "rule_name": "PPI wallet on UPI transactions up to Rs 2,000 carry zero interchange",
       "source_status": "sourced",
-      "total_leaked": 43.93,
-      "transaction_count": 3
-    },
-    {
-      "category": "R6b",
-      "rule_name": "PPI wallet on UPI over Rs 2,000 for Standard Retail/Supermarkets capped at 0.90%",
-      "source_status": "sourced",
-      "total_leaked": 8.94,
+      "total_leaked": 14.3,
       "transaction_count": 1
-    },
-    {
-      "category": "R10",
-      "rule_name": "Corporate card surcharge triggered by missing L2/L3 commercial data fields",
-      "source_status": "illustrative",
-      "total_leaked": -2018.31,
-      "transaction_count": 9
     }
   ]
 }

@@ -1,39 +1,33 @@
-# AUDIT PROMPT 3 of 4 — Backend Rigor & Correctness
+# AUDIT PROMPT 4 of 4 — Frontend-Backend Wiring & Full-Stack Integration
 
 ## Context
-Two prior passes covered frontend content completeness and visible agentic behavior. This pass turns to the backend itself: does it compute, classify, and reason correctly and efficiently, matching what the project actually intends? Investigate the real code and run real tests against real/synthetic data — do not infer correctness from the frontend looking reasonable.
+Final audit pass. Prior passes covered frontend content, visible agentic behavior, and backend correctness independently. This pass checks the **connective tissue**: is every backend capability actually reachable and correctly used from the frontend, and does every frontend feature actually work against real backend state (not stale/mocked/partial data)? Investigate live, running behavior — not just that both sides "look" complete in isolation.
 
 ## Goal
-Verify the backend delivers what was designed, accurately and efficiently, end to end: rule classification, batch structural audits, agent grouping/prioritization, LLM diagnosis, case lifecycle, and baseline/effectiveness comparison.
+Confirm the full stack is genuinely wired end-to-end: every backend endpoint/capability built across all prior modules is exposed and functioning through the UI, and every UI element that implies a backend action actually performs it correctly.
 
 ## Specific things to check
 
-1. **Rule classification correctness (ground-truth check)** — the synthetic dataset generator injects known leak/exception patterns (`injected_issue` field or equivalent). Cross-check the rules engine's actual classification output against these known ground-truth labels across the full dataset, not a handful of rows. Report: how many known-injected leaks were correctly classified as Leaked, how many known-clean rows were correctly Matched, and how many genuinely-ambiguous rows were correctly left as Exception (not force-classified). Any mismatch is a real bug — find and report root cause, not just the count.
+1. **Endpoint inventory vs. UI usage** — list every backend API endpoint that currently exists (upload, results, report, monitor, cases, approve/reject, structural audits, exception details, rule evidence, contract terms, exposure calculation, test-data generation, MSA generation, etc.). For each, confirm: is it actually called from the frontend anywhere? If a working backend endpoint has zero frontend caller, flag it as an unused/orphaned capability — this may mean a feature was built but never surfaced, which matters given how much was built.
 
-2. **Null vs. zero handling (previously flagged issue)** — confirm `expected_fee` and `delta` are properly null/undefined for Exception rows across the entire dataset now, not just spot-checked rows. Confirm this holds after the Test Data Generator feature was added (new code path, verify it wasn't reintroduced there).
+2. **UI actions vs. backend effect** — inversely, for every clickable action in the UI (Execute Audit, Lock Baseline, Select CSV, approve/reject on cases, status badge filters, Test Data Generator's "Run Audit with This Data," CSV export, any navigation added during Audit 2's fixes), confirm it actually triggers the correct backend call and the correct backend-side effect — not just a local state change that looks right.
 
-3. **Rule precedence/conflict handling** — confirm the fix for "multiple rules matching a transaction" (explicit specificity sorting, not JSON-order-dependent) actually produces correct results across the full dataset, including edge cases at exact threshold boundaries (e.g., exactly ₹2,000, exactly ₹20L turnover).
+3. **Post-fix regression check** — re-verify the fixes from Audits 1–3 are correctly wired together, since they touched overlapping files: confirm Stage Remediation → Case linkage (Audit 2, item 3/4) actually calls the real `/cases/{case_id}/approve`/`reject` endpoints and that the case's status change is reflected back in `AgentControlStatus` counts and the Priority Queue in real time (not just on next page reload, unless that's an accepted/documented limitation).
 
-4. **Floating-point tolerance** — confirm the Matched/Leaked boundary tolerance is applied consistently everywhere fee comparisons happen (per-row classification, batch structural audits, agent exposure calculations) — check for any place still doing exact equality comparison.
+4. **Test Data Generator end-to-end path** — confirm the full flow works live: generate/upload dataset → generate/upload MSA → "Run Audit with This Data" → results actually reflect the custom data (not silently falling back to the default `settlement_batch_01.csv`). Test at least one non-default configuration (different transaction count, different injection rates, amount up to ₹1,00,000) and confirm the resulting dashboard numbers are internally consistent with that specific run, not leftover from a previous default run.
 
-5. **Batch structural audits (R11/R12) correctness** — verify the Blended-MDR and MCC-misclassification aggregate calculations are mathematically correct against the actual dataset (recompute independently and compare), not just "produces a plausible-looking number."
+5. **Baseline/effectiveness live flow** — confirm the full multi-batch flow works end-to-end through the actual UI: lock a baseline, run a second batch (ideally via the Test Data Generator with different injection rates), and confirm the Control Effectiveness card updates correctly and consistently with what Audit 3 verified at the backend level.
 
-6. **Agent grouping and prioritization** — verify groups are being formed on genuinely shared root causes (not just coincidentally similar rule IDs), and that the priority score formula (exposure × confidence × recurrence × controllability) is actually being computed as designed, not a placeholder/simplified stand-in. Report the actual formula/weights currently implemented.
+6. **Error/failure states** — confirm the frontend handles backend failures gracefully: API server not running, malformed CSV upload, LLM provider failures (should fall back per the multi-route architecture, not surface a raw error to the user), empty/first-run states (no baseline yet, no cases yet). None of these should crash the UI or show a blank/broken screen.
 
-7. **LLM diagnosis grounding and reliability** — confirm the multi-routing/grouped-call approach eliminated the original rate-limit failures (test with the full ~106-item flagged/exception set, report actual success rate). Confirm diagnoses are grounded to the specific group's real data (spot-check several against raw transactions) and that illustrative vs. sourced rules are still correctly distinguished in LLM output language.
+7. **Data freshness / stale-state check** — confirm there's no scenario where the UI displays results from a previous run after a new one has completed (e.g., check for missing state resets, cached API responses not being invalidated after a new upload/audit run).
 
-8. **Case lifecycle correctness** — verify case status transitions (OPEN → INVESTIGATING → ACTION_RECOMMENDED → AWAITING_HUMAN_APPROVAL → MONITORING → IMPROVED/ESCALATED → CLOSED) actually follow the intended logic, and that the approve/reject endpoints correctly update state (tie this to Audit 2's Stage Remediation fix — confirm the wiring actually works backend-side, not just that the endpoint exists).
-
-9. **Baseline/effectiveness comparison accuracy** — verify percent-change and improved/worsened/unchanged determinations are mathematically correct and consistently signed (this directly follows up on the earlier "+17.1%" / "-14.29%" direction-bug fixes — confirm those fixes are correct across all metrics, not just the ones originally flagged).
-
-10. **Test Data Generator correctness** — verify the configurable injection rates (RuPay-credit-on-UPI leak rate, L2/L3 downgrade rate, MCC misclassification rate, exception rate) actually produce datasets matching the requested rates within reasonable statistical tolerance, and that the ₹1,00,000 amount range doesn't break turnover-tier-dependent rules (R7/R8) or any other range-dependent logic.
-
-11. **Performance/efficiency** — report actual end-to-end processing time for a full 500-transaction batch (upload → classification → agent pipeline → case generation), and flag anything unexpectedly slow given the buildathon demo context.
+8. **Cross-check against original Track 4 intent** — using your own understanding of the project (and, if useful, Razorpay's actual Track 4 brief you researched earlier), confirm the full connected system actually delivers what was intended: a merchant/judge can upload or generate a batch, get an accurate audit with match rate and honest exceptions, see agent-driven investigation/prioritization/recommendation, approve an action, and verify improvement over time — entirely through the UI, with no step requiring direct API/backend access to demonstrate.
 
 ## Constraints
-- Investigate and test against real data — run actual code, don't estimate.
+- Test live, running behavior — click through the actual app, don't just read code and infer.
 - Do not fix anything in this pass — report only.
-- For each item: state pass/fail with evidence (actual numbers, specific examples), and for any fail, root cause + proposed fix.
+- For each item: pass/fail with specific evidence (what you clicked, what happened, what endpoint was/wasn't called). For any fail, root cause + proposed fix.
 
 ## Output
-Concise findings list, numbered to match above. Stop after reporting.
+Concise findings list, numbered to match above. Stop after reporting — this is the final audit pass before consolidated fixes and final demo prep.

@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_FLAGGED_R9",
+  "root_cause": "Fees charged match the modeled expected fees for all sampled transactions.",
+  "diagnosis": "The illustrative benchmark shows no fee discrepancy; the flag is due to the rule's systemic pattern flag on modeled data, not an actual overcharge.",
+  "recommended_action": "no_action_required",
+  "action_rationale": "Since fee charged equals expected fee, there is no remediation needed.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

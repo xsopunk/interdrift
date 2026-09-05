@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_STRUCTURAL_R11_BLENDED_MDR",
+  "root_cause": "The merchant is on a fixed blended MDR rate of 2.0% which exceeds the true underlying network cost of 1.64%, causing structural margin leakage.",
+  "diagnosis": "Across total card volume of Rs 2,064,704.49, the merchant was billed Rs 41,294.09 under a blended pricing model versus a true network cost of Rs 33,954.93. Note that this comparison relies on an illustrative modeled benchmark.",
+  "recommended_action": "migrate_to_ic_plus_pricing",
+  "action_rationale": "Switching to an Interchange-Plus pricing model directly unbundles processor margin from network fees, allowing the merchant to capture the 0.36% spread and eliminate structural overpayment.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Gemini Flash"
+}

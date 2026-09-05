@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R3_RuPay_credit_UPI",
+  "root_cause": "MDR fee incorrectly applied to RuPay credit UPI transactions that should be fee\u2011free.",
+  "diagnosis": "The gateway/acquirer fee configuration is charging a non\u2011zero MDR on RuPay credit UPI, resulting in a systematic overcharge across all sampled transactions.",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "Auditing the fee configuration will identify and correct the misapplied MDR, stopping future overcharges.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}
