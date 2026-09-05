@@ -101,48 +101,43 @@ def run_explanation_pipeline(
     start_time = time.time()
     processed_count = 0
 
+    from src.llm_layer.llm_queue import LLMQueue
+
+    queue = LLMQueue(delay_between_calls=0.5, max_attempts=3)
+
+    # Enqueue all batches
     for i in range(0, total_targets, batch_size):
         batch_idx_chunk = target_indices[i : i + batch_size]
         batch_df = df.loc[batch_idx_chunk]
         batch_payload = format_batch_payload(batch_df)
+        batch_label = f"batch_{i+1}_to_{min(i + batch_size, total_targets)}"
 
-        print(f"  -> Sending batch [{i+1} to {min(i + batch_size, total_targets)}] to Gemini Flash...")
-        max_retries = 2
-        for attempt in range(max_retries + 1):
-            try:
-                response = client.models.generate_content(
-                    model="gemini-3.6-flash",
-                    contents=batch_payload,
-                    config=gen_config,
-                )
+        def make_call_fn(payload=batch_payload):
+            response = client.models.generate_content(
+                model="gemini-3.6-flash",
+                contents=payload,
+                config=gen_config,
+            )
+            if response.text:
+                return AuditExplanationBatch.model_validate_json(response.text)
+            return None
 
-                if response.text:
-                    parsed_batch = AuditExplanationBatch.model_validate_json(response.text)
-                    for item in parsed_batch.items:
-                        matched_row = df[df["transaction_id"] == item.transaction_id]
-                        if not matched_row.empty:
-                            df.at[matched_row.index[0], "explanation"] = item.explanation
-                            processed_count += 1
-                    break  # Success, exit retry loop
-                else:
-                    print(f"     [Warning] Received empty response for batch (attempt {attempt + 1}).")
-                    if attempt < max_retries:
-                        time.sleep(2 ** attempt)
-                        continue
+        queue.enqueue(batch_label, make_call_fn, item_data=batch_idx_chunk)
 
-            except Exception as e:
-                print(f"     [Batch Error] Attempt {attempt + 1}/{max_retries + 1} failed: {e}")
-                if attempt < max_retries:
-                    time.sleep(2 ** attempt)
-                    continue
+    def on_success(item_id, result, item_data):
+        nonlocal processed_count
+        for item in result.items:
+            matched_row = df[df["transaction_id"] == item.transaction_id]
+            if not matched_row.empty:
+                df.at[matched_row.index[0], "explanation"] = item.explanation
+                processed_count += 1
 
-        else:
-            # All retries exhausted — surface explicit failure, not a generic note
-            print(f"     [Batch FAILED] All {max_retries + 1} attempts exhausted.")
-            for row_idx in batch_idx_chunk:
-                df.at[row_idx, "explanation"] = "AI Explanation Unavailable: LLM service error after retries. Transaction data preserved for manual review."
+    def on_failure(item_id, item_data):
+        print(f"     [Queue FAILED] {item_id} exhausted all attempts.")
+        for row_idx in item_data:
+            df.at[row_idx, "explanation"] = "AI Explanation Unavailable: LLM service error after queue retries. Transaction data preserved for manual review."
 
-        time.sleep(0.5)
+    queue.process_all(on_success=on_success, on_failure=on_failure)
 
     df.to_csv(output_path, index=False)
     elapsed = time.time() - start_time

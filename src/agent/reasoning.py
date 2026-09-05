@@ -374,32 +374,64 @@ def diagnose_group(group: Dict[str, Any], use_cache: bool = True) -> Dict[str, A
 def diagnose_all_groups(
     prioritized_groups: List[Dict[str, Any]],
     use_cache: bool = True,
-    delay_between_calls: float = 0.2,
+    delay_between_calls: float = 0.5,
 ) -> List[Dict[str, Any]]:
     """
-    Runs multi-route agent diagnosis on all prioritized groups.
+    Runs multi-route agent diagnosis on all prioritized groups using a FIFO queue.
+    Failed groups are re-queued to the back, giving natural backoff.
     """
-    print(f"[InterDrift Agent] Diagnosing {len(prioritized_groups)} groups via Multi-Route LLM Engine...")
-    results = []
+    from src.llm_layer.llm_queue import LLMQueue
 
-    for i, group in enumerate(prioritized_groups):
+    print(f"[InterDrift Agent] Diagnosing {len(prioritized_groups)} groups via Queued Multi-Route LLM Engine...")
+    results_by_id: Dict[str, Dict[str, Any]] = {}
+
+    queue = LLMQueue(delay_between_calls=delay_between_calls, max_attempts=3)
+
+    for group in prioritized_groups:
         gid = group["group_id"]
-        print(f"  [{i + 1}/{len(prioritized_groups)}] Diagnosing {gid}...")
 
-        diagnosis = diagnose_group(group, use_cache=use_cache)
+        # Check cache first — skip queuing if cached
+        if use_cache:
+            ck = _cache_key(group)
+            cached = _load_cached(ck)
+            if cached:
+                results_by_id[gid] = {**group, "agent_diagnosis": cached}
+                print(f"  [Cache Hit] {gid}")
+                continue
 
-        enriched = {
-            **group,
-            "agent_diagnosis": diagnosis,
+        # Enqueue for LLM processing
+        def make_call_fn(g=group):
+            return diagnose_group(g, use_cache=False)
+
+        queue.enqueue(gid, make_call_fn, item_data=group)
+
+    def on_success(item_id, result, item_data):
+        results_by_id[item_id] = {**item_data, "agent_diagnosis": result}
+
+    def on_failure(item_id, item_data):
+        # All LLM routes + re-queues exhausted — deterministic fallback already
+        # returned by diagnose_group, so this shouldn't normally fire.
+        # Safety net only.
+        fallback = {
+            "group_id": item_id,
+            "root_cause": f"Discrepancy pattern identified for rule(s): {', '.join(item_data['rule_ids'])}.",
+            "diagnosis": "All LLM routes exhausted after queue retries. Deterministic baseline applied.",
+            "recommended_action": "request_manual_review",
+            "action_rationale": "Requires human operator confirmation.",
+            "confidence_level": "low",
+            "human_approval_required": True,
+            "provider": "Queue Fallback",
         }
-        results.append(enriched)
+        results_by_id[item_id] = {**item_data, "agent_diagnosis": fallback}
 
-        if i < len(prioritized_groups) - 1:
-            time.sleep(delay_between_calls)
+    queue.process_all(on_success=on_success, on_failure=on_failure)
+
+    # Preserve original priority order
+    results = [results_by_id[g["group_id"]] for g in prioritized_groups if g["group_id"] in results_by_id]
 
     success_count = sum(
         1 for r in results
-        if not r["agent_diagnosis"].get("root_cause", "").startswith("Unable")
+        if r["agent_diagnosis"].get("provider", "") != "Queue Fallback"
     )
-    print(f"[InterDrift Agent] Multi-Route diagnosis complete: {success_count}/{len(results)} groups successfully diagnosed.")
+    print(f"[InterDrift Agent] Queue diagnosis complete: {success_count}/{len(results)} groups successfully diagnosed.")
     return results
