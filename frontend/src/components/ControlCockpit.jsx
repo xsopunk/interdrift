@@ -55,19 +55,19 @@ export default function ControlCockpit({ onUploadSuccess }) {
   };
 
   return (
-    <div className="w-full rounded-xl border border-border bg-card p-5 shadow-sm transition-colors duration-200">
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div className="w-full rounded-xl border border-border bg-card p-3.5 px-4 shadow-sm transition-colors duration-200">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
         {/* Cockpit Description */}
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           <div className="flex items-center gap-2">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-foreground">
               Audit Operations Cockpit
             </h2>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-secondary text-secondary-foreground border border-border">
+            <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-secondary text-secondary-foreground border border-border">
               Layer 1-3 Active
             </span>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-[11px] text-muted-foreground leading-tight">
             Ingest payment settlement files to audit fee overcharges, detect margin leaks, and trigger autonomous remediation cases.
           </p>
         </div>

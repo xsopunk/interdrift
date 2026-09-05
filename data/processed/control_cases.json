@@ -1,12 +1,12 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-09-05T15:09:48.124174",
+  "last_updated": "2026-09-05T17:06:43.222135",
   "total_cases": 9,
   "cases": [
     {
       "case_id": "CASE_DBC5D00E",
       "created_at": "2026-09-05T15:09:48.124174",
-      "last_evaluated_at": "2026-09-05T15:09:48.124174",
+      "last_evaluated_at": "2026-09-05T17:02:45.589522",
       "group_id": "GRP_STRUCTURAL_R11_BLENDED_MDR",
       "group_type": "structural",
       "root_cause": "The merchant is on a blended pricing model that overcharges relative to the true network cost.",
@@ -25,12 +25,17 @@
       "recommended_action": "migrate_to_ic_plus_pricing",
       "action_rationale": "Switching to interchange\u2011plus pricing aligns fees with the underlying network cost, eliminating the overcharge.",
       "human_approval_required": true,
-      "status": "AWAITING_HUMAN_APPROVAL",
+      "status": "MONITORING",
       "status_history": [
         {
           "status": "AWAITING_HUMAN_APPROVAL",
           "timestamp": "2026-09-05T15:09:48.124174",
           "reason": "Case created from agent investigation"
+        },
+        {
+          "status": "MONITORING",
+          "timestamp": "2026-09-05T17:02:45.589522",
+          "reason": "Human operator approved recommended action."
         }
       ],
       "baseline_metric": 4989.21,
@@ -109,7 +114,7 @@
     {
       "case_id": "CASE_7DE44F13",
       "created_at": "2026-09-05T15:09:48.124174",
-      "last_evaluated_at": "2026-09-05T15:09:48.124174",
+      "last_evaluated_at": "2026-09-05T17:06:43.222135",
       "group_id": "GRP_LEAKED_R3_RuPay_credit_UPI",
       "group_type": "row_leak",
       "root_cause": "Fee configuration error applying charges to RuPay credit UPI transactions that should be fee\u2011free",
@@ -134,12 +139,17 @@
       "recommended_action": "audit_gateway_fee_config",
       "action_rationale": "Auditing and correcting the gateway fee configuration will stop the illegal fee leakage",
       "human_approval_required": true,
-      "status": "AWAITING_HUMAN_APPROVAL",
+      "status": "ESCALATED",
       "status_history": [
         {
           "status": "AWAITING_HUMAN_APPROVAL",
           "timestamp": "2026-09-05T15:09:48.124174",
           "reason": "Case created from agent investigation"
+        },
+        {
+          "status": "ESCALATED",
+          "timestamp": "2026-09-05T17:06:43.222135",
+          "reason": "Rejected by operator"
         }
       ],
       "baseline_metric": 46.09,
@@ -183,7 +193,7 @@
     {
       "case_id": "CASE_028CF8D0",
       "created_at": "2026-09-05T15:09:48.124174",
-      "last_evaluated_at": "2026-09-05T15:09:48.124174",
+      "last_evaluated_at": "2026-09-05T17:06:36.909008",
       "group_id": "GRP_LEAKED_R5_PPI_wallet_UPI",
       "group_type": "row_leak",
       "root_cause": "Fee rules for PPI wallet UPI transactions are misconfigured, causing fees where regulation mandates zero.",
@@ -206,12 +216,17 @@
       "recommended_action": "request_mdr_refund",
       "action_rationale": "Refunding the overcharged MDR directly recovers the excess fees incurred.",
       "human_approval_required": true,
-      "status": "AWAITING_HUMAN_APPROVAL",
+      "status": "MONITORING",
       "status_history": [
         {
           "status": "AWAITING_HUMAN_APPROVAL",
           "timestamp": "2026-09-05T15:09:48.124174",
           "reason": "Case created from agent investigation"
+        },
+        {
+          "status": "MONITORING",
+          "timestamp": "2026-09-05T17:06:36.909008",
+          "reason": "Human operator approved recommended action."
         }
       ],
       "baseline_metric": 43.93,

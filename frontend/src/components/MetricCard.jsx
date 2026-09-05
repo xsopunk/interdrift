@@ -58,18 +58,20 @@ export default function MetricCard({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-xl border p-5 shadow-sm transition-all duration-200 hover:shadow-md",
+        "relative overflow-hidden rounded-xl border p-3.5 backdrop-blur-xl transition-all duration-200 hover:shadow-[0_8px_25px_-5px_rgba(0,0,0,0.5)] hover:border-zinc-700/90 flex flex-col justify-between min-h-[96px] group",
         style.card
       )}
     >
-      <div className="flex items-center justify-between gap-2">
-        <span className={cn("text-xs font-bold tracking-wider uppercase font-mono truncate", style.title)}>
+      {/* Top Subtle Gradient Light Beam Accent */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-500/20 to-transparent group-hover:via-zinc-400/40 transition-colors" />
+      <div className="flex items-start justify-between gap-1">
+        <span className={cn("text-[10px] font-bold tracking-tight uppercase font-mono leading-tight max-w-[70%]", style.title)}>
           {title}
         </span>
         {badge && (
           <span
             className={cn(
-              "text-[10px] font-mono font-medium px-2 py-0.5 rounded border whitespace-nowrap shrink-0",
+              "text-[9px] font-mono font-medium px-1.5 py-0.5 rounded border whitespace-nowrap shrink-0",
               style.badge
             )}
           >
@@ -78,17 +80,17 @@ export default function MetricCard({
         )}
       </div>
 
-      <div className="mt-3 flex items-baseline justify-between gap-2">
-        <div className={cn("text-2xl font-bold tracking-tight font-mono", style.value)}>
+      <div className="mt-1.5 flex items-baseline justify-between gap-1">
+        <div className={cn("text-xl font-bold tracking-tight font-mono", style.value)}>
           {value}
         </div>
         {Icon && <Icon className={cn("w-4 h-4 shrink-0", style.icon)} />}
       </div>
 
-      <div className={cn("mt-2 flex items-center justify-between text-sm font-medium", style.subtitle)}>
-        <span className="truncate">{subtitle}</span>
+      <div className={cn("mt-1 flex items-center justify-between text-xs font-medium", style.subtitle)}>
+        <span className="text-[10px] truncate">{subtitle}</span>
         {trendText && (
-          <span className="font-mono text-xs font-semibold shrink-0 ml-2">
+          <span className="font-mono text-[9px] font-semibold shrink-0 ml-1">
             {trendText}
           </span>
         )}
@@ -96,3 +98,4 @@ export default function MetricCard({
     </div>
   );
 }
+

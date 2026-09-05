@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getFinalReport, getAuditTrailResults, getAgentCases, getControlEffectiveness, approveCase, rejectCase } from "./services/api";
 import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 import ControlCockpit from "./components/ControlCockpit";
 import MetricCard from "./components/MetricCard";
 import CategoryVisualizer from "./components/CategoryVisualizer";
@@ -11,6 +12,7 @@ import AuditTrailTable from "./components/AuditTrailTable";
 import AgentControlStatus from "./components/AgentControlStatus";
 import AgentRecommendationCard from "./components/AgentRecommendationCard";
 import ControlEffectivenessCard from "./components/ControlEffectivenessCard";
+import AgentWorkflowTracker from "./components/AgentWorkflowTracker";
 import TestDataModal from "./components/TestDataModal";
 import { TrendingDown, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
 
@@ -22,6 +24,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isTestDataModalOpen, setIsTestDataModalOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("overview");
 
   const loadAllData = async () => {
     try {
@@ -113,9 +116,9 @@ export default function App() {
   const { overview, leak_by_category, top_offenders, exceptions } = report;
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative selection:bg-primary selection:text-primary-foreground transition-colors duration-200">
-      {/* Ambient Grid Dots Patterning */}
-      <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1.2px,transparent_1.2px)] dark:bg-[radial-gradient(#3f3f46_1.2px,transparent_1.2px)] [background-size:20px_20px] pointer-events-none opacity-20 dark:opacity-35 z-0" />
+    <div className="min-h-screen bg-background text-foreground relative selection:bg-primary selection:text-primary-foreground transition-colors duration-200 flex flex-col">
+      {/* Aceternity Ambient Dot Patterning */}
+      <div className="absolute inset-0 bg-dot-pattern opacity-35 pointer-events-none z-0" />
 
       {/* Top Navbar */}
       <Navbar 
@@ -124,101 +127,130 @@ export default function App() {
         onOpenTestData={() => setIsTestDataModalOpen(true)}
       />
 
-      {/* Main Container */}
-      <main className="relative z-10 max-w-7xl mx-auto space-y-8 px-4 sm:px-6 lg:px-8 py-8">
-        {/* Operations Cockpit */}
-        <ControlCockpit onUploadSuccess={loadAllData} />
+      {/* Main Container with Left Icon Sidebar */}
+      <div className="flex flex-1 relative z-10">
+        <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
 
-        {/* Agent Control Status (Module 9) */}
-        {agentData && agentData.summary && (
-          <section>
-            <AgentControlStatus summary={agentData.summary} />
-          </section>
-        )}
+        <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full overflow-x-hidden flex flex-col justify-center min-h-[calc(100vh-3.5rem)]">
+          {/* Executive Overview & Operations Section */}
+          {activeSection === "overview" && (
+            <div className="space-y-4 animate-in fade-in duration-200 my-auto">
+              {/* Top Operations Toolbar */}
+              <section>
+                <ControlCockpit onUploadSuccess={loadAllData} />
+              </section>
 
-        {/* Control Effectiveness & Multi-Batch Tracking (Module 10) */}
-        {effectivenessData && effectivenessData.status === "computed" && (
-          <section>
-            <ControlEffectivenessCard effectiveness={effectivenessData} />
-          </section>
-        )}
+              {/* Asymmetric 2-Column Dashboard Grid with Equal Height Alignment */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+                {/* Left Main Telemetry Stream (8 Columns - Flex Column for Perfect Bottom Alignment) */}
+                <div className="lg:col-span-8 flex flex-col justify-between h-full gap-3.5">
+                  {/* Compact Horizontal KPI Deck */}
+                  <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
+                    <MetricCard
+                      title="Total Direct Leakage"
+                      value={`₹${overview.total_leaked_amount.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}
+                      subtitle={`${overview.leaked_count} txns (${overview.leaked_percent}%)`}
+                      variant="destructive"
+                      badge="Direct Loss"
+                      icon={TrendingDown}
+                      trendText={`${overview.leaked_percent}% batch loss`}
+                    />
+                    <MetricCard
+                      title="Statutory Match Rate"
+                      value={`${overview.matched_percent}%`}
+                      subtitle={`${overview.matched_count} compliant`}
+                      variant="success"
+                      badge="Compliant"
+                      icon={CheckCircle2}
+                    />
+                    <MetricCard
+                      title="Contract Pricing Spread"
+                      value={`₹${overview.structural_overcharge_amount.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}
+                      subtitle="Flat vs true cost"
+                      variant="warning"
+                      badge="Pricing Audit"
+                      icon={AlertTriangle}
+                    />
+                    <MetricCard
+                      title="Exceptions & Flagged"
+                      value={`${overview.exception_count + overview.flagged_for_review_count}`}
+                      subtitle={`${overview.exception_count} unclassified`}
+                      variant="primary"
+                      badge="Transparency"
+                      icon={Layers}
+                    />
+                  </section>
 
-        {/* Executive KPI Deck */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <MetricCard
-            title="Total Direct Leakage"
-            value={`₹${overview.total_leaked_amount.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}
-            subtitle={`${overview.leaked_count} transactions (${overview.leaked_percent}%)`}
-            variant="destructive"
-            badge="Direct Loss"
-            icon={TrendingDown}
-            trendText={`${overview.leaked_percent}% batch loss`}
-          />
-          <MetricCard
-            title="Statutory Match Rate"
-            value={`${overview.matched_percent}%`}
-            subtitle={`${overview.matched_count} compliant charges`}
-            variant="success"
-            badge="Compliant"
-            icon={CheckCircle2}
-          />
-          <MetricCard
-            title="Contract Pricing Spread"
-            value={`₹${overview.structural_overcharge_amount.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}
-            subtitle="Blended flat rate vs. true network cost"
-            variant="warning"
-            badge="Pricing Audit"
-            icon={AlertTriangle}
-          />
-          <MetricCard
-            title="Exceptions & Flagged"
-            value={`${overview.exception_count + overview.flagged_for_review_count}`}
-            subtitle={`${overview.exception_count} unclassified · ${overview.flagged_for_review_count} flagged`}
-            variant="primary"
-            badge="Transparency"
-            icon={Layers}
-          />
-        </section>
+                  {/* Live Agent Workflow Tracker (Module 13 Orchestrator Stream) */}
+                  <AgentWorkflowTracker agentData={agentData} report={report} />
 
-        {/* Regulatory Breakdown & Structural Impact */}
-        <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <CategoryVisualizer categories={leak_by_category} />
-          </div>
-          <div className="lg:col-span-1">
-            <StructuralImpactCard
-              mccAmount={overview.mcc_misclassification_amount}
-              structuralAmount={overview.structural_overcharge_amount}
-            />
-          </div>
-        </section>
+                  {/* Batch Structural Audits (Horizontal in Main Stream - Aligned to Bottom) */}
+                  <section>
+                    <StructuralImpactCard
+                      mccAmount={overview.mcc_misclassification_amount}
+                      structuralAmount={overview.structural_overcharge_amount}
+                    />
+                  </section>
+                </div>
 
-        {/* Agent Priority Queue (new — Module 12, replaces per-row view with group-level) */}
-        {agentData && agentData.cases && agentData.cases.length > 0 && (
-          <section>
-            <AgentRecommendationCard
-              cases={agentData.cases}
-              onApprove={handleApprove}
-              onReject={handleReject}
-            />
-          </section>
-        )}
+                {/* Right Focus Side-Panel (4 Columns): Fee Leakage Vertical Breakdown */}
+                <div className="lg:col-span-4 h-full">
+                  <CategoryVisualizer categories={leak_by_category} />
+                </div>
+              </div>
+            </div>
+          )}
 
-        {/* Top Priority Remediation Deck (existing, relabeled) */}
-        <section>
-          <RemediationDeck offenders={top_offenders} />
-        </section>
+          {/* Agent & Governance Section */}
+          {activeSection === "governance" && (
+            <div className="space-y-8 animate-in fade-in duration-200">
+              {agentData && agentData.summary && (
+                <section>
+                  <AgentControlStatus summary={agentData.summary} />
+                </section>
+              )}
 
-        {/* Human Review Queue (existing, relabeled from Exceptions & Ambiguities) */}
-        <section>
-          <ExceptionsDrawer exceptions={exceptions} />
-        </section>
+              {effectivenessData && effectivenessData.status === "computed" && (
+                <section>
+                  <ControlEffectivenessCard effectiveness={effectivenessData} />
+                </section>
+              )}
 
-        {/* Full Ledger Audit Trail */}
-        <section>
-          <AuditTrailTable rows={auditRows} />
-        </section>
-      </main>
+              {agentData && agentData.cases && agentData.cases.length > 0 && (
+                <section>
+                  <AgentRecommendationCard
+                    cases={agentData.cases}
+                    onApprove={handleApprove}
+                    onReject={handleReject}
+                  />
+                </section>
+              )}
+            </div>
+          )}
+
+          {/* Remediation & Review Section */}
+          {activeSection === "remediation" && (
+            <div className="space-y-8 animate-in fade-in duration-200">
+              <section>
+                <RemediationDeck offenders={top_offenders} />
+              </section>
+
+              <section>
+                <ExceptionsDrawer exceptions={exceptions} />
+              </section>
+            </div>
+          )}
+
+          {/* Audit Ledger Section */}
+          {activeSection === "audit" && (
+            <div className="space-y-8 animate-in fade-in duration-200">
+              <section>
+                <AuditTrailTable rows={auditRows} />
+              </section>
+            </div>
+          )}
+        </main>
+      </div>
 
       {/* Synthetic Test Data & Contract Modal */}
       <TestDataModal
