@@ -131,7 +131,7 @@ def classify_row(row: pd.Series, rules: List[Dict[str, Any]]) -> Dict[str, Any]:
             "matched_rule_id": rule["rule_id"],
             "expected_fee": expected_fee,
             "fee_charged": actual_fee,
-            "delta": 0.0,
+            "delta": delta,
             "note": f"Accurate fee verified against {rule['rule_id']}."
         }
     else:
