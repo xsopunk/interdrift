@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R4_RuPay_credit_UPI",
+  "root_cause": "Incorrect fee configuration for RuPay credit UPI leading to overcharged MDR fees",
+  "diagnosis": "All sampled transactions show fees higher than the modeled expected amount, indicating the gateway/acquirer is applying a higher rate or missing the appropriate discount for RuPay credit UPI transactions.",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "Auditing the fee configuration will reveal and allow correction of the misapplied rate causing the leakage.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

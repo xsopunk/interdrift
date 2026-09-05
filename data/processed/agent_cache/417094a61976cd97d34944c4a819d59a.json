@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_Visa_credit",
+  "root_cause": "Missing Level\u202f2/3 transaction data caused Visa credit sales to be downgraded to a higher\u2011cost interchange tier.",
+  "diagnosis": "Because the merchant did not supply L2/L3 data, the transactions were processed at a non\u2011qualified rate, resulting in fees above the modeled benchmark expected_fee.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing Level\u202f2/3 data will qualify the sales for lower interchange rates and eliminate the overcharge.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

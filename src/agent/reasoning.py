@@ -3,12 +3,12 @@ Module 8.4: Agent-Level LLM Reasoning Layer with Multi-Route Fallback
 Generates root-cause diagnosis and remediation recommendations per investigation group.
 
 Multi-Route Fallback Architecture:
-  Route 1 (Primary): Google Gemini Flash (via GEMINI_API_KEY)
-  Route 2 (Fallback): Groq High-Speed Engine (via GROQ_API_KEY)
+  Route 1 (Primary): Groq High-Speed Engine (qwen/qwen3.8-27b via GROQ_API_KEY)
+  Route 2 (Fallback): Google Gemini Flash (via GEMINI_API_KEY)
   Route 3 (Fallback): OpenRouter / OpenAI (via OPENROUTER_API_KEY / OPENAI_API_KEY)
   Route 4 (Safety Net): Deterministic Domain-Rule Fallback
 
-One call per group (~9 calls total) with local caching to guarantee instant execution on repeated runs.
+One call per group (~9-11 calls total) with local caching to guarantee instant execution on repeated runs.
 """
 
 import os
@@ -237,7 +237,7 @@ def _call_groq(prompt: str) -> Optional[Dict[str, Any]]:
     if not api_key:
         return None
 
-    candidate_models = ["qwen/qwen3.6-27b", "openai/gpt-oss-120b", "llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+    candidate_models = ["qwen/qwen3.8-27b", "openai/gpt-oss-120b", "qwen/qwen3.6-27b", "openai/gpt-oss-20b"]
 
     for model in candidate_models:
         try:
@@ -326,19 +326,19 @@ def diagnose_group(group: Dict[str, Any], use_cache: bool = True) -> Dict[str, A
     raw_result = None
     provider_used = None
 
-    # Route 1: Gemini
-    raw_result = _call_gemini(prompt)
+    # Route 1 (Primary): Groq High-Speed Engine
+    raw_result = _call_groq(prompt)
     if raw_result:
-        provider_used = "Gemini Flash"
+        provider_used = "Groq High-Speed"
 
-    # Route 2: Groq (if Gemini failed/rate limited)
+    # Route 2 (Fallback): Google Gemini Flash (if Groq failed/rate limited)
     if not raw_result:
-        print("    [Fallback Router] Calling Groq Engine...")
-        raw_result = _call_groq(prompt)
+        print("    [Fallback Router] Calling Gemini Flash...")
+        raw_result = _call_gemini(prompt)
         if raw_result:
-            provider_used = "Groq High-Speed"
+            provider_used = "Gemini Flash"
 
-    # Route 3: OpenRouter / OpenAI
+    # Route 3 (Fallback): OpenRouter / OpenAI
     if not raw_result:
         print("    [Fallback Router] Calling OpenRouter / OpenAI...")
         raw_result = _call_openrouter(prompt)

@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R6b_PPI_wallet_UPI",
+  "root_cause": "Incorrect fee configuration for PPI wallet UPI transactions causing overcharged MDR.",
+  "diagnosis": "The gateway/acquirer is applying a higher fee than the expected rate for PPI wallet UPI, resulting in consistent overcharges of Rs\u202f16.00 and Rs\u202f4.10.",
+  "recommended_action": "audit_gateway_fee_config",
+  "action_rationale": "Auditing the fee configuration will identify and correct the misapplied rate, eliminating the overcharges.",
+  "confidence_level": "high",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

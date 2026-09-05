@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_RuPay_debit",
+  "root_cause": "Missing Level\u202f2/3 data for RuPay debit transactions causing fee under\u2011charging",
+  "diagnosis": "Because the merchant\u2019s RuPay debit transactions are not transmitting Level\u202f2/3 commercial card data, the gateway applies a lower\u2011rate fee schedule than the modeled expected fee, resulting in a negative fee delta (leak).",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing accurate Level\u202f2/3 data will align fee calculations with the expected commercial pricing and stop the leakage.",
+  "confidence_level": "medium",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}

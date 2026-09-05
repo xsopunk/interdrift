@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_Mastercard_credit",
+  "root_cause": "Commercial Mastercard credit transactions are being downgraded to higher-cost consumer interchange rates due to missing Level 2/3 commercial card data.",
+  "diagnosis": "The fee charged (Rs 1,201.01) exceeds the expected fee (Rs 857.86) by Rs 343.15 on a Rs 42,893.20 transaction, indicating the gateway is applying a higher interchange rate because the transaction lacks the L2/L3 data required to qualify for the lower commercial card rate. Note: This comparison uses a modeled benchmark as the source status is illustrative.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing Level 2/3 commercial card data will allow the gateway to correctly classify the transaction and apply the lower commercial interchange rate, eliminating the fee overcharge.",
+  "confidence_level": "medium",
+  "human_approval_required": false,
+  "provider": "Groq High-Speed"
+}
