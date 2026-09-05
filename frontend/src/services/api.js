@@ -116,4 +116,94 @@ export async function captureBaselineSnapshot(sourceLabel = "batch_1") {
   }
   return response.json();
 }
+
+/**
+ * Generate preview of synthetic settlement dataset
+ */
+export async function previewGeneratedDataset(config) {
+  const response = await fetch(`${API_BASE_URL}/api/generate/dataset/preview`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(config || {}),
+  });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.detail || "Failed to generate dataset preview");
+  }
+  return response.json();
+}
+
+/**
+ * Generate preview of synthetic MSA contract specification
+ */
+export async function previewGeneratedMSA(config) {
+  const response = await fetch(`${API_BASE_URL}/api/generate/msa/preview`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(config || {}),
+  });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.detail || "Failed to generate MSA preview");
+  }
+  return response.json();
+}
+
+/**
+ * Upload and validate custom settlement CSV file
+ */
+export async function uploadCustomCSV(file) {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const response = await fetch(`${API_BASE_URL}/api/upload/csv`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.detail || "Failed to validate custom settlement CSV");
+  }
+
+  return response.json();
+}
+
+/**
+ * Upload and validate custom MSA JSON specification
+ */
+export async function uploadCustomMSA(file) {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const response = await fetch(`${API_BASE_URL}/api/upload/msa`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.detail || "Failed to validate custom MSA JSON");
+  }
+
+  return response.json();
+}
+
+/**
+ * Activate active custom/generated data and execute audit + agent pipeline
+ */
+export async function activateAuditData(payload) {
+  const response = await fetch(`${API_BASE_URL}/api/generate/activate`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload || {}),
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.detail || "Failed to run audit with active data");
+  }
+
+  return response.json();
+}
 
