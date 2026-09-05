@@ -108,6 +108,13 @@ def classify_row(row: pd.Series, rules: List[Dict[str, Any]]) -> Dict[str, Any]:
         cond = r.get("condition", {})
         return sum(1 for k in cond if k not in _AUX_FIELDS)
 
+    # Precedence Design Rule:
+    # 1. Statutory rail-specific rules (e.g. NPCI zero-MDR Bank UPI R1, RuPay Debit R2,
+    #    and RuPay Credit on UPI R3/R4) take precedence over general card-tier data rules (R10).
+    #    RuPay-credit-on-UPI transactions operate on the UPI rail governed by statutory circulars
+    #    regardless of card BIN tier, so statutory UPI interchange slabs supersede L2/L3 data checks.
+    # 2. When specificity scores tie, rule order in rule_table.json ensures statutory circulars (R1-R8)
+    #    evaluate ahead of commercial downgrade penalties (R10) and market rate baselines (R9).
     matching_rules.sort(key=_specificity, reverse=True)
     rule = matching_rules[0]
     expected_fee = compute_expected_fee(row, rule)
