@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R10_RuPay_debit",
+  "root_cause": "RuPay debit transactions are incurring commercial card fee downgrades due to missing Level 2/3 data inputs.",
+  "diagnosis": "The merchant was undercharged or miscalculated against an illustrative benchmark benchmark fee model due to L2/L3 commercial downgrade rules across 3 RuPay debit transactions, resulting in a modeled variance of Rs -1,552.38.",
+  "recommended_action": "supply_l2_l3_data",
+  "action_rationale": "Providing Level 2 and Level 3 transaction data prevents commercial card downgrades and ensures accurate processing fee application.",
+  "confidence_level": "medium",
+  "human_approval_required": true,
+  "provider": "Gemini Flash"
+}

@@ -1,0 +1,10 @@
+{
+  "group_id": "GRP_LEAKED_R6b_PPI_wallet_UPI",
+  "root_cause": "Overcharge on PPI Wallet UPI transaction due to incorrect fee calculation against expected rates.",
+  "diagnosis": "The acquirer charged a fee of Rs 22.30 instead of the expected Rs 18.25 for a PPI Wallet UPI transaction of Rs 2,027.72, resulting in a direct leakage of Rs 4.05.",
+  "recommended_action": "request_mdr_refund",
+  "action_rationale": "Requesting an MDR refund is the direct method to recover verified fee overcharges from the acquirer.",
+  "confidence_level": "high",
+  "human_approval_required": true,
+  "provider": "Gemini Flash"
+}

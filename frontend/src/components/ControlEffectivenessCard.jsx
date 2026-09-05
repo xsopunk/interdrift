@@ -29,7 +29,7 @@ export default function ControlEffectivenessCard({ effectiveness = null }) {
         };
       case "MIXED":
         return {
-          label: "Mixed Results (Review Needed)",
+          label: "Partial Effectiveness (Review Needed)",
           color: "text-amber-500 bg-amber-500/10 border-amber-500/30",
           icon: AlertTriangle,
         };
