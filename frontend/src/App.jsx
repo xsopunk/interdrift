@@ -14,6 +14,7 @@ import AgentRecommendationCard from "./components/AgentRecommendationCard";
 import ControlEffectivenessCard from "./components/ControlEffectivenessCard";
 import AgentWorkflowTracker from "./components/AgentWorkflowTracker";
 import TestDataModal from "./components/TestDataModal";
+import CopilotSidePanel from "./components/copilot/CopilotSidePanel";
 import { TrendingDown, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
 
 export default function App() {
@@ -281,6 +282,9 @@ export default function App() {
         onClose={() => setIsTestDataModalOpen(false)}
         onAuditSuccess={loadAllData}
       />
+
+      {/* Persistent AI Finance Controller Copilot Side Panel */}
+      <CopilotSidePanel />
     </div>
   );
 }

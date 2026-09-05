@@ -711,3 +711,17 @@ def activate_audit_data(req: ActivateAuditRequest):
         "actionable_cases": agent_summary.get("actionable_count", 0),
         "message": "Audit completed successfully with active test data."
     }
+
+
+class CopilotChatRequest(BaseModel):
+    message: str
+    history: Optional[List[Dict[str, str]]] = None
+
+
+@app.post("/api/copilot/chat")
+def copilot_chat(req: CopilotChatRequest):
+    """
+    RAG Copilot assistant answering questions grounded in live audit results.
+    """
+    from src.agent.copilot import ask_copilot
+    return ask_copilot(message=req.message, chat_history=req.history)

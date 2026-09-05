@@ -206,4 +206,23 @@ export async function activateAuditData(payload) {
 
   return response.json();
 }
+
+/**
+ * Send query to AI Finance Controller Copilot
+ */
+export async function sendCopilotMessage(message, history = []) {
+  const response = await fetch(`${API_BASE_URL}/api/copilot/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message, history }),
+  });
+
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.detail || "Copilot service unavailable");
+  }
+
+  return response.json();
+}
+
 
